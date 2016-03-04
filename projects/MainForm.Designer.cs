@@ -28,7 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.btn_test = new LollipopButton();
 			this.SuspendLayout();
+			// 
+			// btn_test
+			// 
+			this.btn_test.BackColor = System.Drawing.Color.Transparent;
+			this.btn_test.BGColor = "#508ef5";
+			this.btn_test.FontColor = "#ffffff";
+			this.btn_test.Location = new System.Drawing.Point(199, 39);
+			this.btn_test.Name = "btn_test";
+			this.btn_test.Size = new System.Drawing.Size(143, 41);
+			this.btn_test.TabIndex = 0;
+			this.btn_test.Text = "Test Button";
 			// 
 			// MainForm
 			// 
@@ -36,6 +48,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(563, 436);
+			this.Controls.Add(this.btn_test);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MainForm";
@@ -43,10 +56,11 @@
 
         }
 
-        #endregion
 
 
+		#endregion
 
-    }
+		private LollipopButton btn_test;
+	}
 }
 
