@@ -50,7 +50,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoDoanhThuHangNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoDoanhThuHangNgay.Designer.cs">
+      <DependentUpon>BaoCaoDoanhThuHangNgay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaoCaoDoanhThuHangThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoDoanhThuHangThang.Designer.cs">
+      <DependentUpon>BaoCaoDoanhThuHangThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachSoTietKiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhSachSoTietKiem.Designer.cs">
+      <DependentUpon>DanhSachSoTietKiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhieuGuiTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhieuGuiTien.Designer.cs">
+      <DependentUpon>PhieuGuiTien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhieuRutTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhieuRutTien.Designer.cs">
+      <DependentUpon>PhieuRutTien.cs</DependentUpon>
+    </Compile>
     <Compile Include="SQLiteDatabase.cs" />
+    <Compile Include="TietKiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TietKiem.Designer.cs">
+      <DependentUpon>TietKiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIManagers\DrawHelper.cs" />
     <Compile Include="UIManagers\FontManager.cs" />
     <Compile Include="Resources\Controls\LollipopButton.cs">
@@ -97,8 +133,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaoCaoDoanhThuHangNgay.resx">
+      <DependentUpon>BaoCaoDoanhThuHangNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCaoDoanhThuHangThang.resx">
+      <DependentUpon>BaoCaoDoanhThuHangThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhSachSoTietKiem.resx">
+      <DependentUpon>DanhSachSoTietKiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhieuGuiTien.resx">
+      <DependentUpon>PhieuGuiTien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhieuRutTien.resx">
+      <DependentUpon>PhieuRutTien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +161,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TietKiem.resx">
+      <DependentUpon>TietKiem.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
