@@ -81,11 +81,11 @@
       <DependentUpon>PhieuRutTien.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLiteDatabase.cs" />
-    <Compile Include="TietKiem.cs">
+    <Compile Include="SoTietKiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TietKiem.Designer.cs">
-      <DependentUpon>TietKiem.cs</DependentUpon>
+    <Compile Include="SoTietKiem.Designer.cs">
+      <DependentUpon>SoTietKiem.cs</DependentUpon>
     </Compile>
     <Compile Include="UIManagers\DrawHelper.cs" />
     <Compile Include="UIManagers\FontManager.cs" />
@@ -161,8 +161,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TietKiem.resx">
-      <DependentUpon>TietKiem.cs</DependentUpon>
+    <EmbeddedResource Include="SoTietKiem.resx">
+      <DependentUpon>SoTietKiem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
