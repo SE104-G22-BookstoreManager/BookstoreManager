@@ -284,7 +284,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "SoTietKiem";
-            this.Text = "l";
+            this.Text = "SO TIET KIEM";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
