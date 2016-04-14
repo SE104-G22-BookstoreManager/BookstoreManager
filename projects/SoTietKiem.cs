@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 
 namespace PassbookManagement
 {
-    public partial class SoTietKiem : Form
+	public partial class SoTietKiem : Form
     {
-        SQLiteConnection conn = new SQLiteConnection();
         SQLiteDatabase m_database;
         public SoTietKiem()
         {
