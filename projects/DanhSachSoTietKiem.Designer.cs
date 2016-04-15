@@ -46,10 +46,11 @@
             this.MAKH,
             this.So_du});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(-1, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(770, 416);
+            this.dataGridView1.Size = new System.Drawing.Size(797, 400);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // STT
             // 
@@ -79,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 417);
+            this.ClientSize = new System.Drawing.Size(796, 438);
             this.Controls.Add(this.dataGridView1);
             this.Name = "DanhSachSoTietKiem";
             this.Text = "DanhSachSoTietKiem";

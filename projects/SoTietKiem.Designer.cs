@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txt_MaSo = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.txt_ngaygui = new System.Windows.Forms.TextBox();
             this.txt_tiengui = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,10 +55,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txt_MaSo);
-            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.txt_ngaygui);
             this.groupBox3.Controls.Add(this.txt_tiengui);
             this.groupBox3.Controls.Add(this.label6);
@@ -75,22 +69,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tiet Kiem";
             // 
-            // txt_MaSo
-            // 
-            this.txt_MaSo.Location = new System.Drawing.Point(121, 179);
-            this.txt_MaSo.Name = "txt_MaSo";
-            this.txt_MaSo.Size = new System.Drawing.Size(249, 22);
-            this.txt_MaSo.TabIndex = 11;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 188);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 16);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Ma So Tiet Kiem";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -99,15 +77,6 @@
             this.label8.Size = new System.Drawing.Size(82, 16);
             this.label8.TabIndex = 9;
             this.label8.Text = "dd/mm/yyyy";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 16);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "label7";
             // 
             // txt_ngaygui
             // 
@@ -267,7 +236,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(23, 210);
+            this.button1.Location = new System.Drawing.Point(98, 207);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 48);
             this.button1.TabIndex = 10;
@@ -315,10 +284,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_MKH;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_MaSo;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
     }
 }
