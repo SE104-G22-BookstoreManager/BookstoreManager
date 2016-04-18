@@ -21,7 +21,7 @@ namespace PassbookManagement
         {
             if (txt_pass.Text == "Mai" && txt_user.Text == "Mai")
             {
-                SoTietKiem a = new SoTietKiem();
+                Option a = new Option();
                 a.Show();
                 this.Hide();
 
