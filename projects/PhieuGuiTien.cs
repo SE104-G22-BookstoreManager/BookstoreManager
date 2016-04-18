@@ -13,19 +13,23 @@ namespace PassbookManagement
 {
     public partial class PhieuGuiTien : Form
     {
-        SQLiteConnection conn = new SQLiteConnection();
-        SQLiteDatabase m_database;
+       
         public PhieuGuiTien()
         {
             InitializeComponent();
+            
            
-            m_database = new SQLiteDatabase("../../data/CNPM.s3db");
         }
 
         private void bnt_insert_Click(object sender, EventArgs e)
         {
-
-            m_database.Insert("SoTietKiem", CreateDictionary(txt_ma.Text, txt_Hoten.Text, txt_Ngaygui.Text,txt_Tiengui.Text,txt_MaSo.Text));
+            connect_database a = new connect_database();
+            a.Connect();
+        a.m_database.Insert("PhieuGuiTien", CreateDictionary(txt_ma.Text, txt_Hoten.Text, txt_Ngaygui.Text,txt_Tiengui.Text,txt_MaSo.Text));
+        MessageBox.Show(" GUI TIEN THANH CONG");
+        Option option = new Option();
+        option.Show();
+        this.Hide();
         }
         public Dictionary<string, string> CreateDictionary(string MaPhieuGui , string HoTen , string NgayGui, string SoTienGui, string MaSoTietKiem)
         {

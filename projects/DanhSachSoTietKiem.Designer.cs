@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai_tk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_du = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +40,6 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
             this.Loai_tk,
             this.MAKH,
             this.So_du});
@@ -51,12 +49,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(797, 400);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // STT
-            // 
-            this.STT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.STT.HeaderText = "ID";
-            this.STT.Name = "STT";
             // 
             // Loai_tk
             // 
@@ -92,7 +84,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_tk;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn So_du;

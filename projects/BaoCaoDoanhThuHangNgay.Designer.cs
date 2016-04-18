@@ -33,6 +33,8 @@
             this.Tong_thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tong_chi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chenhlech = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_Ngay = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,9 +47,9 @@
             this.Tong_thu,
             this.tong_chi,
             this.chenhlech});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 1);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 37);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(835, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(835, 396);
             this.dataGridView1.TabIndex = 1;
             // 
             // ngay
@@ -74,16 +76,36 @@
             this.chenhlech.HeaderText = "Chenh Lech";
             this.chenhlech.Name = "chenhlech";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(-3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ngay";
+            // 
+            // txt_Ngay
+            // 
+            this.txt_Ngay.Location = new System.Drawing.Point(69, 9);
+            this.txt_Ngay.Name = "txt_Ngay";
+            this.txt_Ngay.Size = new System.Drawing.Size(211, 20);
+            this.txt_Ngay.TabIndex = 3;
+            // 
             // BaoCaoDoanhThuHangNgay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 433);
+            this.Controls.Add(this.txt_Ngay);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "BaoCaoDoanhThuHangNgay";
             this.Text = "BaoCaoDoanhThuHangNgay";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -94,5 +116,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tong_thu;
         private System.Windows.Forms.DataGridViewTextBoxColumn tong_chi;
         private System.Windows.Forms.DataGridViewTextBoxColumn chenhlech;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_Ngay;
     }
 }

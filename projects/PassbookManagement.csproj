@@ -64,6 +64,7 @@
     <Compile Include="BaoCaoDoanhThuHangThang.Designer.cs">
       <DependentUpon>BaoCaoDoanhThuHangThang.cs</DependentUpon>
     </Compile>
+    <Compile Include="connect_database.cs" />
     <Compile Include="DanhSachSoTietKiem.cs">
       <SubType>Form</SubType>
     </Compile>

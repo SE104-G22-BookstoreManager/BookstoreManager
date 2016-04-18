@@ -48,6 +48,8 @@
             this.txt_MKH = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_MaSo = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -55,6 +57,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txt_MaSo);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txt_ngaygui);
             this.groupBox3.Controls.Add(this.txt_tiengui);
@@ -244,6 +248,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 194);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 16);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Ma So Tiet Kiem";
+            // 
+            // txt_MaSo
+            // 
+            this.txt_MaSo.Location = new System.Drawing.Point(121, 188);
+            this.txt_MaSo.Name = "txt_MaSo";
+            this.txt_MaSo.Size = new System.Drawing.Size(249, 22);
+            this.txt_MaSo.TabIndex = 11;
+            // 
             // SoTietKiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,5 +306,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_MaSo;
+        private System.Windows.Forms.Label label7;
     }
 }
