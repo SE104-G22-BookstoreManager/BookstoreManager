@@ -18,7 +18,7 @@ namespace PassbookManagement
             InitializeComponent();
             connect_database a = new connect_database();
             a.Connect();
-            String sql = "select MaKH, MALoaiTietKiem, SoTienGui from SoTietKiem";
+            String sql = "select MaKH, MALoaiTietKiem, SoTienGui,HoTenKH from SoTietKiem ";
             DataTable _queryResult = a.m_database.GetDataTable(sql);
 
             if (_queryResult.Rows.Count == 0)
@@ -35,9 +35,10 @@ namespace PassbookManagement
                     object[] _itemArray = _queryResult.Rows[i].ItemArray;
                     int n = dataGridView1.Rows.Add();
                
-                    dataGridView1.Rows[n].Cells[0].Value = _itemArray[0].ToString();
-                    dataGridView1.Rows[n].Cells[1].Value = _itemArray[1].ToString();
+                    dataGridView1.Rows[n].Cells[1].Value = _itemArray[0].ToString();
+                    dataGridView1.Rows[n].Cells[0].Value = _itemArray[1].ToString();
                     dataGridView1.Rows[n].Cells[2].Value = _itemArray[2].ToString();
+                    dataGridView1.Rows[n].Cells[3].Value = _itemArray[3].ToString();
 
                 }
             }

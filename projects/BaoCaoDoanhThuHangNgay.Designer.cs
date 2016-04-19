@@ -35,6 +35,7 @@
             this.chenhlech = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Ngay = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +94,22 @@
             this.txt_Ngay.Size = new System.Drawing.Size(211, 20);
             this.txt_Ngay.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(295, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 30);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "ReSuilt ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BaoCaoDoanhThuHangNgay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 433);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_Ngay);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn chenhlech;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_Ngay;
+        private System.Windows.Forms.Button button1;
     }
 }
