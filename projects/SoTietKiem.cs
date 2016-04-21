@@ -10,7 +10,7 @@ namespace PassbookManagement
         public SoTietKiem()
         {
             InitializeComponent();
-            this.button1.Click += new System.EventHandler(this.button1_Click);//Thêm sự kiện click
+           
           
         }
 
@@ -28,9 +28,13 @@ namespace PassbookManagement
             {
                 TietKiemLoai = "6";
             }
-        
-           
-           
+            double tien = Convert.ToDouble(txt_tiengui.Text);
+            if (tien < 1000000)
+            {
+                MessageBox.Show(" tien duoi 1000000 nhap lai","Thong Bao ");
+            }
+            else
+            {
                 connect_database a = new connect_database();
 
                 a.Connect();
@@ -39,6 +43,7 @@ namespace PassbookManagement
                 Option option = new Option();
                 option.Show();
                 this.Hide();
+            }
             
           
         }
