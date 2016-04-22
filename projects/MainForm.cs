@@ -15,6 +15,7 @@ namespace PassbookManagement
 		public MainForm()
         {
             InitializeComponent();
+			Database.SQLiteDatabase = new SQLiteDatabase("../../data/CNPM.s3db");
 		}
 
         private void button1_Click(object sender, EventArgs e)

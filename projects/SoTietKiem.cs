@@ -35,10 +35,10 @@ namespace PassbookManagement
             }
             else
             {
-                connect_database a = new connect_database();
+                //connect_database a = new connect_database();
 
-                a.Connect();
-                a.m_database.Insert("SoTietKiem", CreateDictionary(txt_MaSo.Text, txt_MKH.Text, txt_hoten.Text, txt_cmnd.Text, txt_diachi.Text, txt_tiengui.Text, txt_ngaygui.Text, TietKiemLoai));
+                //a.Connect();
+                Database.SQLiteDatabase.Insert("SoTietKiem", CreateDictionary(txt_MaSo.Text, txt_MKH.Text, txt_hoten.Text, txt_cmnd.Text, txt_diachi.Text, txt_tiengui.Text, txt_ngaygui.Text, TietKiemLoai));
                 MessageBox.Show(" DA Mo DUOC SO TIET KIEM");
                 Option option = new Option();
                 option.Show();

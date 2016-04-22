@@ -19,4 +19,9 @@ namespace PassbookManagement
              m_database = new SQLiteDatabase("../../data/CNPM.s3db");
         }
     }
+
+	static class Database
+	{
+		public static SQLiteDatabase SQLiteDatabase;
+	}
 }
