@@ -32,7 +32,7 @@
             this.Loai_tk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_du = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenKhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +44,7 @@
             this.Loai_tk,
             this.MAKH,
             this.So_du,
-            this.TenKhachHang});
+            this.MaSo});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.Location = new System.Drawing.Point(-1, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -70,11 +70,11 @@
             this.So_du.HeaderText = "SO DU";
             this.So_du.Name = "So_du";
             // 
-            // TenKhachHang
+            // MaSo
             // 
-            this.TenKhachHang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenKhachHang.HeaderText = "TenKhachHang";
-            this.TenKhachHang.Name = "TenKhachHang";
+            this.MaSo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MaSo.HeaderText = "MaSo";
+            this.MaSo.Name = "MaSo";
             // 
             // DanhSachSoTietKiem
             // 
@@ -95,6 +95,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_tk;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn So_du;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenKhachHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaSo;
     }
 }

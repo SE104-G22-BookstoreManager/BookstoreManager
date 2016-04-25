@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_Ngay = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tong_thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tong_chi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chenhlech = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_Ngay = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LoaiTietKiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,35 +48,12 @@
             this.ngay,
             this.Tong_thu,
             this.tong_chi,
-            this.chenhlech});
+            this.chenhlech,
+            this.LoaiTietKiem});
             this.dataGridView1.Location = new System.Drawing.Point(0, 37);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(835, 396);
+            this.dataGridView1.Size = new System.Drawing.Size(892, 396);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // ngay
-            // 
-            this.ngay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ngay.HeaderText = "Ngay";
-            this.ngay.Name = "ngay";
-            // 
-            // Tong_thu
-            // 
-            this.Tong_thu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tong_thu.HeaderText = "Tong Thu";
-            this.Tong_thu.Name = "Tong_thu";
-            // 
-            // tong_chi
-            // 
-            this.tong_chi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tong_chi.HeaderText = "Tong Chi";
-            this.tong_chi.Name = "tong_chi";
-            // 
-            // chenhlech
-            // 
-            this.chenhlech.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.chenhlech.HeaderText = "Chenh Lech";
-            this.chenhlech.Name = "chenhlech";
             // 
             // label1
             // 
@@ -104,11 +82,41 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // ngay
+            // 
+            this.ngay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngay.HeaderText = "Ngay";
+            this.ngay.Name = "ngay";
+            // 
+            // Tong_thu
+            // 
+            this.Tong_thu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tong_thu.HeaderText = "Tong Thu";
+            this.Tong_thu.Name = "Tong_thu";
+            // 
+            // tong_chi
+            // 
+            this.tong_chi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tong_chi.HeaderText = "Tong Chi";
+            this.tong_chi.Name = "tong_chi";
+            // 
+            // chenhlech
+            // 
+            this.chenhlech.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.chenhlech.HeaderText = "Chenh Lech";
+            this.chenhlech.Name = "chenhlech";
+            // 
+            // LoaiTietKiem
+            // 
+            this.LoaiTietKiem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LoaiTietKiem.HeaderText = "LoaiTietKiem";
+            this.LoaiTietKiem.Name = "LoaiTietKiem";
+            // 
             // BaoCaoDoanhThuHangNgay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 433);
+            this.ClientSize = new System.Drawing.Size(891, 433);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_Ngay);
             this.Controls.Add(this.label1);
@@ -124,12 +132,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_Ngay;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tong_thu;
         private System.Windows.Forms.DataGridViewTextBoxColumn tong_chi;
         private System.Windows.Forms.DataGridViewTextBoxColumn chenhlech;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_Ngay;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiTietKiem;
     }
 }
