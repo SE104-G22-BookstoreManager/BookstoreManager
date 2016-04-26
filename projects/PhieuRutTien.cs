@@ -73,7 +73,7 @@ namespace PassbookManagement
                             else
                             {
                                  Tien_ConLai = Tien_lai - Convert.ToDouble(txt_Tienrut.Text);
-                                a.m_database.Insert("PhieuRutTien", CreateDictionary(txt_Ngayrut.Text,txt_Hoten.Text,txt_Tienrut.Text,txt_MaTietKiem.Text,txt_MaKH.Text));
+                                a.m_database.Insert("PhieuRutTien", CreateDictionary(txt_Ngayrut.Text,txt_Hoten.Text,txt_Tienrut.Text,txt_MaTietKiem.Text,txt_MaKH.Text,Tien_ConLai.ToString()));
                                   string where = "id=\"" + MaSoTietKiem + "\" ";
                                  a.m_database.Update("SoTietKiem",CreateDictionary_1(Tien_ConLai.ToString()), where);   
                                 MessageBox.Show(" DA RUT DUOC TIEN");
@@ -119,7 +119,7 @@ namespace PassbookManagement
                               {
                                   txt_Tienrut.Text = Tien_lai.ToString();
                                   Tien_ConLai = 0;
-                                  a.m_database.Insert("PhieuRutTien", CreateDictionary(txt_Ngayrut.Text, txt_Hoten.Text, txt_Tienrut.Text, txt_MaTietKiem.Text, txt_MaKH.Text));
+                                  a.m_database.Insert("PhieuRutTien", CreateDictionary(txt_Ngayrut.Text, txt_Hoten.Text, txt_Tienrut.Text, txt_MaTietKiem.Text, txt_MaKH.Text,Tien_ConLai.ToString()));
                                   string where = "id=\"" + MaSoTietKiem + "\" ";
                                   a.m_database.Update("SoTietKiem", CreateDictionary_1(Tien_ConLai.ToString()), where);
                                   MessageBox.Show(" DA RUT DUOC TIEN");
@@ -167,7 +167,7 @@ namespace PassbookManagement
                                         {
                                             txt_Tienrut.Text = Tien_lai.ToString();
                                             Tien_ConLai = 0;
-                                            a.m_database.Insert("PhieuRutTien", CreateDictionary(txt_Ngayrut.Text, txt_Hoten.Text, txt_Tienrut.Text, txt_MaTietKiem.Text, txt_MaKH.Text));
+                                            a.m_database.Insert("PhieuRutTien", CreateDictionary(txt_Ngayrut.Text, txt_Hoten.Text, txt_Tienrut.Text, txt_MaTietKiem.Text, txt_MaKH.Text,Tien_ConLai.ToString()));
                                             string where = "id=\"" + MaSoTietKiem + "\" ";
                                             a.m_database.Update("SoTietKiem", CreateDictionary_1(Tien_ConLai.ToString()), where);
                                             MessageBox.Show(" DA RUT DUOC TIEN");
@@ -194,7 +194,7 @@ namespace PassbookManagement
             
         }
      
-        public Dictionary<string, string> CreateDictionary(string ngayrut, string HoTen, string SoTienRut, string MaSoTietKiem,string MaKH)
+        public Dictionary<string, string> CreateDictionary(string ngayrut, string HoTen, string SoTienRut, string MaSoTietKiem,string MaKH,string tienconlai)
         {
             Dictionary<string, string> _dict = new Dictionary<string, string>();
            
@@ -203,6 +203,7 @@ namespace PassbookManagement
             _dict.Add("MaSoTietKiem", MaSoTietKiem);
             _dict.Add("SoTienRut", SoTienRut);
             _dict.Add("MaKH",MaKH);
+            _dict.Add("TienConLai", tienconlai);
           
          return _dict;
         }

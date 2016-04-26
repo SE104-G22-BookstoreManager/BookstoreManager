@@ -88,6 +88,7 @@ namespace PassbookManagement
                     }
                     else
                     {
+                        MessageBox.Show("chua den thoi gian gui");
                         txt_Tiengui.Text = "";
                         txt_Ngaygui.Text = "";
                     }
