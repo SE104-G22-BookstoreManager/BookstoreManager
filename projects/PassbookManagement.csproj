@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -96,44 +100,6 @@
     <Compile Include="SoTietKiem.Designer.cs">
       <DependentUpon>SoTietKiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIManagers\DrawHelper.cs" />
-    <Compile Include="UIManagers\FontManager.cs" />
-    <Compile Include="Resources\Controls\LollipopButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopCard.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopCheckBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopFileInput.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopFlatButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopFolderInPut.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopRadioButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopSmallCard.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Resources\Controls\LollipopToggle.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,8 +152,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Resources\Roboto-Medium.ttf" />
-    <EmbeddedResource Include="Resources\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
