@@ -31,33 +31,33 @@
 			this.tab_selector = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_open = new System.Windows.Forms.TabPage();
-			this.btn_create = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-			this.txt_cash = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.btn_create_open = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.calendar_open = new System.Windows.Forms.MonthCalendar();
+			this.txt_cash_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.radio_6months = new MaterialSkin.Controls.MaterialRadioButton();
 			this.radio_no_terms = new MaterialSkin.Controls.MaterialRadioButton();
 			this.radio_3months = new MaterialSkin.Controls.MaterialRadioButton();
 			this.lbl_passbook = new MaterialSkin.Controls.MaterialLabel();
-			this.btn_submit = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.btn_check = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.txt_address = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.txt_phone_number = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.btn_submit_open = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.btn_check_open = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.txt_address_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_phone_number_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.lbl_customer = new MaterialSkin.Controls.MaterialLabel();
-			this.txt_identity_number = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.txt_name = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_identity_number_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_name_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_lookup = new System.Windows.Forms.TabPage();
-			this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+			this.list_lookup = new MaterialSkin.Controls.MaterialListView();
 			this.col_order = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_passbook_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_customer_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_balance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tab_deposit = new System.Windows.Forms.TabPage();
-			this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
+			this.calendar_deposit = new System.Windows.Forms.MonthCalendar();
 			this.txt_cash_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.lbl_deposit = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_create_deposit = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.cbb_passbook = new System.Windows.Forms.ComboBox();
+			this.cbb_passbook_deposit = new System.Windows.Forms.ComboBox();
 			this.btn_check_deposit = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.txt_phone_number_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_identity_number_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -65,8 +65,8 @@
 			this.lbl_customer_deposit = new MaterialSkin.Controls.MaterialLabel();
 			this.txt_address_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_withdrawal = new System.Windows.Forms.TabPage();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.monthCalendar3 = new System.Windows.Forms.MonthCalendar();
+			this.cbb_passbook_withdrawal = new System.Windows.Forms.ComboBox();
+			this.calendar_withdrawal = new System.Windows.Forms.MonthCalendar();
 			this.btn_create_withdrawal = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_check_withdrawal = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.txt_cash_withdrawal = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -77,22 +77,22 @@
 			this.lbl_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.lbl_customer_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_daily_report = new System.Windows.Forms.TabPage();
-			this.materialListView2 = new MaterialSkin.Controls.MaterialListView();
+			this.list_daily = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_type_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_income_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_outcome_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.date_daily = new System.Windows.Forms.DateTimePicker();
 			this.tab_monthly_report = new System.Windows.Forms.TabPage();
-			this.materialListView3 = new MaterialSkin.Controls.MaterialListView();
+			this.list_monthly = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_date_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_income_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_outcome_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_total_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.date_monthly = new System.Windows.Forms.DateTimePicker();
+			this.cbb_type_monthly = new System.Windows.Forms.ComboBox();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -122,7 +122,7 @@
 			this.tab_control.Controls.Add(this.tab_daily_report);
 			this.tab_control.Controls.Add(this.tab_monthly_report);
 			this.tab_control.Depth = 0;
-			this.tab_control.Location = new System.Drawing.Point(12, 103);
+			this.tab_control.Location = new System.Drawing.Point(12, 114);
 			this.tab_control.MouseState = MaterialSkin.MouseState.HOVER;
 			this.tab_control.Name = "tab_control";
 			this.tab_control.SelectedIndex = 0;
@@ -132,20 +132,20 @@
 			// tab_open
 			// 
 			this.tab_open.BackColor = System.Drawing.Color.White;
-			this.tab_open.Controls.Add(this.btn_create);
-			this.tab_open.Controls.Add(this.monthCalendar1);
-			this.tab_open.Controls.Add(this.txt_cash);
+			this.tab_open.Controls.Add(this.btn_create_open);
+			this.tab_open.Controls.Add(this.calendar_open);
+			this.tab_open.Controls.Add(this.txt_cash_open);
 			this.tab_open.Controls.Add(this.radio_6months);
 			this.tab_open.Controls.Add(this.radio_no_terms);
 			this.tab_open.Controls.Add(this.radio_3months);
 			this.tab_open.Controls.Add(this.lbl_passbook);
-			this.tab_open.Controls.Add(this.btn_submit);
-			this.tab_open.Controls.Add(this.btn_check);
-			this.tab_open.Controls.Add(this.txt_address);
-			this.tab_open.Controls.Add(this.txt_phone_number);
+			this.tab_open.Controls.Add(this.btn_submit_open);
+			this.tab_open.Controls.Add(this.btn_check_open);
+			this.tab_open.Controls.Add(this.txt_address_open);
+			this.tab_open.Controls.Add(this.txt_phone_number_open);
 			this.tab_open.Controls.Add(this.lbl_customer);
-			this.tab_open.Controls.Add(this.txt_identity_number);
-			this.tab_open.Controls.Add(this.txt_name);
+			this.tab_open.Controls.Add(this.txt_identity_number_open);
+			this.tab_open.Controls.Add(this.txt_name_open);
 			this.tab_open.Location = new System.Drawing.Point(4, 22);
 			this.tab_open.Name = "tab_open";
 			this.tab_open.Padding = new System.Windows.Forms.Padding(3);
@@ -153,40 +153,41 @@
 			this.tab_open.TabIndex = 0;
 			this.tab_open.Text = "Passbook";
 			// 
-			// btn_create
+			// btn_create_open
 			// 
-			this.btn_create.Depth = 0;
-			this.btn_create.Location = new System.Drawing.Point(32, 284);
-			this.btn_create.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_create.Name = "btn_create";
-			this.btn_create.Primary = true;
-			this.btn_create.Size = new System.Drawing.Size(250, 40);
-			this.btn_create.TabIndex = 15;
-			this.btn_create.Text = "Create";
-			this.btn_create.UseVisualStyleBackColor = true;
+			this.btn_create_open.Depth = 0;
+			this.btn_create_open.Location = new System.Drawing.Point(32, 284);
+			this.btn_create_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_create_open.Name = "btn_create_open";
+			this.btn_create_open.Primary = true;
+			this.btn_create_open.Size = new System.Drawing.Size(250, 40);
+			this.btn_create_open.TabIndex = 15;
+			this.btn_create_open.Text = "Create";
+			this.btn_create_open.UseVisualStyleBackColor = true;
+			this.btn_create_open.Click += new System.EventHandler(this.btn_create_Click);
 			// 
-			// monthCalendar1
+			// calendar_open
 			// 
-			this.monthCalendar1.Location = new System.Drawing.Point(360, 147);
-			this.monthCalendar1.Name = "monthCalendar1";
-			this.monthCalendar1.TabIndex = 14;
+			this.calendar_open.Location = new System.Drawing.Point(360, 147);
+			this.calendar_open.Name = "calendar_open";
+			this.calendar_open.TabIndex = 14;
 			// 
-			// txt_cash
+			// txt_cash_open
 			// 
-			this.txt_cash.Depth = 0;
-			this.txt_cash.Hint = "Cash";
-			this.txt_cash.Location = new System.Drawing.Point(360, 103);
-			this.txt_cash.MaxLength = 32767;
-			this.txt_cash.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_cash.Name = "txt_cash";
-			this.txt_cash.PasswordChar = '\0';
-			this.txt_cash.SelectedText = "";
-			this.txt_cash.SelectionLength = 0;
-			this.txt_cash.SelectionStart = 0;
-			this.txt_cash.Size = new System.Drawing.Size(227, 23);
-			this.txt_cash.TabIndex = 12;
-			this.txt_cash.TabStop = false;
-			this.txt_cash.UseSystemPasswordChar = false;
+			this.txt_cash_open.Depth = 0;
+			this.txt_cash_open.Hint = "Cash";
+			this.txt_cash_open.Location = new System.Drawing.Point(360, 103);
+			this.txt_cash_open.MaxLength = 32767;
+			this.txt_cash_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_cash_open.Name = "txt_cash_open";
+			this.txt_cash_open.PasswordChar = '\0';
+			this.txt_cash_open.SelectedText = "";
+			this.txt_cash_open.SelectionLength = 0;
+			this.txt_cash_open.SelectionStart = 0;
+			this.txt_cash_open.Size = new System.Drawing.Size(227, 23);
+			this.txt_cash_open.TabIndex = 12;
+			this.txt_cash_open.TabStop = false;
+			this.txt_cash_open.UseSystemPasswordChar = false;
 			// 
 			// radio_6months
 			// 
@@ -252,63 +253,66 @@
 			this.lbl_passbook.TabIndex = 8;
 			this.lbl_passbook.Text = "Passbook";
 			// 
-			// btn_submit
+			// btn_submit_open
 			// 
-			this.btn_submit.Depth = 0;
-			this.btn_submit.Location = new System.Drawing.Point(78, 260);
-			this.btn_submit.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_submit.Name = "btn_submit";
-			this.btn_submit.Primary = true;
-			this.btn_submit.Size = new System.Drawing.Size(250, 40);
-			this.btn_submit.TabIndex = 7;
-			this.btn_submit.Text = "Submit";
-			this.btn_submit.UseVisualStyleBackColor = true;
+			this.btn_submit_open.Depth = 0;
+			this.btn_submit_open.Enabled = false;
+			this.btn_submit_open.Location = new System.Drawing.Point(160, 238);
+			this.btn_submit_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_submit_open.Name = "btn_submit_open";
+			this.btn_submit_open.Primary = true;
+			this.btn_submit_open.Size = new System.Drawing.Size(122, 40);
+			this.btn_submit_open.TabIndex = 7;
+			this.btn_submit_open.Text = "Submit";
+			this.btn_submit_open.UseVisualStyleBackColor = true;
+			this.btn_submit_open.Click += new System.EventHandler(this.btn_submit_Click);
 			// 
-			// btn_check
+			// btn_check_open
 			// 
-			this.btn_check.Depth = 0;
-			this.btn_check.Location = new System.Drawing.Point(32, 238);
-			this.btn_check.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_check.Name = "btn_check";
-			this.btn_check.Primary = true;
-			this.btn_check.Size = new System.Drawing.Size(250, 40);
-			this.btn_check.TabIndex = 6;
-			this.btn_check.Text = "Check";
-			this.btn_check.UseVisualStyleBackColor = true;
+			this.btn_check_open.Depth = 0;
+			this.btn_check_open.Location = new System.Drawing.Point(32, 238);
+			this.btn_check_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_check_open.Name = "btn_check_open";
+			this.btn_check_open.Primary = true;
+			this.btn_check_open.Size = new System.Drawing.Size(122, 40);
+			this.btn_check_open.TabIndex = 6;
+			this.btn_check_open.Text = "Check";
+			this.btn_check_open.UseVisualStyleBackColor = true;
+			this.btn_check_open.Click += new System.EventHandler(this.btn_check_Click);
 			// 
-			// txt_address
+			// txt_address_open
 			// 
-			this.txt_address.Depth = 0;
-			this.txt_address.Hint = "Address";
-			this.txt_address.Location = new System.Drawing.Point(32, 147);
-			this.txt_address.MaxLength = 32767;
-			this.txt_address.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_address.Name = "txt_address";
-			this.txt_address.PasswordChar = '\0';
-			this.txt_address.SelectedText = "";
-			this.txt_address.SelectionLength = 0;
-			this.txt_address.SelectionStart = 0;
-			this.txt_address.Size = new System.Drawing.Size(250, 23);
-			this.txt_address.TabIndex = 5;
-			this.txt_address.TabStop = false;
-			this.txt_address.UseSystemPasswordChar = false;
+			this.txt_address_open.Depth = 0;
+			this.txt_address_open.Hint = "Address";
+			this.txt_address_open.Location = new System.Drawing.Point(32, 147);
+			this.txt_address_open.MaxLength = 32767;
+			this.txt_address_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_address_open.Name = "txt_address_open";
+			this.txt_address_open.PasswordChar = '\0';
+			this.txt_address_open.SelectedText = "";
+			this.txt_address_open.SelectionLength = 0;
+			this.txt_address_open.SelectionStart = 0;
+			this.txt_address_open.Size = new System.Drawing.Size(250, 23);
+			this.txt_address_open.TabIndex = 5;
+			this.txt_address_open.TabStop = false;
+			this.txt_address_open.UseSystemPasswordChar = false;
 			// 
-			// txt_phone_number
+			// txt_phone_number_open
 			// 
-			this.txt_phone_number.Depth = 0;
-			this.txt_phone_number.Hint = "Phone Number";
-			this.txt_phone_number.Location = new System.Drawing.Point(32, 191);
-			this.txt_phone_number.MaxLength = 32767;
-			this.txt_phone_number.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_phone_number.Name = "txt_phone_number";
-			this.txt_phone_number.PasswordChar = '\0';
-			this.txt_phone_number.SelectedText = "";
-			this.txt_phone_number.SelectionLength = 0;
-			this.txt_phone_number.SelectionStart = 0;
-			this.txt_phone_number.Size = new System.Drawing.Size(250, 23);
-			this.txt_phone_number.TabIndex = 4;
-			this.txt_phone_number.TabStop = false;
-			this.txt_phone_number.UseSystemPasswordChar = false;
+			this.txt_phone_number_open.Depth = 0;
+			this.txt_phone_number_open.Hint = "Phone Number";
+			this.txt_phone_number_open.Location = new System.Drawing.Point(32, 191);
+			this.txt_phone_number_open.MaxLength = 32767;
+			this.txt_phone_number_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_phone_number_open.Name = "txt_phone_number_open";
+			this.txt_phone_number_open.PasswordChar = '\0';
+			this.txt_phone_number_open.SelectedText = "";
+			this.txt_phone_number_open.SelectionLength = 0;
+			this.txt_phone_number_open.SelectionStart = 0;
+			this.txt_phone_number_open.Size = new System.Drawing.Size(250, 23);
+			this.txt_phone_number_open.TabIndex = 4;
+			this.txt_phone_number_open.TabStop = false;
+			this.txt_phone_number_open.UseSystemPasswordChar = false;
 			// 
 			// lbl_customer
 			// 
@@ -323,44 +327,44 @@
 			this.lbl_customer.TabIndex = 3;
 			this.lbl_customer.Text = "Customer";
 			// 
-			// txt_identity_number
+			// txt_identity_number_open
 			// 
-			this.txt_identity_number.Depth = 0;
-			this.txt_identity_number.Hint = "Identity Number";
-			this.txt_identity_number.Location = new System.Drawing.Point(32, 103);
-			this.txt_identity_number.MaxLength = 32767;
-			this.txt_identity_number.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_identity_number.Name = "txt_identity_number";
-			this.txt_identity_number.PasswordChar = '\0';
-			this.txt_identity_number.SelectedText = "";
-			this.txt_identity_number.SelectionLength = 0;
-			this.txt_identity_number.SelectionStart = 0;
-			this.txt_identity_number.Size = new System.Drawing.Size(250, 23);
-			this.txt_identity_number.TabIndex = 2;
-			this.txt_identity_number.TabStop = false;
-			this.txt_identity_number.UseSystemPasswordChar = false;
+			this.txt_identity_number_open.Depth = 0;
+			this.txt_identity_number_open.Hint = "Identity Number";
+			this.txt_identity_number_open.Location = new System.Drawing.Point(32, 103);
+			this.txt_identity_number_open.MaxLength = 32767;
+			this.txt_identity_number_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_identity_number_open.Name = "txt_identity_number_open";
+			this.txt_identity_number_open.PasswordChar = '\0';
+			this.txt_identity_number_open.SelectedText = "";
+			this.txt_identity_number_open.SelectionLength = 0;
+			this.txt_identity_number_open.SelectionStart = 0;
+			this.txt_identity_number_open.Size = new System.Drawing.Size(250, 23);
+			this.txt_identity_number_open.TabIndex = 2;
+			this.txt_identity_number_open.TabStop = false;
+			this.txt_identity_number_open.UseSystemPasswordChar = false;
 			// 
-			// txt_name
+			// txt_name_open
 			// 
-			this.txt_name.Depth = 0;
-			this.txt_name.Hint = "Name";
-			this.txt_name.Location = new System.Drawing.Point(32, 59);
-			this.txt_name.MaxLength = 32767;
-			this.txt_name.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_name.Name = "txt_name";
-			this.txt_name.PasswordChar = '\0';
-			this.txt_name.SelectedText = "";
-			this.txt_name.SelectionLength = 0;
-			this.txt_name.SelectionStart = 0;
-			this.txt_name.Size = new System.Drawing.Size(250, 23);
-			this.txt_name.TabIndex = 0;
-			this.txt_name.TabStop = false;
-			this.txt_name.UseSystemPasswordChar = false;
+			this.txt_name_open.Depth = 0;
+			this.txt_name_open.Hint = "Name";
+			this.txt_name_open.Location = new System.Drawing.Point(32, 59);
+			this.txt_name_open.MaxLength = 32767;
+			this.txt_name_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_name_open.Name = "txt_name_open";
+			this.txt_name_open.PasswordChar = '\0';
+			this.txt_name_open.SelectedText = "";
+			this.txt_name_open.SelectionLength = 0;
+			this.txt_name_open.SelectionStart = 0;
+			this.txt_name_open.Size = new System.Drawing.Size(250, 23);
+			this.txt_name_open.TabIndex = 0;
+			this.txt_name_open.TabStop = false;
+			this.txt_name_open.UseSystemPasswordChar = false;
 			// 
 			// tab_lookup
 			// 
 			this.tab_lookup.BackColor = System.Drawing.Color.White;
-			this.tab_lookup.Controls.Add(this.materialListView1);
+			this.tab_lookup.Controls.Add(this.list_lookup);
 			this.tab_lookup.Location = new System.Drawing.Point(4, 22);
 			this.tab_lookup.Name = "tab_lookup";
 			this.tab_lookup.Padding = new System.Windows.Forms.Padding(3);
@@ -369,28 +373,28 @@
 			this.tab_lookup.Text = "Lookup";
 			this.tab_lookup.UseVisualStyleBackColor = true;
 			// 
-			// materialListView1
+			// list_lookup
 			// 
-			this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.list_lookup.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.list_lookup.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_order,
             this.col_passbook_id,
             this.col_type,
             this.col_customer_id,
             this.col_balance});
-			this.materialListView1.Depth = 0;
-			this.materialListView1.Font = new System.Drawing.Font("Roboto", 24F);
-			this.materialListView1.FullRowSelect = true;
-			this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.materialListView1.Location = new System.Drawing.Point(-4, 0);
-			this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-			this.materialListView1.Name = "materialListView1";
-			this.materialListView1.OwnerDraw = true;
-			this.materialListView1.Size = new System.Drawing.Size(676, 339);
-			this.materialListView1.TabIndex = 0;
-			this.materialListView1.UseCompatibleStateImageBehavior = false;
-			this.materialListView1.View = System.Windows.Forms.View.Details;
+			this.list_lookup.Depth = 0;
+			this.list_lookup.Font = new System.Drawing.Font("Roboto", 24F);
+			this.list_lookup.FullRowSelect = true;
+			this.list_lookup.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.list_lookup.Location = new System.Drawing.Point(-4, 0);
+			this.list_lookup.MouseLocation = new System.Drawing.Point(-1, -1);
+			this.list_lookup.MouseState = MaterialSkin.MouseState.OUT;
+			this.list_lookup.Name = "list_lookup";
+			this.list_lookup.OwnerDraw = true;
+			this.list_lookup.Size = new System.Drawing.Size(676, 339);
+			this.list_lookup.TabIndex = 0;
+			this.list_lookup.UseCompatibleStateImageBehavior = false;
+			this.list_lookup.View = System.Windows.Forms.View.Details;
 			// 
 			// col_order
 			// 
@@ -420,11 +424,11 @@
 			// tab_deposit
 			// 
 			this.tab_deposit.BackColor = System.Drawing.Color.White;
-			this.tab_deposit.Controls.Add(this.monthCalendar2);
+			this.tab_deposit.Controls.Add(this.calendar_deposit);
 			this.tab_deposit.Controls.Add(this.txt_cash_deposit);
 			this.tab_deposit.Controls.Add(this.lbl_deposit);
 			this.tab_deposit.Controls.Add(this.btn_create_deposit);
-			this.tab_deposit.Controls.Add(this.cbb_passbook);
+			this.tab_deposit.Controls.Add(this.cbb_passbook_deposit);
 			this.tab_deposit.Controls.Add(this.btn_check_deposit);
 			this.tab_deposit.Controls.Add(this.txt_phone_number_deposit);
 			this.tab_deposit.Controls.Add(this.txt_identity_number_deposit);
@@ -439,11 +443,11 @@
 			this.tab_deposit.Text = "Deposit";
 			this.tab_deposit.UseVisualStyleBackColor = true;
 			// 
-			// monthCalendar2
+			// calendar_deposit
 			// 
-			this.monthCalendar2.Location = new System.Drawing.Point(360, 147);
-			this.monthCalendar2.Name = "monthCalendar2";
-			this.monthCalendar2.TabIndex = 10;
+			this.calendar_deposit.Location = new System.Drawing.Point(360, 147);
+			this.calendar_deposit.Name = "calendar_deposit";
+			this.calendar_deposit.TabIndex = 10;
 			// 
 			// txt_cash_deposit
 			// 
@@ -487,13 +491,13 @@
 			this.btn_create_deposit.Text = "Create";
 			this.btn_create_deposit.UseVisualStyleBackColor = true;
 			// 
-			// cbb_passbook
+			// cbb_passbook_deposit
 			// 
-			this.cbb_passbook.FormattingEnabled = true;
-			this.cbb_passbook.Location = new System.Drawing.Point(360, 61);
-			this.cbb_passbook.Name = "cbb_passbook";
-			this.cbb_passbook.Size = new System.Drawing.Size(227, 21);
-			this.cbb_passbook.TabIndex = 6;
+			this.cbb_passbook_deposit.FormattingEnabled = true;
+			this.cbb_passbook_deposit.Location = new System.Drawing.Point(360, 61);
+			this.cbb_passbook_deposit.Name = "cbb_passbook_deposit";
+			this.cbb_passbook_deposit.Size = new System.Drawing.Size(227, 21);
+			this.cbb_passbook_deposit.TabIndex = 6;
 			// 
 			// btn_check_deposit
 			// 
@@ -591,8 +595,8 @@
 			// tab_withdrawal
 			// 
 			this.tab_withdrawal.BackColor = System.Drawing.Color.White;
-			this.tab_withdrawal.Controls.Add(this.comboBox1);
-			this.tab_withdrawal.Controls.Add(this.monthCalendar3);
+			this.tab_withdrawal.Controls.Add(this.cbb_passbook_withdrawal);
+			this.tab_withdrawal.Controls.Add(this.calendar_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.btn_create_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.btn_check_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.txt_cash_withdrawal);
@@ -610,19 +614,19 @@
 			this.tab_withdrawal.Text = "Withdrawal";
 			this.tab_withdrawal.UseVisualStyleBackColor = true;
 			// 
-			// comboBox1
+			// cbb_passbook_withdrawal
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(360, 61);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(227, 21);
-			this.comboBox1.TabIndex = 10;
+			this.cbb_passbook_withdrawal.FormattingEnabled = true;
+			this.cbb_passbook_withdrawal.Location = new System.Drawing.Point(360, 61);
+			this.cbb_passbook_withdrawal.Name = "cbb_passbook_withdrawal";
+			this.cbb_passbook_withdrawal.Size = new System.Drawing.Size(227, 21);
+			this.cbb_passbook_withdrawal.TabIndex = 10;
 			// 
-			// monthCalendar3
+			// calendar_withdrawal
 			// 
-			this.monthCalendar3.Location = new System.Drawing.Point(360, 147);
-			this.monthCalendar3.Name = "monthCalendar3";
-			this.monthCalendar3.TabIndex = 9;
+			this.calendar_withdrawal.Location = new System.Drawing.Point(360, 147);
+			this.calendar_withdrawal.Name = "calendar_withdrawal";
+			this.calendar_withdrawal.TabIndex = 9;
 			// 
 			// btn_create_withdrawal
 			// 
@@ -762,8 +766,8 @@
 			// tab_daily_report
 			// 
 			this.tab_daily_report.BackColor = System.Drawing.Color.White;
-			this.tab_daily_report.Controls.Add(this.materialListView2);
-			this.tab_daily_report.Controls.Add(this.dateTimePicker1);
+			this.tab_daily_report.Controls.Add(this.list_daily);
+			this.tab_daily_report.Controls.Add(this.date_daily);
 			this.tab_daily_report.Location = new System.Drawing.Point(4, 22);
 			this.tab_daily_report.Name = "tab_daily_report";
 			this.tab_daily_report.Padding = new System.Windows.Forms.Padding(3);
@@ -772,28 +776,28 @@
 			this.tab_daily_report.Text = "Daily Report";
 			this.tab_daily_report.UseVisualStyleBackColor = true;
 			// 
-			// materialListView2
+			// list_daily
 			// 
-			this.materialListView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.materialListView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.list_daily.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.list_daily.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_order_daily,
             this.col_type_daily,
             this.col_income_daily,
             this.col_outcome_daily,
             this.col_total_daily});
-			this.materialListView2.Depth = 0;
-			this.materialListView2.Font = new System.Drawing.Font("Roboto", 24F);
-			this.materialListView2.FullRowSelect = true;
-			this.materialListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.materialListView2.Location = new System.Drawing.Point(0, 32);
-			this.materialListView2.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.materialListView2.MouseState = MaterialSkin.MouseState.OUT;
-			this.materialListView2.Name = "materialListView2";
-			this.materialListView2.OwnerDraw = true;
-			this.materialListView2.Size = new System.Drawing.Size(672, 311);
-			this.materialListView2.TabIndex = 1;
-			this.materialListView2.UseCompatibleStateImageBehavior = false;
-			this.materialListView2.View = System.Windows.Forms.View.Details;
+			this.list_daily.Depth = 0;
+			this.list_daily.Font = new System.Drawing.Font("Roboto", 24F);
+			this.list_daily.FullRowSelect = true;
+			this.list_daily.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.list_daily.Location = new System.Drawing.Point(0, 32);
+			this.list_daily.MouseLocation = new System.Drawing.Point(-1, -1);
+			this.list_daily.MouseState = MaterialSkin.MouseState.OUT;
+			this.list_daily.Name = "list_daily";
+			this.list_daily.OwnerDraw = true;
+			this.list_daily.Size = new System.Drawing.Size(672, 311);
+			this.list_daily.TabIndex = 1;
+			this.list_daily.UseCompatibleStateImageBehavior = false;
+			this.list_daily.View = System.Windows.Forms.View.Details;
 			// 
 			// col_order_daily
 			// 
@@ -820,19 +824,19 @@
 			this.col_total_daily.Text = "Total";
 			this.col_total_daily.Width = 143;
 			// 
-			// dateTimePicker1
+			// date_daily
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(6, 6);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker1.TabIndex = 0;
+			this.date_daily.Location = new System.Drawing.Point(6, 6);
+			this.date_daily.Name = "date_daily";
+			this.date_daily.Size = new System.Drawing.Size(200, 20);
+			this.date_daily.TabIndex = 0;
 			// 
 			// tab_monthly_report
 			// 
 			this.tab_monthly_report.BackColor = System.Drawing.Color.White;
-			this.tab_monthly_report.Controls.Add(this.materialListView3);
-			this.tab_monthly_report.Controls.Add(this.dateTimePicker2);
-			this.tab_monthly_report.Controls.Add(this.comboBox2);
+			this.tab_monthly_report.Controls.Add(this.list_monthly);
+			this.tab_monthly_report.Controls.Add(this.date_monthly);
+			this.tab_monthly_report.Controls.Add(this.cbb_type_monthly);
 			this.tab_monthly_report.Location = new System.Drawing.Point(4, 22);
 			this.tab_monthly_report.Name = "tab_monthly_report";
 			this.tab_monthly_report.Padding = new System.Windows.Forms.Padding(3);
@@ -841,28 +845,28 @@
 			this.tab_monthly_report.Text = "Monthly Report";
 			this.tab_monthly_report.UseVisualStyleBackColor = true;
 			// 
-			// materialListView3
+			// list_monthly
 			// 
-			this.materialListView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.materialListView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.list_monthly.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.list_monthly.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_order_monthly,
             this.col_date_monthly,
             this.col_income_monthly,
             this.col_outcome_monthly,
             this.col_total_monthly});
-			this.materialListView3.Depth = 0;
-			this.materialListView3.Font = new System.Drawing.Font("Roboto", 24F);
-			this.materialListView3.FullRowSelect = true;
-			this.materialListView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.materialListView3.Location = new System.Drawing.Point(0, 33);
-			this.materialListView3.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.materialListView3.MouseState = MaterialSkin.MouseState.OUT;
-			this.materialListView3.Name = "materialListView3";
-			this.materialListView3.OwnerDraw = true;
-			this.materialListView3.Size = new System.Drawing.Size(672, 310);
-			this.materialListView3.TabIndex = 2;
-			this.materialListView3.UseCompatibleStateImageBehavior = false;
-			this.materialListView3.View = System.Windows.Forms.View.Details;
+			this.list_monthly.Depth = 0;
+			this.list_monthly.Font = new System.Drawing.Font("Roboto", 24F);
+			this.list_monthly.FullRowSelect = true;
+			this.list_monthly.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.list_monthly.Location = new System.Drawing.Point(0, 33);
+			this.list_monthly.MouseLocation = new System.Drawing.Point(-1, -1);
+			this.list_monthly.MouseState = MaterialSkin.MouseState.OUT;
+			this.list_monthly.Name = "list_monthly";
+			this.list_monthly.OwnerDraw = true;
+			this.list_monthly.Size = new System.Drawing.Size(672, 310);
+			this.list_monthly.TabIndex = 2;
+			this.list_monthly.UseCompatibleStateImageBehavior = false;
+			this.list_monthly.View = System.Windows.Forms.View.Details;
 			// 
 			// col_order_monthly
 			// 
@@ -889,20 +893,20 @@
 			this.col_total_monthly.Text = "Total";
 			this.col_total_monthly.Width = 147;
 			// 
-			// dateTimePicker2
+			// date_monthly
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(133, 7);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker2.TabIndex = 1;
+			this.date_monthly.Location = new System.Drawing.Point(133, 7);
+			this.date_monthly.Name = "date_monthly";
+			this.date_monthly.Size = new System.Drawing.Size(200, 20);
+			this.date_monthly.TabIndex = 1;
 			// 
-			// comboBox2
+			// cbb_type_monthly
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(6, 6);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(121, 21);
-			this.comboBox2.TabIndex = 0;
+			this.cbb_type_monthly.FormattingEnabled = true;
+			this.cbb_type_monthly.Location = new System.Drawing.Point(6, 6);
+			this.cbb_type_monthly.Name = "cbb_type_monthly";
+			this.cbb_type_monthly.Size = new System.Drawing.Size(121, 21);
+			this.cbb_type_monthly.TabIndex = 0;
 			// 
 			// Passbook
 			// 
@@ -937,21 +941,21 @@
 		private System.Windows.Forms.TabPage tab_withdrawal;
 		private System.Windows.Forms.TabPage tab_daily_report;
 		private System.Windows.Forms.TabPage tab_monthly_report;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_identity_number;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_open;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_identity_number_open;
 		private MaterialSkin.Controls.MaterialLabel lbl_customer;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_address;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_phone_number;
-		private MaterialSkin.Controls.MaterialRaisedButton btn_submit;
-		private MaterialSkin.Controls.MaterialRaisedButton btn_check;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_address_open;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_phone_number_open;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_submit_open;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_check_open;
 		private MaterialSkin.Controls.MaterialRadioButton radio_6months;
 		private MaterialSkin.Controls.MaterialRadioButton radio_no_terms;
 		private MaterialSkin.Controls.MaterialRadioButton radio_3months;
 		private MaterialSkin.Controls.MaterialLabel lbl_passbook;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash;
-		private System.Windows.Forms.MonthCalendar monthCalendar1;
-		private MaterialSkin.Controls.MaterialRaisedButton btn_create;
-		private MaterialSkin.Controls.MaterialListView materialListView1;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash_open;
+		private System.Windows.Forms.MonthCalendar calendar_open;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_create_open;
+		private MaterialSkin.Controls.MaterialListView list_lookup;
 		private System.Windows.Forms.ColumnHeader col_order;
 		private System.Windows.Forms.ColumnHeader col_passbook_id;
 		private System.Windows.Forms.ColumnHeader col_type;
@@ -963,13 +967,13 @@
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_deposit;
 		private MaterialSkin.Controls.MaterialLabel lbl_customer_deposit;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_check_deposit;
-		private System.Windows.Forms.ComboBox cbb_passbook;
+		private System.Windows.Forms.ComboBox cbb_passbook_deposit;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_create_deposit;
 		private MaterialSkin.Controls.MaterialLabel lbl_deposit;
-		private System.Windows.Forms.MonthCalendar monthCalendar2;
+		private System.Windows.Forms.MonthCalendar calendar_deposit;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash_deposit;
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.MonthCalendar monthCalendar3;
+		private System.Windows.Forms.ComboBox cbb_passbook_withdrawal;
+		private System.Windows.Forms.MonthCalendar calendar_withdrawal;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_create_withdrawal;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_check_withdrawal;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash_withdrawal;
@@ -979,20 +983,20 @@
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_withdrawal;
 		private MaterialSkin.Controls.MaterialLabel lbl_withdrawal;
 		private MaterialSkin.Controls.MaterialLabel lbl_customer_withdrawal;
-		private MaterialSkin.Controls.MaterialListView materialListView2;
+		private MaterialSkin.Controls.MaterialListView list_daily;
 		private System.Windows.Forms.ColumnHeader col_order_daily;
 		private System.Windows.Forms.ColumnHeader col_type_daily;
 		private System.Windows.Forms.ColumnHeader col_income_daily;
 		private System.Windows.Forms.ColumnHeader col_outcome_daily;
 		private System.Windows.Forms.ColumnHeader col_total_daily;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
-		private MaterialSkin.Controls.MaterialListView materialListView3;
+		private System.Windows.Forms.DateTimePicker date_daily;
+		private MaterialSkin.Controls.MaterialListView list_monthly;
 		private System.Windows.Forms.ColumnHeader col_order_monthly;
 		private System.Windows.Forms.ColumnHeader col_date_monthly;
 		private System.Windows.Forms.ColumnHeader col_income_monthly;
 		private System.Windows.Forms.ColumnHeader col_outcome_monthly;
 		private System.Windows.Forms.ColumnHeader col_total_monthly;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
-		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.DateTimePicker date_monthly;
+		private System.Windows.Forms.ComboBox cbb_type_monthly;
 	}
 }
