@@ -31,7 +31,7 @@
 			this.tab_selector = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_open = new System.Windows.Forms.TabPage();
-			this.btn_clear_open = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_refresh_open = new MaterialSkin.Controls.MaterialFlatButton();
 			this.btn_create_open = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.calendar_open = new System.Windows.Forms.MonthCalendar();
 			this.txt_cash_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -47,7 +47,7 @@
 			this.txt_identity_number_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_name_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_lookup = new System.Windows.Forms.TabPage();
-			this.btn_clear_lookup = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_refresh_lookup = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_lookup = new MaterialSkin.Controls.MaterialListView();
 			this.col_order = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_passbook_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,7 +55,7 @@
 			this.col_customer_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_balance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tab_deposit = new System.Windows.Forms.TabPage();
-			this.btn_clear_deposit = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_refresh_deposit = new MaterialSkin.Controls.MaterialFlatButton();
 			this.calendar_deposit = new System.Windows.Forms.MonthCalendar();
 			this.txt_cash_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.lbl_deposit = new MaterialSkin.Controls.MaterialLabel();
@@ -68,7 +68,7 @@
 			this.lbl_customer_deposit = new MaterialSkin.Controls.MaterialLabel();
 			this.txt_address_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_withdrawal = new System.Windows.Forms.TabPage();
-			this.btn_clear_withdrawal = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_refresh_withdrawal = new MaterialSkin.Controls.MaterialFlatButton();
 			this.cbb_passbook_withdrawal = new System.Windows.Forms.ComboBox();
 			this.calendar_withdrawal = new System.Windows.Forms.MonthCalendar();
 			this.btn_create_withdrawal = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -81,7 +81,7 @@
 			this.lbl_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.lbl_customer_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_daily_report = new System.Windows.Forms.TabPage();
-			this.btn_clear_daily = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_refresh_daily = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_daily = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_type_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -90,7 +90,7 @@
 			this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.date_daily = new System.Windows.Forms.DateTimePicker();
 			this.tab_monthly_report = new System.Windows.Forms.TabPage();
-			this.btn_clear_monthly = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_refresh_monthly = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_monthly = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_date_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -140,7 +140,7 @@
 			// 
 			this.tab_open.BackColor = System.Drawing.Color.White;
 			this.tab_open.Controls.Add(this.lbl_customer_id_open);
-			this.tab_open.Controls.Add(this.btn_clear_open);
+			this.tab_open.Controls.Add(this.btn_refresh_open);
 			this.tab_open.Controls.Add(this.btn_create_open);
 			this.tab_open.Controls.Add(this.calendar_open);
 			this.tab_open.Controls.Add(this.txt_cash_open);
@@ -162,21 +162,21 @@
 			this.tab_open.TabIndex = 0;
 			this.tab_open.Text = "Passbook";
 			// 
-			// btn_clear_open
+			// btn_refresh_open
 			// 
-			this.btn_clear_open.AutoSize = true;
-			this.btn_clear_open.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_clear_open.Depth = 0;
-			this.btn_clear_open.Location = new System.Drawing.Point(614, 0);
-			this.btn_clear_open.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_clear_open.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_clear_open.Name = "btn_clear_open";
-			this.btn_clear_open.Primary = false;
-			this.btn_clear_open.Size = new System.Drawing.Size(54, 36);
-			this.btn_clear_open.TabIndex = 13;
-			this.btn_clear_open.Text = "Clear";
-			this.btn_clear_open.UseVisualStyleBackColor = true;
-			this.btn_clear_open.Click += new System.EventHandler(this.btn_clear_open_Click);
+			this.btn_refresh_open.AutoSize = true;
+			this.btn_refresh_open.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_open.Depth = 0;
+			this.btn_refresh_open.Location = new System.Drawing.Point(598, 0);
+			this.btn_refresh_open.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_open.Name = "btn_refresh_open";
+			this.btn_refresh_open.Primary = false;
+			this.btn_refresh_open.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_open.TabIndex = 13;
+			this.btn_refresh_open.Text = "Refresh";
+			this.btn_refresh_open.UseVisualStyleBackColor = true;
+			this.btn_refresh_open.Click += new System.EventHandler(this.btn_clear_open_Click);
 			// 
 			// btn_create_open
 			// 
@@ -388,7 +388,7 @@
 			// tab_lookup
 			// 
 			this.tab_lookup.BackColor = System.Drawing.Color.White;
-			this.tab_lookup.Controls.Add(this.btn_clear_lookup);
+			this.tab_lookup.Controls.Add(this.btn_refresh_lookup);
 			this.tab_lookup.Controls.Add(this.list_lookup);
 			this.tab_lookup.Location = new System.Drawing.Point(4, 22);
 			this.tab_lookup.Name = "tab_lookup";
@@ -398,20 +398,21 @@
 			this.tab_lookup.Text = "Lookup";
 			this.tab_lookup.UseVisualStyleBackColor = true;
 			// 
-			// btn_clear_lookup
+			// btn_refresh_lookup
 			// 
-			this.btn_clear_lookup.AutoSize = true;
-			this.btn_clear_lookup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_clear_lookup.Depth = 0;
-			this.btn_clear_lookup.Location = new System.Drawing.Point(614, 0);
-			this.btn_clear_lookup.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_clear_lookup.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_clear_lookup.Name = "btn_clear_lookup";
-			this.btn_clear_lookup.Primary = false;
-			this.btn_clear_lookup.Size = new System.Drawing.Size(54, 36);
-			this.btn_clear_lookup.TabIndex = 1;
-			this.btn_clear_lookup.Text = "Clear";
-			this.btn_clear_lookup.UseVisualStyleBackColor = true;
+			this.btn_refresh_lookup.AutoSize = true;
+			this.btn_refresh_lookup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_lookup.Depth = 0;
+			this.btn_refresh_lookup.Location = new System.Drawing.Point(598, 0);
+			this.btn_refresh_lookup.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_lookup.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_lookup.Name = "btn_refresh_lookup";
+			this.btn_refresh_lookup.Primary = false;
+			this.btn_refresh_lookup.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_lookup.TabIndex = 1;
+			this.btn_refresh_lookup.Text = "Refresh";
+			this.btn_refresh_lookup.UseVisualStyleBackColor = true;
+			this.btn_refresh_lookup.Click += new System.EventHandler(this.btn_refresh_lookup_Click);
 			// 
 			// list_lookup
 			// 
@@ -464,7 +465,7 @@
 			// tab_deposit
 			// 
 			this.tab_deposit.BackColor = System.Drawing.Color.White;
-			this.tab_deposit.Controls.Add(this.btn_clear_deposit);
+			this.tab_deposit.Controls.Add(this.btn_refresh_deposit);
 			this.tab_deposit.Controls.Add(this.calendar_deposit);
 			this.tab_deposit.Controls.Add(this.txt_cash_deposit);
 			this.tab_deposit.Controls.Add(this.lbl_deposit);
@@ -484,20 +485,21 @@
 			this.tab_deposit.Text = "Deposit";
 			this.tab_deposit.UseVisualStyleBackColor = true;
 			// 
-			// btn_clear_deposit
+			// btn_refresh_deposit
 			// 
-			this.btn_clear_deposit.AutoSize = true;
-			this.btn_clear_deposit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_clear_deposit.Depth = 0;
-			this.btn_clear_deposit.Location = new System.Drawing.Point(614, 0);
-			this.btn_clear_deposit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_clear_deposit.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_clear_deposit.Name = "btn_clear_deposit";
-			this.btn_clear_deposit.Primary = false;
-			this.btn_clear_deposit.Size = new System.Drawing.Size(54, 36);
-			this.btn_clear_deposit.TabIndex = 11;
-			this.btn_clear_deposit.Text = "Clear";
-			this.btn_clear_deposit.UseVisualStyleBackColor = true;
+			this.btn_refresh_deposit.AutoSize = true;
+			this.btn_refresh_deposit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_deposit.Depth = 0;
+			this.btn_refresh_deposit.Location = new System.Drawing.Point(598, 0);
+			this.btn_refresh_deposit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_deposit.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_deposit.Name = "btn_refresh_deposit";
+			this.btn_refresh_deposit.Primary = false;
+			this.btn_refresh_deposit.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_deposit.TabIndex = 11;
+			this.btn_refresh_deposit.Text = "Refresh";
+			this.btn_refresh_deposit.UseVisualStyleBackColor = true;
+			this.btn_refresh_deposit.Click += new System.EventHandler(this.btn_refresh_deposit_Click);
 			// 
 			// calendar_deposit
 			// 
@@ -546,6 +548,7 @@
 			this.btn_create_deposit.TabIndex = 10;
 			this.btn_create_deposit.Text = "Create";
 			this.btn_create_deposit.UseVisualStyleBackColor = true;
+			this.btn_create_deposit.Click += new System.EventHandler(this.btn_create_deposit_Click);
 			// 
 			// cbb_passbook_deposit
 			// 
@@ -566,6 +569,7 @@
 			this.btn_check_deposit.TabIndex = 5;
 			this.btn_check_deposit.Text = "Check";
 			this.btn_check_deposit.UseVisualStyleBackColor = true;
+			this.btn_check_deposit.Click += new System.EventHandler(this.btn_check_deposit_Click);
 			// 
 			// txt_phone_number_deposit
 			// 
@@ -651,7 +655,7 @@
 			// tab_withdrawal
 			// 
 			this.tab_withdrawal.BackColor = System.Drawing.Color.White;
-			this.tab_withdrawal.Controls.Add(this.btn_clear_withdrawal);
+			this.tab_withdrawal.Controls.Add(this.btn_refresh_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.cbb_passbook_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.calendar_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.btn_create_withdrawal);
@@ -671,20 +675,21 @@
 			this.tab_withdrawal.Text = "Withdrawal";
 			this.tab_withdrawal.UseVisualStyleBackColor = true;
 			// 
-			// btn_clear_withdrawal
+			// btn_refresh_withdrawal
 			// 
-			this.btn_clear_withdrawal.AutoSize = true;
-			this.btn_clear_withdrawal.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_clear_withdrawal.Depth = 0;
-			this.btn_clear_withdrawal.Location = new System.Drawing.Point(614, 0);
-			this.btn_clear_withdrawal.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_clear_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_clear_withdrawal.Name = "btn_clear_withdrawal";
-			this.btn_clear_withdrawal.Primary = false;
-			this.btn_clear_withdrawal.Size = new System.Drawing.Size(54, 36);
-			this.btn_clear_withdrawal.TabIndex = 11;
-			this.btn_clear_withdrawal.Text = "Clear";
-			this.btn_clear_withdrawal.UseVisualStyleBackColor = true;
+			this.btn_refresh_withdrawal.AutoSize = true;
+			this.btn_refresh_withdrawal.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_withdrawal.Depth = 0;
+			this.btn_refresh_withdrawal.Location = new System.Drawing.Point(598, 0);
+			this.btn_refresh_withdrawal.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_withdrawal.Name = "btn_refresh_withdrawal";
+			this.btn_refresh_withdrawal.Primary = false;
+			this.btn_refresh_withdrawal.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_withdrawal.TabIndex = 11;
+			this.btn_refresh_withdrawal.Text = "Refresh";
+			this.btn_refresh_withdrawal.UseVisualStyleBackColor = true;
+			this.btn_refresh_withdrawal.Click += new System.EventHandler(this.btn_refresh_withdrawal_Click);
 			// 
 			// cbb_passbook_withdrawal
 			// 
@@ -711,6 +716,7 @@
 			this.btn_create_withdrawal.TabIndex = 10;
 			this.btn_create_withdrawal.Text = "Create";
 			this.btn_create_withdrawal.UseVisualStyleBackColor = true;
+			this.btn_create_withdrawal.Click += new System.EventHandler(this.btn_create_withdrawal_Click);
 			// 
 			// btn_check_withdrawal
 			// 
@@ -723,6 +729,7 @@
 			this.btn_check_withdrawal.TabIndex = 5;
 			this.btn_check_withdrawal.Text = "Check";
 			this.btn_check_withdrawal.UseVisualStyleBackColor = true;
+			this.btn_check_withdrawal.Click += new System.EventHandler(this.btn_check_withdrawal_Click);
 			// 
 			// txt_cash_withdrawal
 			// 
@@ -838,7 +845,7 @@
 			// tab_daily_report
 			// 
 			this.tab_daily_report.BackColor = System.Drawing.Color.White;
-			this.tab_daily_report.Controls.Add(this.btn_clear_daily);
+			this.tab_daily_report.Controls.Add(this.btn_refresh_daily);
 			this.tab_daily_report.Controls.Add(this.list_daily);
 			this.tab_daily_report.Controls.Add(this.date_daily);
 			this.tab_daily_report.Location = new System.Drawing.Point(4, 22);
@@ -849,20 +856,21 @@
 			this.tab_daily_report.Text = "Daily Report";
 			this.tab_daily_report.UseVisualStyleBackColor = true;
 			// 
-			// btn_clear_daily
+			// btn_refresh_daily
 			// 
-			this.btn_clear_daily.AutoSize = true;
-			this.btn_clear_daily.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_clear_daily.Depth = 0;
-			this.btn_clear_daily.Location = new System.Drawing.Point(614, 0);
-			this.btn_clear_daily.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_clear_daily.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_clear_daily.Name = "btn_clear_daily";
-			this.btn_clear_daily.Primary = false;
-			this.btn_clear_daily.Size = new System.Drawing.Size(54, 36);
-			this.btn_clear_daily.TabIndex = 2;
-			this.btn_clear_daily.Text = "Clear";
-			this.btn_clear_daily.UseVisualStyleBackColor = true;
+			this.btn_refresh_daily.AutoSize = true;
+			this.btn_refresh_daily.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_daily.Depth = 0;
+			this.btn_refresh_daily.Location = new System.Drawing.Point(598, 0);
+			this.btn_refresh_daily.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_daily.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_daily.Name = "btn_refresh_daily";
+			this.btn_refresh_daily.Primary = false;
+			this.btn_refresh_daily.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_daily.TabIndex = 2;
+			this.btn_refresh_daily.Text = "Refresh";
+			this.btn_refresh_daily.UseVisualStyleBackColor = true;
+			this.btn_refresh_daily.Click += new System.EventHandler(this.btn_refresh_daily_Click);
 			// 
 			// list_daily
 			// 
@@ -922,7 +930,7 @@
 			// tab_monthly_report
 			// 
 			this.tab_monthly_report.BackColor = System.Drawing.Color.White;
-			this.tab_monthly_report.Controls.Add(this.btn_clear_monthly);
+			this.tab_monthly_report.Controls.Add(this.btn_refresh_monthly);
 			this.tab_monthly_report.Controls.Add(this.list_monthly);
 			this.tab_monthly_report.Controls.Add(this.date_monthly);
 			this.tab_monthly_report.Controls.Add(this.cbb_type_monthly);
@@ -934,20 +942,21 @@
 			this.tab_monthly_report.Text = "Monthly Report";
 			this.tab_monthly_report.UseVisualStyleBackColor = true;
 			// 
-			// btn_clear_monthly
+			// btn_refresh_monthly
 			// 
-			this.btn_clear_monthly.AutoSize = true;
-			this.btn_clear_monthly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_clear_monthly.Depth = 0;
-			this.btn_clear_monthly.Location = new System.Drawing.Point(614, 0);
-			this.btn_clear_monthly.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_clear_monthly.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_clear_monthly.Name = "btn_clear_monthly";
-			this.btn_clear_monthly.Primary = false;
-			this.btn_clear_monthly.Size = new System.Drawing.Size(54, 36);
-			this.btn_clear_monthly.TabIndex = 3;
-			this.btn_clear_monthly.Text = "Clear";
-			this.btn_clear_monthly.UseVisualStyleBackColor = true;
+			this.btn_refresh_monthly.AutoSize = true;
+			this.btn_refresh_monthly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_monthly.Depth = 0;
+			this.btn_refresh_monthly.Location = new System.Drawing.Point(598, 0);
+			this.btn_refresh_monthly.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_monthly.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_monthly.Name = "btn_refresh_monthly";
+			this.btn_refresh_monthly.Primary = false;
+			this.btn_refresh_monthly.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_monthly.TabIndex = 3;
+			this.btn_refresh_monthly.Text = "Refresh";
+			this.btn_refresh_monthly.UseVisualStyleBackColor = true;
+			this.btn_refresh_monthly.Click += new System.EventHandler(this.btn_refresh_monthly_Click);
 			// 
 			// list_monthly
 			// 
@@ -1118,12 +1127,12 @@
 		private System.Windows.Forms.ColumnHeader col_total_monthly;
 		private System.Windows.Forms.DateTimePicker date_monthly;
 		private System.Windows.Forms.ComboBox cbb_type_monthly;
-		private MaterialSkin.Controls.MaterialFlatButton btn_clear_open;
-		private MaterialSkin.Controls.MaterialFlatButton btn_clear_lookup;
-		private MaterialSkin.Controls.MaterialFlatButton btn_clear_deposit;
-		private MaterialSkin.Controls.MaterialFlatButton btn_clear_withdrawal;
-		private MaterialSkin.Controls.MaterialFlatButton btn_clear_daily;
-		private MaterialSkin.Controls.MaterialFlatButton btn_clear_monthly;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_open;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_lookup;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_deposit;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_withdrawal;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_daily;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_monthly;
 		private MaterialSkin.Controls.MaterialLabel lbl_customer_id_open;
 	}
 }

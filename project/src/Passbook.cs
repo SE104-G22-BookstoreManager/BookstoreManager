@@ -26,6 +26,11 @@ namespace PassbookManagement.src
 			materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber600, Primary.Amber800, Primary.Amber300, Accent.LightBlue200, TextShade.WHITE);
 		}
 
+		////////////////////////////////////////////////////////////////////
+		// Control for create passbook
+		/// <summary>
+		///     
+		/// </summary>
 		private void btn_check_Click(object sender, EventArgs e)
 		{
 			try
@@ -147,5 +152,71 @@ namespace PassbookManagement.src
 
 			txt_cash_open.Text = "";
 		}
+		////////////////////////////////////////////////////////////////////
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for create lookup
+		private void btn_refresh_lookup_Click(object sender, EventArgs e)
+		{
+
+		}
+		////////////////////////////////////////////////////////////////////
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for create deposit
+		private void btn_check_deposit_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_create_deposit_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_refresh_deposit_Click(object sender, EventArgs e)
+		{
+
+		}
+		////////////////////////////////////////////////////////////////////
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for create withdrawal
+		private void btn_check_withdrawal_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_create_withdrawal_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_refresh_withdrawal_Click(object sender, EventArgs e)
+		{
+
+		}
+		////////////////////////////////////////////////////////////////////
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for create daily report
+		private void btn_refresh_daily_Click(object sender, EventArgs e)
+		{
+
+		}
+		////////////////////////////////////////////////////////////////////
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for create monthly report
+		private void btn_refresh_monthly_Click(object sender, EventArgs e)
+		{
+
+		}
+		////////////////////////////////////////////////////////////////////
 	}
 }
