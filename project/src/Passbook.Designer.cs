@@ -31,13 +31,11 @@
 			this.tab_selector = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_open = new System.Windows.Forms.TabPage();
+			this.lbl_customer_id_open = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_refresh_open = new MaterialSkin.Controls.MaterialFlatButton();
 			this.btn_create_open = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.calendar_open = new System.Windows.Forms.MonthCalendar();
 			this.txt_cash_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.radio_6months = new MaterialSkin.Controls.MaterialRadioButton();
-			this.radio_no_terms = new MaterialSkin.Controls.MaterialRadioButton();
-			this.radio_3months = new MaterialSkin.Controls.MaterialRadioButton();
 			this.lbl_passbook = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_submit_open = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_check_open = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -99,7 +97,13 @@
 			this.col_total_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.date_monthly = new System.Windows.Forms.DateTimePicker();
 			this.cbb_type_monthly = new System.Windows.Forms.ComboBox();
-			this.lbl_customer_id_open = new MaterialSkin.Controls.MaterialLabel();
+			this.btn_option = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.context_option = new MaterialSkin.Controls.MaterialContextMenuStrip();
+			this.item_edit_condition = new System.Windows.Forms.ToolStripMenuItem();
+			this.item_setting = new System.Windows.Forms.ToolStripMenuItem();
+			this.item_help = new System.Windows.Forms.ToolStripMenuItem();
+			this.item_about = new System.Windows.Forms.ToolStripMenuItem();
+			this.cbb_type_passbook = new System.Windows.Forms.ComboBox();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -107,6 +111,7 @@
 			this.tab_withdrawal.SuspendLayout();
 			this.tab_daily_report.SuspendLayout();
 			this.tab_monthly_report.SuspendLayout();
+			this.context_option.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tab_selector
@@ -116,9 +121,8 @@
 			this.tab_selector.Location = new System.Drawing.Point(-16, 63);
 			this.tab_selector.MouseState = MaterialSkin.MouseState.HOVER;
 			this.tab_selector.Name = "tab_selector";
-			this.tab_selector.Size = new System.Drawing.Size(725, 45);
+			this.tab_selector.Size = new System.Drawing.Size(1500, 45);
 			this.tab_selector.TabIndex = 1;
-			this.tab_selector.Text = "materialTabSelector1";
 			// 
 			// tab_control
 			// 
@@ -139,14 +143,12 @@
 			// tab_open
 			// 
 			this.tab_open.BackColor = System.Drawing.Color.White;
+			this.tab_open.Controls.Add(this.cbb_type_passbook);
 			this.tab_open.Controls.Add(this.lbl_customer_id_open);
 			this.tab_open.Controls.Add(this.btn_refresh_open);
 			this.tab_open.Controls.Add(this.btn_create_open);
 			this.tab_open.Controls.Add(this.calendar_open);
 			this.tab_open.Controls.Add(this.txt_cash_open);
-			this.tab_open.Controls.Add(this.radio_6months);
-			this.tab_open.Controls.Add(this.radio_no_terms);
-			this.tab_open.Controls.Add(this.radio_3months);
 			this.tab_open.Controls.Add(this.lbl_passbook);
 			this.tab_open.Controls.Add(this.btn_submit_open);
 			this.tab_open.Controls.Add(this.btn_check_open);
@@ -161,6 +163,19 @@
 			this.tab_open.Size = new System.Drawing.Size(668, 339);
 			this.tab_open.TabIndex = 0;
 			this.tab_open.Text = "Passbook";
+			// 
+			// lbl_customer_id_open
+			// 
+			this.lbl_customer_id_open.AutoSize = true;
+			this.lbl_customer_id_open.Depth = 0;
+			this.lbl_customer_id_open.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_customer_id_open.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_customer_id_open.Location = new System.Drawing.Point(27, 59);
+			this.lbl_customer_id_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_customer_id_open.Name = "lbl_customer_id_open";
+			this.lbl_customer_id_open.Size = new System.Drawing.Size(23, 19);
+			this.lbl_customer_id_open.TabIndex = 14;
+			this.lbl_customer_id_open.Text = "ID";
 			// 
 			// btn_refresh_open
 			// 
@@ -213,57 +228,6 @@
 			this.txt_cash_open.TabIndex = 10;
 			this.txt_cash_open.TabStop = false;
 			this.txt_cash_open.UseSystemPasswordChar = false;
-			// 
-			// radio_6months
-			// 
-			this.radio_6months.AutoSize = true;
-			this.radio_6months.Depth = 0;
-			this.radio_6months.Font = new System.Drawing.Font("Roboto", 10F);
-			this.radio_6months.Location = new System.Drawing.Point(446, 52);
-			this.radio_6months.Margin = new System.Windows.Forms.Padding(0);
-			this.radio_6months.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.radio_6months.MouseState = MaterialSkin.MouseState.HOVER;
-			this.radio_6months.Name = "radio_6months";
-			this.radio_6months.Ripple = true;
-			this.radio_6months.Size = new System.Drawing.Size(87, 30);
-			this.radio_6months.TabIndex = 8;
-			this.radio_6months.TabStop = true;
-			this.radio_6months.Text = "6 months";
-			this.radio_6months.UseVisualStyleBackColor = true;
-			// 
-			// radio_no_terms
-			// 
-			this.radio_no_terms.AutoSize = true;
-			this.radio_no_terms.Depth = 0;
-			this.radio_no_terms.Font = new System.Drawing.Font("Roboto", 10F);
-			this.radio_no_terms.Location = new System.Drawing.Point(551, 52);
-			this.radio_no_terms.Margin = new System.Windows.Forms.Padding(0);
-			this.radio_no_terms.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.radio_no_terms.MouseState = MaterialSkin.MouseState.HOVER;
-			this.radio_no_terms.Name = "radio_no_terms";
-			this.radio_no_terms.Ripple = true;
-			this.radio_no_terms.Size = new System.Drawing.Size(87, 30);
-			this.radio_no_terms.TabIndex = 9;
-			this.radio_no_terms.TabStop = true;
-			this.radio_no_terms.Text = "No-terms";
-			this.radio_no_terms.UseVisualStyleBackColor = true;
-			// 
-			// radio_3months
-			// 
-			this.radio_3months.AutoSize = true;
-			this.radio_3months.Depth = 0;
-			this.radio_3months.Font = new System.Drawing.Font("Roboto", 10F);
-			this.radio_3months.Location = new System.Drawing.Point(338, 52);
-			this.radio_3months.Margin = new System.Windows.Forms.Padding(0);
-			this.radio_3months.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.radio_3months.MouseState = MaterialSkin.MouseState.HOVER;
-			this.radio_3months.Name = "radio_3months";
-			this.radio_3months.Ripple = true;
-			this.radio_3months.Size = new System.Drawing.Size(87, 30);
-			this.radio_3months.TabIndex = 7;
-			this.radio_3months.TabStop = true;
-			this.radio_3months.Text = "3 months";
-			this.radio_3months.UseVisualStyleBackColor = true;
 			// 
 			// lbl_passbook
 			// 
@@ -885,7 +849,7 @@
 			this.list_daily.Font = new System.Drawing.Font("Roboto", 24F);
 			this.list_daily.FullRowSelect = true;
 			this.list_daily.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.list_daily.Location = new System.Drawing.Point(0, 32);
+			this.list_daily.Location = new System.Drawing.Point(0, 28);
 			this.list_daily.MouseLocation = new System.Drawing.Point(-1, -1);
 			this.list_daily.MouseState = MaterialSkin.MouseState.OUT;
 			this.list_daily.Name = "list_daily";
@@ -971,7 +935,7 @@
 			this.list_monthly.Font = new System.Drawing.Font("Roboto", 24F);
 			this.list_monthly.FullRowSelect = true;
 			this.list_monthly.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.list_monthly.Location = new System.Drawing.Point(0, 33);
+			this.list_monthly.Location = new System.Drawing.Point(0, 29);
 			this.list_monthly.MouseLocation = new System.Drawing.Point(-1, -1);
 			this.list_monthly.MouseState = MaterialSkin.MouseState.OUT;
 			this.list_monthly.Name = "list_monthly";
@@ -1021,24 +985,77 @@
 			this.cbb_type_monthly.Size = new System.Drawing.Size(121, 21);
 			this.cbb_type_monthly.TabIndex = 0;
 			// 
-			// lbl_customer_id_open
+			// btn_option
 			// 
-			this.lbl_customer_id_open.AutoSize = true;
-			this.lbl_customer_id_open.Depth = 0;
-			this.lbl_customer_id_open.Font = new System.Drawing.Font("Roboto", 11F);
-			this.lbl_customer_id_open.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer_id_open.Location = new System.Drawing.Point(27, 59);
-			this.lbl_customer_id_open.MouseState = MaterialSkin.MouseState.HOVER;
-			this.lbl_customer_id_open.Name = "lbl_customer_id_open";
-			this.lbl_customer_id_open.Size = new System.Drawing.Size(23, 19);
-			this.lbl_customer_id_open.TabIndex = 14;
-			this.lbl_customer_id_open.Text = "ID";
+			this.btn_option.Depth = 0;
+			this.btn_option.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_option.Location = new System.Drawing.Point(614, 29);
+			this.btn_option.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_option.Name = "btn_option";
+			this.btn_option.Primary = true;
+			this.btn_option.Size = new System.Drawing.Size(75, 40);
+			this.btn_option.TabIndex = 2;
+			this.btn_option.Text = "More ...";
+			this.btn_option.UseVisualStyleBackColor = true;
+			this.btn_option.Click += new System.EventHandler(this.btn_option_Click);
+			// 
+			// context_option
+			// 
+			this.context_option.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.context_option.Depth = 0;
+			this.context_option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.item_edit_condition,
+            this.item_setting,
+            this.item_help,
+            this.item_about});
+			this.context_option.MouseState = MaterialSkin.MouseState.HOVER;
+			this.context_option.Name = "context_option";
+			this.context_option.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			this.context_option.ShowImageMargin = false;
+			this.context_option.Size = new System.Drawing.Size(126, 92);
+			// 
+			// item_edit_condition
+			// 
+			this.item_edit_condition.Name = "item_edit_condition";
+			this.item_edit_condition.Size = new System.Drawing.Size(125, 22);
+			this.item_edit_condition.Text = "Edit Condition";
+			this.item_edit_condition.Click += new System.EventHandler(this.item_edit_condition_Click);
+			// 
+			// item_setting
+			// 
+			this.item_setting.Name = "item_setting";
+			this.item_setting.Size = new System.Drawing.Size(125, 22);
+			this.item_setting.Text = "Setting";
+			this.item_setting.Click += new System.EventHandler(this.item_setting_Click);
+			// 
+			// item_help
+			// 
+			this.item_help.Name = "item_help";
+			this.item_help.Size = new System.Drawing.Size(125, 22);
+			this.item_help.Text = "Help";
+			this.item_help.Click += new System.EventHandler(this.item_help_Click);
+			// 
+			// item_about
+			// 
+			this.item_about.Name = "item_about";
+			this.item_about.Size = new System.Drawing.Size(125, 22);
+			this.item_about.Text = "About+";
+			this.item_about.Click += new System.EventHandler(this.item_about_Click);
+			// 
+			// cbb_type_passbook
+			// 
+			this.cbb_type_passbook.FormattingEnabled = true;
+			this.cbb_type_passbook.Location = new System.Drawing.Point(360, 57);
+			this.cbb_type_passbook.Name = "cbb_type_passbook";
+			this.cbb_type_passbook.Size = new System.Drawing.Size(227, 21);
+			this.cbb_type_passbook.TabIndex = 15;
 			// 
 			// Passbook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(700, 480);
+			this.Controls.Add(this.btn_option);
 			this.Controls.Add(this.tab_selector);
 			this.Controls.Add(this.tab_control);
 			this.Name = "Passbook";
@@ -1056,6 +1073,7 @@
 			this.tab_daily_report.PerformLayout();
 			this.tab_monthly_report.ResumeLayout(false);
 			this.tab_monthly_report.PerformLayout();
+			this.context_option.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1077,9 +1095,6 @@
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_phone_number_open;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_submit_open;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_check_open;
-		private MaterialSkin.Controls.MaterialRadioButton radio_6months;
-		private MaterialSkin.Controls.MaterialRadioButton radio_no_terms;
-		private MaterialSkin.Controls.MaterialRadioButton radio_3months;
 		private MaterialSkin.Controls.MaterialLabel lbl_passbook;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash_open;
 		private System.Windows.Forms.MonthCalendar calendar_open;
@@ -1134,5 +1149,12 @@
 		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_daily;
 		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_monthly;
 		private MaterialSkin.Controls.MaterialLabel lbl_customer_id_open;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_option;
+		private MaterialSkin.Controls.MaterialContextMenuStrip context_option;
+		private System.Windows.Forms.ToolStripMenuItem item_edit_condition;
+		private System.Windows.Forms.ToolStripMenuItem item_setting;
+		private System.Windows.Forms.ToolStripMenuItem item_help;
+		private System.Windows.Forms.ToolStripMenuItem item_about;
+		private System.Windows.Forms.ComboBox cbb_type_passbook;
 	}
 }

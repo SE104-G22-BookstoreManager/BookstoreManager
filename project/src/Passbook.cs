@@ -23,8 +23,42 @@ namespace PassbookManagement.src
 			var materialSkinManager = MaterialSkinManager.Instance;
 			materialSkinManager.AddFormToManage(this);
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-			materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber600, Primary.Amber800, Primary.Amber300, Accent.LightBlue200, TextShade.WHITE);
+			materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan500, Primary.Cyan600, Primary.Cyan300, Accent.LightBlue200, TextShade.WHITE);
 		}
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for option
+		/// <summary>
+		///     
+		/// </summary>
+		private void btn_option_Click(object sender, EventArgs e)
+		{
+			context_option.Show(btn_option, new Point(0, btn_option.Height));
+		}
+
+		private void item_edit_condition_Click(object sender, EventArgs e)
+		{
+			var _editForm = new EditCondition();
+			_editForm.Show();
+		}
+
+		private void item_setting_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void item_help_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void item_about_Click(object sender, EventArgs e)
+		{
+
+		}
+		////////////////////////////////////////////////////////////////////
+
 
 		////////////////////////////////////////////////////////////////////
 		// Control for create passbook
@@ -111,18 +145,18 @@ namespace PassbookManagement.src
 		private void btn_create_Click(object sender, EventArgs e)
 		{
 			int _typeID = 0;
-			if (radio_no_terms.Checked == true)
-			{
-				_typeID = 0;
-			}
-			else if (radio_3months.Checked == true)
-			{
-				_typeID = 1;
-			}
-			else if (radio_6months.Checked == true)
-			{
-				_typeID = 2;
-			}
+			//if (radio_no_terms.Checked == true)
+			//{
+			//	_typeID = 0;
+			//}
+			//else if (radio_3months.Checked == true)
+			//{
+			//	_typeID = 1;
+			//}
+			//else if (radio_6months.Checked == true)
+			//{
+			//	_typeID = 2;
+			//}
 
 			if(Convert.ToInt64(txt_cash_open.Text) < 1000000)
 			{
@@ -215,7 +249,7 @@ namespace PassbookManagement.src
 		// Control for create monthly report
 		private void btn_refresh_monthly_Click(object sender, EventArgs e)
 		{
-
+			
 		}
 		////////////////////////////////////////////////////////////////////
 	}
