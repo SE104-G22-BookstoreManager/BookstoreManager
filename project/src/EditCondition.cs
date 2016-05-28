@@ -18,11 +18,50 @@ namespace PassbookManagement.src
 		{
 			InitializeComponent();
 
-			//var materialSkinManager = MaterialSkinManager.Instance;
-			//materialSkinManager.AddFormToManage(this);
-			//materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-			//materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber600, Primary.Amber800, Primary.Amber300, Accent.LightBlue200, TextShade.WHITE);
+		}
 
+		private void btn_apply_edit_cast_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_ok_edit_cash_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		private void btn_add_edit_period_Click(object sender, EventArgs e)
+		{
+			cbb_type_edit_period.Hide();
+			txt_name_edit_period.Show();
+			txt_period_edit_period.Show();
+			txt_rate_edit_period.Show();
+		}
+
+		private void btn_edit_edit_period_Click(object sender, EventArgs e)
+		{
+			cbb_type_edit_period.Show();
+			txt_name_edit_period.Show();
+			txt_period_edit_period.Show();
+			txt_rate_edit_period.Show();
+		}
+
+		private void btn_remove_edit_period_Click(object sender, EventArgs e)
+		{
+			cbb_type_edit_period.Show();
+			txt_name_edit_period.Hide();
+			txt_period_edit_period.Hide();
+			txt_rate_edit_period.Hide();
+		}
+
+		private void btn_apply_edit_type_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_ok_edit_type_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 	}
 }
