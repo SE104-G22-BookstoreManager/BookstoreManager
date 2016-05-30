@@ -75,8 +75,18 @@ namespace PassbookManagement.src
 				}
 				else
 				{
-					DataTable _result1 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
 
+					DataTable _result1 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
+                    DataTable _result2 = PassbookModel.SelectTypePassbook();
+                    if (_result2.Rows.Count != 0)
+                    {
+                       for(int i=0;i<_result2.Rows.Count;i++)
+                       {
+                           object[] _itemArray2 = _result2.Rows[i].ItemArray;
+                           cbb_type_passbook.Items.Add(_itemArray2[2].ToString());
+                            
+                       }
+                    }
 					if (_result1.Rows.Count != 0)
 					{
 						object[] _itemArray = _result1.Rows[0].ItemArray;
@@ -130,9 +140,9 @@ namespace PassbookManagement.src
 						return;
 					}
 
-					DataTable _result2 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
-					object[] _itemArray = _result1.Rows[0].ItemArray;
-					lbl_customer_id_open.Text = _itemArray[0].ToString();
+					DataTable _result3 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
+					object[] _itemArray3 = _result3.Rows[0].ItemArray;
+					lbl_customer_id_open.Text = _itemArray3[0].ToString();
 
 					txt_name_open.Enabled = false;
 					txt_identity_number_open.Enabled = false;
@@ -144,36 +154,39 @@ namespace PassbookManagement.src
 
 		private void btn_create_Click(object sender, EventArgs e)
 		{
-			int _typeID = 0;
-			//if (radio_no_terms.Checked == true)
-			//{
-			//	_typeID = 0;
-			//}
-			//else if (radio_3months.Checked == true)
-			//{
-			//	_typeID = 1;
-			//}
-			//else if (radio_6months.Checked == true)
-			//{
-			//	_typeID = 2;
-			//}
+			
 
-			if(Convert.ToInt64(txt_cash_open.Text) < 1000000)
+            DataTable _result1 = PassbookModel.SelectMinMoney();
+            object[] _itemArray1 = _result1.Rows[0].ItemArray;
+            string money_min = _itemArray1[0].ToString();
+            if (Convert.ToDouble(txt_cash_open.Text) < Convert.ToDouble(money_min)) 
 			{
 				MessageBox.Show("Số tiền gửi quá ít, vui lòng kiểm tra lại");
 				return;
 			}
 
 			DateTime _dateTime = calendar_open.SelectionEnd.Date;
-			if (PassbookModel.InsertPassbook(_typeID.ToString(), lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString()) == false)
-			{
-				MessageBox.Show("Something went wrong!!!");
-				return;
-			}
+            string type = cbb_type_passbook.GetItemText(cbb_type_passbook.SelectedItem.ToString());
+           
+           DataTable _result2 = PassbookModel.SelectIdTypePassbook(type);
+           int count = _result2.Rows.Count;
+            object[] _itemArray2 = _result2.Rows[0].ItemArray;
+            string _typeID = _itemArray2[0].ToString();
+            if (PassbookModel.InsertPassbook(_typeID, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString()) == false)
+            {
+                MessageBox.Show("Something went wrong!!!");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Success");
+                return;
+            }
 		}
 
 		private void btn_clear_open_Click(object sender, EventArgs e)
 		{
+            
 			txt_name_open.Enabled = true;
 			txt_identity_number_open.Enabled = true;
 			txt_address_open.Enabled = true;
@@ -183,6 +196,7 @@ namespace PassbookManagement.src
 			txt_identity_number_open.Text = "";
 			txt_address_open.Text = "";
 			txt_phone_number_open.Text = "";
+            lbl_customer_id_open.Text = " ";
 
 			txt_cash_open.Text = "";
 		}
@@ -193,7 +207,7 @@ namespace PassbookManagement.src
 		// Control for create lookup
 		private void btn_refresh_lookup_Click(object sender, EventArgs e)
 		{
-
+            list_lookup.Items.Clear();
 		}
 		////////////////////////////////////////////////////////////////////
 
@@ -251,6 +265,22 @@ namespace PassbookManagement.src
 		{
 			
 		}
+
+        private void tab_selector_Click(object sender, EventArgs e)
+        {
+            DataTable _result2 = PassbookModel.SelectallPassbooks();
+            int count = _result2.Rows.Count;
+            for (int i = 0; i < count; i++)
+            {
+                object[] _itemArray2 = _result2.Rows[i].ItemArray;
+                ListViewItem lvi = new ListViewItem(i.ToString());
+                lvi.SubItems.Add(_itemArray2[0].ToString());
+                lvi.SubItems.Add(_itemArray2[1].ToString());
+                lvi.SubItems.Add(_itemArray2[3].ToString());
+                lvi.SubItems.Add(_itemArray2[4].ToString());
+                list_lookup.Items.Add(lvi);
+            }
+        }
 		////////////////////////////////////////////////////////////////////
 	}
 }
