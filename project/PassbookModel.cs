@@ -23,6 +23,11 @@ namespace PassbookManagement
 			string _query = "SELECT * FROM " + tbl_customers + " WHERE identity_number=\"" + identity_number + "\"";
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
+        public static DataTable SelectPassbooksbyIdcustomer(string id_customer)
+        {
+            string _query = "SELECT * FROM " + tbl_passbooks + " WHERE customer_id=\"" + id_customer + "\"";
+            return Database.SQLiteDatabase.GetDataTable(_query);
+        }
         public static DataTable SelectallPassbooks()
         {
             string _query = "SELECT * FROM " + tbl_passbooks;
@@ -30,9 +35,15 @@ namespace PassbookManagement
         }
         public static DataTable SelectMinMoney()
         {
-            string _query = "SELECT Min_Deposit FROM " + tbl_parameter;
+            string _query = "SELECT * FROM " + tbl_parameter;
             return Database.SQLiteDatabase.GetDataTable(_query);
         }
+        public static DataTable SelectpassbookbyIDpassbook(string id_passbook)
+        {
+            string _query = "SELECT * FROM " + tbl_passbooks + " WHERE id=\"" + id_passbook+ "\"";
+            return Database.SQLiteDatabase.GetDataTable(_query);
+        }
+      
         public static DataTable SelectIdTypePassbook(string nameTypePassbook)
         {
             	string _query = "SELECT type FROM " + tbl_types + " WHERE name =\"" +nameTypePassbook + "\"";
@@ -66,5 +77,25 @@ namespace PassbookManagement
 			_data.Add("date_time", date_time);
 			return Database.SQLiteDatabase.Insert(tbl_passbooks, _data);
 		}
+        public static bool InsertIncomes(string passbook_id, string customer_id, string cash , string date_time)
+        {
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("passbook_id", passbook_id);
+            _data.Add("customer_id", customer_id);
+            _data.Add("cash", cash);
+            _data.Add("date_time", date_time);
+            return Database.SQLiteDatabase.Insert(tbl_incomes, _data);
+        }
+        public static bool  updatemoneyPassbook(string id_passbook, string money)
+        {
+            string where = "id=\"" + id_passbook + "\" ";
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("cash", money);
+
+            return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
+
+        }
 	}
 }

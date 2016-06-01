@@ -24,7 +24,8 @@ namespace PassbookManagement.src
 			materialSkinManager.AddFormToManage(this);
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 			materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan500, Primary.Cyan600, Primary.Cyan300, Accent.LightBlue200, TextShade.WHITE);
-		}
+            return_typepassbook();
+        }
 
 
 		////////////////////////////////////////////////////////////////////
@@ -65,6 +66,7 @@ namespace PassbookManagement.src
 		/// <summary>
 		///     
 		/// </summary>
+        ///
 		private void btn_check_Click(object sender, EventArgs e)
 		{
 			try
@@ -77,16 +79,6 @@ namespace PassbookManagement.src
 				{
 
 					DataTable _result1 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
-                    DataTable _result2 = PassbookModel.SelectTypePassbook();
-                    if (_result2.Rows.Count != 0)
-                    {
-                       for(int i=0;i<_result2.Rows.Count;i++)
-                       {
-                           object[] _itemArray2 = _result2.Rows[i].ItemArray;
-                           cbb_type_passbook.Items.Add(_itemArray2[2].ToString());
-                            
-                       }
-                    }
 					if (_result1.Rows.Count != 0)
 					{
 						object[] _itemArray = _result1.Rows[0].ItemArray;
@@ -114,6 +106,20 @@ namespace PassbookManagement.src
 				MessageBox.Show(ex.ToString());
 			}
 		}
+        public void return_typepassbook()
+        {
+            DataTable _result2 = PassbookModel.SelectTypePassbook();
+            if (_result2.Rows.Count != 0)
+            {
+                for (int i = 0; i < _result2.Rows.Count; i++)
+                {
+                    object[] _itemArray2 = _result2.Rows[i].ItemArray;
+                    cbb_type_passbook.Items.Add(_itemArray2[2].ToString());
+                    cbb_type_monthly.Items.Add(_itemArray2[2].ToString());
+                }
+            }
+        }
+        
 
 		private void btn_submit_Click(object sender, EventArgs e)
 		{
@@ -216,12 +222,87 @@ namespace PassbookManagement.src
 		// Control for create deposit
 		private void btn_check_deposit_Click(object sender, EventArgs e)
 		{
+            try
+            {
+                if (txt_identity_number_deposit.Text == "")
+                {
+                    MessageBox.Show("Please type identity number!!!");
+                }
+                else
+                {
+                    DataTable _result0 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_deposit.Text);
+                    if(_result0.Rows.Count!=0)
+                    {
+                        object[] _itemArray = _result0.Rows[0].ItemArray;
+                        string id_customer= _itemArray[0].ToString();
+                        DataTable _result01 = PassbookModel.SelectPassbooksbyIdcustomer(id_customer);
+                        for (int i = 0; i < _result01.Rows.Count; i++)
+                        {
+                            object[] _itemArray1 = _result01.Rows[i].ItemArray;
+                            cbb_passbook_deposit.Items.Add(_itemArray1[0].ToString());
+                        }
+                    }
 
+
+                    DataTable _result1 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_deposit.Text);
+                    
+                    if (_result1.Rows.Count != 0)
+                    {
+                        object[] _itemArray = _result1.Rows[0].ItemArray;
+
+                       lbl_depposit.Text = _itemArray[0].ToString();
+                        txt_name_deposit.Text = _itemArray[1].ToString();
+                        txt_phone_number_deposit.Text = _itemArray[4].ToString();
+                        txt_address_deposit.Text = _itemArray[3].ToString();
+                        txt_identity_number_deposit.Text = _itemArray[2].ToString();
+                        txt_name_open.Enabled = false;
+                        txt_identity_number_open.Enabled = false;
+                        txt_address_open.Enabled = false;
+                        txt_phone_number_open.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Account not found. Please type all information to add new account!!!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 		}
 
 		private void btn_create_deposit_Click(object sender, EventArgs e)
 		{
 
+            DataTable _result1 = PassbookModel.SelectMinMoney();
+            object[] _itemArray1 = _result1.Rows[0].ItemArray;
+            string money_min = _itemArray1[1].ToString();
+            if (Convert.ToDouble(txt_cash_deposit.Text) < Convert.ToDouble(money_min))
+            {
+                MessageBox.Show("Số tiền gửi thêm quá ít, vui lòng kiểm tra lại");
+                return;
+            }
+
+            DateTime _dateTime = calendar_open.SelectionEnd.Date;
+
+            DataTable _result01 = PassbookModel.SelectpassbookbyIDpassbook(cbb_passbook_deposit.Text);
+            object[] _itemArray01 = _result01.Rows[0].ItemArray;
+
+            string money = _itemArray01[3].ToString();
+            double money_sum = Convert.ToDouble(txt_cash_deposit.Text) + Convert.ToDouble(money);
+
+            if (PassbookModel.InsertIncomes(cbb_passbook_deposit.Text, lbl_depposit.Text, txt_cash_deposit.Text, _dateTime.ToString()) == false)
+            {
+                MessageBox.Show("Something went wrong!!!");
+                return;
+            }
+            else
+            {
+                PassbookModel.updatemoneyPassbook(cbb_passbook_deposit.Text,money_sum.ToString());
+                MessageBox.Show("Success");
+                return;
+            }
 		}
 
 		private void btn_refresh_deposit_Click(object sender, EventArgs e)

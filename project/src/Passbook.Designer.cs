@@ -104,6 +104,7 @@
             this.item_setting = new System.Windows.Forms.ToolStripMenuItem();
             this.item_help = new System.Windows.Forms.ToolStripMenuItem();
             this.item_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_depposit = new MaterialSkin.Controls.MaterialLabel();
             this.tab_control.SuspendLayout();
             this.tab_open.SuspendLayout();
             this.tab_lookup.SuspendLayout();
@@ -438,6 +439,7 @@
             // tab_deposit
             // 
             this.tab_deposit.BackColor = System.Drawing.Color.White;
+            this.tab_deposit.Controls.Add(this.lbl_depposit);
             this.tab_deposit.Controls.Add(this.btn_refresh_deposit);
             this.tab_deposit.Controls.Add(this.calendar_deposit);
             this.tab_deposit.Controls.Add(this.txt_cash_deposit);
@@ -582,7 +584,7 @@
             // 
             this.txt_name_deposit.Depth = 0;
             this.txt_name_deposit.Hint = "Name";
-            this.txt_name_deposit.Location = new System.Drawing.Point(32, 59);
+            this.txt_name_deposit.Location = new System.Drawing.Point(32, 65);
             this.txt_name_deposit.MaxLength = 32767;
             this.txt_name_deposit.MouseState = MaterialSkin.MouseState.HOVER;
             this.txt_name_deposit.Name = "txt_name_deposit";
@@ -1051,6 +1053,19 @@
             this.item_about.Text = "About+";
             this.item_about.Click += new System.EventHandler(this.item_about_Click);
             // 
+            // lbl_depposit
+            // 
+            this.lbl_depposit.AutoSize = true;
+            this.lbl_depposit.Depth = 0;
+            this.lbl_depposit.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbl_depposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbl_depposit.Location = new System.Drawing.Point(3, 65);
+            this.lbl_depposit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbl_depposit.Name = "lbl_depposit";
+            this.lbl_depposit.Size = new System.Drawing.Size(23, 19);
+            this.lbl_depposit.TabIndex = 15;
+            this.lbl_depposit.Text = "ID";
+            // 
             // Passbook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1157,5 +1172,6 @@
 		private System.Windows.Forms.ToolStripMenuItem item_help;
 		private System.Windows.Forms.ToolStripMenuItem item_about;
 		private System.Windows.Forms.ComboBox cbb_type_passbook;
+        private MaterialSkin.Controls.MaterialLabel lbl_depposit;
 	}
 }
