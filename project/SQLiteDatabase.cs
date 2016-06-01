@@ -138,7 +138,28 @@ namespace PassbookManagement
 			}
 			return returnCode;
 		}
-
+        public bool Update1(String tableName, Dictionary<String, String> data)
+        {
+            String vals = "";
+            Boolean returnCode = true;
+            if (data.Count >= 1)
+            {
+                foreach (KeyValuePair<String, String> val in data)
+                {
+                    vals += String.Format(" {0} = '{1}',", val.Key.ToString(), val.Value.ToString());
+                }
+                vals = vals.Substring(0, vals.Length - 1);
+            }
+            try
+            {
+                this.ExecuteNonQuery(String.Format("update {0} set {1};", tableName, vals));
+            }
+            catch
+            {
+                returnCode = false;
+            }
+            return returnCode;
+        }
 		/// <summary>
 		///     Allows the programmer to easily delete rows from the DB.
 		/// </summary>

@@ -46,7 +46,7 @@ namespace PassbookManagement
       
         public static DataTable SelectIdTypePassbook(string nameTypePassbook)
         {
-            	string _query = "SELECT type FROM " + tbl_types + " WHERE name =\"" +nameTypePassbook + "\"";
+            	string _query = "SELECT * FROM " + tbl_types + " WHERE name =\"" +nameTypePassbook + "\"";
 			return Database.SQLiteDatabase.GetDataTable(_query);
         }
         public static DataTable SelectTypePassbook()
@@ -96,6 +96,54 @@ namespace PassbookManagement
 
             return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
 
+        }
+        public static bool updatemoneymin(string money)
+        {
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("Min_Deposit", money);
+            //string where = "";
+            return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
+        }
+        public static bool updateMoneyMinMore(string money)
+        {
+
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+            _data.Add("Min_DepositMore", money);
+             return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
+        }
+        public static bool InsertTypePassbook(string type, string name, string rate, string date)
+        {
+
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("type", type);
+            _data.Add("name", name);
+            _data.Add("rate", rate);
+            _data.Add("dateWithdrawal", date);
+            return Database.SQLiteDatabase.Insert(tbl_types, _data);
+        }
+        public static bool UpdateTypePassbook(string type, string name, string rate, string date,string id)
+        {
+            string where = "id=\"" + id + "\" ";
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("type", type);
+            _data.Add("name", name);
+            _data.Add("rate", rate);
+            _data.Add("dateWithdrawal", date);
+
+            return Database.SQLiteDatabase.Update(tbl_types, _data, where);
+        }
+        
+        public static  int count_datetime(string date1, string date2)
+        {
+           return 90;
+        }
+        public static bool  delete_typepassbook(string type_name)
+        {
+            string where = "name=\"" + type_name + "\" ";
+            return Database.SQLiteDatabase.Delete(tbl_types, where);
         }
 	}
 }

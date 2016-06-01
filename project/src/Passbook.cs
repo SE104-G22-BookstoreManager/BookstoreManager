@@ -116,6 +116,7 @@ namespace PassbookManagement.src
                     object[] _itemArray2 = _result2.Rows[i].ItemArray;
                     cbb_type_passbook.Items.Add(_itemArray2[2].ToString());
                     cbb_type_monthly.Items.Add(_itemArray2[2].ToString());
+                    
                 }
             }
         }
@@ -177,7 +178,7 @@ namespace PassbookManagement.src
            DataTable _result2 = PassbookModel.SelectIdTypePassbook(type);
            int count = _result2.Rows.Count;
             object[] _itemArray2 = _result2.Rows[0].ItemArray;
-            string _typeID = _itemArray2[0].ToString();
+            string _typeID = _itemArray2[1].ToString();
             if (PassbookModel.InsertPassbook(_typeID, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString()) == false)
             {
                 MessageBox.Show("Something went wrong!!!");
@@ -316,11 +317,62 @@ namespace PassbookManagement.src
 		// Control for create withdrawal
 		private void btn_check_withdrawal_Click(object sender, EventArgs e)
 		{
+            try
+            {
+                if (txt_identity_number_withdrawal.Text== "")
+                {
+                    MessageBox.Show("Please type identity number!!!");
+                }
+                else
+                {
+                    DataTable _result0 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_withdrawal.Text);
+                    if (_result0.Rows.Count != 0)
+                    {
+                        object[] _itemArray = _result0.Rows[0].ItemArray;
+                        string id_customer = _itemArray[0].ToString();
+                        DataTable _result01 = PassbookModel.SelectPassbooksbyIdcustomer(id_customer);
+                        for (int i = 0; i < _result01.Rows.Count; i++)
+                        {
+                            object[] _itemArray1 = _result01.Rows[i].ItemArray;
 
+                            cbb_passbook_withdrawal.Items.Add(_itemArray1[0].ToString());
+                        }
+                    }
+
+
+                    DataTable _result1 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_withdrawal.Text);
+
+                    if (_result1.Rows.Count != 0)
+                    {
+                        object[] _itemArray = _result1.Rows[0].ItemArray;
+                        lbl_with.Text = _itemArray[0].ToString();
+                         txt_name_withdrawal.Text = _itemArray[1].ToString();
+                        txt_phone_number_withdrawal.Text = _itemArray[4].ToString();
+                        txt_address_withdrawal.Text = _itemArray[3].ToString();
+                        txt_identity_number_withdrawal.Text = _itemArray[2].ToString();
+                        txt_name_open.Enabled = false;
+                        txt_identity_number_open.Enabled = false;
+                        txt_address_open.Enabled = false;
+                        txt_phone_number_open.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Account not found. Please type all information to add new account!!!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 		}
 
 		private void btn_create_withdrawal_Click(object sender, EventArgs e)
 		{
+            string date_now= DateTime.Now.ToString().Trim();
+            string date_send = "";
+
+
 
 		}
 
