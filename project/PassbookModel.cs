@@ -33,6 +33,16 @@ namespace PassbookManagement
             string _query = "SELECT * FROM " + tbl_passbooks;
             return Database.SQLiteDatabase.GetDataTable(_query);
         }
+        public static DataTable SelectallDespoit()
+        {
+            string _query = "SELECT * FROM " + tbl_incomes;
+            return Database.SQLiteDatabase.GetDataTable(_query);
+        }
+        public static DataTable SelectallWithdraw()
+        {
+            string _query = "SELECT * FROM " + tbl_outcomes;
+            return Database.SQLiteDatabase.GetDataTable(_query);
+        }
         public static DataTable SelectMinMoney()
         {
             string _query = "SELECT * FROM " + tbl_parameter;
@@ -54,7 +64,11 @@ namespace PassbookManagement
             string _query = "SELECT * FROM " + tbl_types;
             return Database.SQLiteDatabase.GetDataTable(_query);
         }
-
+        public static DataTable SelectTypebyIDtype(string idtype)
+        {
+            string _query = "SELECT * FROM " + tbl_types + " WHERE type =\"" + idtype + "\"";
+            return Database.SQLiteDatabase.GetDataTable(_query);
+        }
 		public static bool InsertCustomer(string name, string identity_number, string address, string phone_number)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
@@ -67,7 +81,7 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.Insert(tbl_customers, _data);
 		}
 
-		public static bool InsertPassbook(string type_id, string customer_id, string cash, string date_time)
+		public static bool InsertPassbook(string type_id, string customer_id, string cash, string date_time, string Open)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
@@ -75,6 +89,7 @@ namespace PassbookManagement
 			_data.Add("customer_id", customer_id);
 			_data.Add("cash", cash);
 			_data.Add("date_time", date_time);
+            _data.Add("Close", Open);
 			return Database.SQLiteDatabase.Insert(tbl_passbooks, _data);
 		}
         public static bool InsertIncomes(string passbook_id, string customer_id, string cash , string date_time)
@@ -93,6 +108,16 @@ namespace PassbookManagement
             Dictionary<string, string> _data = new Dictionary<string, string>();
 
             _data.Add("cash", money);
+
+            return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
+
+        }
+        public static bool updateclosePassbook(string id_passbook, string close)
+        {
+            string where = "id=\"" + id_passbook + "\" ";
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("Close", close);
 
             return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
 
@@ -136,14 +161,26 @@ namespace PassbookManagement
             return Database.SQLiteDatabase.Update(tbl_types, _data, where);
         }
         
-        public static  int count_datetime(string date1, string date2)
-        {
-           return 90;
-        }
         public static bool  delete_typepassbook(string type_name)
         {
             string where = "name=\"" + type_name + "\" ";
             return Database.SQLiteDatabase.Delete(tbl_types, where);
         }
+        public static int count_datetime(string date1, string date2)
+        {
+            return 15;
+        }
+        public static int cut_month(string ngay)
+        {
+            int month = 6;
+
+            return month;
+        }
+        public static string cut_date(string date)
+        {
+            string date_1 = "06/04/2016";
+            return date_1;
+        }
+
 	}
 }

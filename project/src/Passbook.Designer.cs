@@ -68,6 +68,7 @@
             this.lbl_customer_deposit = new MaterialSkin.Controls.MaterialLabel();
             this.txt_address_deposit = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tab_withdrawal = new System.Windows.Forms.TabPage();
+            this.lbl_with = new MaterialSkin.Controls.MaterialLabel();
             this.btn_refresh_withdrawal = new MaterialSkin.Controls.MaterialFlatButton();
             this.cbb_passbook_withdrawal = new System.Windows.Forms.ComboBox();
             this.calendar_withdrawal = new System.Windows.Forms.MonthCalendar();
@@ -88,7 +89,6 @@
             this.col_income_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_outcome_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.date_daily = new System.Windows.Forms.DateTimePicker();
             this.tab_monthly_report = new System.Windows.Forms.TabPage();
             this.btn_refresh_monthly = new MaterialSkin.Controls.MaterialFlatButton();
             this.list_monthly = new MaterialSkin.Controls.MaterialListView();
@@ -105,7 +105,8 @@
             this.item_setting = new System.Windows.Forms.ToolStripMenuItem();
             this.item_help = new System.Windows.Forms.ToolStripMenuItem();
             this.item_about = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_with = new MaterialSkin.Controls.MaterialLabel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.datetime1 = new System.Windows.Forms.DateTimePicker();
             this.tab_control.SuspendLayout();
             this.tab_open.SuspendLayout();
             this.tab_lookup.SuspendLayout();
@@ -665,6 +666,19 @@
             this.tab_withdrawal.Text = "Withdrawal";
             this.tab_withdrawal.UseVisualStyleBackColor = true;
             // 
+            // lbl_with
+            // 
+            this.lbl_with.AutoSize = true;
+            this.lbl_with.Depth = 0;
+            this.lbl_with.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbl_with.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbl_with.Location = new System.Drawing.Point(3, 28);
+            this.lbl_with.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbl_with.Name = "lbl_with";
+            this.lbl_with.Size = new System.Drawing.Size(23, 19);
+            this.lbl_with.TabIndex = 16;
+            this.lbl_with.Text = "ID";
+            // 
             // btn_refresh_withdrawal
             // 
             this.btn_refresh_withdrawal.AutoSize = true;
@@ -835,9 +849,10 @@
             // tab_daily_report
             // 
             this.tab_daily_report.BackColor = System.Drawing.Color.White;
+            this.tab_daily_report.Controls.Add(this.datetime1);
+            this.tab_daily_report.Controls.Add(this.button1);
             this.tab_daily_report.Controls.Add(this.btn_refresh_daily);
             this.tab_daily_report.Controls.Add(this.list_daily);
-            this.tab_daily_report.Controls.Add(this.date_daily);
             this.tab_daily_report.Location = new System.Drawing.Point(4, 22);
             this.tab_daily_report.Name = "tab_daily_report";
             this.tab_daily_report.Padding = new System.Windows.Forms.Padding(3);
@@ -909,13 +924,6 @@
             // 
             this.col_total_daily.Text = "Total";
             this.col_total_daily.Width = 143;
-            // 
-            // date_daily
-            // 
-            this.date_daily.Location = new System.Drawing.Point(6, 6);
-            this.date_daily.Name = "date_daily";
-            this.date_daily.Size = new System.Drawing.Size(200, 20);
-            this.date_daily.TabIndex = 0;
             // 
             // tab_monthly_report
             // 
@@ -1068,18 +1076,22 @@
             this.item_about.Text = "About+";
             this.item_about.Click += new System.EventHandler(this.item_about_Click);
             // 
-            // lbl_with
+            // button1
             // 
-            this.lbl_with.AutoSize = true;
-            this.lbl_with.Depth = 0;
-            this.lbl_with.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_with.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_with.Location = new System.Drawing.Point(3, 28);
-            this.lbl_with.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lbl_with.Name = "lbl_with";
-            this.lbl_with.Size = new System.Drawing.Size(22, 18);
-            this.lbl_with.TabIndex = 16;
-            this.lbl_with.Text = "ID";
+            this.button1.Location = new System.Drawing.Point(228, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Show";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // datetime1
+            // 
+            this.datetime1.Location = new System.Drawing.Point(6, 5);
+            this.datetime1.Name = "datetime1";
+            this.datetime1.Size = new System.Drawing.Size(200, 20);
+            this.datetime1.TabIndex = 4;
             // 
             // Passbook
             // 
@@ -1163,8 +1175,7 @@
 		private System.Windows.Forms.ColumnHeader col_type_daily;
 		private System.Windows.Forms.ColumnHeader col_income_daily;
 		private System.Windows.Forms.ColumnHeader col_outcome_daily;
-		private System.Windows.Forms.ColumnHeader col_total_daily;
-		private System.Windows.Forms.DateTimePicker date_daily;
+        private System.Windows.Forms.ColumnHeader col_total_daily;
 		private MaterialSkin.Controls.MaterialListView list_monthly;
 		private System.Windows.Forms.ColumnHeader col_order_monthly;
 		private System.Windows.Forms.ColumnHeader col_date_monthly;
@@ -1189,5 +1200,7 @@
 		private System.Windows.Forms.ComboBox cbb_type_passbook;
         private MaterialSkin.Controls.MaterialLabel lbl_depposit;
         private MaterialSkin.Controls.MaterialLabel lbl_with;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker datetime1;
 	}
 }

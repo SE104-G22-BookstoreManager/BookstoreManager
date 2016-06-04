@@ -25,6 +25,7 @@ namespace PassbookManagement.src
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 			materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan500, Primary.Cyan600, Primary.Cyan300, Accent.LightBlue200, TextShade.WHITE);
             return_typepassbook();
+
         }
 
 
@@ -179,7 +180,7 @@ namespace PassbookManagement.src
            int count = _result2.Rows.Count;
             object[] _itemArray2 = _result2.Rows[0].ItemArray;
             string _typeID = _itemArray2[1].ToString();
-            if (PassbookModel.InsertPassbook(_typeID, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString()) == false)
+            if (PassbookModel.InsertPassbook(_typeID, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString(),"true") == false)
             {
                 MessageBox.Show("Something went wrong!!!");
                 return;
@@ -301,6 +302,7 @@ namespace PassbookManagement.src
             else
             {
                 PassbookModel.updatemoneyPassbook(cbb_passbook_deposit.Text,money_sum.ToString());
+                PassbookModel.updateclosePassbook(cbb_passbook_deposit.Text, "True");
                 MessageBox.Show("Success");
                 return;
             }
@@ -369,8 +371,73 @@ namespace PassbookManagement.src
 
 		private void btn_create_withdrawal_Click(object sender, EventArgs e)
 		{
-            string date_now= DateTime.Now.ToString().Trim();
-            string date_send = "";
+          string date_now= DateTime.Now.ToString().Trim();
+           // string date_send = "";
+
+            DataTable _result2 = PassbookModel.SelectpassbookbyIDpassbook(cbb_passbook_withdrawal.Text);
+            object[] _itemArray2 = _result2.Rows[0].ItemArray;
+            string ngay_open = _itemArray2[4].ToString();
+            int count_ngay = PassbookModel.count_datetime(ngay_open, date_now);
+            string type = _itemArray2[1].ToString();
+            string money_goc =_itemArray2[3].ToString();
+
+            DataTable _result3 = PassbookModel.SelectTypebyIDtype(type);
+            object[] _itemArray3 = _result3.Rows[0].ItemArray;
+
+            string rate = _itemArray3[3].ToString();
+            string date = _itemArray3[4].ToString();
+
+            if (count_ngay >= Convert.ToInt16(date))
+            {
+                double rate_1 = Convert.ToDouble(rate);
+                double money1_goc = Convert.ToDouble(money_goc);
+                Double money_sum = money1_goc + money1_goc*rate_1*(count_ngay/30);
+                double cash_rut = Convert.ToDouble(txt_cash_withdrawal.Text);
+                 
+                if (cash_rut < money_sum){
+                    if (type =="3")
+                    {
+                        txt_cash_withdrawal.Text = money_sum.ToString();
+                        MessageBox.Show("bạn  rút hết tiền trong tài khoản : "+ txt_cash_withdrawal.Text);
+                        money_sum=0;
+                        PassbookModel.updateclosePassbook(cbb_passbook_withdrawal.Text, "False");
+
+                    }
+                    if(type =="6")
+                    {
+                        txt_cash_withdrawal.Text =money_sum.ToString();
+                        MessageBox.Show("bạn rút hết tiền trong tài khoảng : " + txt_cash_withdrawal.Text);
+                        money_sum =0;
+                        PassbookModel.updateclosePassbook(cbb_passbook_withdrawal.Text, "False");
+
+                    }
+                    if (type =="0")
+                    {
+                        money_sum = money_sum - cash_rut;
+                        if (money_sum ==0)
+                        {
+                            PassbookModel.updateclosePassbook(cbb_passbook_withdrawal.Text, "False");
+                        }
+                        MessageBox.Show(" success");
+
+                    }
+                      PassbookModel.updatemoneyPassbook(cbb_passbook_withdrawal.Text,money_sum.ToString());
+                   
+                }
+                else
+                {
+                    MessageBox.Show("không đủ tiền để rút, nhập lại số tiền rút  ");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("chưa đến ngày rút");
+            }
+
+
+            
+            
 
 
 
@@ -409,10 +476,44 @@ namespace PassbookManagement.src
                 ListViewItem lvi = new ListViewItem(i.ToString());
                 lvi.SubItems.Add(_itemArray2[0].ToString());
                 lvi.SubItems.Add(_itemArray2[1].ToString());
+                lvi.SubItems.Add(_itemArray2[2].ToString());
                 lvi.SubItems.Add(_itemArray2[3].ToString());
-                lvi.SubItems.Add(_itemArray2[4].ToString());
                 list_lookup.Items.Add(lvi);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          double tongthu =0;
+            double tongchi=0;
+            string date = datetime1.Value.ToString();
+        
+            DataTable result2 = PassbookModel.SelectTypePassbook();
+            int count = result2.Rows.Count;
+               string [] loai = new string [count];
+            for(int i=0;i<count;i++)
+            {
+                object[] _itemArray2 = result2.Rows[i].ItemArray;
+                loai[i] = _itemArray2[1].ToString();
+            }
+            DataTable result1 = PassbookModel.SelectallPassbooks();
+            int count_2 = result1.Rows.Count;
+            for(int i=0;i<count_2;i++)
+            {
+                object[] _itemArray1 = result1.Rows[i].ItemArray;
+                string ngay = _itemArray1[4].ToString();
+                string type = _itemArray1[1].ToString();
+                string cash = _itemArray1[3].ToString();
+            }
+            
+
+            
+            //  DataTable result2 = PassbookModel.SelectallDespoit();
+           // DataTable result3 = PassbookModel.SelectallWithdraw();
+
+            
+
+
         }
 		////////////////////////////////////////////////////////////////////
 	}
