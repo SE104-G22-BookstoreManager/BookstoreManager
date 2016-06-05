@@ -80,6 +80,19 @@ namespace PassbookManagement
 
 			return Database.SQLiteDatabase.Insert(tbl_customers, _data);
 		}
+        public static bool InsertWithDraw(string passbook_id, string type, string total, string customerid, string date,string money_return)
+        {
+            Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            _data.Add("passbook_id", passbook_id);
+            _data.Add("type", type);
+            _data.Add("total", total);
+            _data.Add("customer_id", customerid);
+            _data.Add("date_time", date);
+            _data.Add("cash_return", money_return);
+
+            return Database.SQLiteDatabase.Insert(tbl_outcomes, _data);
+        }
 
 		public static bool InsertPassbook(string type_id, string customer_id, string cash, string date_time, string Open)
 		{

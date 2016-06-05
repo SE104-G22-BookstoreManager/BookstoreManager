@@ -302,7 +302,7 @@ namespace PassbookManagement.src
             else
             {
                 PassbookModel.updatemoneyPassbook(cbb_passbook_deposit.Text,money_sum.ToString());
-                PassbookModel.updateclosePassbook(cbb_passbook_deposit.Text, "True");
+                PassbookModel.updateclosePassbook(cbb_passbook_deposit.Text, "true");
                 MessageBox.Show("Success");
                 return;
             }
@@ -376,6 +376,7 @@ namespace PassbookManagement.src
 
             DataTable _result2 = PassbookModel.SelectpassbookbyIDpassbook(cbb_passbook_withdrawal.Text);
             object[] _itemArray2 = _result2.Rows[0].ItemArray;
+            string id_customer = _itemArray2[2].ToString();
             string ngay_open = _itemArray2[4].ToString();
             int count_ngay = PassbookModel.count_datetime(ngay_open, date_now);
             string type = _itemArray2[1].ToString();
@@ -421,7 +422,15 @@ namespace PassbookManagement.src
                         MessageBox.Show(" success");
 
                     }
-                      PassbookModel.updatemoneyPassbook(cbb_passbook_withdrawal.Text,money_sum.ToString());
+                    PassbookModel.updatemoneyPassbook(cbb_passbook_withdrawal.Text, money_sum.ToString());
+
+                     DateTime _dateTime = calendar_withdrawal.SelectionEnd.Date;
+                     if (PassbookModel.InsertWithDraw(cbb_passbook_withdrawal.Text, type, txt_cash_withdrawal.Text, id_customer, _dateTime.ToString(),money_sum.ToString()) == false)
+                     {
+                         MessageBox.Show(" error");
+                     }
+
+                     
                    
                 }
                 else
@@ -484,35 +493,141 @@ namespace PassbookManagement.src
 
         private void button1_Click(object sender, EventArgs e)
         {
-          double tongthu =0;
-            double tongchi=0;
+           
             string date = datetime1.Value.ToString();
         
             DataTable result2 = PassbookModel.SelectTypePassbook();
             int count = result2.Rows.Count;
                string [] loai = new string [count];
+            double [] tongthu = new double[count];
+            double [] tongchi = new double[count];
             for(int i=0;i<count;i++)
             {
                 object[] _itemArray2 = result2.Rows[i].ItemArray;
                 loai[i] = _itemArray2[1].ToString();
+                tongthu[i]=0;
+                tongchi[i]=0;
             }
             DataTable result1 = PassbookModel.SelectallPassbooks();
+            DataTable result02 = PassbookModel.SelectallDespoit();
+            DataTable result03 = PassbookModel.SelectallWithdraw();
             int count_2 = result1.Rows.Count;
+            int count_3 = result02.Rows.Count;
+            int count_4 = result03.Rows.Count;
             for(int i=0;i<count_2;i++)
             {
                 object[] _itemArray1 = result1.Rows[i].ItemArray;
                 string ngay = _itemArray1[4].ToString();
                 string type = _itemArray1[1].ToString();
                 string cash = _itemArray1[3].ToString();
+                if (PassbookModel.cut_date(ngay)== PassbookModel.cut_date(date))
+                {
+                   for(int j=0;j<count;j++)
+                   {
+                       if(loai[j] == type)
+                       {
+                           tongthu[j] = tongthu[j] + Convert.ToDouble(cash);
+                       }
+                   }
+                }
+            }
+
+            for(int i=0;i< count_3;i++)
+            {
+                object[] _itemArray2 = result02.Rows[i].ItemArray;
+                string ngay = _itemArray2[4].ToString();
+                string money = _itemArray2[2].ToString();
+                string pass_id = _itemArray2[1].ToString();
+                DataTable query = PassbookModel.SelectpassbookbyIDpassbook(pass_id);
+                object[] _itemaray3 = query.Rows[0].ItemArray;
+                string type = _itemaray3[1].ToString();
+
+               if (PassbookModel.cut_date(ngay)== PassbookModel.cut_date(date))
+               {
+                   for (int j = 0; j < count; j++)
+                   { 
+                        if (loai[j]==type)
+                        {
+                            tongthu[j] = tongthu[j]+ Convert.ToDouble(money);
+                        }
+                   }
+               }
+
+
+
+            }
+            for(int i=0;i<count_4;i++)
+            {
+                object[] _itemArray3 =  result03.Rows[i].ItemArray;
+
+                string ngay = _itemArray3[5].ToString();
+                string money = _itemArray3[3].ToString();
+                string pass_id = _itemArray3[1].ToString();
+                string type =_itemArray3[2].ToString();
+
+                if (PassbookModel.cut_date(ngay) == PassbookModel.cut_date(date))
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        if (loai[j] == type)
+                        {
+                            tongchi[j] = tongchi[j] + Convert.ToDouble(money);
+                        }
+                    }
+                }
+
+            }
+            for(int i=0;i<count;i++)
+            {
+                
+                ListViewItem lvi = new ListViewItem(i.ToString());
+                lvi.SubItems.Add(loai[i].ToString());
+                lvi.SubItems.Add(tongthu[i].ToString());
+                lvi.SubItems.Add(tongchi[i].ToString());
+                lvi.SubItems.Add((tongthu[i]-tongchi[i]).ToString());
+                list_daily.Items.Add(lvi);
+                
             }
             
-
             
-            //  DataTable result2 = PassbookModel.SelectallDespoit();
-           // DataTable result3 = PassbookModel.SelectallWithdraw();
 
             
 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //string date = date_monthly.Value.ToString();
+            //int month = PassbookModel.cut_month(date);
+            //DataTable query1 = PassbookModel.SelectallPassbooks();
+            //DataTable query2 = PassbookModel.SelectallDespoit();
+            //DataTable query3 = PassbookModel.SelectallWithdraw();
+
+            //DataTable query4 = PassbookModel.SelectIdTypePassbook(cbb_type_monthly.Text);
+            //object[] arraylist = query4.Rows[0].ItemArray;
+            //string idtype = arraylist[1].ToString();
+
+            
+            //for(int i=0;;i++)
+            //{
+            //            for(int i=0;i< query1.Rows.Count;i++)
+            //            {
+            //                object[] _ArrayIterm = query1.Rows[i].ItemArray;
+            //                string ngay = _ArrayIterm[4].ToString();
+            //                string id_type = _ArrayIterm[1].ToString();
+            //                string id_passbook = 
+            //                if (id_type == idtype && PassbookModel.cut_month(ngay) == month)
+            //                {
+                    
+            //                }
+
+            //                for(int j=0;j<query2.Rows.Count;j++)
+            //                {
+            //                    if ()
+            //                }
+            //            }
+            //}
 
         }
 		////////////////////////////////////////////////////////////////////

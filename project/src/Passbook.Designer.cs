@@ -82,6 +82,8 @@
             this.lbl_withdrawal = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_customer_withdrawal = new MaterialSkin.Controls.MaterialLabel();
             this.tab_daily_report = new System.Windows.Forms.TabPage();
+            this.datetime1 = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_refresh_daily = new MaterialSkin.Controls.MaterialFlatButton();
             this.list_daily = new MaterialSkin.Controls.MaterialListView();
             this.col_order_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -105,8 +107,7 @@
             this.item_setting = new System.Windows.Forms.ToolStripMenuItem();
             this.item_help = new System.Windows.Forms.ToolStripMenuItem();
             this.item_about = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.datetime1 = new System.Windows.Forms.DateTimePicker();
+            this.button2 = new System.Windows.Forms.Button();
             this.tab_control.SuspendLayout();
             this.tab_open.SuspendLayout();
             this.tab_lookup.SuspendLayout();
@@ -861,6 +862,23 @@
             this.tab_daily_report.Text = "Daily Report";
             this.tab_daily_report.UseVisualStyleBackColor = true;
             // 
+            // datetime1
+            // 
+            this.datetime1.Location = new System.Drawing.Point(6, 5);
+            this.datetime1.Name = "datetime1";
+            this.datetime1.Size = new System.Drawing.Size(200, 20);
+            this.datetime1.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(228, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Show";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_refresh_daily
             // 
             this.btn_refresh_daily.AutoSize = true;
@@ -928,6 +946,7 @@
             // tab_monthly_report
             // 
             this.tab_monthly_report.BackColor = System.Drawing.Color.White;
+            this.tab_monthly_report.Controls.Add(this.button2);
             this.tab_monthly_report.Controls.Add(this.btn_refresh_monthly);
             this.tab_monthly_report.Controls.Add(this.list_monthly);
             this.tab_monthly_report.Controls.Add(this.date_monthly);
@@ -1076,22 +1095,15 @@
             this.item_about.Text = "About+";
             this.item_about.Click += new System.EventHandler(this.item_about_Click);
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(228, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Show";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // datetime1
-            // 
-            this.datetime1.Location = new System.Drawing.Point(6, 5);
-            this.datetime1.Name = "datetime1";
-            this.datetime1.Size = new System.Drawing.Size(200, 20);
-            this.datetime1.TabIndex = 4;
+            this.button2.Location = new System.Drawing.Point(351, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Search";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Passbook
             // 
@@ -1202,5 +1214,6 @@
         private MaterialSkin.Controls.MaterialLabel lbl_with;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker datetime1;
+        private System.Windows.Forms.Button button2;
 	}
 }
