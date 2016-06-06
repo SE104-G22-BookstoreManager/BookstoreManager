@@ -92,6 +92,7 @@
             this.col_outcome_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tab_monthly_report = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.btn_refresh_monthly = new MaterialSkin.Controls.MaterialFlatButton();
             this.list_monthly = new MaterialSkin.Controls.MaterialListView();
             this.col_order_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -107,7 +108,6 @@
             this.item_setting = new System.Windows.Forms.ToolStripMenuItem();
             this.item_help = new System.Windows.Forms.ToolStripMenuItem();
             this.item_about = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
             this.tab_control.SuspendLayout();
             this.tab_open.SuspendLayout();
             this.tab_lookup.SuspendLayout();
@@ -959,6 +959,16 @@
             this.tab_monthly_report.Text = "Monthly Report";
             this.tab_monthly_report.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(351, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Search";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // btn_refresh_monthly
             // 
             this.btn_refresh_monthly.AutoSize = true;
@@ -1094,16 +1104,6 @@
             this.item_about.Size = new System.Drawing.Size(125, 22);
             this.item_about.Text = "About+";
             this.item_about.Click += new System.EventHandler(this.item_about_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(351, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
-            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Passbook
             // 

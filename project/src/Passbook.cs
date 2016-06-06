@@ -472,7 +472,7 @@ namespace PassbookManagement.src
 		// Control for create monthly report
 		private void btn_refresh_monthly_Click(object sender, EventArgs e)
 		{
-			
+            list_monthly.Clear();
 		}
 
         private void tab_selector_Click(object sender, EventArgs e)
@@ -593,6 +593,147 @@ namespace PassbookManagement.src
 
             
 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable query = PassbookModel.SelectIdTypePassbook(cbb_type_monthly.Text);
+            object[] _itemArray1 = query.Rows[0].ItemArray;
+            string type = _itemArray1[1].ToString();
+            string date = date_monthly.Value.ToString();
+
+            List<string> id_passbook = new List<string>();
+            List<string> id_will = new List<string>();
+            // Select passbook 
+            DataTable query1 = PassbookModel.SelectallWithdraw();
+            DataTable query2 = PassbookModel.SelectallPassbooks();
+            for (int i = 0; i < query2.Rows.Count; i++)
+            {
+                Object[] array2 = query2.Rows[i].ItemArray;
+                string type_passbook = array2[1].ToString();
+                string id = array2[0].ToString();
+                string date_passbook = array2[4].ToString();
+                if (type == type_passbook && PassbookModel.cut_month(date_passbook)== PassbookModel.cut_month(date))
+                {
+                    id_passbook.Add(date_passbook);
+                }
+
+            }
+            for (int i = 0; i < query1.Rows.Count; i++)
+            {
+                Object[] array2 = query1.Rows[i].ItemArray;
+                string type_passbook = array2[2].ToString();
+                string id = array2[0].ToString();
+                string date_passbook = array2[5].ToString();
+                string return1 = array2[6].ToString();
+                if (type == type_passbook && PassbookModel.cut_month(date_passbook) == PassbookModel.cut_month(date) && return1 == "0")
+                {
+                    id_will.Add(date_passbook);
+
+                }
+            }
+            int l = 0;
+            for (int i = 0; i < id_passbook.Count; i++)
+            {
+                int cout_in = 1;
+                int cout_out = 0;
+                List<int> key = new List<int>();
+                for (int j = 1; j < id_passbook.Count; j++)
+                {
+                    if (PassbookModel.cut_date(id_passbook[i]) == PassbookModel.cut_date(id_passbook[j]))
+                    {
+                        cout_in = cout_in + 1;
+                        key.Add(j);
+                        
+                    }
+                }
+
+                
+                List<int> key1 = new List<int>();
+                for (int j = 0; j < id_will.Count; j++)
+                {
+                    if (PassbookModel.cut_date(id_passbook[i]) == PassbookModel.cut_date(id_will[j]))
+                    {
+                        cout_out = cout_out + 1;
+                        key1.Add(j);
+                    }
+                }
+                int p_out = 0;
+                
+                for (int o = 0; o < key1.Count;o++ )
+                {
+                    if (p_out == 0)
+                    {
+                        id_will.Remove(id_will[key1[o]]);
+                        p_out++;
+                    }
+                    else
+                    {
+                        id_will.Remove(id_will[key1[o] - p_out]);
+                        p_out++;
+                    }
+                    
+                }
+                int p_in = 0;
+                for (int o = 0; o < key.Count; o++)
+                {
+                    
+                    if (p_in == 0)
+                    {
+                        id_passbook.Remove(id_passbook[key[o]]);
+                        p_in++;
+                    }
+                    else
+                    {
+                        id_passbook.Remove(id_passbook[key[o]-p_in]);
+                        p_in++;
+                    }
+                }
+                if (cout_in != 0 && cout_out != 0)
+                {
+                    ListViewItem lvi = new ListViewItem(l.ToString());
+                    lvi.SubItems.Add(id_passbook[i].ToString());
+                    lvi.SubItems.Add(cout_in.ToString());
+                    lvi.SubItems.Add(cout_out.ToString());
+                    lvi.SubItems.Add((cout_in - cout_out).ToString());
+
+                    list_monthly.Items.Add(lvi);
+                    l++;
+                }
+                if (cout_in != 0 && cout_out == 0)
+                {
+                    ListViewItem lvi = new ListViewItem(l.ToString());
+                    lvi.SubItems.Add(id_passbook[i].ToString());
+                    lvi.SubItems.Add(cout_in.ToString());
+                    lvi.SubItems.Add("0");
+                    lvi.SubItems.Add(cout_in.ToString());
+
+                    list_monthly.Items.Add(lvi);
+                    l++;
+                }
+
+            }
+
+            for(int i =0;i<id_will.Count;i++)
+            {
+                int cout = 0;
+                for(int j=0;j<id_will.Count;i++)
+                {
+                    if ( PassbookModel.cut_date(id_will[i])== PassbookModel.cut_date(id_will[j]))
+                    {
+                        cout = cout + 1;
+                        ListViewItem lvi = new ListViewItem(l.ToString());
+                        lvi.SubItems.Add(id_passbook[i].ToString());
+                        lvi.SubItems.Add("0");
+                        lvi.SubItems.Add(cout.ToString());
+                        lvi.SubItems.Add((-cout).ToString());
+                        
+                         list_monthly.Items.Add(lvi);
+                        l++;
+                    }
+                }
+            }
 
         }
 
