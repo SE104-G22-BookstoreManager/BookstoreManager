@@ -59,6 +59,11 @@ namespace PassbookManagement
             	string _query = "SELECT * FROM " + tbl_types + " WHERE name =\"" +nameTypePassbook + "\"";
 			return Database.SQLiteDatabase.GetDataTable(_query);
         }
+        public static DataTable SelectAllWill (string id_wall )
+        {
+            string _query = "SELECT * FROM " + tbl_outcomes + " WHERE id =\"" + id_wall + "\"";
+            return Database.SQLiteDatabase.GetDataTable(_query);
+        }
         public static DataTable SelectTypePassbook()
         {
             string _query = "SELECT * FROM " + tbl_types;
@@ -181,7 +186,7 @@ namespace PassbookManagement
         }
         public static int count_datetime(string date1, string date2)
         {
-            return 15;
+            return 90;
         }
         public static int cut_month(string ngay)
         {

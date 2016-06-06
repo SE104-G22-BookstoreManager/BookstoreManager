@@ -463,7 +463,7 @@ namespace PassbookManagement.src
 		// Control for create daily report
 		private void btn_refresh_daily_Click(object sender, EventArgs e)
 		{
-
+            list_daily.Items.Clear();
 		}
 		////////////////////////////////////////////////////////////////////
 
@@ -596,40 +596,9 @@ namespace PassbookManagement.src
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //string date = date_monthly.Value.ToString();
-            //int month = PassbookModel.cut_month(date);
-            //DataTable query1 = PassbookModel.SelectallPassbooks();
-            //DataTable query2 = PassbookModel.SelectallDespoit();
-            //DataTable query3 = PassbookModel.SelectallWithdraw();
 
-            //DataTable query4 = PassbookModel.SelectIdTypePassbook(cbb_type_monthly.Text);
-            //object[] arraylist = query4.Rows[0].ItemArray;
-            //string idtype = arraylist[1].ToString();
+            }
 
-            
-            //for(int i=0;;i++)
-            //{
-            //            for(int i=0;i< query1.Rows.Count;i++)
-            //            {
-            //                object[] _ArrayIterm = query1.Rows[i].ItemArray;
-            //                string ngay = _ArrayIterm[4].ToString();
-            //                string id_type = _ArrayIterm[1].ToString();
-            //                string id_passbook = 
-            //                if (id_type == idtype && PassbookModel.cut_month(ngay) == month)
-            //                {
-                    
-            //                }
-
-            //                for(int j=0;j<query2.Rows.Count;j++)
-            //                {
-            //                    if ()
-            //                }
-            //            }
-            //}
-
-        }
 		////////////////////////////////////////////////////////////////////
 	}
-}
+
