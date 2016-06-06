@@ -472,7 +472,7 @@ namespace PassbookManagement.src
 		// Control for create monthly report
 		private void btn_refresh_monthly_Click(object sender, EventArgs e)
 		{
-            list_monthly.Clear();
+            list_monthly.Items.Clear();
 		}
 
         private void tab_selector_Click(object sender, EventArgs e)
@@ -602,7 +602,7 @@ namespace PassbookManagement.src
             object[] _itemArray1 = query.Rows[0].ItemArray;
             string type = _itemArray1[1].ToString();
             string date = date_monthly.Value.ToString();
-
+            
             List<string> id_passbook = new List<string>();
             List<string> id_will = new List<string>();
             // Select passbook 
@@ -639,7 +639,7 @@ namespace PassbookManagement.src
                 int cout_in = 1;
                 int cout_out = 0;
                 List<int> key = new List<int>();
-                for (int j = 1; j < id_passbook.Count; j++)
+                for (int j = i+1; j < id_passbook.Count; j++)
                 {
                     if (PassbookModel.cut_date(id_passbook[i]) == PassbookModel.cut_date(id_passbook[j]))
                     {
