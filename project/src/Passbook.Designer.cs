@@ -1021,7 +1021,7 @@
 			// col_income_monthly
 			// 
 			this.col_income_monthly.Text = "Income";
-			this.col_income_monthly.Width = 149;
+			this.col_income_monthly.Width = 143;
 			// 
 			// col_outcome_monthly
 			// 

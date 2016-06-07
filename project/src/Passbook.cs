@@ -158,7 +158,7 @@ namespace PassbookManagement.src
 			DateTime _dateTime = calendar_open.SelectionEnd.Date;
 			string type = cbb_type_passbook.GetItemText(cbb_type_passbook.SelectedItem.ToString());
 
-			DataTable _result2 = PassbookModel.SelectIdTypePassbook(type);
+			DataTable _result2 = PassbookModel.SelectPeriodByName(type);
 			int count = _result2.Rows.Count;
 			object[] _itemArray2 = _result2.Rows[0].ItemArray;
 			string _typeID = _itemArray2[1].ToString();
@@ -192,7 +192,7 @@ namespace PassbookManagement.src
 
 		public void return_typepassbook()
 		{
-			DataTable _result2 = PassbookModel.SelectTypePassbook();
+			DataTable _result2 = PassbookModel.SelectAllPeriod();
 			if (_result2.Rows.Count != 0)
 			{
 				for (int i = 0; i < _result2.Rows.Count; i++)
@@ -247,7 +247,7 @@ namespace PassbookManagement.src
 						txt_address_deposit.Enabled = false;
 						txt_phone_number_deposit.Enabled = false;
 
-						DataTable _passbooks = PassbookModel.SelectPassbooksbyIdcustomer(lbl_customer_id_deposit.Text);
+						DataTable _passbooks = PassbookModel.SelectPassbooksByCustomerId(lbl_customer_id_deposit.Text);
 						for (int i = 0; i < _passbooks.Rows.Count; i++)
 						{
 							object[] _items_1 = _passbooks.Rows[i].ItemArray;
@@ -283,7 +283,7 @@ namespace PassbookManagement.src
 			DataTable _passbook = PassbookModel.SelectPassbookById(cbb_passbook_deposit.Text);
 			object[] _items_1 = _passbook.Rows[0].ItemArray;
 
-			if (PassbookModel.InsertIncomes(cbb_passbook_deposit.Text, lbl_customer_id_deposit.Text, txt_cash_deposit.Text, _dateTime.ToString()) == false)
+			if (PassbookModel.InsertIncome(cbb_passbook_deposit.Text, lbl_customer_id_deposit.Text, txt_cash_deposit.Text, _dateTime.ToString()) == false)
 			{
 				MessageBox.Show("Something went wrong!!!");
 				return;
@@ -333,7 +333,7 @@ namespace PassbookManagement.src
 						txt_address_withdrawal.Enabled = false;
 						txt_phone_number_withdrawal.Enabled = false;
 
-						DataTable _passbooks = PassbookModel.SelectPassbooksbyIdcustomer(lbl_customer_id_withdrawal.Text);
+						DataTable _passbooks = PassbookModel.SelectPassbooksByCustomerId(lbl_customer_id_withdrawal.Text);
 						for (int i = 0; i < _passbooks.Rows.Count; i++)
 						{
 							object[] _items_1 = _passbooks.Rows[i].ItemArray;
@@ -357,15 +357,17 @@ namespace PassbookManagement.src
 			string date_now = DateTime.Now.ToString().Trim();
 			// string date_send = "";
 
-			DataTable _result2 = PassbookModel.SelectPassbookById(cbb_passbook_withdrawal.Text);
-			object[] _itemArray2 = _result2.Rows[0].ItemArray;
+			DataTable _passbooks = PassbookModel.SelectPassbookById(cbb_passbook_withdrawal.Text);
+			object[] _itemArray2 = _passbooks.Rows[0].ItemArray;
 			string id_customer = _itemArray2[2].ToString();
-			string ngay_open = _itemArray2[4].ToString();
-			int count_ngay = PassbookModel.count_datetime(ngay_open, date_now);
+
 			string type = _itemArray2[1].ToString();
 			string money_goc = _itemArray2[3].ToString();
 
-			DataTable _result3 = PassbookModel.SelectTypebyIDtype(type);
+			string ngay_open = _itemArray2[4].ToString();
+			int count_ngay = Processor.count_datetime(ngay_open, date_now);
+
+			DataTable _result3 = PassbookModel.SelectPeriodById(type);
 			object[] _itemArray3 = _result3.Rows[0].ItemArray;
 
 			string rate = _itemArray3[3].ToString();
@@ -409,7 +411,7 @@ namespace PassbookManagement.src
 					PassbookModel.UpdateCashByPassbookId(cbb_passbook_withdrawal.Text, money_sum.ToString());
 
 					DateTime _dateTime = calendar_withdrawal.SelectionEnd.Date;
-					if (PassbookModel.InsertWithDraw(cbb_passbook_withdrawal.Text, type, txt_cash_withdrawal.Text, id_customer, _dateTime.ToString(), money_sum.ToString()) == false)
+					if (PassbookModel.InsertOutcome(cbb_passbook_withdrawal.Text, type, txt_cash_withdrawal.Text, id_customer, _dateTime.ToString(), money_sum.ToString()) == false)
 					{
 						MessageBox.Show(" error");
 					}
@@ -480,7 +482,7 @@ namespace PassbookManagement.src
 
 			string date = datetime1.Value.ToString();
 
-			DataTable result2 = PassbookModel.SelectTypePassbook();
+			DataTable result2 = PassbookModel.SelectAllPeriod();
 			int count = result2.Rows.Count;
 			string[] loai = new string[count];
 			double[] tongthu = new double[count];
@@ -493,8 +495,8 @@ namespace PassbookManagement.src
 				tongchi[i] = 0;
 			}
 			DataTable result1 = PassbookModel.SelectAllPassbooks();
-			DataTable result02 = PassbookModel.SelectAllDeposit();
-			DataTable result03 = PassbookModel.SelectAllWithdrawal();
+			DataTable result02 = PassbookModel.SelectAllIncomes();
+			DataTable result03 = PassbookModel.SelectAllOutcomes();
 			int count_2 = result1.Rows.Count;
 			int count_3 = result02.Rows.Count;
 			int count_4 = result03.Rows.Count;
@@ -504,7 +506,7 @@ namespace PassbookManagement.src
 				string ngay = _itemArray1[4].ToString();
 				string type = _itemArray1[1].ToString();
 				string cash = _itemArray1[3].ToString();
-				if (PassbookModel.cut_date(ngay) == PassbookModel.cut_date(date))
+				if (Processor.cut_date(ngay) == Processor.cut_date(date))
 				{
 					for (int j = 0; j < count; j++)
 					{
@@ -526,7 +528,7 @@ namespace PassbookManagement.src
 				object[] _itemaray3 = query.Rows[0].ItemArray;
 				string type = _itemaray3[1].ToString();
 
-				if (PassbookModel.cut_date(ngay) == PassbookModel.cut_date(date))
+				if (Processor.cut_date(ngay) == Processor.cut_date(date))
 				{
 					for (int j = 0; j < count; j++)
 					{
@@ -549,7 +551,7 @@ namespace PassbookManagement.src
 				string pass_id = _itemArray3[1].ToString();
 				string type = _itemArray3[2].ToString();
 
-				if (PassbookModel.cut_date(ngay) == PassbookModel.cut_date(date))
+				if (Processor.cut_date(ngay) == Processor.cut_date(date))
 				{
 					for (int j = 0; j < count; j++)
 					{
@@ -582,7 +584,7 @@ namespace PassbookManagement.src
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			DataTable query = PassbookModel.SelectIdTypePassbook(cbb_type_monthly.Text);
+			DataTable query = PassbookModel.SelectPeriodByName(cbb_type_monthly.Text);
 			object[] _itemArray1 = query.Rows[0].ItemArray;
 			string type = _itemArray1[1].ToString();
 			string date = date_monthly.Value.ToString();
@@ -590,7 +592,7 @@ namespace PassbookManagement.src
 			List<string> id_passbook = new List<string>();
 			List<string> id_will = new List<string>();
 			// Select passbook 
-			DataTable query1 = PassbookModel.SelectAllWithdrawal();
+			DataTable query1 = PassbookModel.SelectAllOutcomes();
 			DataTable query2 = PassbookModel.SelectAllPassbooks();
 			for (int i = 0; i < query2.Rows.Count; i++)
 			{
@@ -598,7 +600,7 @@ namespace PassbookManagement.src
 				string type_passbook = array2[1].ToString();
 				string id = array2[0].ToString();
 				string date_passbook = array2[4].ToString();
-				if (type == type_passbook && PassbookModel.cut_month(date_passbook) == PassbookModel.cut_month(date))
+				if (type == type_passbook && Processor.cut_month(date_passbook) == Processor.cut_month(date))
 				{
 					id_passbook.Add(date_passbook);
 				}
@@ -611,7 +613,7 @@ namespace PassbookManagement.src
 				string id = array2[0].ToString();
 				string date_passbook = array2[5].ToString();
 				string return1 = array2[6].ToString();
-				if (type == type_passbook && PassbookModel.cut_month(date_passbook) == PassbookModel.cut_month(date) && return1 == "0")
+				if (type == type_passbook && Processor.cut_month(date_passbook) == Processor.cut_month(date) && return1 == "0")
 				{
 					id_will.Add(date_passbook);
 
@@ -625,7 +627,7 @@ namespace PassbookManagement.src
 				List<int> key = new List<int>();
 				for (int j = i + 1; j < id_passbook.Count; j++)
 				{
-					if (PassbookModel.cut_date(id_passbook[i]) == PassbookModel.cut_date(id_passbook[j]))
+					if (Processor.cut_date(id_passbook[i]) == Processor.cut_date(id_passbook[j]))
 					{
 						cout_in = cout_in + 1;
 						key.Add(j);
@@ -637,7 +639,7 @@ namespace PassbookManagement.src
 				List<int> key1 = new List<int>();
 				for (int j = 0; j < id_will.Count; j++)
 				{
-					if (PassbookModel.cut_date(id_passbook[i]) == PassbookModel.cut_date(id_will[j]))
+					if (Processor.cut_date(id_passbook[i]) == Processor.cut_date(id_will[j]))
 					{
 						cout_out = cout_out + 1;
 						key1.Add(j);
@@ -704,7 +706,7 @@ namespace PassbookManagement.src
 				int cout = 0;
 				for (int j = 0; j < id_will.Count; i++)
 				{
-					if (PassbookModel.cut_date(id_will[i]) == PassbookModel.cut_date(id_will[j]))
+					if (Processor.cut_date(id_will[i]) == Processor.cut_date(id_will[j]))
 					{
 						cout = cout + 1;
 						ListViewItem lvi = new ListViewItem(l.ToString());
