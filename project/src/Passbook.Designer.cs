@@ -31,7 +31,7 @@
 			this.tab_selector = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_open = new System.Windows.Forms.TabPage();
-			this.cbb_passbook_open = new System.Windows.Forms.ComboBox();
+			this.cbb_period_open = new System.Windows.Forms.ComboBox();
 			this.lbl_customer_id_open = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_refresh_open = new MaterialSkin.Controls.MaterialFlatButton();
 			this.btn_create_open = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -145,7 +145,7 @@
 			// tab_open
 			// 
 			this.tab_open.BackColor = System.Drawing.Color.White;
-			this.tab_open.Controls.Add(this.cbb_passbook_open);
+			this.tab_open.Controls.Add(this.cbb_period_open);
 			this.tab_open.Controls.Add(this.lbl_customer_id_open);
 			this.tab_open.Controls.Add(this.btn_refresh_open);
 			this.tab_open.Controls.Add(this.btn_create_open);
@@ -166,13 +166,13 @@
 			this.tab_open.TabIndex = 0;
 			this.tab_open.Text = "Passbook";
 			// 
-			// cbb_passbook_open
+			// cbb_period_open
 			// 
-			this.cbb_passbook_open.FormattingEnabled = true;
-			this.cbb_passbook_open.Location = new System.Drawing.Point(360, 57);
-			this.cbb_passbook_open.Name = "cbb_passbook_open";
-			this.cbb_passbook_open.Size = new System.Drawing.Size(227, 21);
-			this.cbb_passbook_open.TabIndex = 15;
+			this.cbb_period_open.FormattingEnabled = true;
+			this.cbb_period_open.Location = new System.Drawing.Point(360, 57);
+			this.cbb_period_open.Name = "cbb_period_open";
+			this.cbb_period_open.Size = new System.Drawing.Size(227, 21);
+			this.cbb_period_open.TabIndex = 15;
 			// 
 			// lbl_customer_id_open
 			// 
@@ -398,7 +398,7 @@
             this.col_customer_id,
             this.col_balance});
 			this.list_lookup.Depth = 0;
-			this.list_lookup.Font = new System.Drawing.Font("Roboto", 24F);
+			this.list_lookup.Font = new System.Drawing.Font("Roboto", 18F);
 			this.list_lookup.FullRowSelect = true;
 			this.list_lookup.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.list_lookup.Location = new System.Drawing.Point(0, 33);
@@ -700,6 +700,7 @@
 			this.cbb_passbook_withdrawal.Name = "cbb_passbook_withdrawal";
 			this.cbb_passbook_withdrawal.Size = new System.Drawing.Size(227, 21);
 			this.cbb_passbook_withdrawal.TabIndex = 7;
+			this.cbb_passbook_withdrawal.SelectedIndexChanged += new System.EventHandler(this.cbb_passbook_withdrawal_SelectedIndexChanged);
 			// 
 			// calendar_withdrawal
 			// 
@@ -891,7 +892,7 @@
             this.col_outcome_daily,
             this.col_total_daily});
 			this.list_daily.Depth = 0;
-			this.list_daily.Font = new System.Drawing.Font("Roboto", 24F);
+			this.list_daily.Font = new System.Drawing.Font("Roboto", 18F);
 			this.list_daily.FullRowSelect = true;
 			this.list_daily.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.list_daily.Location = new System.Drawing.Point(0, 28);
@@ -970,7 +971,7 @@
             this.col_outcome_monthly,
             this.col_total_monthly});
 			this.list_monthly.Depth = 0;
-			this.list_monthly.Font = new System.Drawing.Font("Roboto", 24F);
+			this.list_monthly.Font = new System.Drawing.Font("Roboto", 18F);
 			this.list_monthly.FullRowSelect = true;
 			this.list_monthly.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.list_monthly.Location = new System.Drawing.Point(0, 29);
@@ -1184,7 +1185,7 @@
 		private System.Windows.Forms.ToolStripMenuItem item_setting;
 		private System.Windows.Forms.ToolStripMenuItem item_help;
 		private System.Windows.Forms.ToolStripMenuItem item_about;
-		private System.Windows.Forms.ComboBox cbb_passbook_open;
+		private System.Windows.Forms.ComboBox cbb_period_open;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_deposit;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_withdrawal;
         private System.Windows.Forms.DateTimePicker datetime1;

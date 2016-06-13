@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace PassbookManagement
 {
+	public static class TblColumn
+	{
+		public static readonly int MIN_DEPOSIT = 0;
+		public static readonly int MIN_DEPOSIT_MORE = 1;
+	}
+
 	public static class Processor
 	{
 		public static int Compare(string num1, string num2)
@@ -17,6 +23,11 @@ namespace PassbookManagement
 		public static double Add(string num1, string num2)
 		{
 			return Convert.ToDouble(num1) + Convert.ToDouble(num2);
+		}
+
+		public static double Sub(string num1, string num2)
+		{
+			return Convert.ToDouble(num1) - Convert.ToDouble(num2);
 		}
 
 		public static int count_datetime(string date1, string date2)
