@@ -33,12 +33,12 @@ namespace PassbookManagement.src
 		{
 			if (txt_min_edit_cash.Text != "")
 			{
-				PassbookModel.updatemoneymin(txt_min_edit_cash.Text);
+				PassbookModel.UpdateMinCash(txt_min_edit_cash.Text);
 			}
 
 			if (txt_add_min_edit_cash.Text != "")
 			{
-				PassbookModel.updateMoneyMinMore(txt_add_min_edit_cash.Text);
+				PassbookModel.UpdateMinIncome(txt_add_min_edit_cash.Text);
 			}
 		}
 

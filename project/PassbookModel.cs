@@ -204,18 +204,6 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-
-
-		
-
-		
-
-		
-
-		
-
-		
-
 		public static bool UpdateClosePassbookByPassbookId(string id_passbook, string close)
 		{
 			string where = "id=\"" + id_passbook + "\" ";
@@ -226,20 +214,19 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
 		}
 
-		public static bool updatemoneymin(string money)
+		public static bool UpdateMinCash(string cash)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
+			_data.Add("Min_Deposit", cash);
 
-			_data.Add("Min_Deposit", money);
-			//string where = "";
 			return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
 		}
 
-		public static bool updateMoneyMinMore(string money)
+		public static bool UpdateMinIncome(string cash)
 		{
-
 			Dictionary<string, string> _data = new Dictionary<string, string>();
-			_data.Add("Min_DepositMore", money);
+			_data.Add("Min_DepositMore", cash);
+
 			return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
 		}
 	}

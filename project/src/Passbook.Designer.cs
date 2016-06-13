@@ -31,7 +31,7 @@
 			this.tab_selector = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_open = new System.Windows.Forms.TabPage();
-			this.cbb_type_passbook = new System.Windows.Forms.ComboBox();
+			this.cbb_passbook_open = new System.Windows.Forms.ComboBox();
 			this.lbl_customer_id_open = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_refresh_open = new MaterialSkin.Controls.MaterialFlatButton();
 			this.btn_create_open = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -83,7 +83,6 @@
 			this.lbl_customer_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_daily_report = new System.Windows.Forms.TabPage();
 			this.datetime1 = new System.Windows.Forms.DateTimePicker();
-			this.button1 = new System.Windows.Forms.Button();
 			this.btn_refresh_daily = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_daily = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,7 +91,6 @@
 			this.col_outcome_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tab_monthly_report = new System.Windows.Forms.TabPage();
-			this.button2 = new System.Windows.Forms.Button();
 			this.btn_refresh_monthly = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_monthly = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -127,7 +125,6 @@
 			this.tab_selector.Name = "tab_selector";
 			this.tab_selector.Size = new System.Drawing.Size(1500, 45);
 			this.tab_selector.TabIndex = 1;
-			this.tab_selector.Click += new System.EventHandler(this.tab_selector_Click);
 			// 
 			// tab_control
 			// 
@@ -148,7 +145,7 @@
 			// tab_open
 			// 
 			this.tab_open.BackColor = System.Drawing.Color.White;
-			this.tab_open.Controls.Add(this.cbb_type_passbook);
+			this.tab_open.Controls.Add(this.cbb_passbook_open);
 			this.tab_open.Controls.Add(this.lbl_customer_id_open);
 			this.tab_open.Controls.Add(this.btn_refresh_open);
 			this.tab_open.Controls.Add(this.btn_create_open);
@@ -169,13 +166,13 @@
 			this.tab_open.TabIndex = 0;
 			this.tab_open.Text = "Passbook";
 			// 
-			// cbb_type_passbook
+			// cbb_passbook_open
 			// 
-			this.cbb_type_passbook.FormattingEnabled = true;
-			this.cbb_type_passbook.Location = new System.Drawing.Point(360, 57);
-			this.cbb_type_passbook.Name = "cbb_type_passbook";
-			this.cbb_type_passbook.Size = new System.Drawing.Size(227, 21);
-			this.cbb_type_passbook.TabIndex = 15;
+			this.cbb_passbook_open.FormattingEnabled = true;
+			this.cbb_passbook_open.Location = new System.Drawing.Point(360, 57);
+			this.cbb_passbook_open.Name = "cbb_passbook_open";
+			this.cbb_passbook_open.Size = new System.Drawing.Size(227, 21);
+			this.cbb_passbook_open.TabIndex = 15;
 			// 
 			// lbl_customer_id_open
 			// 
@@ -851,7 +848,6 @@
 			// 
 			this.tab_daily_report.BackColor = System.Drawing.Color.White;
 			this.tab_daily_report.Controls.Add(this.datetime1);
-			this.tab_daily_report.Controls.Add(this.button1);
 			this.tab_daily_report.Controls.Add(this.btn_refresh_daily);
 			this.tab_daily_report.Controls.Add(this.list_daily);
 			this.tab_daily_report.Location = new System.Drawing.Point(4, 22);
@@ -868,16 +864,6 @@
 			this.datetime1.Name = "datetime1";
 			this.datetime1.Size = new System.Drawing.Size(200, 20);
 			this.datetime1.TabIndex = 4;
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(228, 6);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 3;
-			this.button1.Text = "Show";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// btn_refresh_daily
 			// 
@@ -946,7 +932,6 @@
 			// tab_monthly_report
 			// 
 			this.tab_monthly_report.BackColor = System.Drawing.Color.White;
-			this.tab_monthly_report.Controls.Add(this.button2);
 			this.tab_monthly_report.Controls.Add(this.btn_refresh_monthly);
 			this.tab_monthly_report.Controls.Add(this.list_monthly);
 			this.tab_monthly_report.Controls.Add(this.date_monthly);
@@ -958,16 +943,6 @@
 			this.tab_monthly_report.TabIndex = 5;
 			this.tab_monthly_report.Text = "Monthly Report";
 			this.tab_monthly_report.UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this.button2.Location = new System.Drawing.Point(351, 8);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 4;
-			this.button2.Text = "Search";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// btn_refresh_monthly
 			// 
@@ -1209,11 +1184,9 @@
 		private System.Windows.Forms.ToolStripMenuItem item_setting;
 		private System.Windows.Forms.ToolStripMenuItem item_help;
 		private System.Windows.Forms.ToolStripMenuItem item_about;
-		private System.Windows.Forms.ComboBox cbb_type_passbook;
+		private System.Windows.Forms.ComboBox cbb_passbook_open;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_deposit;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_withdrawal;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker datetime1;
-        private System.Windows.Forms.Button button2;
 	}
 }
