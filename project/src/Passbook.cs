@@ -373,7 +373,6 @@ namespace PassbookManagement.src
 				txt_identity_number_withdrawal.Text == "" ||
 				txt_address_withdrawal.Text == "" ||
 				txt_phone_number_withdrawal.Text == "" ||
-				txt_cash_withdrawal.Text == "" ||
 				cbb_passbook_withdrawal.Text == "")
 			{
 				MessageBox.Show("All informations are required!!!");
@@ -396,65 +395,48 @@ namespace PassbookManagement.src
 				return;
 			}
 
+			string _rate = _period[3].ToString();
+			string _cash = _passbook[3].ToString();
+
+			double money1_goc = Convert.ToDouble(_cash);
+			Double money_sum = money1_goc + money1_goc * Convert.ToDouble(_rate) * (((_current - _opened).Days) / 30);
 
 
 
-			string date_now = DateTime.Now.ToString().Trim();
-
-
-			string id_customer = _passbook[2].ToString();
-
-
-			string money_goc = _passbook[3].ToString();
-
-			string ngay_open = _passbook[4].ToString();
-			int count_ngay = Processor.count_datetime(ngay_open, date_now);
-			string rate = _period[3].ToString();
-
-
-			double rate_1 = Convert.ToDouble(rate);
-			double money1_goc = Convert.ToDouble(money_goc);
-			Double money_sum = money1_goc + money1_goc * rate_1 * (count_ngay / 30);
-			double cash_rut = Convert.ToDouble(txt_cash_withdrawal.Text);
-
-			if (cash_rut < money_sum)
+			if (_periodId == "0")
 			{
-				if (_periodId == "3")
+				if(txt_cash_withdrawal.Text == "")
 				{
-					txt_cash_withdrawal.Text = money_sum.ToString();
-					MessageBox.Show("bạn  rút hết tiền trong tài khoản : " + txt_cash_withdrawal.Text);
-					money_sum = 0;
+					MessageBox.Show("All informations are required!!!");
+					return;
+				}
+
+				if(Processor.Compare(_cash, txt_cash_withdrawal.Text) < 0)
+				{
+					MessageBox.Show("Không đủ số tiền rút. Vui lòng kiểm tra lại!!!");
+					return;
+				}
+
+				money_sum = money_sum - Convert.ToDouble(txt_cash_withdrawal.Text);
+				if (money_sum == 0)
+				{
 					PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
-
-				}
-				if (_periodId == "6")
-				{
-					txt_cash_withdrawal.Text = money_sum.ToString();
-					MessageBox.Show("bạn rút hết tiền trong tài khoảng : " + txt_cash_withdrawal.Text);
-					money_sum = 0;
-					PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
-
-				}
-				if (_periodId == "0")
-				{
-					money_sum = money_sum - cash_rut;
-					if (money_sum == 0)
-					{
-						PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
-					}
-					MessageBox.Show(" success");
-				}
-				PassbookModel.UpdateCashByPassbookId(cbb_passbook_withdrawal.Text, money_sum.ToString());
-
-				DateTime _dateTime = calendar_withdrawal.SelectionEnd.Date;
-				if (PassbookModel.InsertOutcome(cbb_passbook_withdrawal.Text, _periodId, txt_cash_withdrawal.Text, id_customer, _dateTime.ToString(), money_sum.ToString()) == false)
-				{
-					MessageBox.Show(" error");
 				}
 			}
 			else
 			{
-				MessageBox.Show("không đủ tiền để rút, nhập lại số tiền rút  ");
+				MessageBox.Show("Bạn rút hết tiền trong tài khoản");
+				money_sum = 0;
+				PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
+			}
+
+			PassbookModel.UpdateCashByPassbookId(cbb_passbook_withdrawal.Text, money_sum.ToString());
+
+			string id_customer = _passbook[2].ToString();
+			DateTime _dateTime = calendar_withdrawal.SelectionEnd.Date;
+			if (PassbookModel.InsertOutcome(cbb_passbook_withdrawal.Text, _periodId, txt_cash_withdrawal.Text, id_customer, _dateTime.ToString(), money_sum.ToString()) == false)
+			{
+				MessageBox.Show(" error");
 			}
 		}
 
