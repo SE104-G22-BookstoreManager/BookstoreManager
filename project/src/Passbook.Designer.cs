@@ -50,8 +50,8 @@
 			this.list_lookup = new MaterialSkin.Controls.MaterialListView();
 			this.col_order = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_passbook_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.col_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.col_customer_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_period = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_customer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_balance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tab_deposit = new System.Windows.Forms.TabPage();
 			this.lbl_customer_id_deposit = new MaterialSkin.Controls.MaterialLabel();
@@ -82,11 +82,11 @@
 			this.lbl_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.lbl_customer_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_daily_report = new System.Windows.Forms.TabPage();
-			this.datetime1 = new System.Windows.Forms.DateTimePicker();
+			this.date_daily = new System.Windows.Forms.DateTimePicker();
 			this.btn_refresh_daily = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_daily = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.col_type_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_period_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_income_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_outcome_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -394,8 +394,8 @@
 			this.list_lookup.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_order,
             this.col_passbook_id,
-            this.col_type,
-            this.col_customer_id,
+            this.col_period,
+            this.col_customer,
             this.col_balance});
 			this.list_lookup.Depth = 0;
 			this.list_lookup.Font = new System.Drawing.Font("Roboto", 18F);
@@ -419,17 +419,17 @@
 			// col_passbook_id
 			// 
 			this.col_passbook_id.Text = "Passbook ID";
-			this.col_passbook_id.Width = 201;
+			this.col_passbook_id.Width = 150;
 			// 
-			// col_type
+			// col_period
 			// 
-			this.col_type.Text = "Type";
-			this.col_type.Width = 111;
+			this.col_period.Text = "Period";
+			this.col_period.Width = 111;
 			// 
-			// col_customer_id
+			// col_customer
 			// 
-			this.col_customer_id.Text = "Customer ID";
-			this.col_customer_id.Width = 133;
+			this.col_customer.Text = "Customer";
+			this.col_customer.Width = 162;
 			// 
 			// col_balance
 			// 
@@ -848,7 +848,7 @@
 			// tab_daily_report
 			// 
 			this.tab_daily_report.BackColor = System.Drawing.Color.White;
-			this.tab_daily_report.Controls.Add(this.datetime1);
+			this.tab_daily_report.Controls.Add(this.date_daily);
 			this.tab_daily_report.Controls.Add(this.btn_refresh_daily);
 			this.tab_daily_report.Controls.Add(this.list_daily);
 			this.tab_daily_report.Location = new System.Drawing.Point(4, 22);
@@ -859,12 +859,12 @@
 			this.tab_daily_report.Text = "Daily Report";
 			this.tab_daily_report.UseVisualStyleBackColor = true;
 			// 
-			// datetime1
+			// date_daily
 			// 
-			this.datetime1.Location = new System.Drawing.Point(6, 5);
-			this.datetime1.Name = "datetime1";
-			this.datetime1.Size = new System.Drawing.Size(200, 20);
-			this.datetime1.TabIndex = 4;
+			this.date_daily.Location = new System.Drawing.Point(6, 5);
+			this.date_daily.Name = "date_daily";
+			this.date_daily.Size = new System.Drawing.Size(200, 20);
+			this.date_daily.TabIndex = 4;
 			// 
 			// btn_refresh_daily
 			// 
@@ -887,7 +887,7 @@
 			this.list_daily.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.list_daily.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_order_daily,
-            this.col_type_daily,
+            this.col_period_daily,
             this.col_income_daily,
             this.col_outcome_daily,
             this.col_total_daily});
@@ -910,10 +910,10 @@
 			this.col_order_daily.Text = "Order";
 			this.col_order_daily.Width = 110;
 			// 
-			// col_type_daily
+			// col_period_daily
 			// 
-			this.col_type_daily.Text = "Type";
-			this.col_type_daily.Width = 124;
+			this.col_period_daily.Text = "Period";
+			this.col_period_daily.Width = 124;
 			// 
 			// col_income_daily
 			// 
@@ -1133,8 +1133,8 @@
 		private MaterialSkin.Controls.MaterialListView list_lookup;
 		private System.Windows.Forms.ColumnHeader col_order;
 		private System.Windows.Forms.ColumnHeader col_passbook_id;
-		private System.Windows.Forms.ColumnHeader col_type;
-		private System.Windows.Forms.ColumnHeader col_customer_id;
+		private System.Windows.Forms.ColumnHeader col_period;
+		private System.Windows.Forms.ColumnHeader col_customer;
 		private System.Windows.Forms.ColumnHeader col_balance;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_address_deposit;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_phone_number_deposit;
@@ -1160,7 +1160,7 @@
 		private MaterialSkin.Controls.MaterialLabel lbl_customer_withdrawal;
 		private MaterialSkin.Controls.MaterialListView list_daily;
 		private System.Windows.Forms.ColumnHeader col_order_daily;
-		private System.Windows.Forms.ColumnHeader col_type_daily;
+		private System.Windows.Forms.ColumnHeader col_period_daily;
 		private System.Windows.Forms.ColumnHeader col_income_daily;
 		private System.Windows.Forms.ColumnHeader col_outcome_daily;
         private System.Windows.Forms.ColumnHeader col_total_daily;
@@ -1188,6 +1188,6 @@
 		private System.Windows.Forms.ComboBox cbb_period_open;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_deposit;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_withdrawal;
-        private System.Windows.Forms.DateTimePicker datetime1;
+        private System.Windows.Forms.DateTimePicker date_daily;
 	}
 }

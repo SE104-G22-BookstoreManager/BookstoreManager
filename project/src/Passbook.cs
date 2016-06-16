@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace PassbookManagement.src
 {
@@ -18,13 +19,16 @@ namespace PassbookManagement.src
 		{
 			InitializeComponent();
 
-			Database.SQLiteDatabase = new SQLiteDatabase("../../project/data/passbook.s3db");
+			Database.SQLiteDatabase = new SQLiteDatabase("passbook.s3db");
 
 			var materialSkinManager = MaterialSkinManager.Instance;
 			materialSkinManager.AddFormToManage(this);
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 			materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan500, Primary.Cyan600, Primary.Cyan300, Accent.LightBlue200, TextShade.WHITE);
-			GetPassbookPeriodType();
+
+			Processor.ReadParams("params.pro");
+
+			GetPassbookPeriod();
 		}
 
 
@@ -84,12 +88,12 @@ namespace PassbookManagement.src
 			}
 
 			object[] _customer = _data.Rows[0].ItemArray;
-			lbl_customer_id_open.Text = _customer[0].ToString();
 
-			txt_name_open.Text = _customer[1].ToString();
-			txt_identity_number_open.Text = _customer[2].ToString();
-			txt_address_open.Text = _customer[3].ToString();
-			txt_phone_number_open.Text = _customer[4].ToString();
+			lbl_customer_id_open.Text		= _customer[TblColumn.A_ID].ToString();
+			txt_name_open.Text				= _customer[TblColumn.A_NAME].ToString();
+			txt_identity_number_open.Text	= _customer[TblColumn.A_IDENTITY_NUMBER].ToString();
+			txt_address_open.Text			= _customer[TblColumn.A_ADDRESS].ToString();
+			txt_phone_number_open.Text		= _customer[TblColumn.A_PHONE_NUMBER].ToString();
 
 			txt_name_open.Enabled = false;
 			txt_identity_number_open.Enabled = false;
@@ -122,9 +126,10 @@ namespace PassbookManagement.src
 				return;
 			}
 
-			_data = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
-			object[] _items_1 = _data.Rows[0].ItemArray;
-			lbl_customer_id_open.Text = _items_1[0].ToString();
+			DataTable _data1 = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
+			object[] _customer = _data1.Rows[0].ItemArray;
+
+			lbl_customer_id_open.Text = _customer[TblColumn.A_ID].ToString();
 			MessageBox.Show("Success.");
 
 			txt_name_open.Enabled = false;
@@ -146,24 +151,23 @@ namespace PassbookManagement.src
 				return;
 			}
 
-			DataTable _data = PassbookModel.SelectAllConfig();
-			object[] _params = _data.Rows[0].ItemArray;
-
-			if (Convert.ToDouble(txt_cash_open.Text) < Convert.ToDouble(_params[0].ToString()))
+			if (Convert.ToDouble(txt_cash_open.Text) < Convert.ToDouble(Params.PARAMS[Params.MIN_CASH].ToString()))
 			{
 				MessageBox.Show("Số tiền gửi quá ít, vui lòng kiểm tra lại");
 				return;
 			}
 
-			DataTable _data2 = PassbookModel.SelectPeriodByName(cbb_period_open.Text);
-			if(_data2.Rows.Count == 0)
+			DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_open.Text);
+
+			if(_data.Rows.Count == 0)
 			{
 				MessageBox.Show("Something went wrong!!!");
 				return;
 			}
 
-			object[] _period = _data2.Rows[0].ItemArray;
-			string _periodId = _period[1].ToString();
+			object[] _period = _data.Rows[0].ItemArray;
+
+			string _periodId = _period[TblColumn.T_ID].ToString();
 			DateTime _dateTime = calendar_open.SelectionEnd.Date;
 
 			if (PassbookModel.InsertPassbook(_periodId, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString(), "true") == false)
@@ -191,7 +195,7 @@ namespace PassbookManagement.src
 			txt_cash_open.Text = "";
 		}
 
-		public void GetPassbookPeriodType()
+		public void GetPassbookPeriod()
 		{
 			DataTable _result2 = PassbookModel.SelectAllPeriod();
 			if (_result2.Rows.Count != 0)
@@ -199,8 +203,8 @@ namespace PassbookManagement.src
 				for (int i = 0; i < _result2.Rows.Count; i++)
 				{
 					object[] _itemArray2 = _result2.Rows[i].ItemArray;
-					cbb_period_open.Items.Add(_itemArray2[2].ToString());
-					cbb_type_monthly.Items.Add(_itemArray2[2].ToString());
+					cbb_period_open.Items.Add(_itemArray2[TblColumn.T_NAME].ToString());
+					cbb_type_monthly.Items.Add(_itemArray2[TblColumn.T_NAME].ToString());
 				}
 			}
 		}
@@ -212,17 +216,48 @@ namespace PassbookManagement.src
 		private void btn_refresh_lookup_Click(object sender, EventArgs e)
 		{
 			list_lookup.Items.Clear();
-			DataTable _result2 = PassbookModel.SelectAllPassbooks();
-			int count = _result2.Rows.Count;
-			for (int i = 0; i < count; i++)
+
+			DataTable _data = PassbookModel.SelectAllPassbooks();
+
+			for (int i = 0; i < _data.Rows.Count; i++)
 			{
-				object[] _itemArray2 = _result2.Rows[i].ItemArray;
-				ListViewItem lvi = new ListViewItem(i.ToString());
-				lvi.SubItems.Add(_itemArray2[0].ToString());
-				lvi.SubItems.Add(_itemArray2[1].ToString());
-				lvi.SubItems.Add(_itemArray2[2].ToString());
-				lvi.SubItems.Add(_itemArray2[3].ToString());
-				list_lookup.Items.Add(lvi);
+				object[] _passbook = _data.Rows[i].ItemArray;
+
+				ListViewItem _item = new ListViewItem((i + 1).ToString());
+
+
+				// Set Passbook ID
+				_item.SubItems.Add(_passbook[TblColumn.P_ID].ToString());
+
+
+				// Set Period
+				DataTable _data1 = PassbookModel.SelectPeriodById(_passbook[TblColumn.P_PERIOD_ID].ToString());
+				if(_data1.Rows.Count == 0)
+				{
+					MessageBox.Show("Something went wrong!!!");
+					return;
+				}
+
+				object[] _period = _data1.Rows[0].ItemArray;
+				_item.SubItems.Add(_period[TblColumn.T_NAME].ToString());
+
+
+				// Set Customer
+				DataTable _data2 = PassbookModel.SelectCustomerById(_passbook[TblColumn.P_CUSTOMER_ID].ToString());
+				if (_data2.Rows.Count == 0)
+				{
+					MessageBox.Show("Something went wrong!!!");
+					return;
+				}
+
+				object[] _customer = _data2.Rows[0].ItemArray;
+				_item.SubItems.Add(_customer[TblColumn.A_NAME].ToString());
+
+
+				// Set balance
+				_item.SubItems.Add(_passbook[TblColumn.P_CASH].ToString());
+
+				list_lookup.Items.Add(_item);
 			}
 		}
 		////////////////////////////////////////////////////////////////////
@@ -248,24 +283,23 @@ namespace PassbookManagement.src
 
 			object[] _customer = _data.Rows[0].ItemArray;
 
-			lbl_customer_id_deposit.Text = _customer[0].ToString();
-
-			txt_name_deposit.Text = _customer[1].ToString();
-			txt_identity_number_deposit.Text = _customer[2].ToString();
-
-			txt_address_deposit.Text = _customer[3].ToString();
-			txt_phone_number_deposit.Text = _customer[4].ToString();
+			lbl_customer_id_deposit.Text		= _customer[TblColumn.A_ID].ToString();
+			txt_name_deposit.Text				= _customer[TblColumn.A_NAME].ToString();
+			txt_identity_number_deposit.Text	= _customer[TblColumn.A_IDENTITY_NUMBER].ToString();
+			txt_address_deposit.Text			= _customer[TblColumn.A_ADDRESS].ToString();
+			txt_phone_number_deposit.Text		= _customer[TblColumn.A_PHONE_NUMBER].ToString();
 
 			txt_name_deposit.Enabled = false;
 			txt_identity_number_deposit.Enabled = false;
 			txt_address_deposit.Enabled = false;
 			txt_phone_number_deposit.Enabled = false;
 
-			DataTable _data2 = PassbookModel.SelectPassbooksByCustomerId(lbl_customer_id_deposit.Text);
-			for (int i = 0; i < _data2.Rows.Count; i++)
+			DataTable _data1 = PassbookModel.SelectPassbooksByCustomerId(lbl_customer_id_deposit.Text);
+
+			for (int i = 0; i < _data1.Rows.Count; i++)
 			{
-				object[] _passbook = _data2.Rows[i].ItemArray;
-				cbb_passbook_deposit.Items.Add(_passbook[0].ToString());
+				object[] _passbook = _data1.Rows[i].ItemArray;
+				cbb_passbook_deposit.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_CASH].ToString());
 			}
 		}
 
@@ -282,27 +316,27 @@ namespace PassbookManagement.src
 				return;
 			}
 
-			DataTable _data = PassbookModel.SelectAllConfig();
-			object[] _params = _data.Rows[0].ItemArray;
-
-			if (Processor.Compare(txt_cash_deposit.Text, _params[TblColumn.MIN_DEPOSIT_MORE].ToString()) < 0)
+			if (Processor.Compare(txt_cash_deposit.Text, Params.PARAMS[Params.MIN_INCOME].ToString()) < 0)
 			{
 				MessageBox.Show("Số tiền gửi thêm quá ít, vui lòng kiểm tra lại");
 				return;
 			}
 
 			DateTime _dateTime = calendar_open.SelectionEnd.Date;
-			if (PassbookModel.InsertIncome(cbb_passbook_deposit.Text, lbl_customer_id_deposit.Text, txt_cash_deposit.Text, _dateTime.ToString()) == false)
+			string _passbookId = cbb_passbook_deposit.Text.Split(':')[0];
+
+			if (PassbookModel.InsertIncome(_passbookId, txt_cash_deposit.Text, _dateTime.ToString()) == false)
 			{
 				MessageBox.Show("Something went wrong!!!");
 				return;
 			}
 
-			DataTable _data2 = PassbookModel.SelectPassbookById(cbb_passbook_deposit.Text);
-			object[] _passbook = _data2.Rows[0].ItemArray;
+			DataTable _data = PassbookModel.SelectPassbookById(_passbookId);
+			object[] _passbook = _data.Rows[0].ItemArray;
 
-			double _cash = Processor.Add(txt_cash_deposit.Text, _passbook[3].ToString());
-			PassbookModel.UpdateCashByPassbookId(cbb_passbook_deposit.Text, _cash.ToString());
+			double _cash = Processor.Add(txt_cash_deposit.Text, _passbook[TblColumn.P_CASH].ToString());
+			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash.ToString());
+
 			PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_deposit.Text, "true");
 
 			MessageBox.Show("Success");
@@ -346,30 +380,29 @@ namespace PassbookManagement.src
 
 			object[] _customer = _data.Rows[0].ItemArray;
 
-			lbl_customer_id_withdrawal.Text = _customer[0].ToString();
-
-			txt_name_withdrawal.Text = _customer[1].ToString();
-			txt_identity_number_withdrawal.Text = _customer[2].ToString();
-
-			txt_address_withdrawal.Text = _customer[3].ToString();
-			txt_phone_number_withdrawal.Text = _customer[4].ToString();
+			lbl_customer_id_withdrawal.Text		= _customer[TblColumn.A_ID].ToString();
+			txt_name_withdrawal.Text			= _customer[TblColumn.A_NAME].ToString();
+			txt_identity_number_withdrawal.Text = _customer[TblColumn.A_IDENTITY_NUMBER].ToString();
+			txt_address_withdrawal.Text			= _customer[TblColumn.A_ADDRESS].ToString();
+			txt_phone_number_withdrawal.Text	= _customer[TblColumn.A_PHONE_NUMBER].ToString();
 
 			txt_name_withdrawal.Enabled = false;
 			txt_identity_number_withdrawal.Enabled = false;
 			txt_address_withdrawal.Enabled = false;
 			txt_phone_number_withdrawal.Enabled = false;
 
-			DataTable _data2 = PassbookModel.SelectPassbooksByCustomerId(lbl_customer_id_withdrawal.Text);
-			for (int i = 0; i < _data2.Rows.Count; i++)
+			DataTable _data1 = PassbookModel.SelectPassbooksByCustomerId(lbl_customer_id_withdrawal.Text);
+
+			for (int i = 0; i < _data1.Rows.Count; i++)
 			{
-				object[] _passbook = _data2.Rows[i].ItemArray;
-				cbb_passbook_withdrawal.Items.Add(_passbook[0].ToString());
+				object[] _passbook = _data1.Rows[i].ItemArray;
+				cbb_passbook_withdrawal.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_CASH].ToString());
 			}
 		}
 
 		private void btn_create_withdrawal_Click(object sender, EventArgs e)
 		{
-			if (txt_name_deposit.Text == "" ||
+			if (txt_name_withdrawal.Text == "" ||
 				txt_identity_number_withdrawal.Text == "" ||
 				txt_address_withdrawal.Text == "" ||
 				txt_phone_number_withdrawal.Text == "" ||
@@ -379,31 +412,44 @@ namespace PassbookManagement.src
 				return;
 			}
 
-			DataTable _data = PassbookModel.SelectPassbookById(cbb_passbook_withdrawal.Text);
+			string _passbookId = cbb_passbook_withdrawal.Text.Split(':')[0];
+			DataTable _data = PassbookModel.SelectPassbookById(_passbookId);
+
+			if(_data.Rows.Count == 0)
+			{
+				MessageBox.Show("Something went wrong!!!");
+				return;
+			}
+
 			object[] _passbook = _data.Rows[0].ItemArray;
 
 			DateTime _current = DateTime.Now;
-			DateTime _opened = DateTime.Parse(_passbook[4].ToString());
+			DateTime _opened = DateTime.Parse(_passbook[TblColumn.P_DATE_TIME].ToString());
 
-			string _periodId = _passbook[1].ToString();
-			DataTable _data2 = PassbookModel.SelectPeriodById(_periodId);
-			object[] _period = _data2.Rows[0].ItemArray;
+			string _periodId = _passbook[TblColumn.P_PERIOD_ID].ToString();
+			DataTable _data1 = PassbookModel.SelectPeriodById(_periodId);
 
-			if (Processor.Compare((_current - _opened).Days.ToString(), _period[4].ToString()) < 0)
+			if(_data1.Rows.Count == 0)
+			{
+				MessageBox.Show("Something went wrong!!!");
+				return;
+			}
+
+			object[] _period = _data1.Rows[0].ItemArray;
+
+			if (Processor.Compare((_current - _opened).Days.ToString(), _period[TblColumn.T_PERIOD].ToString()) < 0)
 			{
 				MessageBox.Show("Chưa đến thời hạn rút tiền!!!");
 				return;
 			}
 
-			string _rate = _period[3].ToString();
-			string _cash = _passbook[3].ToString();
+			string _rate = _period[TblColumn.T_RATE].ToString();
+			string _cash = _passbook[TblColumn.P_CASH].ToString();
 
-			double money1_goc = Convert.ToDouble(_cash);
-			Double money_sum = money1_goc + money1_goc * Convert.ToDouble(_rate) * (((_current - _opened).Days) / 30);
+			string _withdrawal = "0";
+			string _profit = (Processor.Multi(_cash, _rate) * (((_current - _opened).Days) / 30.0)).ToString();
 
-
-
-			if (_periodId == "0")
+			if (_periodId == "1")
 			{
 				if(txt_cash_withdrawal.Text == "")
 				{
@@ -417,27 +463,32 @@ namespace PassbookManagement.src
 					return;
 				}
 
-				money_sum = money_sum - Convert.ToDouble(txt_cash_withdrawal.Text);
-				if (money_sum == 0)
-				{
-					PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
-				}
+				_withdrawal = txt_cash_withdrawal.Text;
+				_cash = Processor.Sub(_cash, txt_cash_withdrawal.Text).ToString();
 			}
 			else
 			{
 				MessageBox.Show("Bạn rút hết tiền trong tài khoản");
-				money_sum = 0;
+				_withdrawal = _cash;
+				_cash = "0";
+			}
+
+			string id_customer = _passbook[2].ToString();
+
+			if (PassbookModel.InsertOutcome(_passbookId, txt_cash_withdrawal.Text, _current.ToString()) == false)
+			{
+				MessageBox.Show("Something went wrong!!!");
+				return;
+			}
+
+			if (Processor.Compare(_cash, "0") == 0)
+			{
 				PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
 			}
 
-			PassbookModel.UpdateCashByPassbookId(cbb_passbook_withdrawal.Text, money_sum.ToString());
-
-			string id_customer = _passbook[2].ToString();
-			DateTime _dateTime = calendar_withdrawal.SelectionEnd.Date;
-			if (PassbookModel.InsertOutcome(cbb_passbook_withdrawal.Text, _periodId, txt_cash_withdrawal.Text, id_customer, _dateTime.ToString(), money_sum.ToString()) == false)
-			{
-				MessageBox.Show(" error");
-			}
+			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash);
+			PassbookModel.UpdateLastUpdateTimeByPassbookId(_passbookId, _current.ToString());
+			MessageBox.Show("Success. Cash: " + _withdrawal + ", Profit: " + _profit);
 		}
 
 		private void btn_refresh_withdrawal_Click(object sender, EventArgs e)
@@ -458,7 +509,22 @@ namespace PassbookManagement.src
 
 		private void cbb_passbook_withdrawal_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			string _passbookId = cbb_passbook_withdrawal.Text.Split(':')[0];
 
+			DataTable _data = PassbookModel.SelectPassbookById(_passbookId);
+
+			if(_data.Rows.Count == 0)
+			{
+				MessageBox.Show("Something went wrong!!!");
+				return;
+			}
+
+			object[] _passbook = _data.Rows[0].ItemArray;
+
+			if (_passbook[TblColumn.P_PERIOD_ID].ToString() == "1")
+				txt_cash_withdrawal.Enabled = true;
+			else
+				txt_cash_withdrawal.Enabled = false;
 		}
 		////////////////////////////////////////////////////////////////////
 
@@ -467,98 +533,53 @@ namespace PassbookManagement.src
 		// Control for create daily report
 		private void btn_refresh_daily_Click(object sender, EventArgs e)
 		{
+			DateTime _dateTime = date_daily.Value;
 			list_daily.Items.Clear();
 
-			string date = datetime1.Value.ToString();
+			DataTable _data = PassbookModel.SelectAllPeriod();
 
-			DataTable result2 = PassbookModel.SelectAllPeriod();
-			int count = result2.Rows.Count;
-			string[] loai = new string[count];
-			double[] tongthu = new double[count];
-			double[] tongchi = new double[count];
-			for (int i = 0; i < count; i++)
+			for(int i = 0; i < _data.Rows.Count; i++)
 			{
-				object[] _itemArray2 = result2.Rows[i].ItemArray;
-				loai[i] = _itemArray2[1].ToString();
-				tongthu[i] = 0;
-				tongchi[i] = 0;
-			}
-			DataTable result1 = PassbookModel.SelectAllPassbooks();
-			DataTable result02 = PassbookModel.SelectAllIncomes();
-			DataTable result03 = PassbookModel.SelectAllOutcomes();
-			int count_2 = result1.Rows.Count;
-			int count_3 = result02.Rows.Count;
-			int count_4 = result03.Rows.Count;
-			for (int i = 0; i < count_2; i++)
-			{
-				object[] _itemArray1 = result1.Rows[i].ItemArray;
-				string ngay = _itemArray1[4].ToString();
-				string type = _itemArray1[1].ToString();
-				string cash = _itemArray1[3].ToString();
-				if (Processor.cut_date(ngay) == Processor.cut_date(date))
+				ListViewItem _item = new ListViewItem((i + 1).ToString());
+
+				// Set period name
+				object[] _period = _data.Rows[i].ItemArray;
+				_item.SubItems.Add(_period[TblColumn.T_NAME].ToString());
+
+
+				// Set income value
+				string _income = "0";
+				DataTable _data1 = PassbookModel.SelectAllIncomesByPeriodId(_period[TblColumn.T_ID].ToString());
+				for(int j = 0; j < _data1.Rows.Count; j++)
 				{
-					for (int j = 0; j < count; j++)
-					{
-						if (loai[j] == type)
-						{
-							tongthu[j] = tongthu[j] + Convert.ToDouble(cash);
-						}
-					}
+					object[] _row = _data1.Rows[j].ItemArray;
+					DateTime _current = DateTime.Parse(_row[TblColumn.D_DATE_TIME].ToString());
+
+					if (_dateTime.DayOfYear == _current.DayOfYear)
+						_income = Processor.Add(_income, _row[TblColumn.D_CASH].ToString()).ToString();
 				}
-			}
+				_item.SubItems.Add(_income);
 
-			for (int i = 0; i < count_3; i++)
-			{
-				object[] _itemArray2 = result02.Rows[i].ItemArray;
-				string ngay = _itemArray2[4].ToString();
-				string money = _itemArray2[2].ToString();
-				string pass_id = _itemArray2[1].ToString();
-				DataTable query = PassbookModel.SelectPassbookById(pass_id);
-				object[] _itemaray3 = query.Rows[0].ItemArray;
-				string type = _itemaray3[1].ToString();
 
-				if (Processor.cut_date(ngay) == Processor.cut_date(date))
+				// Set outcome value
+				string _outcome = "0";
+				DataTable _data2 = PassbookModel.SelectAllOutcomesByPeriodId(_period[TblColumn.T_ID].ToString());
+				for (int j = 0; j < _data2.Rows.Count; j++)
 				{
-					for (int j = 0; j < count; j++)
-					{
-						if (loai[j] == type)
-						{
-							tongthu[j] = tongthu[j] + Convert.ToDouble(money);
-						}
-					}
+					object[] _row = _data2.Rows[j].ItemArray;
+					DateTime _current = DateTime.Parse(_row[TblColumn.W_DATE_TIME].ToString());
+
+					if (_dateTime.DayOfYear == _current.DayOfYear)
+						_outcome = Processor.Add(_outcome, _row[TblColumn.W_CASH].ToString()).ToString();
 				}
-			}
-			for (int i = 0; i < count_4; i++)
-			{
-				object[] _itemArray3 = result03.Rows[i].ItemArray;
+				_item.SubItems.Add(_outcome);
 
-				string ngay = _itemArray3[5].ToString();
-				string money = _itemArray3[3].ToString();
-				string pass_id = _itemArray3[1].ToString();
-				string type = _itemArray3[2].ToString();
 
-				if (Processor.cut_date(ngay) == Processor.cut_date(date))
-				{
-					for (int j = 0; j < count; j++)
-					{
-						if (loai[j] == type)
-						{
-							tongchi[j] = tongchi[j] + Convert.ToDouble(money);
-						}
-					}
-				}
+				// Set total value
+				_item.SubItems.Add(Processor.Sub(_income, _outcome).ToString());
 
-			}
-			for (int i = 0; i < count; i++)
-			{
 
-				ListViewItem lvi = new ListViewItem(i.ToString());
-				lvi.SubItems.Add(loai[i].ToString());
-				lvi.SubItems.Add(tongthu[i].ToString());
-				lvi.SubItems.Add(tongchi[i].ToString());
-				lvi.SubItems.Add((tongthu[i] - tongchi[i]).ToString());
-				list_daily.Items.Add(lvi);
-
+				list_daily.Items.Add(_item);
 			}
 		}
 		////////////////////////////////////////////////////////////////////

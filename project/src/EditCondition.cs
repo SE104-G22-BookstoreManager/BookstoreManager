@@ -129,30 +129,30 @@ namespace PassbookManagement.src
 		{
 			switch(m_control)
 			{
-				case Control.CONTROL_ADD:
-					if (PassbookModel.InsertPeriod(txt_type_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_date_edit_period.Text) == false)
-					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
-					}
-					MessageBox.Show("Success");
-					break;
-				case Control.CONTROL_EDIT:
-					if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_type_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_date_edit_period.Text) == false)
-					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
-					}
-					MessageBox.Show("Success");
-					break;
-				case Control.CONTROL_REMOVE:
-					if (PassbookModel.DeletePeriod(cbb_type_edit_period.Text) == false)
-					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
-					}
-					MessageBox.Show("Success");
-					break;
+				//case Control.CONTROL_ADD:
+				//	if (PassbookModel.InsertPeriod(txt_type_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_date_edit_period.Text) == false)
+				//	{
+				//		MessageBox.Show("Something went wrong!!!");
+				//		return;
+				//	}
+				//	MessageBox.Show("Success");
+				//	break;
+				//case Control.CONTROL_EDIT:
+				//	if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_type_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_date_edit_period.Text) == false)
+				//	{
+				//		MessageBox.Show("Something went wrong!!!");
+				//		return;
+				//	}
+				//	MessageBox.Show("Success");
+				//	break;
+				//case Control.CONTROL_REMOVE:
+				//	if (PassbookModel.DeletePeriod(cbb_type_edit_period.Text) == false)
+				//	{
+				//		MessageBox.Show("Something went wrong!!!");
+				//		return;
+				//	}
+				//	MessageBox.Show("Success");
+				//	break;
 				default:
 					break;
 			}

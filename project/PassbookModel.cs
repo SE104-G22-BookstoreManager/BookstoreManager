@@ -13,9 +13,7 @@ namespace PassbookManagement
 		public static readonly string tbl_passbooks = "Passbooks";
 		public static readonly string tbl_incomes = "Incomes";
 		public static readonly string tbl_outcomes = "Outcomes";
-		public static readonly string tbl_types = "Types";
-		public static readonly string tbl_reportdate = "Report_Date";
-		public static readonly string tbl_reportmonth = "Report_Month";
+		public static readonly string tbl_periods = "Periods";
 		public static readonly string tbl_parameter = "parameter";
 
 
@@ -26,7 +24,17 @@ namespace PassbookManagement
 		/// </summary>
 		public static DataTable SelectCustomerByIdentityNumber(string identity_number)
 		{
-			string _query = "SELECT * FROM " + tbl_customers + " WHERE identity_number=\"" + identity_number + "\"";
+			string _query = "SELECT * FROM " + tbl_customers;
+			_query += " WHERE " + TblColumn.A_IDENTITY_NUMBER_S + "=\"" + identity_number + "\"";
+
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
+
+		public static DataTable SelectCustomerById(string id)
+		{
+			string _query = "SELECT * FROM " + tbl_customers;
+			_query += " WHERE " + TblColumn.A_ID_S + "=\"" + id + "\"";
+
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
@@ -50,7 +58,9 @@ namespace PassbookManagement
 		/// </summary>
 		public static DataTable SelectPassbooksByCustomerId(string customer_id)
 		{
-			string _query = "SELECT * FROM " + tbl_passbooks + " WHERE customer_id=\"" + customer_id + "\"";
+			string _query = "SELECT * FROM " + tbl_passbooks;
+			_query += " WHERE " + TblColumn.P_CUSTOMER_ID_S + "=\"" + customer_id + "\"";
+
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
@@ -62,7 +72,9 @@ namespace PassbookManagement
 
 		public static DataTable SelectPassbookById(string id)
 		{
-			string _query = "SELECT * FROM " + tbl_passbooks + " WHERE id=\"" + id + "\"";
+			string _query = "SELECT * FROM " + tbl_passbooks;
+			_query += " WHERE " + TblColumn.P_ID_S + "=\"" + id + "\"";
+
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
@@ -70,20 +82,31 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("type_id", type_id);
+			_data.Add("period_id", type_id);
 			_data.Add("customer_id", customer_id);
 			_data.Add("cash", cash);
 			_data.Add("date_time", date_time);
 			_data.Add("Close", Open);
+
 			return Database.SQLiteDatabase.Insert(tbl_passbooks, _data);
 		}
 
 		public static bool UpdateCashByPassbookId(string id, string cash)
 		{
-			string where = "id=\"" + id + "\" ";
 			Dictionary<string, string> _data = new Dictionary<string, string>();
-
 			_data.Add("cash", cash);
+
+			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
+
+			return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
+		}
+
+		public static bool UpdateLastUpdateTimeByPassbookId(string id, string date_time)
+		{
+			Dictionary<string, string> _data = new Dictionary<string, string>();
+			_data.Add("date_time", date_time);
+
+			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
 
 			return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
 		}
@@ -100,12 +123,20 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertIncome(string passbook_id, string customer_id, string cash, string date_time)
+		public static DataTable SelectAllIncomesByPeriodId(string period_id)
+		{
+			string _query = "SELECT * FROM " + tbl_incomes + " AS a JOIN " + tbl_passbooks + " AS b";
+			_query += " ON " + "a." + TblColumn.D_PASSBOOK_ID_S + " = b." + TblColumn.P_ID_S;
+			_query += " WHERE b." + TblColumn.P_PERIOD_ID_S + "=\"" + period_id + "\"";
+
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
+
+		public static bool InsertIncome(string passbook_id, string cash, string date_time)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
 			_data.Add("passbook_id", passbook_id);
-			_data.Add("customer_id", customer_id);
 			_data.Add("cash", cash);
 			_data.Add("date_time", date_time);
 
@@ -124,16 +155,23 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertOutcome(string passbook_id, string type, string total, string customerid, string date, string money_return)
+		public static DataTable SelectAllOutcomesByPeriodId(string period_id)
+		{
+			string _query = "SELECT * FROM " + tbl_outcomes + " AS a JOIN " + tbl_passbooks + " AS b";
+			_query += " ON " + "a." + TblColumn.D_PASSBOOK_ID_S + " = b." + TblColumn.P_ID_S;
+			_query += " WHERE b." + TblColumn.P_PERIOD_ID_S + "=\"" + period_id + "\"";
+
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
+
+		public static bool InsertOutcome(string passbook_id, string cash, string date_time)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
 			_data.Add("passbook_id", passbook_id);
-			_data.Add("type", type);
-			_data.Add("total", total);
-			_data.Add("customer_id", customerid);
-			_data.Add("date_time", date);
-			_data.Add("cash_return", money_return);
+
+			_data.Add("cash", cash);
+			_data.Add("date_time", date_time);
 
 			return Database.SQLiteDatabase.Insert(tbl_outcomes, _data);
 		}
@@ -146,50 +184,54 @@ namespace PassbookManagement
 		/// </summary>
 		public static DataTable SelectPeriodByName(string name)
 		{
-			string _query = "SELECT * FROM " + tbl_types + " WHERE name =\"" + name + "\"";
+			string _query = "SELECT * FROM " + tbl_periods;
+			_query += " WHERE " + TblColumn.T_NAME_S + " =\"" + name + "\"";
+
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
 		public static DataTable SelectAllPeriod()
 		{
-			string _query = "SELECT * FROM " + tbl_types;
+			string _query = "SELECT * FROM " + tbl_periods;
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static DataTable SelectPeriodById(string type)
+		public static DataTable SelectPeriodById(string id)
 		{
-			string _query = "SELECT * FROM " + tbl_types + " WHERE type =\"" + type + "\"";
+			string _query = "SELECT * FROM " + tbl_periods;
+			_query += " WHERE " + TblColumn.T_ID_S + " =\"" + id + "\"";
+
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertPeriod(string type, string name, string rate, string date)
+		public static bool InsertPeriod(string name, string rate, string period)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("type", type);
 			_data.Add("name", name);
 			_data.Add("rate", rate);
-			_data.Add("dateWithdrawal", date);
-			return Database.SQLiteDatabase.Insert(tbl_types, _data);
+			_data.Add("period", period);
+
+			return Database.SQLiteDatabase.Insert(tbl_periods, _data);
 		}
 
-		public static bool UpdatePeriod(string id, string type, string name, string rate, string date)
+		public static bool UpdatePeriod(string id, string name, string rate, string period)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("type", type);
 			_data.Add("name", name);
 			_data.Add("rate", rate);
-			_data.Add("dateWithdrawal", date);
+			_data.Add("period", period);
 
-			string _condition = "id=\"" + id + "\" ";
-			return Database.SQLiteDatabase.Update(tbl_types, _data, _condition);
+			string where = TblColumn.T_ID_S + "=\"" + id + "\"";
+
+			return Database.SQLiteDatabase.Update(tbl_periods, _data, where);
 		}
 
 		public static bool DeletePeriod(string name)
 		{
-			string _condition = "name=\"" + name + "\" ";
-			return Database.SQLiteDatabase.Delete(tbl_types, _condition);
+			string where = TblColumn.T_NAME_S + "=\"" + name + "\" ";
+			return Database.SQLiteDatabase.Delete(tbl_periods, where);
 		}
 
 
@@ -198,12 +240,7 @@ namespace PassbookManagement
 		/// <summary>
 		///     
 		/// </summary>
-		public static DataTable SelectAllConfig()
-		{
-			string _query = "SELECT * FROM " + tbl_parameter;
-			return Database.SQLiteDatabase.GetDataTable(_query);
-		}
-
+		
 		public static bool UpdateClosePassbookByPassbookId(string id_passbook, string close)
 		{
 			string where = "id=\"" + id_passbook + "\" ";
@@ -216,18 +253,20 @@ namespace PassbookManagement
 
 		public static bool UpdateMinCash(string cash)
 		{
-			Dictionary<string, string> _data = new Dictionary<string, string>();
-			_data.Add("Min_Deposit", cash);
+			return false;
+			//Dictionary<string, string> _data = new Dictionary<string, string>();
+			//_data.Add("Min_Deposit", cash);
 
-			return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
+			//return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
 		}
 
 		public static bool UpdateMinIncome(string cash)
 		{
-			Dictionary<string, string> _data = new Dictionary<string, string>();
-			_data.Add("Min_DepositMore", cash);
+			return false;
+			//Dictionary<string, string> _data = new Dictionary<string, string>();
+			//_data.Add("Min_DepositMore", cash);
 
-			return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
+			//return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
 		}
 	}
 }

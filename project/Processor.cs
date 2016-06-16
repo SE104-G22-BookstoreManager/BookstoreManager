@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,100 @@ namespace PassbookManagement
 {
 	public static class TblColumn
 	{
-		public static readonly int MIN_DEPOSIT = 0;
-		public static readonly int MIN_DEPOSIT_MORE = 1;
+		// Column index for table Customers
+		public static readonly int A_ID = 0;
+		public static readonly int A_NAME = 1;
+		public static readonly int A_IDENTITY_NUMBER = 2;
+		public static readonly int A_ADDRESS = 3;
+		public static readonly int A_PHONE_NUMBER = 4;
+
+		public static readonly string A_ID_S = "id";
+		public static readonly string A_NAME_S = "name";
+		public static readonly string A_IDENTITY_NUMBER_S = "identity_number";
+		public static readonly string A_ADDRESS_S = "address";
+		public static readonly string A_PHONE_NUMBER_S = "phone_number";
+
+
+		// Column index for table Incomes
+		public static readonly int D_ID = 0;
+		public static readonly int D_PASSBOOK_ID = 1;
+		public static readonly int D_CASH = 2;
+		public static readonly int D_DATE_TIME = 3;
+
+		public static readonly string D_ID_S = "id";
+		public static readonly string D_PASSBOOK_ID_S = "passbook_id";
+		public static readonly string D_CASH_S = "cash";
+		public static readonly string D_DATE_TIME_S = "date_time";
+
+
+		// Column index for table Outcomes
+		public static readonly int W_ID = 0;
+		public static readonly int W_PASSBOOK_ID = 1;
+		public static readonly int W_CASH = 2;
+		public static readonly int W_DATE_TIME = 3;
+
+		public static readonly string W_ID_S = "id";
+		public static readonly string W_PASSBOOK_ID_S = "passbook_id";
+		public static readonly string W_CASH_S = "cash";
+		public static readonly string W_DATE_TIME_S = "date_time";
+
+
+		// Column index for table Passbooks
+		public static readonly int P_ID = 0;
+		public static readonly int P_PERIOD_ID = 1;
+		public static readonly int P_CUSTOMER_ID = 2;
+		public static readonly int P_CASH = 3;
+		public static readonly int P_DATE_TIME = 4;
+		public static readonly int P_CLOSE = 5;
+
+		public static readonly string P_ID_S = "id";
+		public static readonly string P_PERIOD_ID_S = "period_id";
+		public static readonly string P_CUSTOMER_ID_S = "customer_id";
+		public static readonly string P_CASH_S = "cash";
+		public static readonly string P_DATE_TIME_S = "date_time";
+		public static readonly string P_CLOSE_S = "Close";
+
+
+		// Column index for table Periods
+		public static readonly int T_ID = 0;
+		public static readonly int T_NAME = 1;
+		public static readonly int T_RATE = 2;
+		public static readonly int T_PERIOD = 3;
+
+		public static readonly string T_ID_S = "id";
+		public static readonly string T_NAME_S = "name";
+		public static readonly string T_RATE_S = "rate";
+		public static readonly string T_PERIOD_S = "period";
+	}
+
+	public static class Params
+	{
+		public static ArrayList PARAMS = new ArrayList();
+
+		public static readonly int MIN_CASH = 0;
+		public static readonly int MIN_INCOME = 1;
 	}
 
 	public static class Processor
 	{
+		public static void ReadParams(string path)
+		{
+			var _filestream = new System.IO.FileStream(path,
+										  System.IO.FileMode.Open,
+										  System.IO.FileAccess.Read,
+										  System.IO.FileShare.ReadWrite);
+			var _file = new System.IO.StreamReader(_filestream, System.Text.Encoding.UTF8, true, 128);
+
+			string _word = null;
+			while ((_word = _file.ReadLine()) != null)
+			{
+				Params.PARAMS.Add(_word);
+			}
+
+			_file.Dispose();
+			_filestream.Dispose();
+		}
+
 		public static int Compare(string num1, string num2)
 		{
 			return (Convert.ToDouble(num1) > Convert.ToDouble(num2)) ? 1 : 
@@ -28,6 +117,11 @@ namespace PassbookManagement
 		public static double Sub(string num1, string num2)
 		{
 			return Convert.ToDouble(num1) - Convert.ToDouble(num2);
+		}
+
+		public static double Multi(string num1, string num2)
+		{
+			return Convert.ToDouble(num1) * Convert.ToDouble(num2);
 		}
 
 		public static int count_datetime(string date1, string date2)
