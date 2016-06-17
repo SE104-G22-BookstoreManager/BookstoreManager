@@ -20,7 +20,7 @@ namespace PassbookManagement.src
 		{
 			InitializeComponent();
 
-			cbb_type_edit_period.Hide();
+			cbb_period_edit_period.Hide();
 			m_control = Control.CONTROL_ADD;
 		}
 
@@ -55,72 +55,66 @@ namespace PassbookManagement.src
 		/// </summary>
 		private void btn_add_edit_period_Click(object sender, EventArgs e)
 		{
-			cbb_type_edit_period.Hide();
-			txt_type_edit_period.Show();
+			cbb_period_edit_period.Hide();
 
 			lbl_id_edit_period.Show();
 			txt_name_edit_period.Show();
 
 			txt_rate_edit_period.Show();
-			txt_date_edit_period.Show();
+			txt_period_edit_period.Show();
 
 
 			///////////////////////////////////
-			txt_type_edit_period.Clear();
 			lbl_id_edit_period.Text = "ID";
 			txt_name_edit_period.Clear();
 			txt_rate_edit_period.Clear();
-			txt_date_edit_period.Clear();
+			txt_period_edit_period.Clear();
 
 			m_control = Control.CONTROL_ADD;
 		}
 
 		private void btn_edit_edit_period_Click(object sender, EventArgs e)
 		{
-			cbb_type_edit_period.Show();
-			txt_type_edit_period.Hide();
+			cbb_period_edit_period.Show();
 
 			lbl_id_edit_period.Show();
 			txt_name_edit_period.Show();
 
 			txt_rate_edit_period.Show();
-			txt_date_edit_period.Show();
+			txt_period_edit_period.Show();
 
 			GetPeriod();
 
 
 			///////////////////////////////////
-			cbb_type_edit_period.Text = "";
-			txt_type_edit_period.Clear();
+			cbb_period_edit_period.Text = "";
 			lbl_id_edit_period.Text = "ID";
 			txt_name_edit_period.Clear();
 			txt_rate_edit_period.Clear();
-			txt_date_edit_period.Clear();
+			txt_period_edit_period.Clear();
 
 			m_control = Control.CONTROL_EDIT;
 		}
 
 		private void btn_remove_edit_period_Click(object sender, EventArgs e)
 		{
-			cbb_type_edit_period.Show();
-			txt_type_edit_period.Hide();
+			cbb_period_edit_period.Show();
 
 			lbl_id_edit_period.Hide();
 			txt_name_edit_period.Hide();
 
 			txt_rate_edit_period.Hide();
-			txt_date_edit_period.Hide();
+			txt_period_edit_period.Hide();
 
 			GetPeriod();
 
 
 			///////////////////////////////////
-			cbb_type_edit_period.Text = "";
-			txt_type_edit_period.Clear();
+			cbb_period_edit_period.Text = "";
 			lbl_id_edit_period.Text = "ID";
 			txt_name_edit_period.Clear();
 			txt_rate_edit_period.Clear();
-			txt_date_edit_period.Clear();
+			txt_period_edit_period.Clear();
 
 			m_control = Control.CONTROL_REMOVE;
 		}
@@ -129,30 +123,30 @@ namespace PassbookManagement.src
 		{
 			switch(m_control)
 			{
-				//case Control.CONTROL_ADD:
-				//	if (PassbookModel.InsertPeriod(txt_type_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_date_edit_period.Text) == false)
-				//	{
-				//		MessageBox.Show("Something went wrong!!!");
-				//		return;
-				//	}
-				//	MessageBox.Show("Success");
-				//	break;
-				//case Control.CONTROL_EDIT:
-				//	if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_type_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_date_edit_period.Text) == false)
-				//	{
-				//		MessageBox.Show("Something went wrong!!!");
-				//		return;
-				//	}
-				//	MessageBox.Show("Success");
-				//	break;
-				//case Control.CONTROL_REMOVE:
-				//	if (PassbookModel.DeletePeriod(cbb_type_edit_period.Text) == false)
-				//	{
-				//		MessageBox.Show("Something went wrong!!!");
-				//		return;
-				//	}
-				//	MessageBox.Show("Success");
-				//	break;
+				case Control.CONTROL_ADD:
+					if (PassbookModel.InsertPeriod(txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
+					{
+						MessageBox.Show("Something went wrong!!!");
+						return;
+					}
+					MessageBox.Show("Success");
+					break;
+				case Control.CONTROL_EDIT:
+					if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
+					{
+						MessageBox.Show("Something went wrong!!!");
+						return;
+					}
+					MessageBox.Show("Success");
+					break;
+				case Control.CONTROL_REMOVE:
+					if (PassbookModel.DeletePeriod(cbb_period_edit_period.Text) == false)
+					{
+						MessageBox.Show("Something went wrong!!!");
+						return;
+					}
+					MessageBox.Show("Success");
+					break;
 				default:
 					break;
 			}
@@ -163,20 +157,19 @@ namespace PassbookManagement.src
 			this.Close();
 		}
 
-		private void cbb_type_edit_period_SelectedIndexChanged(object sender, EventArgs e)
+		private void cbb_period_edit_period_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			try
 			{
-				string name_type = cbb_type_edit_period.Text;
+				string name_type = cbb_period_edit_period.Text;
 				DataTable _result2 = PassbookModel.SelectPeriodByName(name_type);
 
 				object[] _itemArray2 = _result2.Rows[0].ItemArray;
 				lbl_id_edit_period.Text = _itemArray2[0].ToString();
-				txt_type_edit_period.Text = _itemArray2[1].ToString();
 
 				txt_name_edit_period.Text = _itemArray2[2].ToString();
 				txt_rate_edit_period.Text = _itemArray2[3].ToString();
-				txt_date_edit_period.Text = _itemArray2[4].ToString();
+				txt_period_edit_period.Text = _itemArray2[4].ToString();
 			}
 			catch (Exception ex)
 			{
@@ -186,7 +179,7 @@ namespace PassbookManagement.src
 
 		private void GetPeriod()
 		{
-			cbb_type_edit_period.Items.Clear();
+			cbb_period_edit_period.Items.Clear();
 
 			DataTable _result2 = PassbookModel.SelectAllPeriod();
 			if (_result2.Rows.Count != 0)
@@ -194,7 +187,7 @@ namespace PassbookManagement.src
 				for (int i = 0; i < _result2.Rows.Count; i++)
 				{
 					object[] _itemArray2 = _result2.Rows[i].ItemArray;
-					cbb_type_edit_period.Items.Add(_itemArray2[2].ToString());
+					cbb_period_edit_period.Items.Add(_itemArray2[2].ToString());
 				}
 			}
 		}

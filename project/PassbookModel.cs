@@ -78,7 +78,7 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertPassbook(string type_id, string customer_id, string cash, string date_time, string Open)
+		public static bool InsertPassbook(string type_id, string customer_id, string cash, string date_time, string status)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
@@ -86,7 +86,7 @@ namespace PassbookManagement
 			_data.Add("customer_id", customer_id);
 			_data.Add("cash", cash);
 			_data.Add("date_time", date_time);
-			_data.Add("Close", Open);
+			_data.Add("status", status);
 
 			return Database.SQLiteDatabase.Insert(tbl_passbooks, _data);
 		}
@@ -95,6 +95,16 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 			_data.Add("cash", cash);
+
+			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
+
+			return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
+		}
+
+		public static bool UpdateStatusByPassbookId(string id, string status)
+		{
+			Dictionary<string, string> _data = new Dictionary<string, string>();
+			_data.Add("status", status);
 
 			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
 
@@ -241,16 +251,6 @@ namespace PassbookManagement
 		///     
 		/// </summary>
 		
-		public static bool UpdateClosePassbookByPassbookId(string id_passbook, string close)
-		{
-			string where = "id=\"" + id_passbook + "\" ";
-			Dictionary<string, string> _data = new Dictionary<string, string>();
-
-			_data.Add("Close", close);
-
-			return Database.SQLiteDatabase.Update(tbl_passbooks, _data, where);
-		}
-
 		public static bool UpdateMinCash(string cash)
 		{
 			return false;

@@ -170,7 +170,9 @@ namespace PassbookManagement.src
 			string _periodId = _period[TblColumn.T_ID].ToString();
 			DateTime _dateTime = calendar_open.SelectionEnd.Date;
 
-			if (PassbookModel.InsertPassbook(_periodId, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString(), "true") == false)
+			string _status = "open-" + _dateTime.ToString();
+
+			if (PassbookModel.InsertPassbook(_periodId, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString(), _status) == false)
 			{
 				MessageBox.Show("Something went wrong!!!");
 				return;
@@ -204,7 +206,7 @@ namespace PassbookManagement.src
 				{
 					object[] _itemArray2 = _result2.Rows[i].ItemArray;
 					cbb_period_open.Items.Add(_itemArray2[TblColumn.T_NAME].ToString());
-					cbb_type_monthly.Items.Add(_itemArray2[TblColumn.T_NAME].ToString());
+					cbb_period_monthly.Items.Add(_itemArray2[TblColumn.T_NAME].ToString());
 				}
 			}
 		}
@@ -322,7 +324,7 @@ namespace PassbookManagement.src
 				return;
 			}
 
-			DateTime _dateTime = calendar_open.SelectionEnd.Date;
+			DateTime _dateTime = calendar_deposit.SelectionEnd.Date;
 			string _passbookId = cbb_passbook_deposit.Text.Split(':')[0];
 
 			if (PassbookModel.InsertIncome(_passbookId, txt_cash_deposit.Text, _dateTime.ToString()) == false)
@@ -334,10 +336,15 @@ namespace PassbookManagement.src
 			DataTable _data = PassbookModel.SelectPassbookById(_passbookId);
 			object[] _passbook = _data.Rows[0].ItemArray;
 
+			if(Processor.Compare(_passbook[TblColumn.P_CASH].ToString(), "0") == 0)
+			{
+				List<string> _status = _passbook[TblColumn.P_STATUS].ToString().Split('|').ToList();
+				_status.Add("open-" + _dateTime.ToString());
+				PassbookModel.UpdateStatusByPassbookId(_passbookId, string.Join("|", _status));
+			}
+
 			double _cash = Processor.Add(txt_cash_deposit.Text, _passbook[TblColumn.P_CASH].ToString());
 			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash.ToString());
-
-			PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_deposit.Text, "true");
 
 			MessageBox.Show("Success");
 		}
@@ -423,7 +430,7 @@ namespace PassbookManagement.src
 
 			object[] _passbook = _data.Rows[0].ItemArray;
 
-			DateTime _current = DateTime.Now;
+			DateTime _current = calendar_withdrawal.SelectionEnd.Date;
 			DateTime _opened = DateTime.Parse(_passbook[TblColumn.P_DATE_TIME].ToString());
 
 			string _periodId = _passbook[TblColumn.P_PERIOD_ID].ToString();
@@ -475,7 +482,7 @@ namespace PassbookManagement.src
 
 			string id_customer = _passbook[2].ToString();
 
-			if (PassbookModel.InsertOutcome(_passbookId, txt_cash_withdrawal.Text, _current.ToString()) == false)
+			if (PassbookModel.InsertOutcome(_passbookId, _withdrawal, _current.ToString()) == false)
 			{
 				MessageBox.Show("Something went wrong!!!");
 				return;
@@ -483,7 +490,9 @@ namespace PassbookManagement.src
 
 			if (Processor.Compare(_cash, "0") == 0)
 			{
-				PassbookModel.UpdateClosePassbookByPassbookId(cbb_passbook_withdrawal.Text, "False");
+				List<string> _status = _passbook[TblColumn.P_STATUS].ToString().Split('|').ToList();
+				_status.Add("close-" + _current.ToString());
+				PassbookModel.UpdateStatusByPassbookId(_passbookId, string.Join("|", _status));
 			}
 
 			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash);
@@ -528,7 +537,7 @@ namespace PassbookManagement.src
 		}
 		////////////////////////////////////////////////////////////////////
 
-
+		
 		////////////////////////////////////////////////////////////////////
 		// Control for create daily report
 		private void btn_refresh_daily_Click(object sender, EventArgs e)
@@ -589,143 +598,69 @@ namespace PassbookManagement.src
 		// Control for create monthly report
 		private void btn_refresh_monthly_Click(object sender, EventArgs e)
 		{
+			DateTime _dateTime = date_monthly.Value;
+
+			DataTable _data1 = PassbookModel.SelectPeriodByName(cbb_period_monthly.Text);
+
+			if (_data1.Rows.Count == 0)
+			{
+				MessageBox.Show("Something went wrong!!!");
+				return;
+			}
+
+			object[] _period = _data1.Rows[0].ItemArray;
+
 			list_monthly.Items.Clear();
 
-			DataTable query = PassbookModel.SelectPeriodByName(cbb_type_monthly.Text);
-			object[] _itemArray1 = query.Rows[0].ItemArray;
-			string type = _itemArray1[1].ToString();
-			string date = date_monthly.Value.ToString();
+			int _daysCount = Processor.CountDay(_dateTime.Month, _dateTime.Year);
 
-			List<string> id_passbook = new List<string>();
-			List<string> id_will = new List<string>();
-			// Select passbook 
-			DataTable query1 = PassbookModel.SelectAllOutcomes();
-			DataTable query2 = PassbookModel.SelectAllPassbooks();
-			for (int i = 0; i < query2.Rows.Count; i++)
+			for(int i = 0; i < _daysCount; i++)
 			{
-				Object[] array2 = query2.Rows[i].ItemArray;
-				string type_passbook = array2[1].ToString();
-				string id = array2[0].ToString();
-				string date_passbook = array2[4].ToString();
-				if (type == type_passbook && Processor.cut_month(date_passbook) == Processor.cut_month(date))
-				{
-					id_passbook.Add(date_passbook);
-				}
+				ListViewItem _item = new ListViewItem((i + 1).ToString());
 
-			}
-			for (int i = 0; i < query1.Rows.Count; i++)
-			{
-				Object[] array2 = query1.Rows[i].ItemArray;
-				string type_passbook = array2[2].ToString();
-				string id = array2[0].ToString();
-				string date_passbook = array2[5].ToString();
-				string return1 = array2[6].ToString();
-				if (type == type_passbook && Processor.cut_month(date_passbook) == Processor.cut_month(date) && return1 == "0")
-				{
-					id_will.Add(date_passbook);
+				// Set date
+				string _date = (i + 1) + "/" + _dateTime.Month + "/" + _dateTime.Year;
+				_item.SubItems.Add(_date);
+				DateTime _current = DateTime.Parse(_date);
 
-				}
-			}
-			int l = 0;
-			for (int i = 0; i < id_passbook.Count; i++)
-			{
-				int cout_in = 1;
-				int cout_out = 0;
-				List<int> key = new List<int>();
-				for (int j = i + 1; j < id_passbook.Count; j++)
+
+				// Set income/outcome value
+				int _income = 0;
+				int _outcome = 0;
+
+				DataTable _data = PassbookModel.SelectAllPassbooks();
+				
+				for(int j = 0; j < _data.Rows.Count; j++)
 				{
-					if (Processor.cut_date(id_passbook[i]) == Processor.cut_date(id_passbook[j]))
+					object[] _passbook = _data.Rows[j].ItemArray;
+					List<string> _status = _passbook[TblColumn.P_STATUS].ToString().Split('|').ToList();
+					foreach(string __status in _status)
 					{
-						cout_in = cout_in + 1;
-						key.Add(j);
+						string[] _temp = __status.Split('-');
+						DateTime _statusDate = DateTime.Parse(_temp[1]);
 
+						if (_current.Date.DayOfYear == _statusDate.Date.DayOfYear)
+						{
+							if (_temp[0] == "open")
+							{
+								_income++;
+							}
+							else
+							{
+								_outcome++;
+							}
+						}
 					}
 				}
 
+				_item.SubItems.Add(_income.ToString());
+				_item.SubItems.Add(_outcome.ToString());
 
-				List<int> key1 = new List<int>();
-				for (int j = 0; j < id_will.Count; j++)
-				{
-					if (Processor.cut_date(id_passbook[i]) == Processor.cut_date(id_will[j]))
-					{
-						cout_out = cout_out + 1;
-						key1.Add(j);
-					}
-				}
-				int p_out = 0;
 
-				for (int o = 0; o < key1.Count; o++)
-				{
-					if (p_out == 0)
-					{
-						id_will.Remove(id_will[key1[o]]);
-						p_out++;
-					}
-					else
-					{
-						id_will.Remove(id_will[key1[o] - p_out]);
-						p_out++;
-					}
+				// Set total value
+				_item.SubItems.Add((_income - _outcome).ToString());
 
-				}
-				int p_in = 0;
-				for (int o = 0; o < key.Count; o++)
-				{
-
-					if (p_in == 0)
-					{
-						id_passbook.Remove(id_passbook[key[o]]);
-						p_in++;
-					}
-					else
-					{
-						id_passbook.Remove(id_passbook[key[o] - p_in]);
-						p_in++;
-					}
-				}
-				if (cout_in != 0 && cout_out != 0)
-				{
-					ListViewItem lvi = new ListViewItem(l.ToString());
-					lvi.SubItems.Add(id_passbook[i].ToString());
-					lvi.SubItems.Add(cout_in.ToString());
-					lvi.SubItems.Add(cout_out.ToString());
-					lvi.SubItems.Add((cout_in - cout_out).ToString());
-
-					list_monthly.Items.Add(lvi);
-					l++;
-				}
-				if (cout_in != 0 && cout_out == 0)
-				{
-					ListViewItem lvi = new ListViewItem(l.ToString());
-					lvi.SubItems.Add(id_passbook[i].ToString());
-					lvi.SubItems.Add(cout_in.ToString());
-					lvi.SubItems.Add("0");
-					lvi.SubItems.Add(cout_in.ToString());
-
-					list_monthly.Items.Add(lvi);
-					l++;
-				}
-
-			}
-
-			for (int i = 0; i < id_will.Count; i++)
-			{
-				int cout = 0;
-				for (int j = 0; j < id_will.Count; i++)
-				{
-					if (Processor.cut_date(id_will[i]) == Processor.cut_date(id_will[j]))
-					{
-						cout = cout + 1;
-						ListViewItem lvi = new ListViewItem(l.ToString());
-						lvi.SubItems.Add(id_passbook[i].ToString());
-						lvi.SubItems.Add("0");
-						lvi.SubItems.Add(cout.ToString());
-						lvi.SubItems.Add((-cout).ToString());
-
-						list_monthly.Items.Add(lvi);
-						l++;
-					}
-				}
+				list_monthly.Items.Add(_item);
 			}
 		}
 	}

@@ -71,7 +71,6 @@
 			this.lbl_customer_id_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_refresh_withdrawal = new MaterialSkin.Controls.MaterialFlatButton();
 			this.cbb_passbook_withdrawal = new System.Windows.Forms.ComboBox();
-			this.calendar_withdrawal = new System.Windows.Forms.MonthCalendar();
 			this.btn_create_withdrawal = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_check_withdrawal = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.txt_cash_withdrawal = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -99,13 +98,14 @@
 			this.col_outcome_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_total_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.date_monthly = new System.Windows.Forms.DateTimePicker();
-			this.cbb_type_monthly = new System.Windows.Forms.ComboBox();
+			this.cbb_period_monthly = new System.Windows.Forms.ComboBox();
 			this.btn_option = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.context_option = new MaterialSkin.Controls.MaterialContextMenuStrip();
 			this.item_edit_condition = new System.Windows.Forms.ToolStripMenuItem();
 			this.item_setting = new System.Windows.Forms.ToolStripMenuItem();
 			this.item_help = new System.Windows.Forms.ToolStripMenuItem();
 			this.item_about = new System.Windows.Forms.ToolStripMenuItem();
+			this.calendar_withdrawal = new System.Windows.Forms.MonthCalendar();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -702,12 +702,6 @@
 			this.cbb_passbook_withdrawal.TabIndex = 7;
 			this.cbb_passbook_withdrawal.SelectedIndexChanged += new System.EventHandler(this.cbb_passbook_withdrawal_SelectedIndexChanged);
 			// 
-			// calendar_withdrawal
-			// 
-			this.calendar_withdrawal.Location = new System.Drawing.Point(360, 147);
-			this.calendar_withdrawal.Name = "calendar_withdrawal";
-			this.calendar_withdrawal.TabIndex = 9;
-			// 
 			// btn_create_withdrawal
 			// 
 			this.btn_create_withdrawal.Depth = 0;
@@ -936,7 +930,7 @@
 			this.tab_monthly_report.Controls.Add(this.btn_refresh_monthly);
 			this.tab_monthly_report.Controls.Add(this.list_monthly);
 			this.tab_monthly_report.Controls.Add(this.date_monthly);
-			this.tab_monthly_report.Controls.Add(this.cbb_type_monthly);
+			this.tab_monthly_report.Controls.Add(this.cbb_period_monthly);
 			this.tab_monthly_report.Location = new System.Drawing.Point(4, 22);
 			this.tab_monthly_report.Name = "tab_monthly_report";
 			this.tab_monthly_report.Padding = new System.Windows.Forms.Padding(3);
@@ -1016,13 +1010,13 @@
 			this.date_monthly.Size = new System.Drawing.Size(200, 20);
 			this.date_monthly.TabIndex = 1;
 			// 
-			// cbb_type_monthly
+			// cbb_period_monthly
 			// 
-			this.cbb_type_monthly.FormattingEnabled = true;
-			this.cbb_type_monthly.Location = new System.Drawing.Point(6, 6);
-			this.cbb_type_monthly.Name = "cbb_type_monthly";
-			this.cbb_type_monthly.Size = new System.Drawing.Size(121, 21);
-			this.cbb_type_monthly.TabIndex = 0;
+			this.cbb_period_monthly.FormattingEnabled = true;
+			this.cbb_period_monthly.Location = new System.Drawing.Point(6, 6);
+			this.cbb_period_monthly.Name = "cbb_period_monthly";
+			this.cbb_period_monthly.Size = new System.Drawing.Size(121, 21);
+			this.cbb_period_monthly.TabIndex = 0;
 			// 
 			// btn_option
 			// 
@@ -1080,6 +1074,12 @@
 			this.item_about.Size = new System.Drawing.Size(125, 22);
 			this.item_about.Text = "About+";
 			this.item_about.Click += new System.EventHandler(this.item_about_Click);
+			// 
+			// calendar_withdrawal
+			// 
+			this.calendar_withdrawal.Location = new System.Drawing.Point(360, 147);
+			this.calendar_withdrawal.Name = "calendar_withdrawal";
+			this.calendar_withdrawal.TabIndex = 9;
 			// 
 			// Passbook
 			// 
@@ -1148,7 +1148,6 @@
 		private System.Windows.Forms.MonthCalendar calendar_deposit;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash_deposit;
 		private System.Windows.Forms.ComboBox cbb_passbook_withdrawal;
-		private System.Windows.Forms.MonthCalendar calendar_withdrawal;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_create_withdrawal;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_check_withdrawal;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_cash_withdrawal;
@@ -1171,7 +1170,7 @@
 		private System.Windows.Forms.ColumnHeader col_outcome_monthly;
 		private System.Windows.Forms.ColumnHeader col_total_monthly;
 		private System.Windows.Forms.DateTimePicker date_monthly;
-		private System.Windows.Forms.ComboBox cbb_type_monthly;
+		private System.Windows.Forms.ComboBox cbb_period_monthly;
 		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_open;
 		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_lookup;
 		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_deposit;
@@ -1189,5 +1188,6 @@
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_deposit;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_withdrawal;
         private System.Windows.Forms.DateTimePicker date_daily;
+		private System.Windows.Forms.MonthCalendar calendar_withdrawal;
 	}
 }

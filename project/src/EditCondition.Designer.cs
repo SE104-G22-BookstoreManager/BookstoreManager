@@ -36,14 +36,13 @@
 			this.txt_add_min_edit_cash = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_period_edit = new System.Windows.Forms.TabPage();
 			this.lbl_id_edit_period = new MaterialSkin.Controls.MaterialLabel();
-			this.txt_date_edit_period = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_period_edit_period = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_name_edit_period = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_rate_edit_period = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.btn_edit_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_remove_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_add_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.txt_type_edit_period = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.cbb_type_edit_period = new System.Windows.Forms.ComboBox();
+			this.cbb_period_edit_period = new System.Windows.Forms.ComboBox();
 			this.btn_apply_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_ok_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.tab_selector_edit = new MaterialSkin.Controls.MaterialTabSelector();
@@ -142,14 +141,13 @@
 			// 
 			this.tab_period_edit.BackColor = System.Drawing.Color.White;
 			this.tab_period_edit.Controls.Add(this.lbl_id_edit_period);
-			this.tab_period_edit.Controls.Add(this.txt_date_edit_period);
+			this.tab_period_edit.Controls.Add(this.txt_period_edit_period);
 			this.tab_period_edit.Controls.Add(this.txt_name_edit_period);
 			this.tab_period_edit.Controls.Add(this.txt_rate_edit_period);
 			this.tab_period_edit.Controls.Add(this.btn_edit_edit_period);
 			this.tab_period_edit.Controls.Add(this.btn_remove_edit_period);
 			this.tab_period_edit.Controls.Add(this.btn_add_edit_period);
-			this.tab_period_edit.Controls.Add(this.txt_type_edit_period);
-			this.tab_period_edit.Controls.Add(this.cbb_type_edit_period);
+			this.tab_period_edit.Controls.Add(this.cbb_period_edit_period);
 			this.tab_period_edit.Controls.Add(this.btn_apply_edit_period);
 			this.tab_period_edit.Controls.Add(this.btn_ok_edit_period);
 			this.tab_period_edit.Location = new System.Drawing.Point(4, 22);
@@ -165,35 +163,35 @@
 			this.lbl_id_edit_period.Depth = 0;
 			this.lbl_id_edit_period.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_id_edit_period.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_id_edit_period.Location = new System.Drawing.Point(146, 81);
+			this.lbl_id_edit_period.Location = new System.Drawing.Point(146, 53);
 			this.lbl_id_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_id_edit_period.Name = "lbl_id_edit_period";
 			this.lbl_id_edit_period.Size = new System.Drawing.Size(23, 19);
 			this.lbl_id_edit_period.TabIndex = 14;
 			this.lbl_id_edit_period.Text = "ID";
 			// 
-			// txt_date_edit_period
+			// txt_period_edit_period
 			// 
-			this.txt_date_edit_period.Depth = 0;
-			this.txt_date_edit_period.Hint = "Dates_withdrawal";
-			this.txt_date_edit_period.Location = new System.Drawing.Point(150, 139);
-			this.txt_date_edit_period.MaxLength = 32767;
-			this.txt_date_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_date_edit_period.Name = "txt_date_edit_period";
-			this.txt_date_edit_period.PasswordChar = '\0';
-			this.txt_date_edit_period.SelectedText = "";
-			this.txt_date_edit_period.SelectionLength = 0;
-			this.txt_date_edit_period.SelectionStart = 0;
-			this.txt_date_edit_period.Size = new System.Drawing.Size(200, 23);
-			this.txt_date_edit_period.TabIndex = 10;
-			this.txt_date_edit_period.TabStop = false;
-			this.txt_date_edit_period.UseSystemPasswordChar = false;
+			this.txt_period_edit_period.Depth = 0;
+			this.txt_period_edit_period.Hint = "Period";
+			this.txt_period_edit_period.Location = new System.Drawing.Point(150, 111);
+			this.txt_period_edit_period.MaxLength = 32767;
+			this.txt_period_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_period_edit_period.Name = "txt_period_edit_period";
+			this.txt_period_edit_period.PasswordChar = '\0';
+			this.txt_period_edit_period.SelectedText = "";
+			this.txt_period_edit_period.SelectionLength = 0;
+			this.txt_period_edit_period.SelectionStart = 0;
+			this.txt_period_edit_period.Size = new System.Drawing.Size(200, 23);
+			this.txt_period_edit_period.TabIndex = 10;
+			this.txt_period_edit_period.TabStop = false;
+			this.txt_period_edit_period.UseSystemPasswordChar = false;
 			// 
 			// txt_name_edit_period
 			// 
 			this.txt_name_edit_period.Depth = 0;
 			this.txt_name_edit_period.Hint = "Name";
-			this.txt_name_edit_period.Location = new System.Drawing.Point(186, 81);
+			this.txt_name_edit_period.Location = new System.Drawing.Point(186, 53);
 			this.txt_name_edit_period.MaxLength = 32767;
 			this.txt_name_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_name_edit_period.Name = "txt_name_edit_period";
@@ -210,7 +208,7 @@
 			// 
 			this.txt_rate_edit_period.Depth = 0;
 			this.txt_rate_edit_period.Hint = "Rate";
-			this.txt_rate_edit_period.Location = new System.Drawing.Point(150, 110);
+			this.txt_rate_edit_period.Location = new System.Drawing.Point(150, 82);
 			this.txt_rate_edit_period.MaxLength = 32767;
 			this.txt_rate_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_rate_edit_period.Name = "txt_rate_edit_period";
@@ -262,31 +260,14 @@
 			this.btn_add_edit_period.UseVisualStyleBackColor = true;
 			this.btn_add_edit_period.Click += new System.EventHandler(this.btn_add_edit_period_Click);
 			// 
-			// txt_type_edit_period
+			// cbb_period_edit_period
 			// 
-			this.txt_type_edit_period.Depth = 0;
-			this.txt_type_edit_period.Hint = "Type";
-			this.txt_type_edit_period.Location = new System.Drawing.Point(150, 52);
-			this.txt_type_edit_period.MaxLength = 32767;
-			this.txt_type_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_type_edit_period.Name = "txt_type_edit_period";
-			this.txt_type_edit_period.PasswordChar = '\0';
-			this.txt_type_edit_period.SelectedText = "";
-			this.txt_type_edit_period.SelectionLength = 0;
-			this.txt_type_edit_period.SelectionStart = 0;
-			this.txt_type_edit_period.Size = new System.Drawing.Size(200, 23);
-			this.txt_type_edit_period.TabIndex = 4;
-			this.txt_type_edit_period.TabStop = false;
-			this.txt_type_edit_period.UseSystemPasswordChar = false;
-			// 
-			// cbb_type_edit_period
-			// 
-			this.cbb_type_edit_period.FormattingEnabled = true;
-			this.cbb_type_edit_period.Location = new System.Drawing.Point(150, 25);
-			this.cbb_type_edit_period.Name = "cbb_type_edit_period";
-			this.cbb_type_edit_period.Size = new System.Drawing.Size(200, 21);
-			this.cbb_type_edit_period.TabIndex = 2;
-			this.cbb_type_edit_period.SelectedIndexChanged += new System.EventHandler(this.cbb_type_edit_period_SelectedIndexChanged);
+			this.cbb_period_edit_period.FormattingEnabled = true;
+			this.cbb_period_edit_period.Location = new System.Drawing.Point(150, 25);
+			this.cbb_period_edit_period.Name = "cbb_period_edit_period";
+			this.cbb_period_edit_period.Size = new System.Drawing.Size(200, 21);
+			this.cbb_period_edit_period.TabIndex = 2;
+			this.cbb_period_edit_period.SelectedIndexChanged += new System.EventHandler(this.cbb_period_edit_period_SelectedIndexChanged);
 			// 
 			// btn_apply_edit_period
 			// 
@@ -354,13 +335,12 @@
 		private MaterialSkin.Controls.MaterialRaisedButton btn_apply_edit_cast;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_apply_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_ok_edit_period;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt_type_edit_period;
-		private System.Windows.Forms.ComboBox cbb_type_edit_period;
+		private System.Windows.Forms.ComboBox cbb_period_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_edit_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_remove_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_add_edit_period;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_rate_edit_period;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt_date_edit_period;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txt_period_edit_period;
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_edit_period;
 		private MaterialSkin.Controls.MaterialLabel lbl_id_edit_period;
 	}

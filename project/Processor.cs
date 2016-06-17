@@ -53,14 +53,14 @@ namespace PassbookManagement
 		public static readonly int P_CUSTOMER_ID = 2;
 		public static readonly int P_CASH = 3;
 		public static readonly int P_DATE_TIME = 4;
-		public static readonly int P_CLOSE = 5;
+		public static readonly int P_STATUS = 5;
 
 		public static readonly string P_ID_S = "id";
 		public static readonly string P_PERIOD_ID_S = "period_id";
 		public static readonly string P_CUSTOMER_ID_S = "customer_id";
 		public static readonly string P_CASH_S = "cash";
 		public static readonly string P_DATE_TIME_S = "date_time";
-		public static readonly string P_CLOSE_S = "Close";
+		public static readonly string P_CLOSE_S = "status";
 
 
 		// Column index for table Periods
@@ -159,15 +159,6 @@ namespace PassbookManagement
 			return date_1;
 		}
 
-		public static int LeapYear(int year)
-		{
-			if (year % 400 == 0)
-				return 1;
-			else if (year % 100 != 0 && year % 4 == 0)
-				return 1;
-			return 0;
-		}
-
 		public static int timngay(int date1, int date2, int month1, int month2, int year1, int year2)
 		{
 			int dateOfYear = 0, dateOfMonth = 0, date = 0;
@@ -198,6 +189,27 @@ namespace PassbookManagement
 
 			return dateOfYear + dateOfMonth + date;
 
+		}
+
+		public static int CountDay(int month, int year)
+		{
+			int[] a = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+			if (LeapYear(year) == 1)
+				a[1] = 29;
+
+			return a[month - 1];
+		}
+
+		public static int LeapYear(int year)
+		{
+			if (year % 400 == 0)
+				return 1;
+
+			if (year % 100 != 0 && year % 4 == 0)
+				return 1;
+
+			return 0;
 		}
 	}
 }
