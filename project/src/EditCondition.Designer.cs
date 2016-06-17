@@ -107,7 +107,7 @@
 			// 
 			this.txt_min_edit_cash.Depth = 0;
 			this.txt_min_edit_cash.Hint = "Min cash";
-			this.txt_min_edit_cash.Location = new System.Drawing.Point(31, 81);
+			this.txt_min_edit_cash.Location = new System.Drawing.Point(31, 27);
 			this.txt_min_edit_cash.MaxLength = 32767;
 			this.txt_min_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_min_edit_cash.Name = "txt_min_edit_cash";
@@ -123,8 +123,8 @@
 			// txt_add_min_edit_cash
 			// 
 			this.txt_add_min_edit_cash.Depth = 0;
-			this.txt_add_min_edit_cash.Hint = "Min addition cash";
-			this.txt_add_min_edit_cash.Location = new System.Drawing.Point(31, 31);
+			this.txt_add_min_edit_cash.Hint = "Min income";
+			this.txt_add_min_edit_cash.Location = new System.Drawing.Point(31, 67);
 			this.txt_add_min_edit_cash.MaxLength = 32767;
 			this.txt_add_min_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_add_min_edit_cash.Name = "txt_add_min_edit_cash";
@@ -191,7 +191,7 @@
 			// 
 			this.txt_name_edit_period.Depth = 0;
 			this.txt_name_edit_period.Hint = "Name";
-			this.txt_name_edit_period.Location = new System.Drawing.Point(186, 53);
+			this.txt_name_edit_period.Location = new System.Drawing.Point(175, 53);
 			this.txt_name_edit_period.MaxLength = 32767;
 			this.txt_name_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_name_edit_period.Name = "txt_name_edit_period";
@@ -199,7 +199,7 @@
 			this.txt_name_edit_period.SelectedText = "";
 			this.txt_name_edit_period.SelectionLength = 0;
 			this.txt_name_edit_period.SelectionStart = 0;
-			this.txt_name_edit_period.Size = new System.Drawing.Size(164, 23);
+			this.txt_name_edit_period.Size = new System.Drawing.Size(175, 23);
 			this.txt_name_edit_period.TabIndex = 9;
 			this.txt_name_edit_period.TabStop = false;
 			this.txt_name_edit_period.UseSystemPasswordChar = false;

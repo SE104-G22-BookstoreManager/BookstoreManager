@@ -238,9 +238,9 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.Update(tbl_periods, _data, where);
 		}
 
-		public static bool DeletePeriod(string name)
+		public static bool DeletePeriodById(string id)
 		{
-			string where = TblColumn.T_NAME_S + "=\"" + name + "\" ";
+			string where = TblColumn.T_ID_S + "=\"" + id + "\" ";
 			return Database.SQLiteDatabase.Delete(tbl_periods, where);
 		}
 
@@ -253,20 +253,18 @@ namespace PassbookManagement
 		
 		public static bool UpdateMinCash(string cash)
 		{
-			return false;
-			//Dictionary<string, string> _data = new Dictionary<string, string>();
-			//_data.Add("Min_Deposit", cash);
+			Params.PARAMS[Params.MIN_CASH] = cash;
+			Processor.WriteParams("params.pro");
 
-			//return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
+			return true;
 		}
 
 		public static bool UpdateMinIncome(string cash)
 		{
-			return false;
-			//Dictionary<string, string> _data = new Dictionary<string, string>();
-			//_data.Add("Min_DepositMore", cash);
+			Params.PARAMS[Params.MIN_INCOME] = cash;
+			Processor.WriteParams("params.pro");
 
-			//return Database.SQLiteDatabase.Update1(tbl_parameter, _data);
+			return true;
 		}
 	}
 }

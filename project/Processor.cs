@@ -103,6 +103,23 @@ namespace PassbookManagement
 			_filestream.Dispose();
 		}
 
+		public static void WriteParams(string path)
+		{
+			var _writeStream = new System.IO.FileStream(path,
+										  System.IO.FileMode.Create,
+										  System.IO.FileAccess.Write,
+										  System.IO.FileShare.ReadWrite);
+			var _writer = new System.IO.StreamWriter(_writeStream, System.Text.Encoding.UTF8, 128);
+
+			foreach (string _param in Params.PARAMS)
+			{
+				_writer.WriteLine(_param);
+			}
+
+			_writer.Dispose();
+			_writeStream.Dispose();
+		}
+
 		public static int Compare(string num1, string num2)
 		{
 			return (Convert.ToDouble(num1) > Convert.ToDouble(num2)) ? 1 : 

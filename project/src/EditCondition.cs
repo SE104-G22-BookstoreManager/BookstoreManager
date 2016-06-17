@@ -34,11 +34,13 @@ namespace PassbookManagement.src
 			if (txt_min_edit_cash.Text != "")
 			{
 				PassbookModel.UpdateMinCash(txt_min_edit_cash.Text);
+				MessageBox.Show("Success update min cash to " + txt_min_edit_cash.Text);
 			}
 
 			if (txt_add_min_edit_cash.Text != "")
 			{
 				PassbookModel.UpdateMinIncome(txt_add_min_edit_cash.Text);
+				MessageBox.Show("Success update min income to " + txt_add_min_edit_cash.Text);
 			}
 		}
 
@@ -63,8 +65,6 @@ namespace PassbookManagement.src
 			txt_rate_edit_period.Show();
 			txt_period_edit_period.Show();
 
-
-			///////////////////////////////////
 			lbl_id_edit_period.Text = "ID";
 			txt_name_edit_period.Clear();
 			txt_rate_edit_period.Clear();
@@ -85,8 +85,6 @@ namespace PassbookManagement.src
 
 			GetPeriod();
 
-
-			///////////////////////////////////
 			cbb_period_edit_period.Text = "";
 			lbl_id_edit_period.Text = "ID";
 			txt_name_edit_period.Clear();
@@ -108,8 +106,6 @@ namespace PassbookManagement.src
 
 			GetPeriod();
 
-
-			///////////////////////////////////
 			cbb_period_edit_period.Text = "";
 			lbl_id_edit_period.Text = "ID";
 			txt_name_edit_period.Clear();
@@ -140,7 +136,24 @@ namespace PassbookManagement.src
 					MessageBox.Show("Success");
 					break;
 				case Control.CONTROL_REMOVE:
-					if (PassbookModel.DeletePeriod(cbb_period_edit_period.Text) == false)
+					DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_edit_period.Text);
+
+					if(_data.Rows.Count == 0)
+					{
+						MessageBox.Show("Something went wrong!!!");
+						return;
+					}
+
+					object[] _period = _data.Rows[0].ItemArray;
+					string _periodId = _period[TblColumn.T_ID].ToString();
+
+					if(_periodId == "1")
+					{
+						MessageBox.Show("System alert!!! Cannot delete this period.");
+						return;
+					}
+
+					if (PassbookModel.DeletePeriodById(_periodId) == false)
 					{
 						MessageBox.Show("Something went wrong!!!");
 						return;
