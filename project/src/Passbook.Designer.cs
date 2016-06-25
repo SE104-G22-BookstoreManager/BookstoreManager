@@ -225,7 +225,7 @@
 			// txt_cash_open
 			// 
 			this.txt_cash_open.Depth = 0;
-			this.txt_cash_open.Hint = "Cash";
+			this.txt_cash_open.Hint = "Cash (VND)";
 			this.txt_cash_open.Location = new System.Drawing.Point(360, 127);
 			this.txt_cash_open.MaxLength = 32767;
 			this.txt_cash_open.MouseState = MaterialSkin.MouseState.HOVER;
@@ -499,7 +499,7 @@
 			// txt_cash_deposit
 			// 
 			this.txt_cash_deposit.Depth = 0;
-			this.txt_cash_deposit.Hint = "Cash";
+			this.txt_cash_deposit.Hint = "Cash (VND)";
 			this.txt_cash_deposit.Location = new System.Drawing.Point(360, 103);
 			this.txt_cash_deposit.MaxLength = 32767;
 			this.txt_cash_deposit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -741,7 +741,7 @@
 			// txt_cash_withdrawal
 			// 
 			this.txt_cash_withdrawal.Depth = 0;
-			this.txt_cash_withdrawal.Hint = "Cash";
+			this.txt_cash_withdrawal.Hint = "Cash (VND)";
 			this.txt_cash_withdrawal.Location = new System.Drawing.Point(360, 103);
 			this.txt_cash_withdrawal.MaxLength = 32767;
 			this.txt_cash_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;

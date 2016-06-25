@@ -218,13 +218,13 @@ namespace PassbookManagement.src
 		{
 			cbb_period_edit_period.Items.Clear();
 
-			DataTable _result2 = PassbookModel.SelectAllPeriod();
-			if (_result2.Rows.Count != 0)
+			DataTable _data = PassbookModel.SelectAllPeriod();
+			if (_data.Rows.Count != 0)
 			{
-				for (int i = 0; i < _result2.Rows.Count; i++)
+				for (int i = 0; i < _data.Rows.Count; i++)
 				{
-					object[] _itemArray2 = _result2.Rows[i].ItemArray;
-					cbb_period_edit_period.Items.Add(_itemArray2[2].ToString());
+					object[] _period = _data.Rows[i].ItemArray;
+					cbb_period_edit_period.Items.Add(_period[2].ToString());
 				}
 			}
 		}

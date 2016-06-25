@@ -131,19 +131,24 @@ namespace PassbookManagement
 						((Convert.ToDouble(num1) == Convert.ToDouble(num2)) ? 0 : -1);
 		}
 
-		public static double Add(string num1, string num2)
+		public static string Add(string num1, string num2)
 		{
-			return Convert.ToDouble(num1) + Convert.ToDouble(num2);
+			return (Convert.ToDouble(num1) + Convert.ToDouble(num2)).ToString();
 		}
 
-		public static double Sub(string num1, string num2)
+		public static string Sub(string num1, string num2)
 		{
-			return Convert.ToDouble(num1) - Convert.ToDouble(num2);
+			return (Convert.ToDouble(num1) - Convert.ToDouble(num2)).ToString();
 		}
 
-		public static double Multi(string num1, string num2)
+		public static string Multi(string num1, string num2)
 		{
-			return Convert.ToDouble(num1) * Convert.ToDouble(num2);
+			return (Convert.ToDouble(num1) * Convert.ToDouble(num2)).ToString();
+		}
+
+		public static string Div(string num1, string num2)
+		{
+			return (Convert.ToDouble(num1) / Convert.ToDouble(num2)).ToString();
 		}
 
 		public static int CountDay(int month, int year)
@@ -181,15 +186,9 @@ namespace PassbookManagement
 			}
 			catch (Exception e)
 			{
-				try
-				{
-					result = Convert.ToDouble(s);
-				}
-				catch
-				{
-					MessageBox.Show("Wrong string-to-double format", "Notice");
-				}
+				MessageBox.Show("Wrong string-to-double format", "Notice");
 			}
+
 			return result;
 		}
 	}

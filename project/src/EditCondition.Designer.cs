@@ -106,7 +106,7 @@
 			// txt_min_edit_cash
 			// 
 			this.txt_min_edit_cash.Depth = 0;
-			this.txt_min_edit_cash.Hint = "Min cash";
+			this.txt_min_edit_cash.Hint = "Min cash (VND)";
 			this.txt_min_edit_cash.Location = new System.Drawing.Point(31, 27);
 			this.txt_min_edit_cash.MaxLength = 32767;
 			this.txt_min_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
@@ -123,7 +123,7 @@
 			// txt_add_min_edit_cash
 			// 
 			this.txt_add_min_edit_cash.Depth = 0;
-			this.txt_add_min_edit_cash.Hint = "Min income";
+			this.txt_add_min_edit_cash.Hint = "Min income (VND)";
 			this.txt_add_min_edit_cash.Location = new System.Drawing.Point(31, 67);
 			this.txt_add_min_edit_cash.MaxLength = 32767;
 			this.txt_add_min_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
@@ -173,7 +173,7 @@
 			// txt_period_edit_period
 			// 
 			this.txt_period_edit_period.Depth = 0;
-			this.txt_period_edit_period.Hint = "Period";
+			this.txt_period_edit_period.Hint = "Period (days)";
 			this.txt_period_edit_period.Location = new System.Drawing.Point(150, 111);
 			this.txt_period_edit_period.MaxLength = 32767;
 			this.txt_period_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
@@ -207,7 +207,7 @@
 			// txt_rate_edit_period
 			// 
 			this.txt_rate_edit_period.Depth = 0;
-			this.txt_rate_edit_period.Hint = "Rate";
+			this.txt_rate_edit_period.Hint = "Rate (%)";
 			this.txt_rate_edit_period.Location = new System.Drawing.Point(150, 82);
 			this.txt_rate_edit_period.MaxLength = 32767;
 			this.txt_rate_edit_period.MouseState = MaterialSkin.MouseState.HOVER;

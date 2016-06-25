@@ -332,7 +332,8 @@ namespace PassbookManagement.src
 			for (int i = 0; i < _data1.Rows.Count; i++)
 			{
 				object[] _passbook = _data1.Rows[i].ItemArray;
-				cbb_passbook_deposit.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _passbook[TblColumn.P_CASH].ToString());
+				string _cashFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_passbook[TblColumn.P_CASH].ToString()));
+				cbb_passbook_deposit.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _cashFormatted);
 			}
 
 			cbb_passbook_deposit.SelectedIndex = 0;
@@ -397,8 +398,8 @@ namespace PassbookManagement.src
 				PassbookModel.UpdateStatusByPassbookId(_passbookId, string.Join("|", _status));
 			}
 
-			double _cash = Processor.Add(txt_cash_deposit.Text, _passbook[TblColumn.P_CASH].ToString());
-			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash.ToString());
+			string _cash = Processor.Add(txt_cash_deposit.Text, _passbook[TblColumn.P_CASH].ToString());
+			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash);
 
 			MessageBox.Show("Congratulation. You have created a new deposit!!!", "Create deposit");
 		}
@@ -461,7 +462,8 @@ namespace PassbookManagement.src
 			for (int i = 0; i < _data1.Rows.Count; i++)
 			{
 				object[] _passbook = _data1.Rows[i].ItemArray;
-				cbb_passbook_withdrawal.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _passbook[TblColumn.P_CASH].ToString());
+				string _cashFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_passbook[TblColumn.P_CASH].ToString()));
+				cbb_passbook_withdrawal.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _cashFormatted);
 			}
 
 			cbb_passbook_withdrawal.SelectedIndex = 0;
@@ -535,7 +537,7 @@ namespace PassbookManagement.src
 			string _cash = _passbook[TblColumn.P_CASH].ToString();
 
 			string _withdrawal = "0";
-			string _profit = (Processor.Multi(_cash, _rate) * (((_current - _opened).Days) / 30.0)).ToString();
+			string _profit = "0";
 
 			if (_periodId == "1")
 			{
@@ -552,11 +554,13 @@ namespace PassbookManagement.src
 				}
 
 				_withdrawal = txt_cash_withdrawal.Text;
-				_cash = Processor.Sub(_cash, txt_cash_withdrawal.Text).ToString();
+				_profit = Processor.Multi(Processor.Multi(_cash, _rate), Processor.Div((_current - _opened).Days.ToString(), "30"));
+				_cash = Processor.Sub(_cash, txt_cash_withdrawal.Text);
 			}
 			else
 			{
 				_withdrawal = _cash;
+				_profit = Processor.Multi(Processor.Multi(_cash, _rate), Processor.Div(_period[TblColumn.T_PERIOD].ToString(), "30"));
 				_cash = "0";
 			}
 
@@ -648,7 +652,7 @@ namespace PassbookManagement.src
 					DateTime _current = DateTime.Parse(_row[TblColumn.D_DATE_TIME].ToString());
 
 					if (_dateTime.DayOfYear == _current.DayOfYear)
-						_income = Processor.Add(_income, _row[TblColumn.D_CASH].ToString()).ToString();
+						_income = Processor.Add(_income, _row[TblColumn.D_CASH].ToString());
 				}
 				_item.SubItems.Add(_income);
 
@@ -662,13 +666,13 @@ namespace PassbookManagement.src
 					DateTime _current = DateTime.Parse(_row[TblColumn.W_DATE_TIME].ToString());
 
 					if (_dateTime.DayOfYear == _current.DayOfYear)
-						_outcome = Processor.Add(_outcome, _row[TblColumn.W_CASH].ToString()).ToString();
+						_outcome = Processor.Add(_outcome, _row[TblColumn.W_CASH].ToString());
 				}
 				_item.SubItems.Add(_outcome);
 
 
 				// Set total value
-				_item.SubItems.Add(Processor.Sub(_income, _outcome).ToString());
+				_item.SubItems.Add(Processor.Sub(_income, _outcome));
 
 
 				list_daily.Items.Add(_item);
