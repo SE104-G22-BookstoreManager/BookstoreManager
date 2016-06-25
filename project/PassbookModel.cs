@@ -78,11 +78,12 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertPassbook(string type_id, string customer_id, string cash, string date_time, string status)
+		public static bool InsertPassbook(string name, string period_id, string customer_id, string cash, string date_time, string status)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("period_id", type_id);
+			_data.Add("name", name);
+			_data.Add("period_id", period_id);
 			_data.Add("customer_id", customer_id);
 			_data.Add("cash", cash);
 			_data.Add("date_time", date_time);

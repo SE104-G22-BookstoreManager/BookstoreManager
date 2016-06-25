@@ -33,14 +33,24 @@ namespace PassbookManagement.src
 		{
 			if (txt_min_edit_cash.Text != "")
 			{
-				PassbookModel.UpdateMinCash(txt_min_edit_cash.Text);
-				MessageBox.Show("Success update min cash to " + txt_min_edit_cash.Text);
+				double _cash = Processor.ConvertToDouble(txt_min_edit_cash.Text);
+
+				if (_cash > 0)
+				{
+					PassbookModel.UpdateMinCash(txt_min_edit_cash.Text);
+					MessageBox.Show("Success update min cash to " + txt_min_edit_cash.Text);
+				}
 			}
 
 			if (txt_add_min_edit_cash.Text != "")
 			{
-				PassbookModel.UpdateMinIncome(txt_add_min_edit_cash.Text);
-				MessageBox.Show("Success update min income to " + txt_add_min_edit_cash.Text);
+				double _income = Processor.ConvertToDouble(txt_add_min_edit_cash.Text);
+
+				if (_income > 0)
+				{
+					PassbookModel.UpdateMinIncome(txt_add_min_edit_cash.Text);
+					MessageBox.Show("Success update min income to " + txt_add_min_edit_cash.Text);
+				}
 			}
 		}
 
@@ -115,50 +125,64 @@ namespace PassbookManagement.src
 			m_control = Control.CONTROL_REMOVE;
 		}
 
-		private void btn_apply_edit_type_Click(object sender, EventArgs e)
+		private void btn_apply_edit_period_Click(object sender, EventArgs e)
 		{
 			switch(m_control)
 			{
 				case Control.CONTROL_ADD:
-					if (PassbookModel.InsertPeriod(txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
 					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
+						DataTable _data = PassbookModel.SelectPeriodByName(txt_name_edit_period.Text);
+
+						if (_data.Rows.Count != 0)
+						{
+							MessageBox.Show("Current period is already exist. Please choose another name for this period...", "Notice");
+							return;
+						}
+
+						if (PassbookModel.InsertPeriod(txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
+						{
+							MessageBox.Show("Something went wrong!!!", "Notice");
+							return;
+						}
+						MessageBox.Show("Current period have added successfully", "Create period");
 					}
-					MessageBox.Show("Success");
 					break;
 				case Control.CONTROL_EDIT:
-					if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
 					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
+						if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
+						{
+							MessageBox.Show("Something went wrong!!!", "Notice");
+							return;
+						}
+						MessageBox.Show("Current period have edited successfully", "Edit period");
 					}
-					MessageBox.Show("Success");
 					break;
 				case Control.CONTROL_REMOVE:
-					DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_edit_period.Text);
-
-					if(_data.Rows.Count == 0)
 					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
-					}
+						DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_edit_period.Text);
 
-					object[] _period = _data.Rows[0].ItemArray;
-					string _periodId = _period[TblColumn.T_ID].ToString();
+						if (_data.Rows.Count == 0)
+						{
+							MessageBox.Show("Something went wrong!!!", "Notice");
+							return;
+						}
 
-					if(_periodId == "1")
-					{
-						MessageBox.Show("System alert!!! Cannot delete this period.");
-						return;
-					}
+						object[] _period = _data.Rows[0].ItemArray;
+						string _periodId = _period[TblColumn.T_ID].ToString();
 
-					if (PassbookModel.DeletePeriodById(_periodId) == false)
-					{
-						MessageBox.Show("Something went wrong!!!");
-						return;
+						if (_periodId == "1")
+						{
+							MessageBox.Show("System alert!!! Cannot delete this period.", "Notice");
+							return;
+						}
+
+						if (PassbookModel.DeletePeriodById(_periodId) == false)
+						{
+							MessageBox.Show("Something went wrong!!!", "Notice");
+							return;
+						}
+						MessageBox.Show("Current period have deleted successfully", "Delete period");
 					}
-					MessageBox.Show("Success");
 					break;
 				default:
 					break;
