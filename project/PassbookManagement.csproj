@@ -39,6 +39,10 @@
     <Reference Include="MaterialSkin">
       <HintPath>..\lib\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
@@ -66,12 +70,19 @@
     <Compile Include="src\EditCondition.Designer.cs">
       <DependentUpon>EditCondition.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Passbook.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Passbook.Designer.cs">
       <DependentUpon>Passbook.cs</DependentUpon>
     </Compile>
+    <Compile Include="StringCypher.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -85,10 +96,14 @@
     <EmbeddedResource Include="src\EditCondition.resx">
       <DependentUpon>EditCondition.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Passbook.resx">
       <DependentUpon>Passbook.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="data\passbook.s3db" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

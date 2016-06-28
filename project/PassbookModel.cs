@@ -14,7 +14,7 @@ namespace PassbookManagement
 		public static readonly string tbl_incomes = "Incomes";
 		public static readonly string tbl_outcomes = "Outcomes";
 		public static readonly string tbl_periods = "Periods";
-		public static readonly string tbl_parameter = "parameter";
+		public static readonly string tbl_staffs = "Staffs";
 
 
 		////////////////////////////////////////////////////////////////////
@@ -247,11 +247,26 @@ namespace PassbookManagement
 
 
 		////////////////////////////////////////////////////////////////////
+		// StaffModel
+		/// <summary>
+		///     
+		/// </summary>
+
+		public static DataTable SelectStaffByEmailAndPassword(string email, string password)
+		{
+			string _query = "SELECT * FROM " + tbl_staffs;
+			_query += " WHERE " + TblColumn.S_EMAIL_S + "=\"" + email + "\" AND " + TblColumn.S_PASSWORD_S + "=\"" + password + "\"";
+
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
+
+
+		////////////////////////////////////////////////////////////////////
 		// XModel
 		/// <summary>
 		///     
 		/// </summary>
-		
+
 		public static bool UpdateMinCash(string cash)
 		{
 			Params.PARAMS[Params.MIN_CASH] = cash;

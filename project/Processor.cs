@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -78,14 +81,79 @@ namespace PassbookManagement
 		public static readonly string T_NAME_S = "name";
 		public static readonly string T_RATE_S = "rate";
 		public static readonly string T_PERIOD_S = "period";
+
+
+		// Column index for table Staffs
+		public static readonly int S_ID = 0;
+		public static readonly int S_NAME = 1;
+		public static readonly int S_EMAIL = 2;
+		public static readonly int S_PASSWORD = 3;
+		public static readonly int S_ROLES = 4;
+		public static readonly int S_IDENTITY_NUMBER = 5;
+		public static readonly int S_PHONE_NUMBER = 6;
+
+		public static readonly string S_ID_S = "id";
+		public static readonly string S_NAME_S = "name";
+		public static readonly string S_EMAIL_S = "email";
+		public static readonly string S_PASSWORD_S = "password";
+		public static readonly string S_ROLES_S = "roles";
+		public static readonly string S_IDENTITY_NUMBER_S = "identity_number";
+		public static readonly string S_PHONE_NUMBER_S = "phone_number";
 	}
 
 	public static class Params
 	{
 		public static ArrayList PARAMS = new ArrayList();
+		public static ArrayList CURRENT_SESSION = new ArrayList();
 
 		public static readonly int MIN_CASH = 0;
 		public static readonly int MIN_INCOME = 1;
+
+		public static readonly int USERNAME = 2;
+		public static readonly int PASSWORD = 3;
+
+		public static readonly int CURRENT_EMAIL = 0;
+		public static readonly int CURRENT_PASSWORD = 1;
+		public static readonly int CURRENT_USERNAME = 2;
+
+		public static void ReadFromObject(JsonObject o)
+		{
+			PARAMS.Add(o.MIN_CASH);
+			PARAMS.Add(o.MIN_INCOME);
+			PARAMS.Add(o.USERNAME);
+			PARAMS.Add(o.PASSWORD);
+		}
+
+		public static JsonObject CreateObject()
+		{
+			JsonObject o = new JsonObject();
+
+			if(PARAMS[MIN_CASH] != null)
+				o.MIN_CASH = PARAMS[MIN_CASH].ToString();
+			if (PARAMS[MIN_INCOME] != null)
+				o.MIN_INCOME = PARAMS[MIN_INCOME].ToString();
+			if (PARAMS[USERNAME] != null)
+				o.USERNAME = PARAMS[USERNAME].ToString();
+			if (PARAMS[PASSWORD] != null)
+				o.PASSWORD = PARAMS[PASSWORD].ToString();
+
+			return o;
+		}
+	}
+
+	public class JsonObject
+	{
+		public string MIN_CASH;
+		public string MIN_INCOME;
+		
+		public string USERNAME;
+		public string PASSWORD;
+	}
+
+	public static class Roles
+	{
+		public static readonly int ROLE_MANAGER = 1;
+		public static readonly int ROLE_STAFF = 2;
 	}
 
 	public static class Processor
@@ -98,11 +166,10 @@ namespace PassbookManagement
 										  System.IO.FileShare.ReadWrite);
 			var _file = new System.IO.StreamReader(_filestream, System.Text.Encoding.UTF8, true, 128);
 
-			string _word = null;
-			while ((_word = _file.ReadLine()) != null)
-			{
-				Params.PARAMS.Add(_word);
-			}
+			string _json = StringCipher.Decrypt(_file.ReadToEnd(), "C0d3F0rF4n!");
+			JsonObject o = JsonConvert.DeserializeObject<JsonObject>(_json);
+
+			Params.ReadFromObject(o);
 
 			_file.Dispose();
 			_filestream.Dispose();
@@ -116,10 +183,10 @@ namespace PassbookManagement
 										  System.IO.FileShare.ReadWrite);
 			var _writer = new System.IO.StreamWriter(_writeStream, System.Text.Encoding.UTF8, 128);
 
-			foreach (string _param in Params.PARAMS)
-			{
-				_writer.WriteLine(_param);
-			}
+			JsonObject o = Params.CreateObject();
+			string _json = JsonConvert.SerializeObject(o);
+
+			_writer.Write(StringCipher.Encrypt(_json, "C0d3F0rF4n!"));
 
 			_writer.Dispose();
 			_writeStream.Dispose();
@@ -190,6 +257,45 @@ namespace PassbookManagement
 			}
 
 			return result;
+		}
+
+		public static string GetMd5Hash(MD5 md5Hash, string input)
+		{
+			// Convert the input string to a byte array and compute the hash.
+			byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+			// Create a new Stringbuilder to collect the bytes
+			// and create a string.
+			StringBuilder sBuilder = new StringBuilder();
+
+			// Loop through each byte of the hashed data 
+			// and format each one as a hexadecimal string.
+			for (int i = 0; i < data.Length; i++)
+			{
+				sBuilder.Append(data[i].ToString("x2"));
+			}
+
+			// Return the hexadecimal string.
+			return sBuilder.ToString();
+		}
+
+		// Verify a hash against a string.
+		public static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+		{
+			// Hash the input.
+			string hashOfInput = GetMd5Hash(md5Hash, input);
+
+			// Create a StringComparer an compare the hashes.
+			StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+			if (0 == comparer.Compare(hashOfInput, hash))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 }

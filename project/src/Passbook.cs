@@ -32,6 +32,13 @@ namespace PassbookManagement.src
 			btn_create_deposit.Enabled = false;
 			btn_check_withdrawal.Enabled = true;
 			btn_create_withdrawal.Enabled = false;
+
+			LoginForm _loginForm = new LoginForm();
+
+			Hide();
+			_loginForm.ShowDialog();
+
+			txt_welcome_main.Text = "Welcome back,\n" + Params.CURRENT_SESSION[Params.CURRENT_USERNAME];
 		}
 
 
@@ -555,7 +562,7 @@ namespace PassbookManagement.src
 
 				_withdrawal = txt_cash_withdrawal.Text;
 				_profit = Processor.Multi(Processor.Multi(_cash, _rate), Processor.Div((_current - _opened).Days.ToString(), "30"));
-				_cash = Processor.Sub(_cash, txt_cash_withdrawal.Text);
+				_cash = Processor.Sub(_cash, _withdrawal);
 			}
 			else
 			{

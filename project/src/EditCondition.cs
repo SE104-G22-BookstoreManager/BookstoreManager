@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PassbookManagement.src
 {
-	public enum Control
+	public enum ControlBtn
 	{
 		CONTROL_ADD,
 		CONTROL_EDIT,
@@ -14,14 +14,14 @@ namespace PassbookManagement.src
 
 	public partial class EditCondition : MaterialForm
 	{
-		private Control m_control;
+		private ControlBtn m_control;
 
 		public EditCondition()
 		{
 			InitializeComponent();
 
 			cbb_period_edit_period.Hide();
-			m_control = Control.CONTROL_ADD;
+			m_control = ControlBtn.CONTROL_ADD;
 		}
 
 		////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ namespace PassbookManagement.src
 			txt_rate_edit_period.Clear();
 			txt_period_edit_period.Clear();
 
-			m_control = Control.CONTROL_ADD;
+			m_control = ControlBtn.CONTROL_ADD;
 		}
 
 		private void btn_edit_edit_period_Click(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace PassbookManagement.src
 			txt_rate_edit_period.Clear();
 			txt_period_edit_period.Clear();
 
-			m_control = Control.CONTROL_EDIT;
+			m_control = ControlBtn.CONTROL_EDIT;
 		}
 
 		private void btn_remove_edit_period_Click(object sender, EventArgs e)
@@ -122,14 +122,14 @@ namespace PassbookManagement.src
 			txt_rate_edit_period.Clear();
 			txt_period_edit_period.Clear();
 
-			m_control = Control.CONTROL_REMOVE;
+			m_control = ControlBtn.CONTROL_REMOVE;
 		}
 
 		private void btn_apply_edit_period_Click(object sender, EventArgs e)
 		{
 			switch(m_control)
 			{
-				case Control.CONTROL_ADD:
+				case ControlBtn.CONTROL_ADD:
 					{
 						DataTable _data = PassbookModel.SelectPeriodByName(txt_name_edit_period.Text);
 
@@ -147,7 +147,7 @@ namespace PassbookManagement.src
 						MessageBox.Show("Current period have added successfully", "Create period");
 					}
 					break;
-				case Control.CONTROL_EDIT:
+				case ControlBtn.CONTROL_EDIT:
 					{
 						if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
 						{
@@ -157,7 +157,7 @@ namespace PassbookManagement.src
 						MessageBox.Show("Current period have edited successfully", "Edit period");
 					}
 					break;
-				case Control.CONTROL_REMOVE:
+				case ControlBtn.CONTROL_REMOVE:
 					{
 						DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_edit_period.Text);
 

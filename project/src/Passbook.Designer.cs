@@ -31,6 +31,7 @@
 			this.tab_selector = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_open = new System.Windows.Forms.TabPage();
+			this.txt_passbook_name_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.cbb_period_open = new System.Windows.Forms.ComboBox();
 			this.lbl_customer_id_open = new MaterialSkin.Controls.MaterialLabel();
 			this.btn_refresh_open = new MaterialSkin.Controls.MaterialFlatButton();
@@ -103,7 +104,8 @@
 			this.btn_option = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.context_option = new MaterialSkin.Controls.MaterialContextMenuStrip();
 			this.item_edit_condition = new System.Windows.Forms.ToolStripMenuItem();
-			this.txt_passbook_name_open = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.txt_welcome_main = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -164,6 +166,23 @@
 			this.tab_open.Size = new System.Drawing.Size(668, 339);
 			this.tab_open.TabIndex = 0;
 			this.tab_open.Text = "Passbook";
+			// 
+			// txt_passbook_name_open
+			// 
+			this.txt_passbook_name_open.Depth = 0;
+			this.txt_passbook_name_open.Hint = "Passbook Name";
+			this.txt_passbook_name_open.Location = new System.Drawing.Point(360, 91);
+			this.txt_passbook_name_open.MaxLength = 32767;
+			this.txt_passbook_name_open.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_passbook_name_open.Name = "txt_passbook_name_open";
+			this.txt_passbook_name_open.PasswordChar = '\0';
+			this.txt_passbook_name_open.SelectedText = "";
+			this.txt_passbook_name_open.SelectionLength = 0;
+			this.txt_passbook_name_open.SelectionStart = 0;
+			this.txt_passbook_name_open.Size = new System.Drawing.Size(227, 23);
+			this.txt_passbook_name_open.TabIndex = 14;
+			this.txt_passbook_name_open.TabStop = false;
+			this.txt_passbook_name_open.UseSystemPasswordChar = false;
 			// 
 			// cbb_period_open
 			// 
@@ -1049,12 +1068,13 @@
 			this.context_option.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.context_option.Depth = 0;
 			this.context_option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.item_edit_condition});
+            this.item_edit_condition,
+            this.logoutToolStripMenuItem});
 			this.context_option.MouseState = MaterialSkin.MouseState.HOVER;
 			this.context_option.Name = "context_option";
 			this.context_option.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			this.context_option.ShowImageMargin = false;
-			this.context_option.Size = new System.Drawing.Size(126, 26);
+			this.context_option.Size = new System.Drawing.Size(126, 48);
 			// 
 			// item_edit_condition
 			// 
@@ -1063,31 +1083,36 @@
 			this.item_edit_condition.Text = "Edit Condition";
 			this.item_edit_condition.Click += new System.EventHandler(this.item_edit_condition_Click);
 			// 
-			// txt_passbook_name_open
+			// logoutToolStripMenuItem
 			// 
-			this.txt_passbook_name_open.Depth = 0;
-			this.txt_passbook_name_open.Hint = "Passbook Name";
-			this.txt_passbook_name_open.Location = new System.Drawing.Point(360, 91);
-			this.txt_passbook_name_open.MaxLength = 32767;
-			this.txt_passbook_name_open.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_passbook_name_open.Name = "txt_passbook_name_open";
-			this.txt_passbook_name_open.PasswordChar = '\0';
-			this.txt_passbook_name_open.SelectedText = "";
-			this.txt_passbook_name_open.SelectionLength = 0;
-			this.txt_passbook_name_open.SelectionStart = 0;
-			this.txt_passbook_name_open.Size = new System.Drawing.Size(227, 23);
-			this.txt_passbook_name_open.TabIndex = 14;
-			this.txt_passbook_name_open.TabStop = false;
-			this.txt_passbook_name_open.UseSystemPasswordChar = false;
+			this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+			this.logoutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+			this.logoutToolStripMenuItem.Text = "Logout";
+			// 
+			// txt_welcome_main
+			// 
+			this.txt_welcome_main.AutoSize = true;
+			this.txt_welcome_main.BackColor = System.Drawing.Color.Transparent;
+			this.txt_welcome_main.Depth = 0;
+			this.txt_welcome_main.Font = new System.Drawing.Font("Roboto", 11F);
+			this.txt_welcome_main.ForeColor = System.Drawing.Color.White;
+			this.txt_welcome_main.Location = new System.Drawing.Point(492, 29);
+			this.txt_welcome_main.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_welcome_main.Name = "txt_welcome_main";
+			this.txt_welcome_main.Size = new System.Drawing.Size(111, 19);
+			this.txt_welcome_main.TabIndex = 3;
+			this.txt_welcome_main.Text = "Welcome back,";
 			// 
 			// Passbook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(700, 480);
+			this.Controls.Add(this.txt_welcome_main);
 			this.Controls.Add(this.btn_option);
 			this.Controls.Add(this.tab_selector);
 			this.Controls.Add(this.tab_control);
+			this.MaximizeBox = false;
 			this.Name = "Passbook";
 			this.Text = "Passbook Management";
 			this.tab_control.ResumeLayout(false);
@@ -1105,6 +1130,7 @@
 			this.tab_monthly_report.PerformLayout();
 			this.context_option.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -1186,5 +1212,7 @@
         private System.Windows.Forms.DateTimePicker date_daily;
 		private System.Windows.Forms.MonthCalendar calendar_withdrawal;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_passbook_name_open;
+		private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+		private MaterialSkin.Controls.MaterialLabel txt_welcome_main;
 	}
 }
