@@ -330,6 +330,7 @@
 			this.txt_phone_number_open.TabIndex = 5;
 			this.txt_phone_number_open.TabStop = false;
 			this.txt_phone_number_open.UseSystemPasswordChar = false;
+			this.txt_phone_number_open.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_open_KeyDown);
 			// 
 			// lbl_customer
 			// 

@@ -68,17 +68,30 @@ namespace PassbookManagement.src
 		///
 		private void SelectCustomerOpen()
 		{
-			if (txt_identity_number_open.Text == "")
+			DataTable _data = null;
+			if (txt_identity_number_open.Text != "")
+			{
+				_data = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
+
+				if (_data.Rows.Count == 0)
+				{
+					MessageBox.Show("Account not found. Please type all information to add new account!!!", "Notice");
+					return;
+				}
+			}
+			else if(txt_phone_number_open.Text != "")
+			{
+				_data = PassbookModel.SelectCustomerByPhoneNumber(txt_phone_number_open.Text);
+
+				if (_data.Rows.Count == 0)
+				{
+					MessageBox.Show("Account not found. Please type all information to add new account!!!", "Notice");
+					return;
+				}
+			}
+			else
 			{
 				MessageBox.Show("Please type identity number!!!", "Notice");
-				return;
-			}
-
-			DataTable _data = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
-
-			if (_data.Rows.Count == 0)
-			{
-				MessageBox.Show("Account not found. Please type all information to add new account!!!", "Notice");
 				return;
 			}
 
@@ -122,6 +135,14 @@ namespace PassbookManagement.src
 		}
 
 		private void txt_identity_number_open_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				SelectCustomerOpen();
+			}
+		}
+
+		private void txt_phone_number_open_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
@@ -694,11 +715,15 @@ namespace PassbookManagement.src
 		{
 			DataTable _data = PassbookModel.SelectAllPeriod();
 
+			cbb_period_monthly.Items.Clear();
+
 			for (int i = 0; i < _data.Rows.Count; i++)
 			{
 				object[] _period1 = _data.Rows[i].ItemArray;
-				cbb_period_open.Items.Add(_period1[TblColumn.T_NAME].ToString());
+				cbb_period_monthly.Items.Add(_period1[TblColumn.T_NAME].ToString());
 			}
+
+			cbb_period_monthly.SelectedIndex = 0;
 
 			DateTime _dateTime = date_monthly.Value;
 

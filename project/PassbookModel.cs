@@ -30,6 +30,14 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
+		public static DataTable SelectCustomerByPhoneNumber(string phone_number)
+		{
+			string _query = "SELECT * FROM " + tbl_customers;
+			_query += " WHERE " + TblColumn.A_PHONE_NUMBER_S + "=\"" + phone_number + "\"";
+
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
+
 		public static DataTable SelectCustomerById(string id)
 		{
 			string _query = "SELECT * FROM " + tbl_customers;
