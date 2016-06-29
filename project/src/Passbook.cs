@@ -11,6 +11,8 @@ namespace PassbookManagement.src
 {
 	public partial class Passbook : MaterialForm
 	{
+		private LoginForm _loginForm;
+
 		public Passbook()
 		{
 			InitializeComponent();
@@ -22,7 +24,7 @@ namespace PassbookManagement.src
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 			materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan500, Primary.Cyan600, Primary.Cyan300, Accent.LightBlue200, TextShade.WHITE);
 
-			Processor.ReadParams("params.pro");
+			Processor.ReadParams(Processor.PARAMS_FILE);
 
 			btn_check_open.Enabled = true;
 			btn_submit_open.Enabled = true;
@@ -33,12 +35,9 @@ namespace PassbookManagement.src
 			btn_check_withdrawal.Enabled = true;
 			btn_create_withdrawal.Enabled = false;
 
-			LoginForm _loginForm = new LoginForm();
+			_loginForm = new LoginForm();
 
-			Hide();
-			_loginForm.ShowDialog();
-
-			txt_welcome_main.Text = "Welcome back,\n" + Params.CURRENT_SESSION[Params.CURRENT_USERNAME];
+			OpenLoginForm();
 		}
 
 
@@ -56,6 +55,28 @@ namespace PassbookManagement.src
 		{
 			var _editForm = new EditCondition();
 			_editForm.ShowDialog();
+		}
+
+		private void item_logout_Click(object sender, EventArgs e)
+		{
+			Params.CURRENT_SESSION.Clear();
+
+			OpenLoginForm();
+		}
+
+		private void OpenLoginForm()
+		{
+			Hide();
+			_loginForm.ShowDialog();
+
+			if (_loginForm.DialogResult == DialogResult.Cancel)
+			{
+				Environment.Exit(0);
+				return;
+			}
+
+			txt_welcome_main.Text = "Welcome back,\n" + Params.CURRENT_SESSION[Params.CURRENT_USERNAME];
+			Show();
 		}
 		////////////////////////////////////////////////////////////////////
 

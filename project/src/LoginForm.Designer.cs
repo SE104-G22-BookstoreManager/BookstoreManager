@@ -33,7 +33,7 @@
 			this.btn_login_login = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_cancel_login = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.div1_login = new MaterialSkin.Controls.MaterialDivider();
-			this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+			this.check_remember_me = new MaterialSkin.Controls.MaterialCheckBox();
 			this.SuspendLayout();
 			// 
 			// txt_email_login
@@ -82,7 +82,7 @@
 			this.btn_login_login.Name = "btn_login_login";
 			this.btn_login_login.Primary = true;
 			this.btn_login_login.Size = new System.Drawing.Size(75, 40);
-			this.btn_login_login.TabIndex = 2;
+			this.btn_login_login.TabIndex = 3;
 			this.btn_login_login.Text = "LOGIN";
 			this.btn_login_login.UseVisualStyleBackColor = true;
 			this.btn_login_login.Click += new System.EventHandler(this.btn_login_login_Click);
@@ -95,7 +95,7 @@
 			this.btn_cancel_login.Name = "btn_cancel_login";
 			this.btn_cancel_login.Primary = true;
 			this.btn_cancel_login.Size = new System.Drawing.Size(75, 40);
-			this.btn_cancel_login.TabIndex = 3;
+			this.btn_cancel_login.TabIndex = 4;
 			this.btn_cancel_login.Text = "CANCEL";
 			this.btn_cancel_login.UseVisualStyleBackColor = true;
 			this.btn_cancel_login.Click += new System.EventHandler(this.btn_cancel_login_Click);
@@ -108,32 +108,32 @@
 			this.div1_login.MouseState = MaterialSkin.MouseState.HOVER;
 			this.div1_login.Name = "div1_login";
 			this.div1_login.Size = new System.Drawing.Size(326, 1);
-			this.div1_login.TabIndex = 4;
+			this.div1_login.TabIndex = 5;
 			this.div1_login.Text = "materialDivider1";
 			// 
-			// materialCheckBox1
+			// check_remember_me
 			// 
-			this.materialCheckBox1.AutoSize = true;
-			this.materialCheckBox1.BackColor = System.Drawing.Color.Transparent;
-			this.materialCheckBox1.Depth = 0;
-			this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-			this.materialCheckBox1.Location = new System.Drawing.Point(180, 168);
-			this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-			this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-			this.materialCheckBox1.Name = "materialCheckBox1";
-			this.materialCheckBox1.Ripple = true;
-			this.materialCheckBox1.Size = new System.Drawing.Size(120, 30);
-			this.materialCheckBox1.TabIndex = 5;
-			this.materialCheckBox1.Text = "Remember me";
-			this.materialCheckBox1.UseVisualStyleBackColor = false;
+			this.check_remember_me.AutoSize = true;
+			this.check_remember_me.BackColor = System.Drawing.Color.Transparent;
+			this.check_remember_me.Depth = 0;
+			this.check_remember_me.Font = new System.Drawing.Font("Roboto", 10F);
+			this.check_remember_me.Location = new System.Drawing.Point(180, 168);
+			this.check_remember_me.Margin = new System.Windows.Forms.Padding(0);
+			this.check_remember_me.MouseLocation = new System.Drawing.Point(-1, -1);
+			this.check_remember_me.MouseState = MaterialSkin.MouseState.HOVER;
+			this.check_remember_me.Name = "check_remember_me";
+			this.check_remember_me.Ripple = true;
+			this.check_remember_me.Size = new System.Drawing.Size(120, 30);
+			this.check_remember_me.TabIndex = 2;
+			this.check_remember_me.Text = "Remember me";
+			this.check_remember_me.UseVisualStyleBackColor = false;
 			// 
 			// LoginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(350, 275);
-			this.Controls.Add(this.materialCheckBox1);
+			this.Controls.Add(this.check_remember_me);
 			this.Controls.Add(this.div1_login);
 			this.Controls.Add(this.btn_cancel_login);
 			this.Controls.Add(this.btn_login_login);
@@ -144,7 +144,6 @@
 			this.Text = "Login";
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
 		#endregion
@@ -154,6 +153,6 @@
 		private MaterialSkin.Controls.MaterialRaisedButton btn_login_login;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_cancel_login;
 		private MaterialSkin.Controls.MaterialDivider div1_login;
-		private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
+		private MaterialSkin.Controls.MaterialCheckBox check_remember_me;
 	}
 }

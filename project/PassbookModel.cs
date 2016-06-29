@@ -278,7 +278,7 @@ namespace PassbookManagement
 		public static bool UpdateMinCash(string cash)
 		{
 			Params.PARAMS[Params.MIN_CASH] = cash;
-			Processor.WriteParams("params.pro");
+			Processor.WriteParams(Processor.PARAMS_FILE);
 
 			return true;
 		}
@@ -286,7 +286,7 @@ namespace PassbookManagement
 		public static bool UpdateMinIncome(string cash)
 		{
 			Params.PARAMS[Params.MIN_INCOME] = cash;
-			Processor.WriteParams("params.pro");
+			Processor.WriteParams(Processor.PARAMS_FILE);
 
 			return true;
 		}

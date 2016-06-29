@@ -158,6 +158,9 @@ namespace PassbookManagement
 
 	public static class Processor
 	{
+		public static readonly string PARAMS_FILE = "params.pro";
+		public static readonly string HASH_KEY = "C0d3F0rF4n!";
+
 		public static void ReadParams(string path)
 		{
 			var _filestream = new System.IO.FileStream(path,
@@ -166,7 +169,7 @@ namespace PassbookManagement
 										  System.IO.FileShare.ReadWrite);
 			var _file = new System.IO.StreamReader(_filestream, System.Text.Encoding.UTF8, true, 128);
 
-			string _json = StringCipher.Decrypt(_file.ReadToEnd(), "C0d3F0rF4n!");
+			string _json = StringCipher.Decrypt(_file.ReadToEnd(), HASH_KEY);
 			JsonObject o = JsonConvert.DeserializeObject<JsonObject>(_json);
 
 			Params.ReadFromObject(o);
@@ -186,7 +189,7 @@ namespace PassbookManagement
 			JsonObject o = Params.CreateObject();
 			string _json = JsonConvert.SerializeObject(o);
 
-			_writer.Write(StringCipher.Encrypt(_json, "C0d3F0rF4n!"));
+			_writer.Write(StringCipher.Encrypt(_json, HASH_KEY));
 
 			_writer.Dispose();
 			_writeStream.Dispose();

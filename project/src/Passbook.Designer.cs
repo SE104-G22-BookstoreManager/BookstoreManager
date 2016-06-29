@@ -104,7 +104,7 @@
 			this.btn_option = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.context_option = new MaterialSkin.Controls.MaterialContextMenuStrip();
 			this.item_edit_condition = new System.Windows.Forms.ToolStripMenuItem();
-			this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.item_logout = new System.Windows.Forms.ToolStripMenuItem();
 			this.txt_welcome_main = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
@@ -1070,25 +1070,26 @@
 			this.context_option.Depth = 0;
 			this.context_option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.item_edit_condition,
-            this.logoutToolStripMenuItem});
+            this.item_logout});
 			this.context_option.MouseState = MaterialSkin.MouseState.HOVER;
 			this.context_option.Name = "context_option";
 			this.context_option.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			this.context_option.ShowImageMargin = false;
-			this.context_option.Size = new System.Drawing.Size(126, 48);
+			this.context_option.Size = new System.Drawing.Size(128, 70);
 			// 
 			// item_edit_condition
 			// 
 			this.item_edit_condition.Name = "item_edit_condition";
-			this.item_edit_condition.Size = new System.Drawing.Size(125, 22);
+			this.item_edit_condition.Size = new System.Drawing.Size(127, 22);
 			this.item_edit_condition.Text = "Edit Condition";
 			this.item_edit_condition.Click += new System.EventHandler(this.item_edit_condition_Click);
 			// 
-			// logoutToolStripMenuItem
+			// item_logout
 			// 
-			this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-			this.logoutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-			this.logoutToolStripMenuItem.Text = "Logout";
+			this.item_logout.Name = "item_logout";
+			this.item_logout.Size = new System.Drawing.Size(127, 22);
+			this.item_logout.Text = "Logout";
+			this.item_logout.Click += new System.EventHandler(this.item_logout_Click);
 			// 
 			// txt_welcome_main
 			// 
@@ -1096,7 +1097,7 @@
 			this.txt_welcome_main.BackColor = System.Drawing.Color.Transparent;
 			this.txt_welcome_main.Depth = 0;
 			this.txt_welcome_main.Font = new System.Drawing.Font("Roboto", 11F);
-			this.txt_welcome_main.ForeColor = System.Drawing.Color.White;
+			this.txt_welcome_main.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.txt_welcome_main.Location = new System.Drawing.Point(492, 29);
 			this.txt_welcome_main.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_welcome_main.Name = "txt_welcome_main";
@@ -1213,7 +1214,7 @@
         private System.Windows.Forms.DateTimePicker date_daily;
 		private System.Windows.Forms.MonthCalendar calendar_withdrawal;
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_passbook_name_open;
-		private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem item_logout;
 		private MaterialSkin.Controls.MaterialLabel txt_welcome_main;
 	}
 }

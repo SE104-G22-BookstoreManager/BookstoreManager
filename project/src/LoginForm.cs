@@ -18,6 +18,17 @@ namespace PassbookManagement.src
 		public LoginForm()
 		{
 			InitializeComponent();
+
+			if (Params.PARAMS[Params.USERNAME].ToString() != "")
+			{
+				txt_email_login.Text = Params.PARAMS[Params.USERNAME].ToString();
+				txt_password_login.Text = Params.PARAMS[Params.PASSWORD].ToString();
+				check_remember_me.Checked = true;
+			}
+			else
+			{
+				check_remember_me.Checked = false;
+			}
 		}
 
 		private void Login()
@@ -51,7 +62,21 @@ namespace PassbookManagement.src
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_PASSWORD]);
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_NAME]);
 
-				Close();
+				if(check_remember_me.Checked == true)
+				{
+					Params.PARAMS[Params.USERNAME] = txt_email_login.Text;
+					Params.PARAMS[Params.PASSWORD] = txt_password_login.Text;
+				}
+				else
+				{
+					Params.PARAMS[Params.USERNAME] = "";
+					Params.PARAMS[Params.PASSWORD] = "";
+				}
+
+				Processor.WriteParams(Processor.PARAMS_FILE);
+
+				Hide();
+				DialogResult = DialogResult.OK;
 			}
 		}
 
@@ -62,7 +87,8 @@ namespace PassbookManagement.src
 
 		private void btn_cancel_login_Click(object sender, EventArgs e)
 		{
-			Close();
+			Hide();
+			DialogResult = DialogResult.Cancel;
 		}
 
 		private void txt_password_login_KeyDown(object sender, KeyEventArgs e)
