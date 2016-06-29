@@ -61,8 +61,9 @@ namespace PassbookManagement.src
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_EMAIL]);
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_PASSWORD]);
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_NAME]);
+				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_ROLES]);
 
-				if(check_remember_me.Checked == true)
+				if (check_remember_me.Checked == true)
 				{
 					Params.PARAMS[Params.USERNAME] = txt_email_login.Text;
 					Params.PARAMS[Params.PASSWORD] = txt_password_login.Text;

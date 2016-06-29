@@ -1,6 +1,7 @@
 ﻿using PassbookManagement.src;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace PassbookManagement
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Passbook());
+
+			//Processor.EncryptedDatabase("passbook.s3db", "passbook.pro");
 		}
 	}
 }

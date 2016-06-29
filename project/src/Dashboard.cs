@@ -12,16 +12,25 @@ namespace PassbookManagement.src
 		CONTROL_REMOVE
 	}
 
-	public partial class EditCondition : MaterialForm
+	public partial class Dashboard : MaterialForm
 	{
 		private ControlBtn m_control;
 
-		public EditCondition()
+		public Dashboard()
 		{
 			InitializeComponent();
 
 			cbb_period_edit_period.Hide();
 			m_control = ControlBtn.CONTROL_ADD;
+
+			if((Convert.ToInt32(Params.CURRENT_SESSION[Params.CURRENT_ROLES]) & Roles.ROLE_MANAGER) == Roles.ROLE_MANAGER)
+			{
+				tab_manage_staffs.Parent = tab_control_edit;
+			}
+			else
+			{
+				tab_manage_staffs.Parent = null;
+			}
 		}
 
 		////////////////////////////////////////////////////////////////////
@@ -56,7 +65,8 @@ namespace PassbookManagement.src
 
 		private void btn_ok_edit_cash_Click(object sender, EventArgs e)
 		{
-			Close();
+			Hide();
+			DialogResult = DialogResult.OK;
 		}
 
 
@@ -191,27 +201,27 @@ namespace PassbookManagement.src
 
 		private void btn_ok_edit_type_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			Hide();
+			DialogResult = DialogResult.OK;
 		}
 
 		private void cbb_period_edit_period_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			try
-			{
-				string name_type = cbb_period_edit_period.Text;
-				DataTable _result2 = PassbookModel.SelectPeriodByName(name_type);
+			DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_edit_period.Text);
 
-				object[] _itemArray2 = _result2.Rows[0].ItemArray;
-				lbl_id_edit_period.Text = _itemArray2[0].ToString();
-
-				txt_name_edit_period.Text = _itemArray2[2].ToString();
-				txt_rate_edit_period.Text = _itemArray2[3].ToString();
-				txt_period_edit_period.Text = _itemArray2[4].ToString();
-			}
-			catch (Exception ex)
+			if(_data.Rows.Count == 0)
 			{
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show("The selected period does not exist!!!", "Notice");
+				return;
 			}
+
+			object[] _period = _data.Rows[0].ItemArray;
+
+			lbl_id_edit_period.Text = _period[TblColumn.T_ID].ToString();
+
+			txt_name_edit_period.Text = _period[TblColumn.T_NAME].ToString();
+			txt_rate_edit_period.Text = _period[TblColumn.T_RATE].ToString();
+			txt_period_edit_period.Text = _period[TblColumn.T_PERIOD].ToString();
 		}
 
 		private void GetPeriod()
@@ -224,7 +234,7 @@ namespace PassbookManagement.src
 				for (int i = 0; i < _data.Rows.Count; i++)
 				{
 					object[] _period = _data.Rows[i].ItemArray;
-					cbb_period_edit_period.Items.Add(_period[2].ToString());
+					cbb_period_edit_period.Items.Add(_period[TblColumn.T_NAME].ToString());
 				}
 			}
 		}

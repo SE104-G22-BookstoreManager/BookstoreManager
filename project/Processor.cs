@@ -115,6 +115,8 @@ namespace PassbookManagement
 		public static readonly int CURRENT_EMAIL = 0;
 		public static readonly int CURRENT_PASSWORD = 1;
 		public static readonly int CURRENT_USERNAME = 2;
+		public static readonly int CURRENT_ROLES = 3;
+
 
 		public static void ReadFromObject(JsonObject o)
 		{
@@ -167,29 +169,81 @@ namespace PassbookManagement
 										  System.IO.FileMode.Open,
 										  System.IO.FileAccess.Read,
 										  System.IO.FileShare.ReadWrite);
-			var _file = new System.IO.StreamReader(_filestream, System.Text.Encoding.UTF8, true, 128);
+			var _reader = new System.IO.StreamReader(_filestream, System.Text.Encoding.UTF8, true, 128);
 
-			string _json = StringCipher.Decrypt(_file.ReadToEnd(), HASH_KEY);
+			string _json = StringCipher.Decrypt(_reader.ReadToEnd(), HASH_KEY);
 			JsonObject o = JsonConvert.DeserializeObject<JsonObject>(_json);
 
 			Params.ReadFromObject(o);
 
-			_file.Dispose();
+			_reader.Dispose();
 			_filestream.Dispose();
 		}
 
 		public static void WriteParams(string path)
 		{
-			var _writeStream = new System.IO.FileStream(path,
+			var _fileStream = new System.IO.FileStream(path,
 										  System.IO.FileMode.Create,
 										  System.IO.FileAccess.Write,
 										  System.IO.FileShare.ReadWrite);
-			var _writer = new System.IO.StreamWriter(_writeStream, System.Text.Encoding.UTF8, 128);
+			var _writer = new System.IO.StreamWriter(_fileStream, System.Text.Encoding.UTF8, 128);
 
 			JsonObject o = Params.CreateObject();
 			string _json = JsonConvert.SerializeObject(o);
 
 			_writer.Write(StringCipher.Encrypt(_json, HASH_KEY));
+
+			_writer.Dispose();
+			_fileStream.Dispose();
+		}
+
+		public static void EncryptedDatabase(string source, string dest)
+		{
+			var _readStream = new System.IO.FileStream(source,
+										  System.IO.FileMode.Open,
+										  System.IO.FileAccess.Read,
+										  System.IO.FileShare.ReadWrite);
+			var _reader = new System.IO.StreamReader(_readStream, System.Text.Encoding.UTF8, true, 128);
+
+			string _data = _reader.ReadToEnd();
+
+			_reader.Dispose();
+			_readStream.Dispose();
+
+
+			var _writeStream = new System.IO.FileStream(dest,
+										  System.IO.FileMode.Create,
+										  System.IO.FileAccess.Write,
+										  System.IO.FileShare.ReadWrite);
+			var _writer = new System.IO.StreamWriter(_writeStream, System.Text.Encoding.UTF8, 128);
+
+			_writer.Write(StringCipher.Encrypt(_data, HASH_KEY));
+
+			_writer.Dispose();
+			_writeStream.Dispose();
+		}
+
+		public static void DecryptedDatabase(string source, string dest)
+		{
+			var _readStream = new System.IO.FileStream(source,
+										  System.IO.FileMode.Open,
+										  System.IO.FileAccess.Read,
+										  System.IO.FileShare.ReadWrite);
+			var _reader = new System.IO.StreamReader(_readStream, System.Text.Encoding.UTF8, true, 128);
+
+			string _data = StringCipher.Decrypt(_reader.ReadToEnd(), HASH_KEY);
+
+			_reader.Dispose();
+			_readStream.Dispose();
+
+
+			var _writeStream = new System.IO.FileStream(dest,
+										  System.IO.FileMode.Create,
+										  System.IO.FileAccess.Write,
+										  System.IO.FileShare.ReadWrite);
+			var _writer = new System.IO.StreamWriter(_writeStream, System.Text.Encoding.UTF8, 128);
+
+			_writer.Write(_data);
 
 			_writer.Dispose();
 			_writeStream.Dispose();

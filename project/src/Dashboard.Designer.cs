@@ -1,6 +1,6 @@
 ﻿namespace PassbookManagement.src
 {
-	partial class EditCondition
+	partial class Dashboard
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -45,16 +45,24 @@
 			this.cbb_period_edit_period = new System.Windows.Forms.ComboBox();
 			this.btn_apply_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_ok_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.tab_manage_staffs = new System.Windows.Forms.TabPage();
 			this.tab_selector_edit = new MaterialSkin.Controls.MaterialTabSelector();
+			this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+			this.col_order = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_phone_number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tab_control_edit.SuspendLayout();
 			this.tab_cash_edit.SuspendLayout();
 			this.tab_period_edit.SuspendLayout();
+			this.tab_manage_staffs.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tab_control_edit
 			// 
 			this.tab_control_edit.Controls.Add(this.tab_cash_edit);
 			this.tab_control_edit.Controls.Add(this.tab_period_edit);
+			this.tab_control_edit.Controls.Add(this.tab_manage_staffs);
 			this.tab_control_edit.Depth = 0;
 			this.tab_control_edit.Location = new System.Drawing.Point(12, 114);
 			this.tab_control_edit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -262,6 +270,7 @@
 			// 
 			// cbb_period_edit_period
 			// 
+			this.cbb_period_edit_period.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbb_period_edit_period.FormattingEnabled = true;
 			this.cbb_period_edit_period.Location = new System.Drawing.Point(150, 25);
 			this.cbb_period_edit_period.Name = "cbb_period_edit_period";
@@ -295,6 +304,17 @@
 			this.btn_ok_edit_period.UseVisualStyleBackColor = true;
 			this.btn_ok_edit_period.Click += new System.EventHandler(this.btn_ok_edit_type_Click);
 			// 
+			// tab_manage_staffs
+			// 
+			this.tab_manage_staffs.Controls.Add(this.materialListView1);
+			this.tab_manage_staffs.Location = new System.Drawing.Point(4, 22);
+			this.tab_manage_staffs.Name = "tab_manage_staffs";
+			this.tab_manage_staffs.Padding = new System.Windows.Forms.Padding(3);
+			this.tab_manage_staffs.Size = new System.Drawing.Size(568, 206);
+			this.tab_manage_staffs.TabIndex = 3;
+			this.tab_manage_staffs.Text = "Staffs";
+			this.tab_manage_staffs.UseVisualStyleBackColor = true;
+			// 
 			// tab_selector_edit
 			// 
 			this.tab_selector_edit.BaseTabControl = this.tab_control_edit;
@@ -306,19 +326,63 @@
 			this.tab_selector_edit.TabIndex = 1;
 			this.tab_selector_edit.Text = "TabSelector";
 			// 
-			// EditCondition
+			// materialListView1
+			// 
+			this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.col_order,
+            this.col_name,
+            this.col_email,
+            this.col_phone_number});
+			this.materialListView1.Depth = 0;
+			this.materialListView1.Font = new System.Drawing.Font("Roboto", 18F);
+			this.materialListView1.FullRowSelect = true;
+			this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.materialListView1.Location = new System.Drawing.Point(0, 0);
+			this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+			this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
+			this.materialListView1.Name = "materialListView1";
+			this.materialListView1.OwnerDraw = true;
+			this.materialListView1.Size = new System.Drawing.Size(572, 206);
+			this.materialListView1.TabIndex = 0;
+			this.materialListView1.UseCompatibleStateImageBehavior = false;
+			this.materialListView1.View = System.Windows.Forms.View.Details;
+			// 
+			// col_order
+			// 
+			this.col_order.Text = "Order";
+			this.col_order.Width = 80;
+			// 
+			// col_name
+			// 
+			this.col_name.Text = "Name";
+			this.col_name.Width = 134;
+			// 
+			// col_email
+			// 
+			this.col_email.Text = "Email";
+			this.col_email.Width = 134;
+			// 
+			// col_phone_number
+			// 
+			this.col_phone_number.Text = "Phone Number";
+			this.col_phone_number.Width = 226;
+			// 
+			// Dashboard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(600, 350);
 			this.Controls.Add(this.tab_selector_edit);
 			this.Controls.Add(this.tab_control_edit);
-			this.Name = "EditCondition";
-			this.Text = "EditCondition";
+			this.MaximizeBox = false;
+			this.Name = "Dashboard";
+			this.Text = "Dashboard";
 			this.tab_control_edit.ResumeLayout(false);
 			this.tab_cash_edit.ResumeLayout(false);
 			this.tab_period_edit.ResumeLayout(false);
 			this.tab_period_edit.PerformLayout();
+			this.tab_manage_staffs.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -343,5 +407,11 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_period_edit_period;
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_edit_period;
 		private MaterialSkin.Controls.MaterialLabel lbl_id_edit_period;
+		private System.Windows.Forms.TabPage tab_manage_staffs;
+		private MaterialSkin.Controls.MaterialListView materialListView1;
+		private System.Windows.Forms.ColumnHeader col_order;
+		private System.Windows.Forms.ColumnHeader col_name;
+		private System.Windows.Forms.ColumnHeader col_email;
+		private System.Windows.Forms.ColumnHeader col_phone_number;
 	}
 }

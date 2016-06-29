@@ -103,9 +103,10 @@
 			this.cbb_period_monthly = new System.Windows.Forms.ComboBox();
 			this.btn_option = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.context_option = new MaterialSkin.Controls.MaterialContextMenuStrip();
-			this.item_edit_condition = new System.Windows.Forms.ToolStripMenuItem();
+			this.item_dashboard = new System.Windows.Forms.ToolStripMenuItem();
 			this.item_logout = new System.Windows.Forms.ToolStripMenuItem();
 			this.txt_welcome_main = new MaterialSkin.Controls.MaterialLabel();
+			this.btn_show_monthly = new MaterialSkin.Controls.MaterialFlatButton();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -958,6 +959,7 @@
 			// tab_monthly_report
 			// 
 			this.tab_monthly_report.BackColor = System.Drawing.Color.White;
+			this.tab_monthly_report.Controls.Add(this.btn_show_monthly);
 			this.tab_monthly_report.Controls.Add(this.btn_refresh_monthly);
 			this.tab_monthly_report.Controls.Add(this.list_monthly);
 			this.tab_monthly_report.Controls.Add(this.date_monthly);
@@ -1069,25 +1071,25 @@
 			this.context_option.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.context_option.Depth = 0;
 			this.context_option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.item_edit_condition,
+            this.item_dashboard,
             this.item_logout});
 			this.context_option.MouseState = MaterialSkin.MouseState.HOVER;
 			this.context_option.Name = "context_option";
 			this.context_option.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			this.context_option.ShowImageMargin = false;
-			this.context_option.Size = new System.Drawing.Size(128, 70);
+			this.context_option.Size = new System.Drawing.Size(107, 48);
 			// 
-			// item_edit_condition
+			// item_dashboard
 			// 
-			this.item_edit_condition.Name = "item_edit_condition";
-			this.item_edit_condition.Size = new System.Drawing.Size(127, 22);
-			this.item_edit_condition.Text = "Edit Condition";
-			this.item_edit_condition.Click += new System.EventHandler(this.item_edit_condition_Click);
+			this.item_dashboard.Name = "item_dashboard";
+			this.item_dashboard.Size = new System.Drawing.Size(106, 22);
+			this.item_dashboard.Text = "Dashboard";
+			this.item_dashboard.Click += new System.EventHandler(this.item_dashboard_Click);
 			// 
 			// item_logout
 			// 
 			this.item_logout.Name = "item_logout";
-			this.item_logout.Size = new System.Drawing.Size(127, 22);
+			this.item_logout.Size = new System.Drawing.Size(106, 22);
 			this.item_logout.Text = "Logout";
 			this.item_logout.Click += new System.EventHandler(this.item_logout_Click);
 			// 
@@ -1105,6 +1107,22 @@
 			this.txt_welcome_main.TabIndex = 3;
 			this.txt_welcome_main.Text = "Welcome back,";
 			// 
+			// btn_show_monthly
+			// 
+			this.btn_show_monthly.AutoSize = true;
+			this.btn_show_monthly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_show_monthly.Depth = 0;
+			this.btn_show_monthly.Location = new System.Drawing.Point(538, 0);
+			this.btn_show_monthly.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_show_monthly.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_show_monthly.Name = "btn_show_monthly";
+			this.btn_show_monthly.Primary = false;
+			this.btn_show_monthly.Size = new System.Drawing.Size(52, 36);
+			this.btn_show_monthly.TabIndex = 4;
+			this.btn_show_monthly.Text = "Show";
+			this.btn_show_monthly.UseVisualStyleBackColor = true;
+			this.btn_show_monthly.Click += new System.EventHandler(this.btn_show_monthly_Click);
+			// 
 			// Passbook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1117,6 +1135,7 @@
 			this.MaximizeBox = false;
 			this.Name = "Passbook";
 			this.Text = "Passbook Management";
+			this.Load += new System.EventHandler(this.Passbook_Load);
 			this.tab_control.ResumeLayout(false);
 			this.tab_open.ResumeLayout(false);
 			this.tab_open.PerformLayout();
@@ -1207,7 +1226,7 @@
 		private MaterialSkin.Controls.MaterialLabel lbl_customer_id_open;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_option;
 		private MaterialSkin.Controls.MaterialContextMenuStrip context_option;
-		private System.Windows.Forms.ToolStripMenuItem item_edit_condition;
+		private System.Windows.Forms.ToolStripMenuItem item_dashboard;
 		private System.Windows.Forms.ComboBox cbb_period_open;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_deposit;
         private MaterialSkin.Controls.MaterialLabel lbl_customer_id_withdrawal;
@@ -1216,5 +1235,6 @@
 		private MaterialSkin.Controls.MaterialSingleLineTextField txt_passbook_name_open;
 		private System.Windows.Forms.ToolStripMenuItem item_logout;
 		private MaterialSkin.Controls.MaterialLabel txt_welcome_main;
+		private MaterialSkin.Controls.MaterialFlatButton btn_show_monthly;
 	}
 }

@@ -11,12 +11,13 @@ namespace PassbookManagement.src
 {
 	public partial class Passbook : MaterialForm
 	{
-		private LoginForm _loginForm;
+		private LoginForm m_loginForm;
 
 		public Passbook()
 		{
 			InitializeComponent();
 
+			//Processor.DecryptedDatabase("passbook.pro", "passbook.s3db");
 			Database.SQLiteDatabase = new SQLiteDatabase("passbook.s3db");
 
 			var materialSkinManager = MaterialSkinManager.Instance;
@@ -35,8 +36,11 @@ namespace PassbookManagement.src
 			btn_check_withdrawal.Enabled = true;
 			btn_create_withdrawal.Enabled = false;
 
-			_loginForm = new LoginForm();
+			m_loginForm = new LoginForm();
+		}
 
+		private void Passbook_Load(object sender, EventArgs e)
+		{
 			OpenLoginForm();
 		}
 
@@ -51,10 +55,10 @@ namespace PassbookManagement.src
 			context_option.Show(btn_option, new Point(0, btn_option.Height));
 		}
 
-		private void item_edit_condition_Click(object sender, EventArgs e)
+		private void item_dashboard_Click(object sender, EventArgs e)
 		{
-			var _editForm = new EditCondition();
-			_editForm.ShowDialog();
+			var _dashboard = new Dashboard();
+			_dashboard.ShowDialog();
 		}
 
 		private void item_logout_Click(object sender, EventArgs e)
@@ -67,11 +71,11 @@ namespace PassbookManagement.src
 		private void OpenLoginForm()
 		{
 			Hide();
-			_loginForm.ShowDialog();
+			m_loginForm.ShowDialog();
 
-			if (_loginForm.DialogResult == DialogResult.Cancel)
+			if (m_loginForm.DialogResult == DialogResult.Cancel)
 			{
-				Environment.Exit(0);
+				Application.Exit();
 				return;
 			}
 
@@ -745,6 +749,15 @@ namespace PassbookManagement.src
 			}
 
 			cbb_period_monthly.SelectedIndex = 0;
+		}
+
+		private void btn_show_monthly_Click(object sender, EventArgs e)
+		{
+			if(cbb_period_monthly.Text == "")
+			{
+				MessageBox.Show("Please choose a period for tracking!!!", "Notice");
+				return;
+			}
 
 			DateTime _dateTime = date_monthly.Value;
 
@@ -762,7 +775,7 @@ namespace PassbookManagement.src
 
 			int _daysCount = Processor.CountDay(_dateTime.Month, _dateTime.Year);
 
-			for(int i = 0; i < _daysCount; i++)
+			for (int i = 0; i < _daysCount; i++)
 			{
 				ListViewItem _item = new ListViewItem((i + 1).ToString());
 
@@ -777,12 +790,12 @@ namespace PassbookManagement.src
 				int _outcome = 0;
 
 				DataTable _data2 = PassbookModel.SelectAllPassbooks();
-				
-				for(int j = 0; j < _data2.Rows.Count; j++)
+
+				for (int j = 0; j < _data2.Rows.Count; j++)
 				{
 					object[] _passbook = _data2.Rows[j].ItemArray;
 
-					if(_passbook[TblColumn.P_PERIOD_ID].ToString() == _period[TblColumn.T_ID].ToString())
+					if (_passbook[TblColumn.P_PERIOD_ID].ToString() == _period[TblColumn.T_ID].ToString())
 					{
 						List<string> _status = _passbook[TblColumn.P_STATUS].ToString().Split('|').ToList();
 						foreach (string __status in _status)
