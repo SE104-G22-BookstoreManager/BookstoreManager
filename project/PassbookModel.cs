@@ -90,7 +90,7 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-            _data.Add(TblColumn.A_NAME_S, name);
+            _data.Add(TblColumn.P_NAME_S, name);
             _data.Add(TblColumn.P_PERIOD_ID_S, period_id);
             _data.Add(TblColumn.P_CUSTOMER_ID_S, customer_id);
             _data.Add(TblColumn.P_CASH_S, cash);
@@ -102,7 +102,7 @@ namespace PassbookManagement
 		public static bool UpdateCashByPassbookId(string id, string cash)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
-			_data.Add("cash", cash);
+            _data.Add(TblColumn.P_CASH_S, cash);
 
 			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
 
@@ -112,7 +112,7 @@ namespace PassbookManagement
 		public static bool UpdateStatusByPassbookId(string id, string status)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
-			_data.Add("status", status);
+            _data.Add(TblColumn.P_CLOSE_S, status);
 
 			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
 
@@ -122,7 +122,7 @@ namespace PassbookManagement
 		public static bool UpdateLastUpdateTimeByPassbookId(string id, string date_time)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
-			_data.Add("date_time", date_time);
+            _data.Add(TblColumn.P_DATE_TIME_S, date_time);
 
 			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
 
@@ -154,9 +154,9 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("passbook_id", passbook_id);
-			_data.Add("cash", cash);
-			_data.Add("date_time", date_time);
+            _data.Add(TblColumn.D_ID_S, passbook_id);
+            _data.Add(TblColumn.D_CASH_S, cash);
+            _data.Add(TblColumn.D_DATE_TIME_S, date_time);
 
 			return Database.SQLiteDatabase.Insert(tbl_incomes, _data);
 		}
