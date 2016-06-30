@@ -90,13 +90,12 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("name", name);
-			_data.Add("period_id", period_id);
-			_data.Add("customer_id", customer_id);
-			_data.Add("cash", cash);
-			_data.Add("date_time", date_time);
-			_data.Add("status", status);
-
+            _data.Add(TblColumn.A_NAME_S, name);
+            _data.Add(TblColumn.P_PERIOD_ID_S, period_id);
+            _data.Add(TblColumn.P_CUSTOMER_ID_S, customer_id);
+            _data.Add(TblColumn.P_CASH_S, cash);
+            _data.Add(TblColumn.P_DATE_TIME_S, date_time);
+            _data.Add(TblColumn.P_CLOSE_S, status);
 			return Database.SQLiteDatabase.Insert(tbl_passbooks, _data);
 		}
 
