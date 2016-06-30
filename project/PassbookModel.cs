@@ -186,10 +186,9 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("passbook_id", passbook_id);
-
-			_data.Add("cash", cash);
-			_data.Add("date_time", date_time);
+            _data.Add(TblColumn.W_ID_S, passbook_id);
+            _data.Add(TblColumn.W_CASH_S, cash);
+            _data.Add(TblColumn.W_DATE_TIME_S, date_time);
 
 			return Database.SQLiteDatabase.Insert(tbl_outcomes, _data);
 		}
@@ -226,9 +225,9 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("name", name);
-			_data.Add("rate", rate);
-			_data.Add("period", period);
+            _data.Add(TblColumn.T_NAME_S, name);
+            _data.Add(TblColumn.T_RATE_S, rate);
+            _data.Add(TblColumn.T_PERIOD_S, period);
 
 			return Database.SQLiteDatabase.Insert(tbl_periods, _data);
 		}
@@ -237,11 +236,11 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("name", name);
-			_data.Add("rate", rate);
-			_data.Add("period", period);
+            _data.Add(TblColumn.T_NAME_S, name);
+            _data.Add(TblColumn.T_RATE_S, rate);
+            _data.Add(TblColumn.T_PERIOD_S, period);
 
-			string where = TblColumn.T_ID_S + "=\"" + id + "\"";
+            string where = TblColumn.T_ID_S + "=\"" + id + "\"";
 
 			return Database.SQLiteDatabase.Update(tbl_periods, _data, where);
 		}
