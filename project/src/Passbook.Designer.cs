@@ -92,6 +92,7 @@
 			this.col_outcome_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_total_daily = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tab_monthly_report = new System.Windows.Forms.TabPage();
+			this.btn_show_monthly = new MaterialSkin.Controls.MaterialFlatButton();
 			this.btn_refresh_monthly = new MaterialSkin.Controls.MaterialFlatButton();
 			this.list_monthly = new MaterialSkin.Controls.MaterialListView();
 			this.col_order_monthly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -106,7 +107,6 @@
 			this.item_dashboard = new System.Windows.Forms.ToolStripMenuItem();
 			this.item_logout = new System.Windows.Forms.ToolStripMenuItem();
 			this.txt_welcome_main = new MaterialSkin.Controls.MaterialLabel();
-			this.btn_show_monthly = new MaterialSkin.Controls.MaterialFlatButton();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -598,6 +598,7 @@
 			this.txt_phone_number_deposit.TabIndex = 5;
 			this.txt_phone_number_deposit.TabStop = false;
 			this.txt_phone_number_deposit.UseSystemPasswordChar = false;
+			this.txt_phone_number_deposit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_deposit_KeyDown);
 			// 
 			// txt_identity_number_deposit
 			// 
@@ -827,6 +828,7 @@
 			this.txt_phone_number_withdrawal.TabIndex = 5;
 			this.txt_phone_number_withdrawal.TabStop = false;
 			this.txt_phone_number_withdrawal.UseSystemPasswordChar = false;
+			this.txt_phone_number_withdrawal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_withdrawal_KeyDown);
 			// 
 			// txt_name_withdrawal
 			// 
@@ -972,6 +974,22 @@
 			this.tab_monthly_report.Text = "Monthly Report";
 			this.tab_monthly_report.UseVisualStyleBackColor = true;
 			// 
+			// btn_show_monthly
+			// 
+			this.btn_show_monthly.AutoSize = true;
+			this.btn_show_monthly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_show_monthly.Depth = 0;
+			this.btn_show_monthly.Location = new System.Drawing.Point(538, 0);
+			this.btn_show_monthly.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_show_monthly.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_show_monthly.Name = "btn_show_monthly";
+			this.btn_show_monthly.Primary = false;
+			this.btn_show_monthly.Size = new System.Drawing.Size(52, 36);
+			this.btn_show_monthly.TabIndex = 4;
+			this.btn_show_monthly.Text = "Show";
+			this.btn_show_monthly.UseVisualStyleBackColor = true;
+			this.btn_show_monthly.Click += new System.EventHandler(this.btn_show_monthly_Click);
+			// 
 			// btn_refresh_monthly
 			// 
 			this.btn_refresh_monthly.AutoSize = true;
@@ -1106,22 +1124,6 @@
 			this.txt_welcome_main.Size = new System.Drawing.Size(111, 19);
 			this.txt_welcome_main.TabIndex = 3;
 			this.txt_welcome_main.Text = "Welcome back,";
-			// 
-			// btn_show_monthly
-			// 
-			this.btn_show_monthly.AutoSize = true;
-			this.btn_show_monthly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btn_show_monthly.Depth = 0;
-			this.btn_show_monthly.Location = new System.Drawing.Point(538, 0);
-			this.btn_show_monthly.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-			this.btn_show_monthly.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_show_monthly.Name = "btn_show_monthly";
-			this.btn_show_monthly.Primary = false;
-			this.btn_show_monthly.Size = new System.Drawing.Size(52, 36);
-			this.btn_show_monthly.TabIndex = 4;
-			this.btn_show_monthly.Text = "Show";
-			this.btn_show_monthly.UseVisualStyleBackColor = true;
-			this.btn_show_monthly.Click += new System.EventHandler(this.btn_show_monthly_Click);
 			// 
 			// Passbook
 			// 

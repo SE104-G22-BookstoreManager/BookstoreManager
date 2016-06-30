@@ -13,6 +13,15 @@ using System.Windows.Forms;
 
 namespace PassbookManagement
 {
+	public static class IMessage
+	{
+		// MESSAGE
+		public static readonly string MSG_SOMETHING_WENT_WRONG = "Something went wrong!!!";
+
+		// CAPTION
+		public static readonly string CPT_NOTICE = "Notice";
+	}
+
 	public static class TblColumn
 	{
 		// Column index for table Customers
@@ -162,6 +171,7 @@ namespace PassbookManagement
 	{
 		public static readonly string PARAMS_FILE = "params.pro";
 		public static readonly string HASH_KEY = "C0d3F0rF4n!";
+		public static readonly double UNIDENTIFIED = double.Epsilon;
 
 		public static void ReadParams(string path)
 		{
@@ -311,6 +321,7 @@ namespace PassbookManagement
 			catch (Exception e)
 			{
 				MessageBox.Show("Wrong string-to-double format", "Notice");
+				return UNIDENTIFIED;
 			}
 
 			return result;
