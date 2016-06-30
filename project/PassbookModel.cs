@@ -50,10 +50,10 @@ namespace PassbookManagement
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-			_data.Add("name", name);
-			_data.Add("identity_number", identity_number);
-			_data.Add("address", address);
-			_data.Add("phone_number", phone_number);
+            _data.Add(TblColumn.A_NAME_S, name);
+            _data.Add(TblColumn.A_IDENTITY_NUMBER_S, identity_number);
+            _data.Add(TblColumn.A_ADDRESS_S, address);
+            _data.Add(TblColumn.A_PHONE_NUMBER_S, phone_number);
 
 			return Database.SQLiteDatabase.Insert(tbl_customers, _data);
 		}
