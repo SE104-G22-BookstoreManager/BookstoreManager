@@ -250,7 +250,7 @@ namespace PassbookManagement.src
 				cbb_period_open.Text == "" ||
 				txt_passbook_name_open.Text == "")
 			{
-				MessageBox.Show("All informations are required!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_REQUIRED,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -258,14 +258,14 @@ namespace PassbookManagement.src
 			double _cash = Processor.ConvertToDouble(txt_cash_open.Text);
 			if(_cash == Processor.UNIDENTIFIED)
 			{
-				MessageBox.Show("Your input is incorrect. Please check again...", "Notice");
+				MessageBox.Show(IMessage.MSG_WRONG_INPUT,IMessage.CPT_NOTICE);
 				return;
 			}
 
 
 			if (_cash < Processor.ConvertToDouble(Params.PARAMS[Params.MIN_CASH].ToString()))
 			{
-				MessageBox.Show("Your cash is less than usual. Please check again...", "Notice");
+				MessageBox.Show(IMessage.MSG_LESS_CASH,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -275,11 +275,11 @@ namespace PassbookManagement.src
 
 			if (PassbookModel.InsertPassbook(txt_passbook_name_open.Text, _periodId, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString(), _status) == false)
 			{
-				MessageBox.Show("Cannot create passbook. Something went wrong!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_N_CREAT_PB, IMessage.CPT_NOTICE);
 				return;
 			}
 
-			MessageBox.Show("Congratulation! You have just succeeded create a passbook.", "Create Passbook");
+            MessageBox.Show(IMessage.MSG_S_PB, IMessage.CPT_CREAT_PB);
 		}
 
 		private void btn_refresh_open_Click(object sender, EventArgs e)
