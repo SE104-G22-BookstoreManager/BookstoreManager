@@ -330,7 +330,7 @@ namespace PassbookManagement.src
 				DataTable _data1 = PassbookModel.SelectPeriodById(_passbook[TblColumn.P_PERIOD_ID].ToString());
 				if(_data1.Rows.Count == 0)
 				{
-					MessageBox.Show("Something went wrong!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -342,8 +342,8 @@ namespace PassbookManagement.src
 				DataTable _data2 = PassbookModel.SelectCustomerById(_passbook[TblColumn.P_CUSTOMER_ID].ToString());
 				if (_data2.Rows.Count == 0)
 				{
-					MessageBox.Show("Something went wrong!!!", "Notice");
-					return;
+                    MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
+                    return;
 				}
 
 				object[] _customer = _data2.Rows[0].ItemArray;
@@ -377,13 +377,13 @@ namespace PassbookManagement.src
 			}
 			else
 			{
-				MessageBox.Show("Please type identity number!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_TYPE_ID, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_data.Rows.Count == 0)
 			{
-				MessageBox.Show("Account not found. Please go to passbook tab to add new account!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_NOT_ACC, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -400,7 +400,7 @@ namespace PassbookManagement.src
 
 			if (_data1.Rows.Count == 0)
 			{
-				MessageBox.Show("There is no passbook of this customer. Please check again...", "Notice");
+                MessageBox.Show(IMessage.MSG_NO_PB, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -452,7 +452,7 @@ namespace PassbookManagement.src
 				txt_cash_deposit.Text == "" ||
 				cbb_passbook_deposit.Text == "")
 			{
-				MessageBox.Show("All informations are required!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -460,13 +460,13 @@ namespace PassbookManagement.src
 			double _income = Processor.ConvertToDouble(txt_cash_deposit.Text);
 			if(_income == Processor.UNIDENTIFIED)
 			{
-				MessageBox.Show("Your input is incorrect. Pleas check again...", "Notice");
+                MessageBox.Show(IMessage.MSG_WRONG_INPUT, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_income < Processor.ConvertToDouble(Params.PARAMS[Params.MIN_INCOME].ToString()))
 			{
-				MessageBox.Show("Your income is less than usual. Pleas check again...", "Notice");
+                MessageBox.Show(IMessage.MSG_LESS_CASH, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -477,7 +477,7 @@ namespace PassbookManagement.src
 
 			if (PassbookModel.InsertIncome(_passbookId, txt_cash_deposit.Text, _dateTime.ToString()) == false)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -499,7 +499,7 @@ namespace PassbookManagement.src
 			string _cash = Processor.Add(txt_cash_deposit.Text, _passbook[TblColumn.P_CASH].ToString());
 			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash);
 
-			MessageBox.Show("Congratulation. You have created a new deposit!!!", "Create deposit");
+            MessageBox.Show(IMessage.MSG_S_PS, IMessage.CPT_CREAT_PS);
 		}
 
 		private void btn_refresh_deposit_Click(object sender, EventArgs e)
@@ -541,13 +541,13 @@ namespace PassbookManagement.src
 			}
 			else
 			{
-				MessageBox.Show("Please type identity number!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_TYPE_ID, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_data.Rows.Count == 0)
 			{
-				MessageBox.Show("Account not found. Please go to passbook tab to add new account!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_NOT_ACC, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -564,7 +564,7 @@ namespace PassbookManagement.src
 
 			if (_data1.Rows.Count == 0)
 			{
-				MessageBox.Show("There is no passbook of this customer. Please check again...", "Notice");
+                MessageBox.Show(IMessage.MSG_NO_PB, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -619,7 +619,7 @@ namespace PassbookManagement.src
 				txt_phone_number_withdrawal.Text == "" ||
 				cbb_passbook_withdrawal.Text == "")
 			{
-				MessageBox.Show("All informations are required!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -628,7 +628,7 @@ namespace PassbookManagement.src
 
 			if(_data.Rows.Count == 0)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -642,15 +642,15 @@ namespace PassbookManagement.src
 
 			if(_data1.Rows.Count == 0)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
-				return;
+                MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
+                return;
 			}
 
 			object[] _period = _data1.Rows[0].ItemArray;
 
 			if (Processor.Compare((_current - _opened).Days.ToString(), _period[TblColumn.T_PERIOD].ToString()) < 0)
 			{
-				MessageBox.Show("Chưa đến thời hạn rút tiền!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_NOTENOUGH_TIMES, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -664,7 +664,7 @@ namespace PassbookManagement.src
 			{
 				if(txt_cash_withdrawal.Text == "")
 				{
-					MessageBox.Show("All informations are required!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -673,13 +673,13 @@ namespace PassbookManagement.src
 				double _outcome = Processor.ConvertToDouble(txt_cash_withdrawal.Text);
 				if(_outcome == Processor.UNIDENTIFIED)
 				{
-					MessageBox.Show("Your input is incorrect. Please check again!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_WRONG_INPUT, IMessage.CPT_NOTICE);
 					return;
 				}
 
 				if(_outcome > Processor.ConvertToDouble(_cash))
 				{
-					MessageBox.Show("Không đủ số tiền rút. Vui lòng kiểm tra lại!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_NOTENOUGH_MONEY, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -698,7 +698,7 @@ namespace PassbookManagement.src
 			// Create withdrawal
 			if (PassbookModel.InsertOutcome(_passbook[TblColumn.P_CUSTOMER_ID].ToString(), _withdrawal, _current.ToString()) == false)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -744,8 +744,8 @@ namespace PassbookManagement.src
 
 			if(_data.Rows.Count == 0)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
-				return;
+                MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
+                return;
 			}
 
 			object[] _passbook = _data.Rows[0].ItemArray;
@@ -837,7 +837,7 @@ namespace PassbookManagement.src
 		{
 			if(cbb_period_monthly.Text == "")
 			{
-				MessageBox.Show("Please choose a period for tracking!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_CHOOSE_PS, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -847,8 +847,8 @@ namespace PassbookManagement.src
 
 			if (_data1.Rows.Count == 0)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
-				return;
+                MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
+                return;
 			}
 
 			object[] _period = _data1.Rows[0].ItemArray;
