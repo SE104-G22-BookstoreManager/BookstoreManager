@@ -27,10 +27,16 @@ namespace PassbookManagement
         public static readonly string MSG_LESS_CASH = "Your cash is less than usual. Please check again...";
         public static readonly string MSG_N_CREAT_PB = "Cannot create passbook. Something went wrong!!!";
         public static readonly string MSG_S_PB = "Congratulation! You have just succeeded create a passbook.";
+        public static readonly string MSG_NO_PB = "There is no passbook of this customer. Please check again...";
+        public static readonly string MSG_S_PS  = "Congratulation. You have created a new deposit!!!";
+        public static readonly string MSG_NOTENOUGH_TIMES = "Chưa đến thời hạn rút tiền!!!";
+        public static readonly string MSG_NOTENOUGH_MONEY = "Không đủ số tiền rút. Vui lòng kiểm tra lại!!!";
+        public static readonly string MSG_CHOOSE_PS = "Please choose a period for tracking!!!";
         // CAPTION
         public static readonly string CPT_NOTICE = "Notice";
         public static readonly string CPT_CREAT_CUSTOMER = "Creat Customer";
         public static readonly string CPT_CREAT_PB = "Create Passbook";
+        public static readonly string CPT_CREAT_PS = "Create deposit";
     }
 
 	public static class TblColumn
