@@ -113,13 +113,13 @@ namespace PassbookManagement.src
 			}
 			else
 			{
-				MessageBox.Show("Please type identity number!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_TYPE_ID, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_data.Rows.Count == 0)
 			{
-				MessageBox.Show("Account not found. Please type all information to add new account!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_NOT_ACC, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -192,7 +192,7 @@ namespace PassbookManagement.src
 				txt_address_open.Text == "" ||
 				txt_phone_number_open.Text == "")
 			{
-				MessageBox.Show("All informations are required!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -200,17 +200,17 @@ namespace PassbookManagement.src
 
 			if (_data.Rows.Count != 0)
 			{
-				MessageBox.Show("Account is already exist!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_EXIST, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (PassbookModel.InsertCustomer(txt_name_open.Text, txt_identity_number_open.Text, txt_address_open.Text, txt_phone_number_open.Text) == false)
 			{
-				MessageBox.Show("Cannot create customer. Something went wrong!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_NOT_CREAT, IMessage.CPT_NOTICE);
 				return;
 			}
 
-			MessageBox.Show("Success create new account! Please go ahead to create new passbook for this account.", "Create Customer");
+			MessageBox.Show(IMessage.MSG_S_CREAT, IMessage.CPT_CREAT_CUSTOMER);
 
 			_data = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
 			object[] _customer = _data.Rows[0].ItemArray;

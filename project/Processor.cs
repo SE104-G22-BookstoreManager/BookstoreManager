@@ -15,12 +15,23 @@ namespace PassbookManagement
 {
 	public static class IMessage
 	{
-		// MESSAGE
-		public static readonly string MSG_SOMETHING_WENT_WRONG = "Something went wrong!!!";
-
-		// CAPTION
-		public static readonly string CPT_NOTICE = "Notice";
-	}
+        // MESSAGE
+        public static readonly string MSG_SOMETHING_WENT_WRONG = "Something went wrong!!!";
+        public static readonly string MSG_TYPE_ID = "Please type identity number!!!";
+        public static readonly string MSG_NOT_ACC = "Account not found. Please type all information to add new account!!!";
+        public static readonly string MSG_REQUIRED = "All informations are required!!!";
+        public static readonly string MSG_EXIST = "Account is already exist!!!";
+        public static readonly string MSG_NOT_CREAT = "Cannot create customer. Something went wrong!!!";
+        public static readonly string MSG_S_CREAT = "Success create new account! Please go ahead to create new passbook for this account.";
+        public static readonly string MSG_WRONG_INPUT = "Your input is incorrect. Please check again...";
+        public static readonly string MSG_LESS_CASH = "Your cash is less than usual. Please check again...";
+        public static readonly string MSG_N_CREAT_PB = "Cannot create passbook. Something went wrong!!!";
+        public static readonly string MSG_S_PB = "Congratulation! You have just succeeded create a passbook.";
+        // CAPTION
+        public static readonly string CPT_NOTICE = "Notice";
+        public static readonly string CPT_CREAT_CUSTOMER = "Creat Customer";
+        public static readonly string CPT_CREAT_PB = "Create Passbook";
+    }
 
 	public static class TblColumn
 	{
