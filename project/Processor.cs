@@ -77,7 +77,7 @@ namespace PassbookManagement
 		public static readonly string P_CUSTOMER_ID_S = "customer_id";
 		public static readonly string P_CASH_S = "cash";
 		public static readonly string P_DATE_TIME_S = "date_time";
-		public static readonly string P_CLOSE_S = "status";
+		public static readonly string P_STATUS_S = "status";
 
 
 		// Column index for table Periods

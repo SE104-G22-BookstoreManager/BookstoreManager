@@ -1,6 +1,7 @@
 ﻿using MaterialSkin.Controls;
 using System;
 using System.Data;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace PassbookManagement.src
@@ -23,14 +24,7 @@ namespace PassbookManagement.src
 			cbb_period_edit_period.Hide();
 			m_control = ControlBtn.CONTROL_ADD;
 
-			if((Convert.ToInt32(Params.CURRENT_SESSION[Params.CURRENT_ROLES]) & Roles.ROLE_MANAGER) == Roles.ROLE_MANAGER)
-			{
-				tab_manage_staffs.Parent = tab_control_edit;
-			}
-			else
-			{
-				tab_manage_staffs.Parent = null;
-			}
+			InitializeAccount();
 		}
 
 		////////////////////////////////////////////////////////////////////
@@ -40,33 +34,39 @@ namespace PassbookManagement.src
 		/// </summary>
 		private void btn_apply_edit_cast_Click(object sender, EventArgs e)
 		{
-			if (txt_min_edit_cash.Text != "")
+			if (txt_min_cash.Text != "")
 			{
-				double _cash = Processor.ConvertToDouble(txt_min_edit_cash.Text);
+				double _cash = Processor.ConvertToDouble(txt_min_cash.Text);
 
-				if (_cash > 0)
+				if (_cash == Processor.UNIDENTIFIED)
 				{
-					PassbookModel.UpdateMinCash(txt_min_edit_cash.Text);
-					MessageBox.Show("Success update min cash to " + txt_min_edit_cash.Text);
+					MessageBox.Show("Your input is incorrect. Please check again...", "Notice");
+					return;
 				}
+
+				PassbookModel.UpdateMinCash(txt_min_cash.Text);
+				MessageBox.Show("Success update min cash to " + txt_min_cash.Text);
 			}
 
-			if (txt_add_min_edit_cash.Text != "")
+			if (txt_min_income.Text != "")
 			{
-				double _income = Processor.ConvertToDouble(txt_add_min_edit_cash.Text);
+				double _income = Processor.ConvertToDouble(txt_min_income.Text);
 
-				if (_income > 0)
+				if (_income == Processor.UNIDENTIFIED)
 				{
-					PassbookModel.UpdateMinIncome(txt_add_min_edit_cash.Text);
-					MessageBox.Show("Success update min income to " + txt_add_min_edit_cash.Text);
+					MessageBox.Show("Your input is incorrect. Please check again...", "Notice");
+					return;
 				}
+
+				PassbookModel.UpdateMinIncome(txt_min_income.Text);
+				MessageBox.Show("Success update min income to " + txt_min_income.Text);
 			}
 		}
 
-		private void btn_ok_edit_cash_Click(object sender, EventArgs e)
+		private void btn_cancel_edit_cash_Click(object sender, EventArgs e)
 		{
 			Hide();
-			DialogResult = DialogResult.OK;
+			DialogResult = DialogResult.Cancel;
 		}
 
 
@@ -191,7 +191,7 @@ namespace PassbookManagement.src
 							MessageBox.Show("Something went wrong!!!", "Notice");
 							return;
 						}
-						MessageBox.Show("Current period have deleted successfully", "Delete period");
+						MessageBox.Show("Current period have deleted successfully.", "Delete period");
 					}
 					break;
 				default:
@@ -199,10 +199,10 @@ namespace PassbookManagement.src
 			}
 		}
 
-		private void btn_ok_edit_type_Click(object sender, EventArgs e)
+		private void btn_cancel_edit_type_Click(object sender, EventArgs e)
 		{
 			Hide();
-			DialogResult = DialogResult.OK;
+			DialogResult = DialogResult.Cancel;
 		}
 
 		private void cbb_period_edit_period_SelectedIndexChanged(object sender, EventArgs e)
@@ -237,6 +237,111 @@ namespace PassbookManagement.src
 					cbb_period_edit_period.Items.Add(_period[TblColumn.T_NAME].ToString());
 				}
 			}
+		}
+
+
+		////////////////////////////////////////////////////////////////////
+		// Control for edit account
+		/// <summary>
+		///     
+		/// </summary>
+		private void btn_edit_account_Click(object sender, EventArgs e)
+		{
+			if(	txt_email_account.Text == "" ||
+				txt_name_account.Text == "" ||
+				txt_identity_number_account.Text == "" ||
+				txt_phone_number_account.Text == "")
+			{
+				MessageBox.Show("All informations are required!!!", "Notice");
+				return;
+			}
+
+			if(PassbookModel.UpdateStaff(lbl_id_account.Text, 
+											txt_name_account.Text, 
+											txt_email_account.Text, 
+											txt_identity_number_account.Text, 
+											txt_phone_number_account.Text) == false)
+			{
+				MessageBox.Show("Cannot update your account. Something went wrong!!!", "Notice");
+				return;
+			}
+
+			MessageBox.Show("Your account have edited successfully.", "Notice");
+		}
+
+		private void btn_change_password_account_Click(object sender, EventArgs e)
+		{
+			if (txt_current_password_account.Text == "" ||
+				txt_new_password.Text == "" ||
+				txt_new_password_confirm.Text == "")
+			{
+				MessageBox.Show("All informations are required!!!", "Notice");
+				return;
+			}
+
+			using (MD5 md5Hash = MD5.Create())
+			{
+				string passwordHash = Processor.GetMd5Hash(md5Hash, txt_current_password_account.Text);
+				if (!Processor.VerifyMd5Hash(md5Hash, txt_current_password_account.Text, passwordHash))
+				{
+					MessageBox.Show("Something went wrong!!!", "Notice");
+					return;
+				}
+
+				if(passwordHash != Params.CURRENT_SESSION[Params.CURRENT_PASSWORD].ToString())
+				{
+					MessageBox.Show("Current password is incorrect. Please try again!!!", "Notice");
+					return;
+				}
+			}
+
+			if(txt_new_password.Text != txt_new_password_confirm.Text)
+			{
+				MessageBox.Show("New password and New password confirm are mismatched. Please try again!!!", "Notice");
+				return;
+			}
+
+			using (MD5 md5Hash = MD5.Create())
+			{
+				string passwordHash = Processor.GetMd5Hash(md5Hash, txt_new_password.Text);
+				if (!Processor.VerifyMd5Hash(md5Hash, txt_new_password.Text, passwordHash))
+				{
+					MessageBox.Show("Something went wrong!!!", "Notice");
+					return;
+				}
+
+				if (PassbookModel.UpdatePasswordByStaffId(lbl_id_account.Text, passwordHash) == false)
+				{
+					MessageBox.Show("Cannot update your password. Something went wrong!!!", "Notice");
+					return;
+				}
+
+				MessageBox.Show("Your password have edited successfully.", "Notice");
+			}
+		}
+
+		private void InitializeAccount()
+		{
+			DataTable _data = PassbookModel.SelectStaffByEmail(Params.CURRENT_SESSION[Params.CURRENT_EMAIL].ToString());
+
+			if(_data.Rows.Count == 0)
+			{
+				MessageBox.Show("Something went wrong!!!", "Notice");
+				return;
+			}
+
+			object[] _account = _data.Rows[0].ItemArray;
+
+			lbl_id_account.Text = _account[TblColumn.S_ID].ToString();
+			txt_email_account.Text = _account[TblColumn.S_EMAIL].ToString();
+			txt_name_account.Text = _account[TblColumn.S_NAME].ToString();
+			txt_identity_number_account.Text = _account[TblColumn.S_IDENTITY_NUMBER].ToString();
+			txt_phone_number_account.Text = _account[TblColumn.S_PHONE_NUMBER].ToString();
+
+			txt_email_account.Enabled = false;
+			txt_name_account.Enabled = true;
+			txt_identity_number_account.Enabled = false;
+			txt_phone_number_account.Enabled = true;
 		}
 	}
 }

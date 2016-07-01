@@ -28,12 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.tab_selector_edit = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tab_control_edit = new MaterialSkin.Controls.MaterialTabControl();
 			this.tab_cash_edit = new System.Windows.Forms.TabPage();
-			this.btn_ok_edit_cash = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.btn_cancel_edit_cash = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.btn_apply_edit_cast = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.txt_min_edit_cash = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.txt_add_min_edit_cash = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_min_cash = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_min_income = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_period_edit = new System.Windows.Forms.TabPage();
 			this.lbl_id_edit_period = new MaterialSkin.Controls.MaterialLabel();
 			this.txt_period_edit_period = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -44,25 +45,40 @@
 			this.btn_add_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.cbb_period_edit_period = new System.Windows.Forms.ComboBox();
 			this.btn_apply_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.btn_ok_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.tab_manage_staffs = new System.Windows.Forms.TabPage();
-			this.tab_selector_edit = new MaterialSkin.Controls.MaterialTabSelector();
-			this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-			this.col_order = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.col_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.col_email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.col_phone_number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.btn_cancel_edit_period = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.tab_account_edit = new System.Windows.Forms.TabPage();
+			this.btn_change_password_account = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.btn_edit_account = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.txt_new_password_confirm = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_phone_number_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_identity_number_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_new_password = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_current_password_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_name_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_email_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.lbl_id_account = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_control_edit.SuspendLayout();
 			this.tab_cash_edit.SuspendLayout();
 			this.tab_period_edit.SuspendLayout();
-			this.tab_manage_staffs.SuspendLayout();
+			this.tab_account_edit.SuspendLayout();
 			this.SuspendLayout();
+			// 
+			// tab_selector_edit
+			// 
+			this.tab_selector_edit.BaseTabControl = this.tab_control_edit;
+			this.tab_selector_edit.Depth = 0;
+			this.tab_selector_edit.Location = new System.Drawing.Point(0, 64);
+			this.tab_selector_edit.MouseState = MaterialSkin.MouseState.HOVER;
+			this.tab_selector_edit.Name = "tab_selector_edit";
+			this.tab_selector_edit.Size = new System.Drawing.Size(1500, 45);
+			this.tab_selector_edit.TabIndex = 1;
+			this.tab_selector_edit.Text = "TabSelector";
 			// 
 			// tab_control_edit
 			// 
 			this.tab_control_edit.Controls.Add(this.tab_cash_edit);
 			this.tab_control_edit.Controls.Add(this.tab_period_edit);
-			this.tab_control_edit.Controls.Add(this.tab_manage_staffs);
+			this.tab_control_edit.Controls.Add(this.tab_account_edit);
 			this.tab_control_edit.Depth = 0;
 			this.tab_control_edit.Location = new System.Drawing.Point(12, 114);
 			this.tab_control_edit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -74,10 +90,10 @@
 			// tab_cash_edit
 			// 
 			this.tab_cash_edit.BackColor = System.Drawing.Color.White;
-			this.tab_cash_edit.Controls.Add(this.btn_ok_edit_cash);
+			this.tab_cash_edit.Controls.Add(this.btn_cancel_edit_cash);
 			this.tab_cash_edit.Controls.Add(this.btn_apply_edit_cast);
-			this.tab_cash_edit.Controls.Add(this.txt_min_edit_cash);
-			this.tab_cash_edit.Controls.Add(this.txt_add_min_edit_cash);
+			this.tab_cash_edit.Controls.Add(this.txt_min_cash);
+			this.tab_cash_edit.Controls.Add(this.txt_min_income);
 			this.tab_cash_edit.Location = new System.Drawing.Point(4, 22);
 			this.tab_cash_edit.Name = "tab_cash_edit";
 			this.tab_cash_edit.Padding = new System.Windows.Forms.Padding(3);
@@ -85,18 +101,18 @@
 			this.tab_cash_edit.TabIndex = 0;
 			this.tab_cash_edit.Text = "Cash";
 			// 
-			// btn_ok_edit_cash
+			// btn_cancel_edit_cash
 			// 
-			this.btn_ok_edit_cash.Depth = 0;
-			this.btn_ok_edit_cash.Location = new System.Drawing.Point(487, 160);
-			this.btn_ok_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_ok_edit_cash.Name = "btn_ok_edit_cash";
-			this.btn_ok_edit_cash.Primary = true;
-			this.btn_ok_edit_cash.Size = new System.Drawing.Size(75, 40);
-			this.btn_ok_edit_cash.TabIndex = 3;
-			this.btn_ok_edit_cash.Text = "OK";
-			this.btn_ok_edit_cash.UseVisualStyleBackColor = true;
-			this.btn_ok_edit_cash.Click += new System.EventHandler(this.btn_ok_edit_cash_Click);
+			this.btn_cancel_edit_cash.Depth = 0;
+			this.btn_cancel_edit_cash.Location = new System.Drawing.Point(487, 160);
+			this.btn_cancel_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_cancel_edit_cash.Name = "btn_cancel_edit_cash";
+			this.btn_cancel_edit_cash.Primary = true;
+			this.btn_cancel_edit_cash.Size = new System.Drawing.Size(75, 40);
+			this.btn_cancel_edit_cash.TabIndex = 3;
+			this.btn_cancel_edit_cash.Text = "Cancel";
+			this.btn_cancel_edit_cash.UseVisualStyleBackColor = true;
+			this.btn_cancel_edit_cash.Click += new System.EventHandler(this.btn_cancel_edit_cash_Click);
 			// 
 			// btn_apply_edit_cast
 			// 
@@ -111,39 +127,39 @@
 			this.btn_apply_edit_cast.UseVisualStyleBackColor = true;
 			this.btn_apply_edit_cast.Click += new System.EventHandler(this.btn_apply_edit_cast_Click);
 			// 
-			// txt_min_edit_cash
+			// txt_min_cash
 			// 
-			this.txt_min_edit_cash.Depth = 0;
-			this.txt_min_edit_cash.Hint = "Min cash (VND)";
-			this.txt_min_edit_cash.Location = new System.Drawing.Point(31, 27);
-			this.txt_min_edit_cash.MaxLength = 32767;
-			this.txt_min_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_min_edit_cash.Name = "txt_min_edit_cash";
-			this.txt_min_edit_cash.PasswordChar = '\0';
-			this.txt_min_edit_cash.SelectedText = "";
-			this.txt_min_edit_cash.SelectionLength = 0;
-			this.txt_min_edit_cash.SelectionStart = 0;
-			this.txt_min_edit_cash.Size = new System.Drawing.Size(250, 23);
-			this.txt_min_edit_cash.TabIndex = 0;
-			this.txt_min_edit_cash.TabStop = false;
-			this.txt_min_edit_cash.UseSystemPasswordChar = false;
+			this.txt_min_cash.Depth = 0;
+			this.txt_min_cash.Hint = "Min cash (VND)";
+			this.txt_min_cash.Location = new System.Drawing.Point(31, 27);
+			this.txt_min_cash.MaxLength = 32767;
+			this.txt_min_cash.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_min_cash.Name = "txt_min_cash";
+			this.txt_min_cash.PasswordChar = '\0';
+			this.txt_min_cash.SelectedText = "";
+			this.txt_min_cash.SelectionLength = 0;
+			this.txt_min_cash.SelectionStart = 0;
+			this.txt_min_cash.Size = new System.Drawing.Size(250, 23);
+			this.txt_min_cash.TabIndex = 0;
+			this.txt_min_cash.TabStop = false;
+			this.txt_min_cash.UseSystemPasswordChar = false;
 			// 
-			// txt_add_min_edit_cash
+			// txt_min_income
 			// 
-			this.txt_add_min_edit_cash.Depth = 0;
-			this.txt_add_min_edit_cash.Hint = "Min income (VND)";
-			this.txt_add_min_edit_cash.Location = new System.Drawing.Point(31, 67);
-			this.txt_add_min_edit_cash.MaxLength = 32767;
-			this.txt_add_min_edit_cash.MouseState = MaterialSkin.MouseState.HOVER;
-			this.txt_add_min_edit_cash.Name = "txt_add_min_edit_cash";
-			this.txt_add_min_edit_cash.PasswordChar = '\0';
-			this.txt_add_min_edit_cash.SelectedText = "";
-			this.txt_add_min_edit_cash.SelectionLength = 0;
-			this.txt_add_min_edit_cash.SelectionStart = 0;
-			this.txt_add_min_edit_cash.Size = new System.Drawing.Size(250, 23);
-			this.txt_add_min_edit_cash.TabIndex = 1;
-			this.txt_add_min_edit_cash.TabStop = false;
-			this.txt_add_min_edit_cash.UseSystemPasswordChar = false;
+			this.txt_min_income.Depth = 0;
+			this.txt_min_income.Hint = "Min income (VND)";
+			this.txt_min_income.Location = new System.Drawing.Point(31, 67);
+			this.txt_min_income.MaxLength = 32767;
+			this.txt_min_income.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_min_income.Name = "txt_min_income";
+			this.txt_min_income.PasswordChar = '\0';
+			this.txt_min_income.SelectedText = "";
+			this.txt_min_income.SelectionLength = 0;
+			this.txt_min_income.SelectionStart = 0;
+			this.txt_min_income.Size = new System.Drawing.Size(250, 23);
+			this.txt_min_income.TabIndex = 1;
+			this.txt_min_income.TabStop = false;
+			this.txt_min_income.UseSystemPasswordChar = false;
 			// 
 			// tab_period_edit
 			// 
@@ -157,7 +173,7 @@
 			this.tab_period_edit.Controls.Add(this.btn_add_edit_period);
 			this.tab_period_edit.Controls.Add(this.cbb_period_edit_period);
 			this.tab_period_edit.Controls.Add(this.btn_apply_edit_period);
-			this.tab_period_edit.Controls.Add(this.btn_ok_edit_period);
+			this.tab_period_edit.Controls.Add(this.btn_cancel_edit_period);
 			this.tab_period_edit.Location = new System.Drawing.Point(4, 22);
 			this.tab_period_edit.Name = "tab_period_edit";
 			this.tab_period_edit.Padding = new System.Windows.Forms.Padding(3);
@@ -291,82 +307,196 @@
 			this.btn_apply_edit_period.UseVisualStyleBackColor = true;
 			this.btn_apply_edit_period.Click += new System.EventHandler(this.btn_apply_edit_period_Click);
 			// 
-			// btn_ok_edit_period
+			// btn_cancel_edit_period
 			// 
-			this.btn_ok_edit_period.Depth = 0;
-			this.btn_ok_edit_period.Location = new System.Drawing.Point(487, 160);
-			this.btn_ok_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btn_ok_edit_period.Name = "btn_ok_edit_period";
-			this.btn_ok_edit_period.Primary = true;
-			this.btn_ok_edit_period.Size = new System.Drawing.Size(75, 40);
-			this.btn_ok_edit_period.TabIndex = 9;
-			this.btn_ok_edit_period.Text = "OK";
-			this.btn_ok_edit_period.UseVisualStyleBackColor = true;
-			this.btn_ok_edit_period.Click += new System.EventHandler(this.btn_ok_edit_type_Click);
+			this.btn_cancel_edit_period.Depth = 0;
+			this.btn_cancel_edit_period.Location = new System.Drawing.Point(487, 160);
+			this.btn_cancel_edit_period.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_cancel_edit_period.Name = "btn_cancel_edit_period";
+			this.btn_cancel_edit_period.Primary = true;
+			this.btn_cancel_edit_period.Size = new System.Drawing.Size(75, 40);
+			this.btn_cancel_edit_period.TabIndex = 9;
+			this.btn_cancel_edit_period.Text = "Cancel";
+			this.btn_cancel_edit_period.UseVisualStyleBackColor = true;
+			this.btn_cancel_edit_period.Click += new System.EventHandler(this.btn_cancel_edit_type_Click);
 			// 
-			// tab_manage_staffs
+			// tab_account_edit
 			// 
-			this.tab_manage_staffs.Controls.Add(this.materialListView1);
-			this.tab_manage_staffs.Location = new System.Drawing.Point(4, 22);
-			this.tab_manage_staffs.Name = "tab_manage_staffs";
-			this.tab_manage_staffs.Padding = new System.Windows.Forms.Padding(3);
-			this.tab_manage_staffs.Size = new System.Drawing.Size(568, 206);
-			this.tab_manage_staffs.TabIndex = 3;
-			this.tab_manage_staffs.Text = "Staffs";
-			this.tab_manage_staffs.UseVisualStyleBackColor = true;
+			this.tab_account_edit.BackColor = System.Drawing.Color.White;
+			this.tab_account_edit.Controls.Add(this.lbl_id_account);
+			this.tab_account_edit.Controls.Add(this.btn_change_password_account);
+			this.tab_account_edit.Controls.Add(this.btn_edit_account);
+			this.tab_account_edit.Controls.Add(this.txt_new_password_confirm);
+			this.tab_account_edit.Controls.Add(this.txt_phone_number_account);
+			this.tab_account_edit.Controls.Add(this.txt_identity_number_account);
+			this.tab_account_edit.Controls.Add(this.txt_new_password);
+			this.tab_account_edit.Controls.Add(this.txt_current_password_account);
+			this.tab_account_edit.Controls.Add(this.txt_name_account);
+			this.tab_account_edit.Controls.Add(this.txt_email_account);
+			this.tab_account_edit.Location = new System.Drawing.Point(4, 22);
+			this.tab_account_edit.Name = "tab_account_edit";
+			this.tab_account_edit.Padding = new System.Windows.Forms.Padding(3);
+			this.tab_account_edit.Size = new System.Drawing.Size(568, 206);
+			this.tab_account_edit.TabIndex = 3;
+			this.tab_account_edit.Text = "Account";
 			// 
-			// tab_selector_edit
+			// btn_change_password_account
 			// 
-			this.tab_selector_edit.BaseTabControl = this.tab_control_edit;
-			this.tab_selector_edit.Depth = 0;
-			this.tab_selector_edit.Location = new System.Drawing.Point(0, 64);
-			this.tab_selector_edit.MouseState = MaterialSkin.MouseState.HOVER;
-			this.tab_selector_edit.Name = "tab_selector_edit";
-			this.tab_selector_edit.Size = new System.Drawing.Size(1500, 45);
-			this.tab_selector_edit.TabIndex = 1;
-			this.tab_selector_edit.Text = "TabSelector";
+			this.btn_change_password_account.Depth = 0;
+			this.btn_change_password_account.Location = new System.Drawing.Point(299, 141);
+			this.btn_change_password_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_change_password_account.Name = "btn_change_password_account";
+			this.btn_change_password_account.Primary = true;
+			this.btn_change_password_account.Size = new System.Drawing.Size(200, 40);
+			this.btn_change_password_account.TabIndex = 9;
+			this.btn_change_password_account.Text = "Change Password";
+			this.btn_change_password_account.UseVisualStyleBackColor = true;
+			this.btn_change_password_account.Click += new System.EventHandler(this.btn_change_password_account_Click);
 			// 
-			// materialListView1
+			// btn_edit_account
 			// 
-			this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col_order,
-            this.col_name,
-            this.col_email,
-            this.col_phone_number});
-			this.materialListView1.Depth = 0;
-			this.materialListView1.Font = new System.Drawing.Font("Roboto", 18F);
-			this.materialListView1.FullRowSelect = true;
-			this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.materialListView1.Location = new System.Drawing.Point(0, 0);
-			this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-			this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-			this.materialListView1.Name = "materialListView1";
-			this.materialListView1.OwnerDraw = true;
-			this.materialListView1.Size = new System.Drawing.Size(572, 206);
-			this.materialListView1.TabIndex = 0;
-			this.materialListView1.UseCompatibleStateImageBehavior = false;
-			this.materialListView1.View = System.Windows.Forms.View.Details;
+			this.btn_edit_account.Depth = 0;
+			this.btn_edit_account.Location = new System.Drawing.Point(38, 141);
+			this.btn_edit_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_edit_account.Name = "btn_edit_account";
+			this.btn_edit_account.Primary = true;
+			this.btn_edit_account.Size = new System.Drawing.Size(200, 40);
+			this.btn_edit_account.TabIndex = 5;
+			this.btn_edit_account.Text = "Update";
+			this.btn_edit_account.UseVisualStyleBackColor = true;
+			this.btn_edit_account.Click += new System.EventHandler(this.btn_edit_account_Click);
 			// 
-			// col_order
+			// txt_new_password_confirm
 			// 
-			this.col_order.Text = "Order";
-			this.col_order.Width = 80;
+			this.txt_new_password_confirm.Depth = 0;
+			this.txt_new_password_confirm.Hint = "New Password Confirm";
+			this.txt_new_password_confirm.Location = new System.Drawing.Point(299, 102);
+			this.txt_new_password_confirm.MaxLength = 32767;
+			this.txt_new_password_confirm.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_new_password_confirm.Name = "txt_new_password_confirm";
+			this.txt_new_password_confirm.PasswordChar = '●';
+			this.txt_new_password_confirm.SelectedText = "";
+			this.txt_new_password_confirm.SelectionLength = 0;
+			this.txt_new_password_confirm.SelectionStart = 0;
+			this.txt_new_password_confirm.Size = new System.Drawing.Size(200, 23);
+			this.txt_new_password_confirm.TabIndex = 8;
+			this.txt_new_password_confirm.TabStop = false;
+			this.txt_new_password_confirm.UseSystemPasswordChar = true;
 			// 
-			// col_name
+			// txt_phone_number_account
 			// 
-			this.col_name.Text = "Name";
-			this.col_name.Width = 134;
+			this.txt_phone_number_account.Depth = 0;
+			this.txt_phone_number_account.Hint = "Phone Number";
+			this.txt_phone_number_account.Location = new System.Drawing.Point(38, 112);
+			this.txt_phone_number_account.MaxLength = 32767;
+			this.txt_phone_number_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_phone_number_account.Name = "txt_phone_number_account";
+			this.txt_phone_number_account.PasswordChar = '\0';
+			this.txt_phone_number_account.SelectedText = "";
+			this.txt_phone_number_account.SelectionLength = 0;
+			this.txt_phone_number_account.SelectionStart = 0;
+			this.txt_phone_number_account.Size = new System.Drawing.Size(200, 23);
+			this.txt_phone_number_account.TabIndex = 4;
+			this.txt_phone_number_account.TabStop = false;
+			this.txt_phone_number_account.UseSystemPasswordChar = false;
 			// 
-			// col_email
+			// txt_identity_number_account
 			// 
-			this.col_email.Text = "Email";
-			this.col_email.Width = 134;
+			this.txt_identity_number_account.Depth = 0;
+			this.txt_identity_number_account.Hint = "Identity Number";
+			this.txt_identity_number_account.Location = new System.Drawing.Point(38, 83);
+			this.txt_identity_number_account.MaxLength = 32767;
+			this.txt_identity_number_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_identity_number_account.Name = "txt_identity_number_account";
+			this.txt_identity_number_account.PasswordChar = '\0';
+			this.txt_identity_number_account.SelectedText = "";
+			this.txt_identity_number_account.SelectionLength = 0;
+			this.txt_identity_number_account.SelectionStart = 0;
+			this.txt_identity_number_account.Size = new System.Drawing.Size(200, 23);
+			this.txt_identity_number_account.TabIndex = 3;
+			this.txt_identity_number_account.TabStop = false;
+			this.txt_identity_number_account.UseSystemPasswordChar = false;
 			// 
-			// col_phone_number
+			// txt_new_password
 			// 
-			this.col_phone_number.Text = "Phone Number";
-			this.col_phone_number.Width = 226;
+			this.txt_new_password.Depth = 0;
+			this.txt_new_password.Hint = "New Password";
+			this.txt_new_password.Location = new System.Drawing.Point(299, 64);
+			this.txt_new_password.MaxLength = 32767;
+			this.txt_new_password.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_new_password.Name = "txt_new_password";
+			this.txt_new_password.PasswordChar = '●';
+			this.txt_new_password.SelectedText = "";
+			this.txt_new_password.SelectionLength = 0;
+			this.txt_new_password.SelectionStart = 0;
+			this.txt_new_password.Size = new System.Drawing.Size(200, 23);
+			this.txt_new_password.TabIndex = 7;
+			this.txt_new_password.TabStop = false;
+			this.txt_new_password.UseSystemPasswordChar = true;
+			// 
+			// txt_current_password_account
+			// 
+			this.txt_current_password_account.Depth = 0;
+			this.txt_current_password_account.Hint = "Current Password";
+			this.txt_current_password_account.Location = new System.Drawing.Point(299, 25);
+			this.txt_current_password_account.MaxLength = 32767;
+			this.txt_current_password_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_current_password_account.Name = "txt_current_password_account";
+			this.txt_current_password_account.PasswordChar = '●';
+			this.txt_current_password_account.SelectedText = "";
+			this.txt_current_password_account.SelectionLength = 0;
+			this.txt_current_password_account.SelectionStart = 0;
+			this.txt_current_password_account.Size = new System.Drawing.Size(200, 23);
+			this.txt_current_password_account.TabIndex = 6;
+			this.txt_current_password_account.TabStop = false;
+			this.txt_current_password_account.UseSystemPasswordChar = true;
+			// 
+			// txt_name_account
+			// 
+			this.txt_name_account.Depth = 0;
+			this.txt_name_account.Hint = "Name";
+			this.txt_name_account.Location = new System.Drawing.Point(63, 25);
+			this.txt_name_account.MaxLength = 32767;
+			this.txt_name_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_name_account.Name = "txt_name_account";
+			this.txt_name_account.PasswordChar = '\0';
+			this.txt_name_account.SelectedText = "";
+			this.txt_name_account.SelectionLength = 0;
+			this.txt_name_account.SelectionStart = 0;
+			this.txt_name_account.Size = new System.Drawing.Size(175, 23);
+			this.txt_name_account.TabIndex = 1;
+			this.txt_name_account.TabStop = false;
+			this.txt_name_account.UseSystemPasswordChar = false;
+			// 
+			// txt_email_account
+			// 
+			this.txt_email_account.Depth = 0;
+			this.txt_email_account.Hint = "Email";
+			this.txt_email_account.Location = new System.Drawing.Point(38, 54);
+			this.txt_email_account.MaxLength = 32767;
+			this.txt_email_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_email_account.Name = "txt_email_account";
+			this.txt_email_account.PasswordChar = '\0';
+			this.txt_email_account.SelectedText = "";
+			this.txt_email_account.SelectionLength = 0;
+			this.txt_email_account.SelectionStart = 0;
+			this.txt_email_account.Size = new System.Drawing.Size(200, 23);
+			this.txt_email_account.TabIndex = 2;
+			this.txt_email_account.TabStop = false;
+			this.txt_email_account.UseSystemPasswordChar = false;
+			// 
+			// lbl_id_account
+			// 
+			this.lbl_id_account.AutoSize = true;
+			this.lbl_id_account.Depth = 0;
+			this.lbl_id_account.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_id_account.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_id_account.Location = new System.Drawing.Point(34, 25);
+			this.lbl_id_account.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_id_account.Name = "lbl_id_account";
+			this.lbl_id_account.Size = new System.Drawing.Size(23, 19);
+			this.lbl_id_account.TabIndex = 0;
+			this.lbl_id_account.Text = "ID";
 			// 
 			// Dashboard
 			// 
@@ -382,36 +512,41 @@
 			this.tab_cash_edit.ResumeLayout(false);
 			this.tab_period_edit.ResumeLayout(false);
 			this.tab_period_edit.PerformLayout();
-			this.tab_manage_staffs.ResumeLayout(false);
+			this.tab_account_edit.ResumeLayout(false);
+			this.tab_account_edit.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
+		private MaterialSkin.Controls.MaterialTabSelector tab_selector_edit;
 		private MaterialSkin.Controls.MaterialTabControl tab_control_edit;
 		private System.Windows.Forms.TabPage tab_cash_edit;
-		private MaterialSkin.Controls.MaterialTabSelector tab_selector_edit;
-		private System.Windows.Forms.TabPage tab_period_edit;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_min_edit_cash;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_add_min_edit_cash;
-		private MaterialSkin.Controls.MaterialRaisedButton btn_ok_edit_cash;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_cancel_edit_cash;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_apply_edit_cast;
-		private MaterialSkin.Controls.MaterialRaisedButton btn_apply_edit_period;
-		private MaterialSkin.Controls.MaterialRaisedButton btn_ok_edit_period;
-		private System.Windows.Forms.ComboBox cbb_period_edit_period;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_min_cash;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_min_income;
+		private System.Windows.Forms.TabPage tab_period_edit;
+		private MaterialSkin.Controls.MaterialLabel lbl_id_edit_period;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_period_edit_period;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_edit_period;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_rate_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_edit_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_remove_edit_period;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_add_edit_period;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txt_rate_edit_period;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt_period_edit_period;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_edit_period;
-		private MaterialSkin.Controls.MaterialLabel lbl_id_edit_period;
-		private System.Windows.Forms.TabPage tab_manage_staffs;
-		private MaterialSkin.Controls.MaterialListView materialListView1;
-		private System.Windows.Forms.ColumnHeader col_order;
-		private System.Windows.Forms.ColumnHeader col_name;
-		private System.Windows.Forms.ColumnHeader col_email;
-		private System.Windows.Forms.ColumnHeader col_phone_number;
+		private System.Windows.Forms.ComboBox cbb_period_edit_period;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_apply_edit_period;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_cancel_edit_period;
+		private System.Windows.Forms.TabPage tab_account_edit;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_identity_number_account;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_new_password;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_current_password_account;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_account;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_email_account;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_phone_number_account;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_new_password_confirm;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_change_password_account;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_edit_account;
+		private MaterialSkin.Controls.MaterialLabel lbl_id_account;
 	}
 }

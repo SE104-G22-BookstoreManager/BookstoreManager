@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 
 namespace PassbookManagement.src
@@ -829,7 +830,7 @@ namespace PassbookManagement.src
 
 			cbb_period_monthly.SelectedIndex = 0;
 
-			list_monthly.Clear();
+			list_monthly.Items.Clear();
 		}
 
 		private void btn_show_monthly_Click(object sender, EventArgs e)

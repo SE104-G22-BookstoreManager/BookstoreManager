@@ -95,7 +95,8 @@ namespace PassbookManagement
             _data.Add(TblColumn.P_CUSTOMER_ID_S, customer_id);
             _data.Add(TblColumn.P_CASH_S, cash);
             _data.Add(TblColumn.P_DATE_TIME_S, date_time);
-            _data.Add(TblColumn.P_CLOSE_S, status);
+            _data.Add(TblColumn.P_STATUS_S, status);
+
 			return Database.SQLiteDatabase.Insert(tbl_passbooks, _data);
 		}
 
@@ -112,7 +113,7 @@ namespace PassbookManagement
 		public static bool UpdateStatusByPassbookId(string id, string status)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
-            _data.Add(TblColumn.P_CLOSE_S, status);
+            _data.Add(TblColumn.P_STATUS_S, status);
 
 			string where = TblColumn.P_ID_S + "=\"" + id + "\"";
 
@@ -176,7 +177,7 @@ namespace PassbookManagement
 		public static DataTable SelectAllOutcomesByPeriodId(string period_id)
 		{
 			string _query = "SELECT * FROM " + tbl_outcomes + " AS a JOIN " + tbl_passbooks + " AS b";
-			_query += " ON " + "a." + TblColumn.D_PASSBOOK_ID_S + " = b." + TblColumn.P_ID_S;
+			_query += " ON " + "a." + TblColumn.W_PASSBOOK_ID_S + " = b." + TblColumn.P_ID_S;
 			_query += " WHERE b." + TblColumn.P_PERIOD_ID_S + "=\"" + period_id + "\"";
 
 			return Database.SQLiteDatabase.GetDataTable(_query);
@@ -266,6 +267,37 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
+		public static DataTable SelectStaffByEmail(string email)
+		{
+			string _query = "SELECT * FROM " + tbl_staffs;
+			_query += " WHERE " + TblColumn.S_EMAIL_S + "=\"" + email + "\"";
+
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
+
+		public static bool UpdateStaff(string id, string name, string email, string identity_number, string phone_number)
+		{
+			Dictionary<string, string> _data = new Dictionary<string, string>();
+
+			_data.Add(TblColumn.S_NAME_S, name);
+			_data.Add(TblColumn.S_EMAIL_S, email);
+			_data.Add(TblColumn.S_IDENTITY_NUMBER_S, identity_number);
+			_data.Add(TblColumn.S_PHONE_NUMBER_S, phone_number);
+
+			string where = TblColumn.S_ID_S + "=\"" + id + "\"";
+
+			return Database.SQLiteDatabase.Update(tbl_staffs, _data, where);
+		}
+
+		public static bool UpdatePasswordByStaffId(string id, string password)
+		{
+			Dictionary<string, string> _data = new Dictionary<string, string>();
+			_data.Add(TblColumn.S_PASSWORD_S, password);
+
+			string where = TblColumn.S_ID_S + "=\"" + id + "\"";
+
+			return Database.SQLiteDatabase.Update(tbl_staffs, _data, where);
+		}
 
 		////////////////////////////////////////////////////////////////////
 		// XModel
