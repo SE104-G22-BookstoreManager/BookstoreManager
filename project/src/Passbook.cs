@@ -48,7 +48,46 @@ namespace PassbookManagement.src
 		// Load login form after create form
 		private void Passbook_Load(object sender, EventArgs e)
 		{
+			Hide();
 			OpenLoginForm();
+			txt_welcome_main.Text = "Welcome back,\n" + Params.CURRENT_SESSION[Params.CURRENT_USERNAME];
+			Show();
+
+			LoadStaffList();
+		}
+
+		private void OpenLoginForm()
+		{
+			m_loginForm.ShowDialog();
+
+			if (m_loginForm.DialogResult == DialogResult.Cancel)
+			{
+				Application.Exit();
+				return;
+			}
+		}
+
+		private void LoadStaffList()
+		{
+			DataTable _data = PassbookModel.SelectAllStaff();
+
+			if(_data.Rows.Count == 0)
+			{
+				MessageBox.Show(IMessage.MSG_NO_STAFF, IMessage.CPT_NOTICE);
+				return;
+			}
+
+			for(int i = 0; i < _data.Rows.Count; i++)
+			{
+				object[] _staff = _data.Rows[i].ItemArray;
+				cbb_staff_open.Items.Add(_staff[TblColumn.S_ID].ToString() + ": " + _staff[TblColumn.S_NAME].ToString());
+				cbb_staff_deposit.Items.Add(_staff[TblColumn.S_ID].ToString() + ": " + _staff[TblColumn.S_NAME].ToString());
+				cbb_staff_withdrawal.Items.Add(_staff[TblColumn.S_ID].ToString() + ": " + _staff[TblColumn.S_NAME].ToString());
+			}
+
+			cbb_staff_open.SelectedIndex = 0;
+			cbb_staff_deposit.SelectedIndex = 0;
+			cbb_staff_withdrawal.SelectedIndex = 0;
 		}
 
 
@@ -72,21 +111,6 @@ namespace PassbookManagement.src
 		{
 			Params.CURRENT_SESSION.Clear();
 			OpenLoginForm();
-		}
-
-		private void OpenLoginForm()
-		{
-			Hide();
-			m_loginForm.ShowDialog();
-
-			if (m_loginForm.DialogResult == DialogResult.Cancel)
-			{
-				Application.Exit();
-				return;
-			}
-
-			txt_welcome_main.Text = "Welcome back,\n" + Params.CURRENT_SESSION[Params.CURRENT_USERNAME];
-			Show();
 		}
 		////////////////////////////////////////////////////////////////////
 
@@ -248,7 +272,8 @@ namespace PassbookManagement.src
 				txt_phone_number_open.Text == "" ||
 				txt_cash_open.Text == "" ||
 				cbb_period_open.Text == "" ||
-				txt_passbook_name_open.Text == "")
+				txt_passbook_name_open.Text == "" ||
+				cbb_staff_open.Text == "")
 			{
 				MessageBox.Show(IMessage.MSG_REQUIRED,IMessage.CPT_NOTICE);
 				return;
@@ -270,10 +295,11 @@ namespace PassbookManagement.src
 			}
 
 			string _periodId = cbb_period_open.Text.Split(':')[0];
+			string _staffId = cbb_staff_open.Text.Split(':')[0];
 			DateTime _dateTime = calendar_open.SelectionEnd.Date;
 			string _status = "open-" + _dateTime.ToString();
 
-			if (PassbookModel.InsertPassbook(txt_passbook_name_open.Text, _periodId, lbl_customer_id_open.Text, txt_cash_open.Text, _dateTime.ToString(), _status) == false)
+			if (PassbookModel.InsertPassbook(txt_passbook_name_open.Text, _periodId, lbl_customer_id_open.Text, _staffId, txt_cash_open.Text, _dateTime.ToString(), _status) == false)
 			{
                 MessageBox.Show(IMessage.MSG_N_CREAT_PB, IMessage.CPT_NOTICE);
 				return;
@@ -450,7 +476,8 @@ namespace PassbookManagement.src
 				txt_address_deposit.Text == "" ||
 				txt_phone_number_deposit.Text == "" ||
 				txt_cash_deposit.Text == "" ||
-				cbb_passbook_deposit.Text == "")
+				cbb_passbook_deposit.Text == "" ||
+				cbb_staff_deposit.Text == "")
 			{
                 MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
@@ -474,8 +501,9 @@ namespace PassbookManagement.src
 			// Submit income
 			DateTime _dateTime = calendar_deposit.SelectionEnd.Date;
 			string _passbookId = cbb_passbook_deposit.Text.Split(':')[0];
+			string _staffId = cbb_staff_deposit.Text.Split(':')[0];
 
-			if (PassbookModel.InsertIncome(_passbookId, txt_cash_deposit.Text, _dateTime.ToString()) == false)
+			if (PassbookModel.InsertIncome(_passbookId, _staffId, txt_cash_deposit.Text, _dateTime.ToString()) == false)
 			{
                 MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 				return;
@@ -617,7 +645,8 @@ namespace PassbookManagement.src
 				txt_identity_number_withdrawal.Text == "" ||
 				txt_address_withdrawal.Text == "" ||
 				txt_phone_number_withdrawal.Text == "" ||
-				cbb_passbook_withdrawal.Text == "")
+				cbb_passbook_withdrawal.Text == "" ||
+				cbb_staff_withdrawal.Text == "")
 			{
                 MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
@@ -694,9 +723,10 @@ namespace PassbookManagement.src
 				_cash = "0";
 			}
 
+			string _staffId = cbb_staff_withdrawal.Text.Split(':')[0];
 
 			// Create withdrawal
-			if (PassbookModel.InsertOutcome(_passbook[TblColumn.P_CUSTOMER_ID].ToString(), _withdrawal, _current.ToString()) == false)
+			if (PassbookModel.InsertOutcome(_passbookId, _staffId, _withdrawal, _current.ToString()) == false)
 			{
                 MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 				return;

@@ -86,14 +86,15 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertPassbook(string name, string period_id, string customer_id, string cash, string date_time, string status)
+		public static bool InsertPassbook(string name, string period_id, string customer_id, string staff_id, string cash, string date_time, string status)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
             _data.Add(TblColumn.P_NAME_S, name);
             _data.Add(TblColumn.P_PERIOD_ID_S, period_id);
             _data.Add(TblColumn.P_CUSTOMER_ID_S, customer_id);
-            _data.Add(TblColumn.P_CASH_S, cash);
+			_data.Add(TblColumn.P_STAFF_ID_S, staff_id);
+			_data.Add(TblColumn.P_CASH_S, cash);
             _data.Add(TblColumn.P_DATE_TIME_S, date_time);
             _data.Add(TblColumn.P_STATUS_S, status);
 
@@ -151,12 +152,13 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertIncome(string passbook_id, string cash, string date_time)
+		public static bool InsertIncome(string passbook_id, string staff_id, string cash, string date_time)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-            _data.Add(TblColumn.D_ID_S, passbook_id);
-            _data.Add(TblColumn.D_CASH_S, cash);
+            _data.Add(TblColumn.D_PASSBOOK_ID_S, passbook_id);
+			_data.Add(TblColumn.D_STAFF_ID_S, staff_id);
+			_data.Add(TblColumn.D_CASH_S, cash);
             _data.Add(TblColumn.D_DATE_TIME_S, date_time);
 
 			return Database.SQLiteDatabase.Insert(tbl_incomes, _data);
@@ -183,12 +185,13 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.GetDataTable(_query);
 		}
 
-		public static bool InsertOutcome(string passbook_id, string cash, string date_time)
+		public static bool InsertOutcome(string passbook_id, string staff_id, string cash, string date_time)
 		{
 			Dictionary<string, string> _data = new Dictionary<string, string>();
 
-            _data.Add(TblColumn.W_ID_S, passbook_id);
-            _data.Add(TblColumn.W_CASH_S, cash);
+            _data.Add(TblColumn.W_PASSBOOK_ID_S, passbook_id);
+			_data.Add(TblColumn.W_STAFF_ID_S, passbook_id);
+			_data.Add(TblColumn.W_CASH_S, cash);
             _data.Add(TblColumn.W_DATE_TIME_S, date_time);
 
 			return Database.SQLiteDatabase.Insert(tbl_outcomes, _data);
@@ -258,6 +261,12 @@ namespace PassbookManagement
 		/// <summary>
 		///     
 		/// </summary>
+		/// 
+		public static DataTable SelectAllStaff()
+		{
+			string _query = "SELECT * FROM " + tbl_staffs;
+			return Database.SQLiteDatabase.GetDataTable(_query);
+		}
 
 		public static DataTable SelectStaffByEmailAndPassword(string email, string password)
 		{

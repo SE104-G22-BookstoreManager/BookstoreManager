@@ -107,6 +107,12 @@
 			this.item_dashboard = new System.Windows.Forms.ToolStripMenuItem();
 			this.item_logout = new System.Windows.Forms.ToolStripMenuItem();
 			this.txt_welcome_main = new MaterialSkin.Controls.MaterialLabel();
+			this.lbl_staff = new MaterialSkin.Controls.MaterialLabel();
+			this.cbb_staff_open = new System.Windows.Forms.ComboBox();
+			this.lbl_staff_deposit = new MaterialSkin.Controls.MaterialLabel();
+			this.cbb_staff_deposit = new System.Windows.Forms.ComboBox();
+			this.cbb_staff_withdrawal = new System.Windows.Forms.ComboBox();
+			this.lbl_staff_withdrawal = new MaterialSkin.Controls.MaterialLabel();
 			this.tab_control.SuspendLayout();
 			this.tab_open.SuspendLayout();
 			this.tab_lookup.SuspendLayout();
@@ -146,6 +152,8 @@
 			// tab_open
 			// 
 			this.tab_open.BackColor = System.Drawing.Color.White;
+			this.tab_open.Controls.Add(this.cbb_staff_open);
+			this.tab_open.Controls.Add(this.lbl_staff);
 			this.tab_open.Controls.Add(this.txt_passbook_name_open);
 			this.tab_open.Controls.Add(this.cbb_period_open);
 			this.tab_open.Controls.Add(this.lbl_customer_id_open);
@@ -189,7 +197,7 @@
 			// 
 			this.cbb_period_open.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbb_period_open.FormattingEnabled = true;
-			this.cbb_period_open.Location = new System.Drawing.Point(360, 57);
+			this.cbb_period_open.Location = new System.Drawing.Point(360, 61);
 			this.cbb_period_open.Name = "cbb_period_open";
 			this.cbb_period_open.Size = new System.Drawing.Size(227, 21);
 			this.cbb_period_open.TabIndex = 9;
@@ -200,7 +208,7 @@
 			this.lbl_customer_id_open.Depth = 0;
 			this.lbl_customer_id_open.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_customer_id_open.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer_id_open.Location = new System.Drawing.Point(27, 59);
+			this.lbl_customer_id_open.Location = new System.Drawing.Point(28, 122);
 			this.lbl_customer_id_open.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_id_open.Name = "lbl_customer_id_open";
 			this.lbl_customer_id_open.Size = new System.Drawing.Size(23, 19);
@@ -302,7 +310,7 @@
 			// 
 			this.txt_address_open.Depth = 0;
 			this.txt_address_open.Hint = "Address";
-			this.txt_address_open.Location = new System.Drawing.Point(32, 147);
+			this.txt_address_open.Location = new System.Drawing.Point(32, 180);
 			this.txt_address_open.MaxLength = 32767;
 			this.txt_address_open.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_address_open.Name = "txt_address_open";
@@ -319,7 +327,7 @@
 			// 
 			this.txt_phone_number_open.Depth = 0;
 			this.txt_phone_number_open.Hint = "Phone Number";
-			this.txt_phone_number_open.Location = new System.Drawing.Point(32, 191);
+			this.txt_phone_number_open.Location = new System.Drawing.Point(32, 209);
 			this.txt_phone_number_open.MaxLength = 32767;
 			this.txt_phone_number_open.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_phone_number_open.Name = "txt_phone_number_open";
@@ -339,7 +347,7 @@
 			this.lbl_customer.Depth = 0;
 			this.lbl_customer.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_customer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer.Location = new System.Drawing.Point(28, 27);
+			this.lbl_customer.Location = new System.Drawing.Point(28, 95);
 			this.lbl_customer.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer.Name = "lbl_customer";
 			this.lbl_customer.Size = new System.Drawing.Size(75, 19);
@@ -350,7 +358,7 @@
 			// 
 			this.txt_identity_number_open.Depth = 0;
 			this.txt_identity_number_open.Hint = "Identity Number";
-			this.txt_identity_number_open.Location = new System.Drawing.Point(32, 103);
+			this.txt_identity_number_open.Location = new System.Drawing.Point(32, 151);
 			this.txt_identity_number_open.MaxLength = 32767;
 			this.txt_identity_number_open.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_identity_number_open.Name = "txt_identity_number_open";
@@ -368,7 +376,7 @@
 			// 
 			this.txt_name_open.Depth = 0;
 			this.txt_name_open.Hint = "Name";
-			this.txt_name_open.Location = new System.Drawing.Point(70, 59);
+			this.txt_name_open.Location = new System.Drawing.Point(70, 122);
 			this.txt_name_open.MaxLength = 32767;
 			this.txt_name_open.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_name_open.Name = "txt_name_open";
@@ -461,6 +469,8 @@
 			// tab_deposit
 			// 
 			this.tab_deposit.BackColor = System.Drawing.Color.White;
+			this.tab_deposit.Controls.Add(this.lbl_staff_deposit);
+			this.tab_deposit.Controls.Add(this.cbb_staff_deposit);
 			this.tab_deposit.Controls.Add(this.lbl_customer_id_deposit);
 			this.tab_deposit.Controls.Add(this.btn_refresh_deposit);
 			this.tab_deposit.Controls.Add(this.calendar_deposit);
@@ -488,7 +498,7 @@
 			this.lbl_customer_id_deposit.Depth = 0;
 			this.lbl_customer_id_deposit.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_customer_id_deposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer_id_deposit.Location = new System.Drawing.Point(27, 59);
+			this.lbl_customer_id_deposit.Location = new System.Drawing.Point(28, 122);
 			this.lbl_customer_id_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_id_deposit.Name = "lbl_customer_id_deposit";
 			this.lbl_customer_id_deposit.Size = new System.Drawing.Size(23, 19);
@@ -513,7 +523,7 @@
 			// 
 			// calendar_deposit
 			// 
-			this.calendar_deposit.Location = new System.Drawing.Point(360, 147);
+			this.calendar_deposit.Location = new System.Drawing.Point(360, 151);
 			this.calendar_deposit.Name = "calendar_deposit";
 			this.calendar_deposit.TabIndex = 10;
 			// 
@@ -586,7 +596,7 @@
 			// 
 			this.txt_phone_number_deposit.Depth = 0;
 			this.txt_phone_number_deposit.Hint = "Phone Number";
-			this.txt_phone_number_deposit.Location = new System.Drawing.Point(32, 191);
+			this.txt_phone_number_deposit.Location = new System.Drawing.Point(32, 209);
 			this.txt_phone_number_deposit.MaxLength = 32767;
 			this.txt_phone_number_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_phone_number_deposit.Name = "txt_phone_number_deposit";
@@ -604,7 +614,7 @@
 			// 
 			this.txt_identity_number_deposit.Depth = 0;
 			this.txt_identity_number_deposit.Hint = "Identity Number";
-			this.txt_identity_number_deposit.Location = new System.Drawing.Point(32, 103);
+			this.txt_identity_number_deposit.Location = new System.Drawing.Point(32, 151);
 			this.txt_identity_number_deposit.MaxLength = 32767;
 			this.txt_identity_number_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_identity_number_deposit.Name = "txt_identity_number_deposit";
@@ -622,7 +632,7 @@
 			// 
 			this.txt_name_deposit.Depth = 0;
 			this.txt_name_deposit.Hint = "Name";
-			this.txt_name_deposit.Location = new System.Drawing.Point(70, 59);
+			this.txt_name_deposit.Location = new System.Drawing.Point(70, 122);
 			this.txt_name_deposit.MaxLength = 32767;
 			this.txt_name_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_name_deposit.Name = "txt_name_deposit";
@@ -641,7 +651,7 @@
 			this.lbl_customer_deposit.Depth = 0;
 			this.lbl_customer_deposit.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_customer_deposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer_deposit.Location = new System.Drawing.Point(28, 27);
+			this.lbl_customer_deposit.Location = new System.Drawing.Point(28, 95);
 			this.lbl_customer_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_deposit.Name = "lbl_customer_deposit";
 			this.lbl_customer_deposit.Size = new System.Drawing.Size(75, 19);
@@ -652,7 +662,7 @@
 			// 
 			this.txt_address_deposit.Depth = 0;
 			this.txt_address_deposit.Hint = "Address";
-			this.txt_address_deposit.Location = new System.Drawing.Point(32, 147);
+			this.txt_address_deposit.Location = new System.Drawing.Point(32, 180);
 			this.txt_address_deposit.MaxLength = 32767;
 			this.txt_address_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_address_deposit.Name = "txt_address_deposit";
@@ -668,6 +678,8 @@
 			// tab_withdrawal
 			// 
 			this.tab_withdrawal.BackColor = System.Drawing.Color.White;
+			this.tab_withdrawal.Controls.Add(this.cbb_staff_withdrawal);
+			this.tab_withdrawal.Controls.Add(this.lbl_staff_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.lbl_customer_id_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.btn_refresh_withdrawal);
 			this.tab_withdrawal.Controls.Add(this.cbb_passbook_withdrawal);
@@ -695,7 +707,7 @@
 			this.lbl_customer_id_withdrawal.Depth = 0;
 			this.lbl_customer_id_withdrawal.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_customer_id_withdrawal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer_id_withdrawal.Location = new System.Drawing.Point(27, 59);
+			this.lbl_customer_id_withdrawal.Location = new System.Drawing.Point(28, 122);
 			this.lbl_customer_id_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_id_withdrawal.Name = "lbl_customer_id_withdrawal";
 			this.lbl_customer_id_withdrawal.Size = new System.Drawing.Size(23, 19);
@@ -730,7 +742,7 @@
 			// 
 			// calendar_withdrawal
 			// 
-			this.calendar_withdrawal.Location = new System.Drawing.Point(360, 147);
+			this.calendar_withdrawal.Location = new System.Drawing.Point(360, 151);
 			this.calendar_withdrawal.Name = "calendar_withdrawal";
 			this.calendar_withdrawal.TabIndex = 10;
 			// 
@@ -781,7 +793,7 @@
 			// 
 			this.txt_identity_number_withdrawal.Depth = 0;
 			this.txt_identity_number_withdrawal.Hint = "Identity Number";
-			this.txt_identity_number_withdrawal.Location = new System.Drawing.Point(32, 103);
+			this.txt_identity_number_withdrawal.Location = new System.Drawing.Point(32, 151);
 			this.txt_identity_number_withdrawal.MaxLength = 32767;
 			this.txt_identity_number_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_identity_number_withdrawal.Name = "txt_identity_number_withdrawal";
@@ -799,7 +811,7 @@
 			// 
 			this.txt_address_withdrawal.Depth = 0;
 			this.txt_address_withdrawal.Hint = "Address";
-			this.txt_address_withdrawal.Location = new System.Drawing.Point(32, 147);
+			this.txt_address_withdrawal.Location = new System.Drawing.Point(32, 180);
 			this.txt_address_withdrawal.MaxLength = 32767;
 			this.txt_address_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_address_withdrawal.Name = "txt_address_withdrawal";
@@ -816,7 +828,7 @@
 			// 
 			this.txt_phone_number_withdrawal.Depth = 0;
 			this.txt_phone_number_withdrawal.Hint = "Phone Number";
-			this.txt_phone_number_withdrawal.Location = new System.Drawing.Point(32, 191);
+			this.txt_phone_number_withdrawal.Location = new System.Drawing.Point(32, 209);
 			this.txt_phone_number_withdrawal.MaxLength = 32767;
 			this.txt_phone_number_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_phone_number_withdrawal.Name = "txt_phone_number_withdrawal";
@@ -834,7 +846,7 @@
 			// 
 			this.txt_name_withdrawal.Depth = 0;
 			this.txt_name_withdrawal.Hint = "Name";
-			this.txt_name_withdrawal.Location = new System.Drawing.Point(70, 59);
+			this.txt_name_withdrawal.Location = new System.Drawing.Point(70, 122);
 			this.txt_name_withdrawal.MaxLength = 32767;
 			this.txt_name_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txt_name_withdrawal.Name = "txt_name_withdrawal";
@@ -866,7 +878,7 @@
 			this.lbl_customer_withdrawal.Depth = 0;
 			this.lbl_customer_withdrawal.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lbl_customer_withdrawal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lbl_customer_withdrawal.Location = new System.Drawing.Point(28, 27);
+			this.lbl_customer_withdrawal.Location = new System.Drawing.Point(28, 95);
 			this.lbl_customer_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_withdrawal.Name = "lbl_customer_withdrawal";
 			this.lbl_customer_withdrawal.Size = new System.Drawing.Size(75, 19);
@@ -1125,6 +1137,72 @@
 			this.txt_welcome_main.TabIndex = 3;
 			this.txt_welcome_main.Text = "Welcome back,";
 			// 
+			// lbl_staff
+			// 
+			this.lbl_staff.AutoSize = true;
+			this.lbl_staff.Depth = 0;
+			this.lbl_staff.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_staff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_staff.Location = new System.Drawing.Point(28, 27);
+			this.lbl_staff.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_staff.Name = "lbl_staff";
+			this.lbl_staff.Size = new System.Drawing.Size(41, 19);
+			this.lbl_staff.TabIndex = 15;
+			this.lbl_staff.Text = "Staff";
+			// 
+			// cbb_staff_open
+			// 
+			this.cbb_staff_open.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbb_staff_open.FormattingEnabled = true;
+			this.cbb_staff_open.Location = new System.Drawing.Point(31, 61);
+			this.cbb_staff_open.Name = "cbb_staff_open";
+			this.cbb_staff_open.Size = new System.Drawing.Size(251, 21);
+			this.cbb_staff_open.TabIndex = 16;
+			// 
+			// lbl_staff_deposit
+			// 
+			this.lbl_staff_deposit.AutoSize = true;
+			this.lbl_staff_deposit.Depth = 0;
+			this.lbl_staff_deposit.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_staff_deposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_staff_deposit.Location = new System.Drawing.Point(28, 27);
+			this.lbl_staff_deposit.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_staff_deposit.Name = "lbl_staff_deposit";
+			this.lbl_staff_deposit.Size = new System.Drawing.Size(41, 19);
+			this.lbl_staff_deposit.TabIndex = 13;
+			this.lbl_staff_deposit.Text = "Staff";
+			// 
+			// cbb_staff_deposit
+			// 
+			this.cbb_staff_deposit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbb_staff_deposit.FormattingEnabled = true;
+			this.cbb_staff_deposit.Location = new System.Drawing.Point(32, 61);
+			this.cbb_staff_deposit.Name = "cbb_staff_deposit";
+			this.cbb_staff_deposit.Size = new System.Drawing.Size(250, 21);
+			this.cbb_staff_deposit.TabIndex = 14;
+			// 
+			// cbb_staff_withdrawal
+			// 
+			this.cbb_staff_withdrawal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbb_staff_withdrawal.FormattingEnabled = true;
+			this.cbb_staff_withdrawal.Location = new System.Drawing.Point(32, 61);
+			this.cbb_staff_withdrawal.Name = "cbb_staff_withdrawal";
+			this.cbb_staff_withdrawal.Size = new System.Drawing.Size(250, 21);
+			this.cbb_staff_withdrawal.TabIndex = 14;
+			// 
+			// lbl_staff_withdrawal
+			// 
+			this.lbl_staff_withdrawal.AutoSize = true;
+			this.lbl_staff_withdrawal.Depth = 0;
+			this.lbl_staff_withdrawal.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_staff_withdrawal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_staff_withdrawal.Location = new System.Drawing.Point(28, 27);
+			this.lbl_staff_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_staff_withdrawal.Name = "lbl_staff_withdrawal";
+			this.lbl_staff_withdrawal.Size = new System.Drawing.Size(41, 19);
+			this.lbl_staff_withdrawal.TabIndex = 13;
+			this.lbl_staff_withdrawal.Text = "Staff";
+			// 
 			// Passbook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1238,5 +1316,11 @@
 		private System.Windows.Forms.ToolStripMenuItem item_logout;
 		private MaterialSkin.Controls.MaterialLabel txt_welcome_main;
 		private MaterialSkin.Controls.MaterialFlatButton btn_show_monthly;
+		private System.Windows.Forms.ComboBox cbb_staff_open;
+		private MaterialSkin.Controls.MaterialLabel lbl_staff;
+		private MaterialSkin.Controls.MaterialLabel lbl_staff_deposit;
+		private System.Windows.Forms.ComboBox cbb_staff_deposit;
+		private System.Windows.Forms.ComboBox cbb_staff_withdrawal;
+		private MaterialSkin.Controls.MaterialLabel lbl_staff_withdrawal;
 	}
 }

@@ -32,6 +32,8 @@ namespace PassbookManagement
         public static readonly string MSG_NOTENOUGH_TIMES = "Chưa đến thời hạn rút tiền!!!";
         public static readonly string MSG_NOTENOUGH_MONEY = "Không đủ số tiền rút. Vui lòng kiểm tra lại!!!";
         public static readonly string MSG_CHOOSE_PS = "Please choose a period for tracking!!!";
+		public static readonly string MSG_NO_STAFF = "There is no staff in database. Something went wrong!!!";
+
         // CAPTION
         public static readonly string CPT_NOTICE = "Notice";
         public static readonly string CPT_CREAT_CUSTOMER = "Creat Customer";
@@ -58,11 +60,13 @@ namespace PassbookManagement
 		// Column index for table Incomes
 		public static readonly int D_ID = 0;
 		public static readonly int D_PASSBOOK_ID = 1;
-		public static readonly int D_CASH = 2;
-		public static readonly int D_DATE_TIME = 3;
+		public static readonly int D_STAFF_ID = 2;
+		public static readonly int D_CASH = 3;
+		public static readonly int D_DATE_TIME = 4;
 
 		public static readonly string D_ID_S = "id";
 		public static readonly string D_PASSBOOK_ID_S = "passbook_id";
+		public static readonly string D_STAFF_ID_S = "staff_id";
 		public static readonly string D_CASH_S = "cash";
 		public static readonly string D_DATE_TIME_S = "date_time";
 
@@ -70,11 +74,13 @@ namespace PassbookManagement
 		// Column index for table Outcomes
 		public static readonly int W_ID = 0;
 		public static readonly int W_PASSBOOK_ID = 1;
-		public static readonly int W_CASH = 2;
-		public static readonly int W_DATE_TIME = 3;
+		public static readonly int W_STAFF_ID = 2;
+		public static readonly int W_CASH = 3;
+		public static readonly int W_DATE_TIME = 4;
 
 		public static readonly string W_ID_S = "id";
 		public static readonly string W_PASSBOOK_ID_S = "passbook_id";
+		public static readonly string W_STAFF_ID_S = "staff_id";
 		public static readonly string W_CASH_S = "cash";
 		public static readonly string W_DATE_TIME_S = "date_time";
 
@@ -84,14 +90,16 @@ namespace PassbookManagement
 		public static readonly int P_NAME = 1;
 		public static readonly int P_PERIOD_ID = 2;
 		public static readonly int P_CUSTOMER_ID = 3;
-		public static readonly int P_CASH = 4;
-		public static readonly int P_DATE_TIME = 5;
-		public static readonly int P_STATUS = 6;
+		public static readonly int P_STAFF_ID = 4;
+		public static readonly int P_CASH = 5;
+		public static readonly int P_DATE_TIME = 6;
+		public static readonly int P_STATUS = 7;
 
 		public static readonly string P_ID_S = "id";
 		public static readonly string P_NAME_S = "name";
 		public static readonly string P_PERIOD_ID_S = "period_id";
 		public static readonly string P_CUSTOMER_ID_S = "customer_id";
+		public static readonly string P_STAFF_ID_S = "staff_id";
 		public static readonly string P_CASH_S = "cash";
 		public static readonly string P_DATE_TIME_S = "date_time";
 		public static readonly string P_STATUS_S = "status";
