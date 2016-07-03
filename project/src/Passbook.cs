@@ -54,6 +54,7 @@ namespace PassbookManagement.src
 			Show();
 
 			LoadStaffList();
+			LoadPeriodMonthly();
 		}
 
 		private void OpenLoginForm()
@@ -85,9 +86,11 @@ namespace PassbookManagement.src
 				cbb_staff_withdrawal.Items.Add(_staff[TblColumn.S_ID].ToString() + ": " + _staff[TblColumn.S_NAME].ToString());
 			}
 
-			cbb_staff_open.SelectedIndex = 0;
-			cbb_staff_deposit.SelectedIndex = 0;
-			cbb_staff_withdrawal.SelectedIndex = 0;
+			int _staffId = Convert.ToInt32(Params.CURRENT_SESSION[Params.CURRENT_ID].ToString()) - 1;
+
+			cbb_staff_open.SelectedIndex = _staffId;
+			cbb_staff_deposit.SelectedIndex = _staffId;
+			cbb_staff_withdrawal.SelectedIndex = _staffId;
 		}
 
 
@@ -377,7 +380,9 @@ namespace PassbookManagement.src
 
 
 				// Set balance
-				_item.SubItems.Add(_passbook[TblColumn.P_CASH].ToString());
+				string _cashFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_passbook[TblColumn.P_CASH].ToString()));
+				_item.SubItems.Add(_cashFormatted + " VND");
+
 
 				list_lookup.Items.Add(_item);
 			}
@@ -434,7 +439,7 @@ namespace PassbookManagement.src
 			{
 				object[] _passbook = _data1.Rows[i].ItemArray;
 				string _cashFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_passbook[TblColumn.P_CASH].ToString()));
-				cbb_passbook_deposit.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _cashFormatted);
+				cbb_passbook_deposit.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _cashFormatted + " VND");
 			}
 
 			cbb_passbook_deposit.SelectedIndex = 0;
@@ -602,7 +607,7 @@ namespace PassbookManagement.src
 			{
 				object[] _passbook = _data1.Rows[i].ItemArray;
 				string _cashFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_passbook[TblColumn.P_CASH].ToString()));
-				cbb_passbook_withdrawal.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _cashFormatted);
+				cbb_passbook_withdrawal.Items.Add(_passbook[TblColumn.P_ID].ToString() + ": " + _passbook[TblColumn.P_NAME].ToString() + " - " + _cashFormatted + " VND");
 			}
 
 			cbb_passbook_withdrawal.SelectedIndex = 0;
@@ -683,7 +688,7 @@ namespace PassbookManagement.src
 				return;
 			}
 
-			string _rate = _period[TblColumn.T_RATE].ToString();
+			string _rate = Processor.Div(_period[TblColumn.T_RATE].ToString(), "100");
 			string _cash = _passbook[TblColumn.P_CASH].ToString();
 
 			string _withdrawal = "0";
@@ -846,7 +851,7 @@ namespace PassbookManagement.src
 
 		////////////////////////////////////////////////////////////////////
 		// Control for create monthly report
-		private void btn_refresh_monthly_Click(object sender, EventArgs e)
+		private void LoadPeriodMonthly()
 		{
 			DataTable _data = PassbookModel.SelectAllPeriod();
 
@@ -861,6 +866,11 @@ namespace PassbookManagement.src
 			cbb_period_monthly.SelectedIndex = 0;
 
 			list_monthly.Items.Clear();
+		}
+
+		private void btn_refresh_monthly_Click(object sender, EventArgs e)
+		{
+			LoadPeriodMonthly();
 		}
 
 		private void btn_show_monthly_Click(object sender, EventArgs e)
@@ -916,7 +926,7 @@ namespace PassbookManagement.src
 							string[] _temp = __status.Split('-');
 							DateTime _statusDate = DateTime.Parse(_temp[1]);
 
-							if (_current.Date.DayOfYear == _statusDate.Date.DayOfYear)
+							if (_current.Year == _statusDate.Year && _current.Date.DayOfYear == _statusDate.Date.DayOfYear)
 							{
 								if (_temp[0] == "open")
 									_income++;
@@ -927,12 +937,23 @@ namespace PassbookManagement.src
 					}
 				}
 
-				_item.SubItems.Add(_income.ToString());
-				_item.SubItems.Add(_outcome.ToString());
+				if (_income > 0)
+					_item.SubItems.Add(_income.ToString(), Color.Blue, Color.Transparent, list_monthly.Font);
+				else
+					_item.SubItems.Add(_income.ToString());
+
+				if (_outcome > 0)
+					_item.SubItems.Add(_outcome.ToString(), Color.Blue, Color.Transparent, list_monthly.Font);
+				else
+					_item.SubItems.Add(_outcome.ToString());
 
 
 				// Set total value
-				_item.SubItems.Add((_income - _outcome).ToString());
+				if (_income - _outcome != 0)
+					_item.SubItems.Add((_income - _outcome).ToString(), Color.Red, Color.Transparent, list_monthly.Font);
+				else
+					_item.SubItems.Add((_income - _outcome).ToString());
+
 
 				list_monthly.Items.Add(_item);
 			}

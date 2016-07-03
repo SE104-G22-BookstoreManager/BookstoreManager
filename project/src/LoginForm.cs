@@ -58,6 +58,7 @@ namespace PassbookManagement.src
 
 				object[] _staff = _data.Rows[0].ItemArray;
 
+				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_ID]);
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_EMAIL]);
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_PASSWORD]);
 				Params.CURRENT_SESSION.Add(_staff[TblColumn.S_NAME]);

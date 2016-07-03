@@ -146,10 +146,11 @@ namespace PassbookManagement
 		public static readonly int USERNAME = 2;
 		public static readonly int PASSWORD = 3;
 
-		public static readonly int CURRENT_EMAIL = 0;
-		public static readonly int CURRENT_PASSWORD = 1;
-		public static readonly int CURRENT_USERNAME = 2;
-		public static readonly int CURRENT_ROLES = 3;
+		public static readonly int CURRENT_ID = 0;
+		public static readonly int CURRENT_EMAIL = 1;
+		public static readonly int CURRENT_PASSWORD = 2;
+		public static readonly int CURRENT_USERNAME = 3;
+		public static readonly int CURRENT_ROLES = 4;
 
 
 		public static void ReadFromObject(JsonObject o)
@@ -286,28 +287,28 @@ namespace PassbookManagement
 
 		public static int Compare(string num1, string num2)
 		{
-			return (Convert.ToDouble(num1) > Convert.ToDouble(num2)) ? 1 : 
-						((Convert.ToDouble(num1) == Convert.ToDouble(num2)) ? 0 : -1);
+			return (ConvertToDouble(num1) > ConvertToDouble(num2)) ? 1 : 
+						((ConvertToDouble(num1) == ConvertToDouble(num2)) ? 0 : -1);
 		}
 
 		public static string Add(string num1, string num2)
 		{
-			return (Convert.ToDouble(num1) + Convert.ToDouble(num2)).ToString();
+			return (ConvertToDouble(num1) + ConvertToDouble(num2)).ToString();
 		}
 
 		public static string Sub(string num1, string num2)
 		{
-			return (Convert.ToDouble(num1) - Convert.ToDouble(num2)).ToString();
+			return (ConvertToDouble(num1) - ConvertToDouble(num2)).ToString();
 		}
 
 		public static string Multi(string num1, string num2)
 		{
-			return (Convert.ToDouble(num1) * Convert.ToDouble(num2)).ToString();
+			return (ConvertToDouble(num1) * ConvertToDouble(num2)).ToString();
 		}
 
 		public static string Div(string num1, string num2)
 		{
-			return (Convert.ToDouble(num1) / Convert.ToDouble(num2)).ToString();
+			return (ConvertToDouble(num1) / ConvertToDouble(num2)).ToString();
 		}
 
 		public static int CountDay(int month, int year)
