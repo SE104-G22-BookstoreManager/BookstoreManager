@@ -40,7 +40,7 @@ namespace PassbookManagement.src
 
 				if (_cash == Processor.UNIDENTIFIED)
 				{
-					MessageBox.Show("Your input is incorrect. Please check again...", "Notice");
+					MessageBox.Show(IMessage.MSG_WRONG_INPUT, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -54,7 +54,7 @@ namespace PassbookManagement.src
 
 				if (_income == Processor.UNIDENTIFIED)
 				{
-					MessageBox.Show("Your input is incorrect. Please check again...", "Notice");
+					MessageBox.Show(IMessage.MSG_WRONG_INPUT, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -145,26 +145,26 @@ namespace PassbookManagement.src
 
 						if (_data.Rows.Count != 0)
 						{
-							MessageBox.Show("Current period is already exist. Please choose another name for this period...", "Notice");
+							MessageBox.Show(IMessage.MSG_CHOOSE_OTHER, IMessage.CPT_NOTICE);
 							return;
 						}
 
 						if (PassbookModel.InsertPeriod(txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
 						{
-							MessageBox.Show("Something went wrong!!!", "Notice");
+							MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 							return;
 						}
-						MessageBox.Show("Current period have added successfully", "Create period");
+						MessageBox.Show(IMessage.MSG_P_ADD, IMessage.CPT_ADD);
 					}
 					break;
 				case ControlBtn.CONTROL_EDIT:
 					{
 						if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
 						{
-							MessageBox.Show("Something went wrong!!!", "Notice");
+							MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 							return;
 						}
-						MessageBox.Show("Current period have edited successfully", "Edit period");
+						MessageBox.Show(IMessage.MSG_P_EDIT, IMessage.CPT_EDIT);
 					}
 					break;
 				case ControlBtn.CONTROL_REMOVE:
@@ -173,7 +173,7 @@ namespace PassbookManagement.src
 
 						if (_data.Rows.Count == 0)
 						{
-							MessageBox.Show("Something went wrong!!!", "Notice");
+							MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 							return;
 						}
 
@@ -182,16 +182,16 @@ namespace PassbookManagement.src
 
 						if (_periodId == "1")
 						{
-							MessageBox.Show("System alert!!! Cannot delete this period.", "Notice");
+							MessageBox.Show(IMessage.MSG_SYSTEM_ALERT, IMessage.CPT_NOTICE);
 							return;
 						}
 
 						if (PassbookModel.DeletePeriodById(_periodId) == false)
 						{
-							MessageBox.Show("Something went wrong!!!", "Notice");
+							MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 							return;
 						}
-						MessageBox.Show("Current period have deleted successfully.", "Delete period");
+						MessageBox.Show(IMessage.MSG_P_REMOVE, IMessage.CPT_REMOVE);
 					}
 					break;
 				default:
@@ -211,7 +211,7 @@ namespace PassbookManagement.src
 
 			if(_data.Rows.Count == 0)
 			{
-				MessageBox.Show("The selected period does not exist!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_NOT_EXIST, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -252,7 +252,7 @@ namespace PassbookManagement.src
 				txt_identity_number_account.Text == "" ||
 				txt_phone_number_account.Text == "")
 			{
-				MessageBox.Show("All informations are required!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -262,11 +262,11 @@ namespace PassbookManagement.src
 											txt_identity_number_account.Text, 
 											txt_phone_number_account.Text) == false)
 			{
-				MessageBox.Show("Cannot update your account. Something went wrong!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_UPDATE_ACC, IMessage.CPT_NOTICE);
 				return;
 			}
 
-			MessageBox.Show("Your account have edited successfully.", "Notice");
+            MessageBox.Show(IMessage.MSG_S_EDIT, IMessage.CPT_NOTICE);
 		}
 
 		private void btn_change_password_account_Click(object sender, EventArgs e)
@@ -275,7 +275,7 @@ namespace PassbookManagement.src
 				txt_new_password.Text == "" ||
 				txt_new_password_confirm.Text == "")
 			{
-				MessageBox.Show("All informations are required!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -284,20 +284,20 @@ namespace PassbookManagement.src
 				string passwordHash = Processor.GetMd5Hash(md5Hash, txt_current_password_account.Text);
 				if (!Processor.VerifyMd5Hash(md5Hash, txt_current_password_account.Text, passwordHash))
 				{
-					MessageBox.Show("Something went wrong!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 					return;
 				}
 
 				if(passwordHash != Params.CURRENT_SESSION[Params.CURRENT_PASSWORD].ToString())
 				{
-					MessageBox.Show("Current password is incorrect. Please try again!!!", "Notice");
+					MessageBox.Show(IMessage.MSG_WR_PW,IMessage.CPT_NOTICE);
 					return;
 				}
 			}
 
 			if(txt_new_password.Text != txt_new_password_confirm.Text)
 			{
-				MessageBox.Show("New password and New password confirm are mismatched. Please try again!!!", "Notice");
+                MessageBox.Show(IMessage.MSG_PW_NO_MIS, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -306,17 +306,17 @@ namespace PassbookManagement.src
 				string passwordHash = Processor.GetMd5Hash(md5Hash, txt_new_password.Text);
 				if (!Processor.VerifyMd5Hash(md5Hash, txt_new_password.Text, passwordHash))
 				{
-					MessageBox.Show("Something went wrong!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
 					return;
 				}
 
 				if (PassbookModel.UpdatePasswordByStaffId(lbl_id_account.Text, passwordHash) == false)
 				{
-					MessageBox.Show("Cannot update your password. Something went wrong!!!", "Notice");
+                    MessageBox.Show(IMessage.MSG_UPDATE_PW, IMessage.CPT_NOTICE);
 					return;
 				}
 
-				MessageBox.Show("Your password have edited successfully.", "Notice");
+                MessageBox.Show(IMessage.MSG_S_CHANGE_PW, IMessage.CPT_NOTICE);
 			}
 		}
 
@@ -326,7 +326,7 @@ namespace PassbookManagement.src
 
 			if(_data.Rows.Count == 0)
 			{
-				MessageBox.Show("Something went wrong!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -343,5 +343,10 @@ namespace PassbookManagement.src
 			txt_identity_number_account.Enabled = false;
 			txt_phone_number_account.Enabled = true;
 		}
-	}
+
+        private void tab_selector_edit_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
