@@ -33,12 +33,28 @@ namespace PassbookManagement
         public static readonly string MSG_NOTENOUGH_MONEY = "Không đủ số tiền rút. Vui lòng kiểm tra lại!!!";
         public static readonly string MSG_CHOOSE_PS = "Please choose a period for tracking!!!";
 		public static readonly string MSG_NO_STAFF = "There is no staff in database. Something went wrong!!!";
-
+        public static readonly string MSG_WRONG_SIGNIN = "Email or password is incorrect!!!";
+        public static readonly string MSG_UPDATE_PW = "Cannot update your password. Something went wrong!!!";
+        public static readonly string MSG_S_CHANGE_PW = "Your password have edited successfully.";
+        public static readonly string MSG_PW_NO_MIS = "New password and New password confirm are mismatched. Please try again!!!";
+        public static readonly string MSG_WR_PW = "Current password is incorrect. Please try again!!!";
+        public static readonly string MSG_S_EDIT = "Your account have edited successfully.";
+        public static readonly string MSG_UPDATE_ACC = "Cannot update your account. Something went wrong!!!";
+        public static readonly string MSG_NOT_EXIST = "The selected period does not exist!!!";
+        public static readonly string MSG_CHOOSE_OTHER = "Current period is already exist. Please choose another name for this period...";
+        public static readonly string MSG_P_ADD = "Current period have added successfully";
+        public static readonly string MSG_P_EDIT = "Current period have edited successfully";
+        public static readonly string MSG_P_REMOVE = "Current period have deleted successfully.";
+        public static readonly string MSG_SYSTEM_ALERT = "System alert!!! Cannot delete this period.";
         // CAPTION
         public static readonly string CPT_NOTICE = "Notice";
         public static readonly string CPT_CREAT_CUSTOMER = "Creat Customer";
         public static readonly string CPT_CREAT_PB = "Create Passbook";
+        public static readonly string CPT_ADD = "Create period";
+        public static readonly string CPT_EDIT = "Edit period";
+        public static readonly string CPT_REMOVE = "Delete period";
         public static readonly string CPT_CREAT_PS = "Create deposit";
+
     }
 
 	public static class TblColumn

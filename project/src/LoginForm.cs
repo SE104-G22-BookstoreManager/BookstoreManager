@@ -35,7 +35,7 @@ namespace PassbookManagement.src
 		{
 			if (txt_email_login.Text == "" || txt_password_login.Text == "")
 			{
-				MessageBox.Show("All information are required!!!", "Notice");
+				MessageBox.Show(IMessage.MSG_REQUIRED,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -44,7 +44,7 @@ namespace PassbookManagement.src
 				string passwordHash = Processor.GetMd5Hash(md5Hash, txt_password_login.Text);
 				if (!Processor.VerifyMd5Hash(md5Hash, txt_password_login.Text, passwordHash))
 				{
-					MessageBox.Show("Something went wrong!!!", "Notice");
+					MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG,IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -52,7 +52,7 @@ namespace PassbookManagement.src
 
 				if (_data.Rows.Count == 0)
 				{
-					MessageBox.Show("Email or password is incorrect!!!", "Notice");
+					MessageBox.Show(IMessage.MSG_WRONG_SIGNIN, IMessage.CPT_NOTICE);
 					return;
 				}
 
