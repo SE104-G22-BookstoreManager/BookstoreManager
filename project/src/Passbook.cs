@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Net;
 using System.Windows.Forms;
 
 namespace PassbookManagement.src
@@ -63,7 +63,7 @@ namespace PassbookManagement.src
 
 			if (m_loginForm.DialogResult == DialogResult.Cancel)
 			{
-				Application.Exit();
+				Environment.Exit(1);
 				return;
 			}
 		}
@@ -822,7 +822,9 @@ namespace PassbookManagement.src
 					if (_dateTime.DayOfYear == _current.DayOfYear)
 						_income = Processor.Add(_income, _row[TblColumn.D_CASH].ToString());
 				}
-				_item.SubItems.Add(_income);
+
+				string _incomeFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_income));
+				_item.SubItems.Add(_incomeFormatted + " VND");
 
 
 				// Set outcome value
@@ -836,11 +838,14 @@ namespace PassbookManagement.src
 					if (_dateTime.DayOfYear == _current.DayOfYear)
 						_outcome = Processor.Add(_outcome, _row[TblColumn.W_CASH].ToString());
 				}
-				_item.SubItems.Add(_outcome);
+
+				string _outcomeFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(_outcome));
+				_item.SubItems.Add(_outcomeFormatted + " VND");
 
 
 				// Set total value
-				_item.SubItems.Add(Processor.Sub(_income, _outcome));
+				string _totalFormatted = string.Format("{0:#,##0}", Processor.ConvertToDouble(Processor.Sub(_income, _outcome)));
+				_item.SubItems.Add(_totalFormatted + " VND");
 
 
 				list_daily.Items.Add(_item);
@@ -905,9 +910,9 @@ namespace PassbookManagement.src
 				// Set date
 				string _date = (i + 1) + "/" + _dateTime.Month + "/" + _dateTime.Year;
 				_item.SubItems.Add(_date);
-				DateTime _current = DateTime.Parse(_date);
-
-
+				DateTime _current = DateTime.ParseExact(_date, "d/M/yyyy", CultureInfo.InvariantCulture);
+				
+				
 				// Set income/outcome value
 				int _income = 0;
 				int _outcome = 0;
@@ -923,12 +928,12 @@ namespace PassbookManagement.src
 						List<string> _status = _passbook[TblColumn.P_STATUS].ToString().Split('|').ToList();
 						foreach (string __status in _status)
 						{
-							string[] _temp = __status.Split('-');
-							DateTime _statusDate = DateTime.Parse(_temp[1]);
+							string[] _params = __status.Split('-');
+							DateTime _statusDate = DateTime.Parse(_params[1]);
 
 							if (_current.Year == _statusDate.Year && _current.Date.DayOfYear == _statusDate.Date.DayOfYear)
 							{
-								if (_temp[0] == "open")
+								if (_params[0] == "open")
 									_income++;
 								else
 									_outcome++;
@@ -938,12 +943,12 @@ namespace PassbookManagement.src
 				}
 
 				if (_income > 0)
-					_item.SubItems.Add(_income.ToString(), Color.Blue, Color.Transparent, list_monthly.Font);
+					_item.SubItems.Add(_income.ToString(), Color.DarkCyan, Color.Transparent, list_monthly.Font);
 				else
 					_item.SubItems.Add(_income.ToString());
 
 				if (_outcome > 0)
-					_item.SubItems.Add(_outcome.ToString(), Color.Blue, Color.Transparent, list_monthly.Font);
+					_item.SubItems.Add(_outcome.ToString(), Color.DarkCyan, Color.Transparent, list_monthly.Font);
 				else
 					_item.SubItems.Add(_outcome.ToString());
 

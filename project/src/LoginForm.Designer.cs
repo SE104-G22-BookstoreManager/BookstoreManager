@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
 			this.txt_email_login = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_password_login = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.btn_login_login = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -139,11 +140,13 @@
 			this.Controls.Add(this.btn_login_login);
 			this.Controls.Add(this.txt_password_login);
 			this.Controls.Add(this.txt_email_login);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "LoginForm";
 			this.Text = "Login";
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 
 		#endregion
