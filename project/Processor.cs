@@ -13,44 +13,53 @@ namespace PassbookManagement
 	{
         // MESSAGE
         public static readonly string MSG_SOMETHING_WENT_WRONG = "Something went wrong!!!";
-        public static readonly string MSG_TYPE_ID = "Please type identity number!!!";
-        public static readonly string MSG_NOT_ACC = "Account not found. Please type all information to add new account!!!";
-        public static readonly string MSG_REQUIRED = "All informations are required!!!";
-        public static readonly string MSG_EXIST = "Account is already exist!!!";
-        public static readonly string MSG_NOT_CREAT = "Cannot create customer. Something went wrong!!!";
-        public static readonly string MSG_S_CREAT = "Success create new account! Please go ahead to create new passbook for this account.";
-        public static readonly string MSG_WRONG_INPUT = "Your input is incorrect. Please check again...";
-        public static readonly string MSG_LESS_CASH = "Your cash is less than usual. Please check again...";
-        public static readonly string MSG_N_CREAT_PB = "Cannot create passbook. Something went wrong!!!";
-        public static readonly string MSG_S_PB = "Congratulation! You have just succeeded create a passbook.";
-        public static readonly string MSG_NO_PB = "There is no passbook of this customer. Please check again...";
-        public static readonly string MSG_S_PS  = "Congratulation. You have created a new deposit!!!";
-        public static readonly string MSG_NOTENOUGH_TIMES = "Chưa đến thời hạn rút tiền!!!";
-        public static readonly string MSG_NOTENOUGH_MONEY = "Không đủ số tiền rút. Vui lòng kiểm tra lại!!!";
-        public static readonly string MSG_CHOOSE_PS = "Please choose a period for tracking!!!";
+
+        public static readonly string MSG_REQUIRE_ID = "Please type identity number!!!";
+		public static readonly string MSG_REQUIRED_ALL = "All informations are required!!!";
+
+		public static readonly string MSG_ACCOUNT_NOT_FOUND = "Account not found. Please type all information to add new account!!!";
+        public static readonly string MSG_ACCOUNT_EXISTED = "Account is already exist!!!";
+		public static readonly string MSG_SUCCESS_CREATE_ACCOUNT = "Success create new account! Please go ahead to create new passbook for this account.";
+		public static readonly string MSG_SUCCESS_EDIT_ACCOUNT = "Your account have edited successfully.";
+		public static readonly string MSG_FAILED_EDIT_ACCOUNT = "Cannot edit your account. Something went wrong!!!";
+		public static readonly string MSG_FAILED_CREATE_CUSTOMER = "Cannot create customer. Something went wrong!!!";
 		public static readonly string MSG_NO_STAFF = "There is no staff in database. Something went wrong!!!";
-        public static readonly string MSG_WRONG_SIGNIN = "Email or password is incorrect!!!";
-        public static readonly string MSG_UPDATE_PW = "Cannot update your password. Something went wrong!!!";
-        public static readonly string MSG_S_CHANGE_PW = "Your password have edited successfully.";
-        public static readonly string MSG_PW_NO_MIS = "New password and New password confirm are mismatched. Please try again!!!";
-        public static readonly string MSG_WR_PW = "Current password is incorrect. Please try again!!!";
-        public static readonly string MSG_S_EDIT = "Your account have edited successfully.";
-        public static readonly string MSG_UPDATE_ACC = "Cannot update your account. Something went wrong!!!";
-        public static readonly string MSG_NOT_EXIST = "The selected period does not exist!!!";
-        public static readonly string MSG_CHOOSE_OTHER = "Current period is already exist. Please choose another name for this period...";
-        public static readonly string MSG_P_ADD = "Current period have added successfully";
-        public static readonly string MSG_P_EDIT = "Current period have edited successfully";
-        public static readonly string MSG_P_REMOVE = "Current period have deleted successfully.";
-        public static readonly string MSG_SYSTEM_ALERT = "System alert!!! Cannot delete this period.";
+
+		public static readonly string MSG_WRONG_INPUT = "Your input is incorrect. Please check again...";
+        public static readonly string MSG_TOO_FEW_CASH = "Your cash is less than usual. Please check again...";
+
+        public static readonly string MSG_FAILED_CREATE_PASSBOOK = "Cannot create passbook. Something went wrong!!!";
+        public static readonly string MSG_SUCCESS_CREATE_PASSBOOK = "Congratulation! You have just succeeded create a passbook.";
+        public static readonly string MSG_NO_PASSBOOK = "There is no passbook of this customer. Please check again...";
+        public static readonly string MSG_SUCCESS_CREATE_DEPOSIT  = "Congratulation. You have created a new deposit!!!";
+
+        public static readonly string MSG_NOT_REACH_PERIOD = "Chưa đến thời hạn rút tiền!!!";
+        public static readonly string MSG_NOT_ENOUGH_MONEY = "Không đủ số tiền rút. Vui lòng kiểm tra lại!!!";
+        public static readonly string MSG_REQUIRE_PERIOD = "Please choose a period for tracking!!!";
+
+        public static readonly string MSG_INCORRECT_EMAIL_PASSWORD = "Email or password is incorrect!!!";
+        public static readonly string MSG_CANNOT_UPDATE_PASSWORD = "Cannot update your password. Something went wrong!!!";
+        public static readonly string MSG_SUCCESS_UPDATE_PASSWORD = "Your password have edited successfully.";
+        public static readonly string MSG_PASSWORD_MISMATCHED = "New password and New password confirm are mismatched. Please try again!!!";
+        public static readonly string MSG_WRONG_CURRENT_PASSWORD = "Current password is incorrect. Please try again!!!";
+
+        public static readonly string MSG_PERIOD_NOT_EXIST = "The selected period does not exist!!!";
+        public static readonly string MSG_PERIOD_ALREADY_EXIST = "Current period is already exist. Please choose another name for this period...";
+        public static readonly string MSG_SUCCESS_ADD_PERIOD = "Current period have added successfully";
+        public static readonly string MSG_SUCCESS_EDIT_PERIOD = "Current period have edited successfully";
+        public static readonly string MSG_SUCCESS_DELETE_PERIOD = "Current period have deleted successfully.";
+        public static readonly string MSG_FAILED_DELETE_PERIOD = "System alert!!! Cannot delete this period.";
+
         // CAPTION
         public static readonly string CPT_NOTICE = "Notice";
-        public static readonly string CPT_CREAT_CUSTOMER = "Creat Customer";
-        public static readonly string CPT_CREAT_PB = "Create Passbook";
-        public static readonly string CPT_ADD = "Create period";
-        public static readonly string CPT_EDIT = "Edit period";
-        public static readonly string CPT_REMOVE = "Delete period";
-        public static readonly string CPT_CREAT_PS = "Create deposit";
 
+        public static readonly string CPT_CREATE_CUSTOMER = "Creat Customer";
+        public static readonly string CPT_CREATE_PASSBOOK = "Create Passbook";
+		public static readonly string CPT_CREATE_DEPOSIT = "Create deposit";
+
+		public static readonly string CPT_CREATE_PERIOD = "Create period";
+        public static readonly string CPT_EDIT_PERIOD = "Edit period";
+        public static readonly string CPT_DELETE_PERIOD = "Delete period";
     }
 
 	public static class TblColumn

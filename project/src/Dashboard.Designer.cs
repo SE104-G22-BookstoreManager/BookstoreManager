@@ -58,10 +58,22 @@
 			this.txt_current_password_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_name_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.txt_email_account = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.tab_customer = new System.Windows.Forms.TabPage();
+			this.btn_check_customer = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.btn_refresh_customer = new MaterialSkin.Controls.MaterialFlatButton();
+			this.btn_apply_edit_customer = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.btn_cancel_edit_customer = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.lbl_customer_id_customer = new MaterialSkin.Controls.MaterialLabel();
+			this.txt_address_customer = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_phone_number_customer = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.lbl_customer_customer = new MaterialSkin.Controls.MaterialLabel();
+			this.txt_identity_number_customer = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txt_name_customer = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tab_control_edit.SuspendLayout();
 			this.tab_cash_edit.SuspendLayout();
 			this.tab_period_edit.SuspendLayout();
 			this.tab_account_edit.SuspendLayout();
+			this.tab_customer.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tab_selector_edit
@@ -81,6 +93,7 @@
 			this.tab_control_edit.Controls.Add(this.tab_cash_edit);
 			this.tab_control_edit.Controls.Add(this.tab_period_edit);
 			this.tab_control_edit.Controls.Add(this.tab_account_edit);
+			this.tab_control_edit.Controls.Add(this.tab_customer);
 			this.tab_control_edit.Depth = 0;
 			this.tab_control_edit.Location = new System.Drawing.Point(12, 114);
 			this.tab_control_edit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -500,6 +513,177 @@
 			this.txt_email_account.TabStop = false;
 			this.txt_email_account.UseSystemPasswordChar = false;
 			// 
+			// tab_customer
+			// 
+			this.tab_customer.BackColor = System.Drawing.Color.White;
+			this.tab_customer.Controls.Add(this.btn_check_customer);
+			this.tab_customer.Controls.Add(this.btn_refresh_customer);
+			this.tab_customer.Controls.Add(this.btn_apply_edit_customer);
+			this.tab_customer.Controls.Add(this.btn_cancel_edit_customer);
+			this.tab_customer.Controls.Add(this.lbl_customer_id_customer);
+			this.tab_customer.Controls.Add(this.txt_address_customer);
+			this.tab_customer.Controls.Add(this.txt_phone_number_customer);
+			this.tab_customer.Controls.Add(this.lbl_customer_customer);
+			this.tab_customer.Controls.Add(this.txt_identity_number_customer);
+			this.tab_customer.Controls.Add(this.txt_name_customer);
+			this.tab_customer.Location = new System.Drawing.Point(4, 22);
+			this.tab_customer.Name = "tab_customer";
+			this.tab_customer.Padding = new System.Windows.Forms.Padding(3);
+			this.tab_customer.Size = new System.Drawing.Size(568, 206);
+			this.tab_customer.TabIndex = 4;
+			this.tab_customer.Text = "Customer";
+			// 
+			// btn_check_customer
+			// 
+			this.btn_check_customer.Depth = 0;
+			this.btn_check_customer.Location = new System.Drawing.Point(41, 150);
+			this.btn_check_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_check_customer.Name = "btn_check_customer";
+			this.btn_check_customer.Primary = true;
+			this.btn_check_customer.Size = new System.Drawing.Size(250, 40);
+			this.btn_check_customer.TabIndex = 6;
+			this.btn_check_customer.Text = "Check";
+			this.btn_check_customer.UseVisualStyleBackColor = true;
+			this.btn_check_customer.Click += new System.EventHandler(this.btn_check_edit_customer_Click);
+			// 
+			// btn_refresh_customer
+			// 
+			this.btn_refresh_customer.AutoSize = true;
+			this.btn_refresh_customer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btn_refresh_customer.Depth = 0;
+			this.btn_refresh_customer.Location = new System.Drawing.Point(498, 0);
+			this.btn_refresh_customer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btn_refresh_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_refresh_customer.Name = "btn_refresh_customer";
+			this.btn_refresh_customer.Primary = false;
+			this.btn_refresh_customer.Size = new System.Drawing.Size(70, 36);
+			this.btn_refresh_customer.TabIndex = 9;
+			this.btn_refresh_customer.Text = "Refresh";
+			this.btn_refresh_customer.UseVisualStyleBackColor = true;
+			this.btn_refresh_customer.Click += new System.EventHandler(this.btn_refresh_edit_customer_Click);
+			// 
+			// btn_apply_edit_customer
+			// 
+			this.btn_apply_edit_customer.Depth = 0;
+			this.btn_apply_edit_customer.Location = new System.Drawing.Point(406, 160);
+			this.btn_apply_edit_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_apply_edit_customer.Name = "btn_apply_edit_customer";
+			this.btn_apply_edit_customer.Primary = true;
+			this.btn_apply_edit_customer.Size = new System.Drawing.Size(75, 40);
+			this.btn_apply_edit_customer.TabIndex = 8;
+			this.btn_apply_edit_customer.Text = "Apply";
+			this.btn_apply_edit_customer.UseVisualStyleBackColor = true;
+			this.btn_apply_edit_customer.Click += new System.EventHandler(this.btn_apply_edit_customer_Click);
+			// 
+			// btn_cancel_edit_customer
+			// 
+			this.btn_cancel_edit_customer.Depth = 0;
+			this.btn_cancel_edit_customer.Location = new System.Drawing.Point(487, 160);
+			this.btn_cancel_edit_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btn_cancel_edit_customer.Name = "btn_cancel_edit_customer";
+			this.btn_cancel_edit_customer.Primary = true;
+			this.btn_cancel_edit_customer.Size = new System.Drawing.Size(75, 40);
+			this.btn_cancel_edit_customer.TabIndex = 13;
+			this.btn_cancel_edit_customer.Text = "Cancel";
+			this.btn_cancel_edit_customer.UseVisualStyleBackColor = true;
+			this.btn_cancel_edit_customer.Click += new System.EventHandler(this.btn_cancel_edit_customer_Click);
+			// 
+			// lbl_customer_id_customer
+			// 
+			this.lbl_customer_id_customer.AutoSize = true;
+			this.lbl_customer_id_customer.Depth = 0;
+			this.lbl_customer_id_customer.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_customer_id_customer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_customer_id_customer.Location = new System.Drawing.Point(37, 34);
+			this.lbl_customer_id_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_customer_id_customer.Name = "lbl_customer_id_customer";
+			this.lbl_customer_id_customer.Size = new System.Drawing.Size(23, 19);
+			this.lbl_customer_id_customer.TabIndex = 1;
+			this.lbl_customer_id_customer.Text = "ID";
+			// 
+			// txt_address_customer
+			// 
+			this.txt_address_customer.Depth = 0;
+			this.txt_address_customer.Hint = "Address";
+			this.txt_address_customer.Location = new System.Drawing.Point(41, 92);
+			this.txt_address_customer.MaxLength = 32767;
+			this.txt_address_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_address_customer.Name = "txt_address_customer";
+			this.txt_address_customer.PasswordChar = '\0';
+			this.txt_address_customer.SelectedText = "";
+			this.txt_address_customer.SelectionLength = 0;
+			this.txt_address_customer.SelectionStart = 0;
+			this.txt_address_customer.Size = new System.Drawing.Size(250, 23);
+			this.txt_address_customer.TabIndex = 4;
+			this.txt_address_customer.TabStop = false;
+			this.txt_address_customer.UseSystemPasswordChar = false;
+			// 
+			// txt_phone_number_customer
+			// 
+			this.txt_phone_number_customer.Depth = 0;
+			this.txt_phone_number_customer.Hint = "Phone Number";
+			this.txt_phone_number_customer.Location = new System.Drawing.Point(41, 121);
+			this.txt_phone_number_customer.MaxLength = 32767;
+			this.txt_phone_number_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_phone_number_customer.Name = "txt_phone_number_customer";
+			this.txt_phone_number_customer.PasswordChar = '\0';
+			this.txt_phone_number_customer.SelectedText = "";
+			this.txt_phone_number_customer.SelectionLength = 0;
+			this.txt_phone_number_customer.SelectionStart = 0;
+			this.txt_phone_number_customer.Size = new System.Drawing.Size(250, 23);
+			this.txt_phone_number_customer.TabIndex = 5;
+			this.txt_phone_number_customer.TabStop = false;
+			this.txt_phone_number_customer.UseSystemPasswordChar = false;
+			this.txt_phone_number_customer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_edit_customer_KeyDown);
+			// 
+			// lbl_customer_customer
+			// 
+			this.lbl_customer_customer.AutoSize = true;
+			this.lbl_customer_customer.Depth = 0;
+			this.lbl_customer_customer.Font = new System.Drawing.Font("Roboto", 11F);
+			this.lbl_customer_customer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lbl_customer_customer.Location = new System.Drawing.Point(37, 8);
+			this.lbl_customer_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.lbl_customer_customer.Name = "lbl_customer_customer";
+			this.lbl_customer_customer.Size = new System.Drawing.Size(75, 19);
+			this.lbl_customer_customer.TabIndex = 0;
+			this.lbl_customer_customer.Text = "Customer";
+			// 
+			// txt_identity_number_customer
+			// 
+			this.txt_identity_number_customer.Depth = 0;
+			this.txt_identity_number_customer.Hint = "Identity Number";
+			this.txt_identity_number_customer.Location = new System.Drawing.Point(41, 63);
+			this.txt_identity_number_customer.MaxLength = 32767;
+			this.txt_identity_number_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_identity_number_customer.Name = "txt_identity_number_customer";
+			this.txt_identity_number_customer.PasswordChar = '\0';
+			this.txt_identity_number_customer.SelectedText = "";
+			this.txt_identity_number_customer.SelectionLength = 0;
+			this.txt_identity_number_customer.SelectionStart = 0;
+			this.txt_identity_number_customer.Size = new System.Drawing.Size(250, 23);
+			this.txt_identity_number_customer.TabIndex = 3;
+			this.txt_identity_number_customer.TabStop = false;
+			this.txt_identity_number_customer.UseSystemPasswordChar = false;
+			this.txt_identity_number_customer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_identity_number_edit_customer_KeyDown);
+			// 
+			// txt_name_customer
+			// 
+			this.txt_name_customer.Depth = 0;
+			this.txt_name_customer.Hint = "Name";
+			this.txt_name_customer.Location = new System.Drawing.Point(79, 34);
+			this.txt_name_customer.MaxLength = 32767;
+			this.txt_name_customer.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txt_name_customer.Name = "txt_name_customer";
+			this.txt_name_customer.PasswordChar = '\0';
+			this.txt_name_customer.SelectedText = "";
+			this.txt_name_customer.SelectionLength = 0;
+			this.txt_name_customer.SelectionStart = 0;
+			this.txt_name_customer.Size = new System.Drawing.Size(212, 23);
+			this.txt_name_customer.TabIndex = 2;
+			this.txt_name_customer.TabStop = false;
+			this.txt_name_customer.UseSystemPasswordChar = false;
+			// 
 			// Dashboard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -517,6 +701,8 @@
 			this.tab_period_edit.PerformLayout();
 			this.tab_account_edit.ResumeLayout(false);
 			this.tab_account_edit.PerformLayout();
+			this.tab_customer.ResumeLayout(false);
+			this.tab_customer.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -551,5 +737,16 @@
 		private MaterialSkin.Controls.MaterialRaisedButton btn_change_password_account;
 		private MaterialSkin.Controls.MaterialRaisedButton btn_edit_account;
 		private MaterialSkin.Controls.MaterialLabel lbl_id_account;
+		private System.Windows.Forms.TabPage tab_customer;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_apply_edit_customer;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_cancel_edit_customer;
+		private MaterialSkin.Controls.MaterialLabel lbl_customer_id_customer;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_address_customer;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_phone_number_customer;
+		private MaterialSkin.Controls.MaterialLabel lbl_customer_customer;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_identity_number_customer;
+		private MaterialSkin.Controls.MaterialSingleLineTextField txt_name_customer;
+		private MaterialSkin.Controls.MaterialFlatButton btn_refresh_customer;
+		private MaterialSkin.Controls.MaterialRaisedButton btn_check_customer;
 	}
 }

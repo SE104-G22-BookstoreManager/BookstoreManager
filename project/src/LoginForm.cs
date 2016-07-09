@@ -28,7 +28,7 @@ namespace PassbookManagement.src
 		{
 			if (txt_email_login.Text == "" || txt_password_login.Text == "")
 			{
-				MessageBox.Show(IMessage.MSG_REQUIRED,IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_REQUIRED_ALL,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -45,7 +45,7 @@ namespace PassbookManagement.src
 
 				if (_data.Rows.Count == 0)
 				{
-					MessageBox.Show(IMessage.MSG_WRONG_SIGNIN, IMessage.CPT_NOTICE);
+					MessageBox.Show(IMessage.MSG_INCORRECT_EMAIL_PASSWORD, IMessage.CPT_NOTICE);
 					return;
 				}
 

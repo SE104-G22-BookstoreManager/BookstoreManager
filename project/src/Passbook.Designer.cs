@@ -184,7 +184,7 @@
 			this.cbb_staff_open.Location = new System.Drawing.Point(31, 61);
 			this.cbb_staff_open.Name = "cbb_staff_open";
 			this.cbb_staff_open.Size = new System.Drawing.Size(251, 21);
-			this.cbb_staff_open.TabIndex = 16;
+			this.cbb_staff_open.TabIndex = 1;
 			// 
 			// lbl_staff
 			// 
@@ -196,7 +196,7 @@
 			this.lbl_staff.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_staff.Name = "lbl_staff";
 			this.lbl_staff.Size = new System.Drawing.Size(41, 19);
-			this.lbl_staff.TabIndex = 15;
+			this.lbl_staff.TabIndex = 0;
 			this.lbl_staff.Text = "Staff";
 			// 
 			// txt_passbook_name_open
@@ -212,7 +212,7 @@
 			this.txt_passbook_name_open.SelectionLength = 0;
 			this.txt_passbook_name_open.SelectionStart = 0;
 			this.txt_passbook_name_open.Size = new System.Drawing.Size(227, 23);
-			this.txt_passbook_name_open.TabIndex = 14;
+			this.txt_passbook_name_open.TabIndex = 12;
 			this.txt_passbook_name_open.TabStop = false;
 			this.txt_passbook_name_open.UseSystemPasswordChar = false;
 			// 
@@ -223,7 +223,7 @@
 			this.cbb_period_open.Location = new System.Drawing.Point(360, 61);
 			this.cbb_period_open.Name = "cbb_period_open";
 			this.cbb_period_open.Size = new System.Drawing.Size(227, 21);
-			this.cbb_period_open.TabIndex = 9;
+			this.cbb_period_open.TabIndex = 11;
 			// 
 			// lbl_customer_id_open
 			// 
@@ -235,7 +235,7 @@
 			this.lbl_customer_id_open.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_id_open.Name = "lbl_customer_id_open";
 			this.lbl_customer_id_open.Size = new System.Drawing.Size(23, 19);
-			this.lbl_customer_id_open.TabIndex = 1;
+			this.lbl_customer_id_open.TabIndex = 3;
 			this.lbl_customer_id_open.Text = "ID";
 			// 
 			// btn_refresh_open
@@ -249,7 +249,7 @@
 			this.btn_refresh_open.Name = "btn_refresh_open";
 			this.btn_refresh_open.Primary = false;
 			this.btn_refresh_open.Size = new System.Drawing.Size(70, 36);
-			this.btn_refresh_open.TabIndex = 13;
+			this.btn_refresh_open.TabIndex = 16;
 			this.btn_refresh_open.Text = "Refresh";
 			this.btn_refresh_open.UseVisualStyleBackColor = true;
 			this.btn_refresh_open.Click += new System.EventHandler(this.btn_refresh_open_Click);
@@ -262,7 +262,7 @@
 			this.btn_create_open.Name = "btn_create_open";
 			this.btn_create_open.Primary = true;
 			this.btn_create_open.Size = new System.Drawing.Size(250, 40);
-			this.btn_create_open.TabIndex = 12;
+			this.btn_create_open.TabIndex = 15;
 			this.btn_create_open.Text = "Create";
 			this.btn_create_open.UseVisualStyleBackColor = true;
 			this.btn_create_open.Click += new System.EventHandler(this.btn_create_open_Click);
@@ -271,7 +271,7 @@
 			// 
 			this.calendar_open.Location = new System.Drawing.Point(360, 162);
 			this.calendar_open.Name = "calendar_open";
-			this.calendar_open.TabIndex = 11;
+			this.calendar_open.TabIndex = 14;
 			// 
 			// txt_cash_open
 			// 
@@ -286,7 +286,7 @@
 			this.txt_cash_open.SelectionLength = 0;
 			this.txt_cash_open.SelectionStart = 0;
 			this.txt_cash_open.Size = new System.Drawing.Size(227, 23);
-			this.txt_cash_open.TabIndex = 10;
+			this.txt_cash_open.TabIndex = 13;
 			this.txt_cash_open.TabStop = false;
 			this.txt_cash_open.UseSystemPasswordChar = false;
 			// 
@@ -300,7 +300,7 @@
 			this.lbl_passbook.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_passbook.Name = "lbl_passbook";
 			this.lbl_passbook.Size = new System.Drawing.Size(76, 19);
-			this.lbl_passbook.TabIndex = 8;
+			this.lbl_passbook.TabIndex = 10;
 			this.lbl_passbook.Text = "Passbook";
 			// 
 			// btn_submit_open
@@ -311,7 +311,7 @@
 			this.btn_submit_open.Name = "btn_submit_open";
 			this.btn_submit_open.Primary = true;
 			this.btn_submit_open.Size = new System.Drawing.Size(122, 40);
-			this.btn_submit_open.TabIndex = 7;
+			this.btn_submit_open.TabIndex = 9;
 			this.btn_submit_open.Text = "Submit";
 			this.btn_submit_open.UseVisualStyleBackColor = true;
 			this.btn_submit_open.Click += new System.EventHandler(this.btn_submit_open_Click);
@@ -324,7 +324,7 @@
 			this.btn_check_open.Name = "btn_check_open";
 			this.btn_check_open.Primary = true;
 			this.btn_check_open.Size = new System.Drawing.Size(122, 40);
-			this.btn_check_open.TabIndex = 6;
+			this.btn_check_open.TabIndex = 8;
 			this.btn_check_open.Text = "Check";
 			this.btn_check_open.UseVisualStyleBackColor = true;
 			this.btn_check_open.Click += new System.EventHandler(this.btn_check_open_Click);
@@ -342,7 +342,7 @@
 			this.txt_address_open.SelectionLength = 0;
 			this.txt_address_open.SelectionStart = 0;
 			this.txt_address_open.Size = new System.Drawing.Size(250, 23);
-			this.txt_address_open.TabIndex = 4;
+			this.txt_address_open.TabIndex = 6;
 			this.txt_address_open.TabStop = false;
 			this.txt_address_open.UseSystemPasswordChar = false;
 			// 
@@ -359,7 +359,7 @@
 			this.txt_phone_number_open.SelectionLength = 0;
 			this.txt_phone_number_open.SelectionStart = 0;
 			this.txt_phone_number_open.Size = new System.Drawing.Size(250, 23);
-			this.txt_phone_number_open.TabIndex = 5;
+			this.txt_phone_number_open.TabIndex = 7;
 			this.txt_phone_number_open.TabStop = false;
 			this.txt_phone_number_open.UseSystemPasswordChar = false;
 			this.txt_phone_number_open.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_open_KeyDown);
@@ -374,7 +374,7 @@
 			this.lbl_customer.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer.Name = "lbl_customer";
 			this.lbl_customer.Size = new System.Drawing.Size(75, 19);
-			this.lbl_customer.TabIndex = 0;
+			this.lbl_customer.TabIndex = 2;
 			this.lbl_customer.Text = "Customer";
 			// 
 			// txt_identity_number_open
@@ -390,7 +390,7 @@
 			this.txt_identity_number_open.SelectionLength = 0;
 			this.txt_identity_number_open.SelectionStart = 0;
 			this.txt_identity_number_open.Size = new System.Drawing.Size(250, 23);
-			this.txt_identity_number_open.TabIndex = 3;
+			this.txt_identity_number_open.TabIndex = 5;
 			this.txt_identity_number_open.TabStop = false;
 			this.txt_identity_number_open.UseSystemPasswordChar = false;
 			this.txt_identity_number_open.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_identity_number_open_KeyDown);
@@ -408,7 +408,7 @@
 			this.txt_name_open.SelectionLength = 0;
 			this.txt_name_open.SelectionStart = 0;
 			this.txt_name_open.Size = new System.Drawing.Size(212, 23);
-			this.txt_name_open.TabIndex = 2;
+			this.txt_name_open.TabIndex = 4;
 			this.txt_name_open.TabStop = false;
 			this.txt_name_open.UseSystemPasswordChar = false;
 			// 
@@ -525,7 +525,7 @@
 			this.lbl_staff_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_staff_deposit.Name = "lbl_staff_deposit";
 			this.lbl_staff_deposit.Size = new System.Drawing.Size(41, 19);
-			this.lbl_staff_deposit.TabIndex = 13;
+			this.lbl_staff_deposit.TabIndex = 0;
 			this.lbl_staff_deposit.Text = "Staff";
 			// 
 			// cbb_staff_deposit
@@ -535,7 +535,7 @@
 			this.cbb_staff_deposit.Location = new System.Drawing.Point(32, 61);
 			this.cbb_staff_deposit.Name = "cbb_staff_deposit";
 			this.cbb_staff_deposit.Size = new System.Drawing.Size(250, 21);
-			this.cbb_staff_deposit.TabIndex = 14;
+			this.cbb_staff_deposit.TabIndex = 1;
 			// 
 			// lbl_customer_id_deposit
 			// 
@@ -547,7 +547,7 @@
 			this.lbl_customer_id_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_id_deposit.Name = "lbl_customer_id_deposit";
 			this.lbl_customer_id_deposit.Size = new System.Drawing.Size(23, 19);
-			this.lbl_customer_id_deposit.TabIndex = 1;
+			this.lbl_customer_id_deposit.TabIndex = 3;
 			this.lbl_customer_id_deposit.Text = "ID";
 			// 
 			// btn_refresh_deposit
@@ -561,7 +561,7 @@
 			this.btn_refresh_deposit.Name = "btn_refresh_deposit";
 			this.btn_refresh_deposit.Primary = false;
 			this.btn_refresh_deposit.Size = new System.Drawing.Size(70, 36);
-			this.btn_refresh_deposit.TabIndex = 12;
+			this.btn_refresh_deposit.TabIndex = 13;
 			this.btn_refresh_deposit.Text = "Refresh";
 			this.btn_refresh_deposit.UseVisualStyleBackColor = true;
 			this.btn_refresh_deposit.Click += new System.EventHandler(this.btn_refresh_deposit_Click);
@@ -570,7 +570,7 @@
 			// 
 			this.calendar_deposit.Location = new System.Drawing.Point(360, 151);
 			this.calendar_deposit.Name = "calendar_deposit";
-			this.calendar_deposit.TabIndex = 10;
+			this.calendar_deposit.TabIndex = 11;
 			// 
 			// txt_cash_deposit
 			// 
@@ -585,7 +585,7 @@
 			this.txt_cash_deposit.SelectionLength = 0;
 			this.txt_cash_deposit.SelectionStart = 0;
 			this.txt_cash_deposit.Size = new System.Drawing.Size(227, 23);
-			this.txt_cash_deposit.TabIndex = 9;
+			this.txt_cash_deposit.TabIndex = 11;
 			this.txt_cash_deposit.TabStop = false;
 			this.txt_cash_deposit.UseSystemPasswordChar = false;
 			// 
@@ -599,7 +599,7 @@
 			this.lbl_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_deposit.Name = "lbl_deposit";
 			this.lbl_deposit.Size = new System.Drawing.Size(61, 19);
-			this.lbl_deposit.TabIndex = 7;
+			this.lbl_deposit.TabIndex = 9;
 			this.lbl_deposit.Text = "Deposit";
 			// 
 			// btn_create_deposit
@@ -610,7 +610,7 @@
 			this.btn_create_deposit.Name = "btn_create_deposit";
 			this.btn_create_deposit.Primary = true;
 			this.btn_create_deposit.Size = new System.Drawing.Size(250, 40);
-			this.btn_create_deposit.TabIndex = 11;
+			this.btn_create_deposit.TabIndex = 12;
 			this.btn_create_deposit.Text = "Create";
 			this.btn_create_deposit.UseVisualStyleBackColor = true;
 			this.btn_create_deposit.Click += new System.EventHandler(this.btn_create_deposit_Click);
@@ -622,7 +622,7 @@
 			this.cbb_passbook_deposit.Location = new System.Drawing.Point(360, 61);
 			this.cbb_passbook_deposit.Name = "cbb_passbook_deposit";
 			this.cbb_passbook_deposit.Size = new System.Drawing.Size(227, 21);
-			this.cbb_passbook_deposit.TabIndex = 8;
+			this.cbb_passbook_deposit.TabIndex = 10;
 			// 
 			// btn_check_deposit
 			// 
@@ -632,7 +632,7 @@
 			this.btn_check_deposit.Name = "btn_check_deposit";
 			this.btn_check_deposit.Primary = true;
 			this.btn_check_deposit.Size = new System.Drawing.Size(250, 40);
-			this.btn_check_deposit.TabIndex = 6;
+			this.btn_check_deposit.TabIndex = 8;
 			this.btn_check_deposit.Text = "Check";
 			this.btn_check_deposit.UseVisualStyleBackColor = true;
 			this.btn_check_deposit.Click += new System.EventHandler(this.btn_check_deposit_Click);
@@ -650,7 +650,7 @@
 			this.txt_phone_number_deposit.SelectionLength = 0;
 			this.txt_phone_number_deposit.SelectionStart = 0;
 			this.txt_phone_number_deposit.Size = new System.Drawing.Size(250, 23);
-			this.txt_phone_number_deposit.TabIndex = 5;
+			this.txt_phone_number_deposit.TabIndex = 7;
 			this.txt_phone_number_deposit.TabStop = false;
 			this.txt_phone_number_deposit.UseSystemPasswordChar = false;
 			this.txt_phone_number_deposit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_deposit_KeyDown);
@@ -668,7 +668,7 @@
 			this.txt_identity_number_deposit.SelectionLength = 0;
 			this.txt_identity_number_deposit.SelectionStart = 0;
 			this.txt_identity_number_deposit.Size = new System.Drawing.Size(250, 23);
-			this.txt_identity_number_deposit.TabIndex = 3;
+			this.txt_identity_number_deposit.TabIndex = 5;
 			this.txt_identity_number_deposit.TabStop = false;
 			this.txt_identity_number_deposit.UseSystemPasswordChar = false;
 			this.txt_identity_number_deposit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_identity_number_deposit_KeyDown);
@@ -686,7 +686,7 @@
 			this.txt_name_deposit.SelectionLength = 0;
 			this.txt_name_deposit.SelectionStart = 0;
 			this.txt_name_deposit.Size = new System.Drawing.Size(212, 23);
-			this.txt_name_deposit.TabIndex = 2;
+			this.txt_name_deposit.TabIndex = 4;
 			this.txt_name_deposit.TabStop = false;
 			this.txt_name_deposit.UseSystemPasswordChar = false;
 			// 
@@ -700,7 +700,7 @@
 			this.lbl_customer_deposit.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_deposit.Name = "lbl_customer_deposit";
 			this.lbl_customer_deposit.Size = new System.Drawing.Size(75, 19);
-			this.lbl_customer_deposit.TabIndex = 0;
+			this.lbl_customer_deposit.TabIndex = 2;
 			this.lbl_customer_deposit.Text = "Customer";
 			// 
 			// txt_address_deposit
@@ -716,7 +716,7 @@
 			this.txt_address_deposit.SelectionLength = 0;
 			this.txt_address_deposit.SelectionStart = 0;
 			this.txt_address_deposit.Size = new System.Drawing.Size(250, 23);
-			this.txt_address_deposit.TabIndex = 4;
+			this.txt_address_deposit.TabIndex = 6;
 			this.txt_address_deposit.TabStop = false;
 			this.txt_address_deposit.UseSystemPasswordChar = false;
 			// 
@@ -753,7 +753,7 @@
 			this.cbb_staff_withdrawal.Location = new System.Drawing.Point(32, 61);
 			this.cbb_staff_withdrawal.Name = "cbb_staff_withdrawal";
 			this.cbb_staff_withdrawal.Size = new System.Drawing.Size(250, 21);
-			this.cbb_staff_withdrawal.TabIndex = 14;
+			this.cbb_staff_withdrawal.TabIndex = 1;
 			// 
 			// lbl_staff_withdrawal
 			// 
@@ -765,7 +765,7 @@
 			this.lbl_staff_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_staff_withdrawal.Name = "lbl_staff_withdrawal";
 			this.lbl_staff_withdrawal.Size = new System.Drawing.Size(41, 19);
-			this.lbl_staff_withdrawal.TabIndex = 13;
+			this.lbl_staff_withdrawal.TabIndex = 0;
 			this.lbl_staff_withdrawal.Text = "Staff";
 			// 
 			// lbl_customer_id_withdrawal
@@ -778,7 +778,7 @@
 			this.lbl_customer_id_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_id_withdrawal.Name = "lbl_customer_id_withdrawal";
 			this.lbl_customer_id_withdrawal.Size = new System.Drawing.Size(23, 19);
-			this.lbl_customer_id_withdrawal.TabIndex = 1;
+			this.lbl_customer_id_withdrawal.TabIndex = 3;
 			this.lbl_customer_id_withdrawal.Text = "ID";
 			// 
 			// btn_refresh_withdrawal
@@ -834,7 +834,7 @@
 			this.btn_check_withdrawal.Name = "btn_check_withdrawal";
 			this.btn_check_withdrawal.Primary = true;
 			this.btn_check_withdrawal.Size = new System.Drawing.Size(250, 40);
-			this.btn_check_withdrawal.TabIndex = 6;
+			this.btn_check_withdrawal.TabIndex = 8;
 			this.btn_check_withdrawal.Text = "Check";
 			this.btn_check_withdrawal.UseVisualStyleBackColor = true;
 			this.btn_check_withdrawal.Click += new System.EventHandler(this.btn_check_withdrawal_Click);
@@ -869,7 +869,7 @@
 			this.txt_identity_number_withdrawal.SelectionLength = 0;
 			this.txt_identity_number_withdrawal.SelectionStart = 0;
 			this.txt_identity_number_withdrawal.Size = new System.Drawing.Size(250, 23);
-			this.txt_identity_number_withdrawal.TabIndex = 3;
+			this.txt_identity_number_withdrawal.TabIndex = 5;
 			this.txt_identity_number_withdrawal.TabStop = false;
 			this.txt_identity_number_withdrawal.UseSystemPasswordChar = false;
 			this.txt_identity_number_withdrawal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_identity_number_withdrawal_KeyDown);
@@ -887,7 +887,7 @@
 			this.txt_address_withdrawal.SelectionLength = 0;
 			this.txt_address_withdrawal.SelectionStart = 0;
 			this.txt_address_withdrawal.Size = new System.Drawing.Size(250, 23);
-			this.txt_address_withdrawal.TabIndex = 4;
+			this.txt_address_withdrawal.TabIndex = 6;
 			this.txt_address_withdrawal.TabStop = false;
 			this.txt_address_withdrawal.UseSystemPasswordChar = false;
 			// 
@@ -904,7 +904,7 @@
 			this.txt_phone_number_withdrawal.SelectionLength = 0;
 			this.txt_phone_number_withdrawal.SelectionStart = 0;
 			this.txt_phone_number_withdrawal.Size = new System.Drawing.Size(250, 23);
-			this.txt_phone_number_withdrawal.TabIndex = 5;
+			this.txt_phone_number_withdrawal.TabIndex = 7;
 			this.txt_phone_number_withdrawal.TabStop = false;
 			this.txt_phone_number_withdrawal.UseSystemPasswordChar = false;
 			this.txt_phone_number_withdrawal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_phone_number_withdrawal_KeyDown);
@@ -922,7 +922,7 @@
 			this.txt_name_withdrawal.SelectionLength = 0;
 			this.txt_name_withdrawal.SelectionStart = 0;
 			this.txt_name_withdrawal.Size = new System.Drawing.Size(212, 23);
-			this.txt_name_withdrawal.TabIndex = 2;
+			this.txt_name_withdrawal.TabIndex = 4;
 			this.txt_name_withdrawal.TabStop = false;
 			this.txt_name_withdrawal.UseSystemPasswordChar = false;
 			// 
@@ -936,7 +936,7 @@
 			this.lbl_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_withdrawal.Name = "lbl_withdrawal";
 			this.lbl_withdrawal.Size = new System.Drawing.Size(83, 19);
-			this.lbl_withdrawal.TabIndex = 7;
+			this.lbl_withdrawal.TabIndex = 9;
 			this.lbl_withdrawal.Text = "Withdrawal";
 			// 
 			// lbl_customer_withdrawal
@@ -949,7 +949,7 @@
 			this.lbl_customer_withdrawal.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lbl_customer_withdrawal.Name = "lbl_customer_withdrawal";
 			this.lbl_customer_withdrawal.Size = new System.Drawing.Size(75, 19);
-			this.lbl_customer_withdrawal.TabIndex = 0;
+			this.lbl_customer_withdrawal.TabIndex = 2;
 			this.lbl_customer_withdrawal.Text = "Customer";
 			// 
 			// tab_daily_report

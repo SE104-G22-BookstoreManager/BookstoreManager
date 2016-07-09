@@ -54,6 +54,21 @@ namespace PassbookManagement
 			return Database.SQLiteDatabase.Insert(tbl_customers, _data);
 		}
 
+		public static bool UpdateCustomer(string id, string name, string identity_number, string address, string phone_number)
+		{
+			Dictionary<string, string> _data = new Dictionary<string, string>();
+
+			_data.Add(TblColumn.A_NAME_S, name);
+			_data.Add(TblColumn.A_IDENTITY_NUMBER_S, identity_number);
+			_data.Add(TblColumn.A_ADDRESS_S, address);
+			_data.Add(TblColumn.A_PHONE_NUMBER_S, phone_number);
+
+			string where = TblColumn.A_ID_S + "=\"" + id + "\"";
+
+			return Database.SQLiteDatabase.Update(tbl_customers, _data, where);
+		}
+
+
 
 		////////////////////////////////////////////////////////////////////
 		// PassbookModel

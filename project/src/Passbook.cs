@@ -140,13 +140,13 @@ namespace PassbookManagement.src
 			}
 			else
 			{
-				MessageBox.Show(IMessage.MSG_TYPE_ID, IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_REQUIRE_ID, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_data.Rows.Count == 0)
 			{
-				MessageBox.Show(IMessage.MSG_NOT_ACC, IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_ACCOUNT_NOT_FOUND, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -219,7 +219,7 @@ namespace PassbookManagement.src
 				txt_address_open.Text == "" ||
 				txt_phone_number_open.Text == "")
 			{
-				MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_REQUIRED_ALL, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -227,17 +227,17 @@ namespace PassbookManagement.src
 
 			if (_data.Rows.Count != 0)
 			{
-				MessageBox.Show(IMessage.MSG_EXIST, IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_ACCOUNT_EXISTED, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (PassbookModel.InsertCustomer(txt_name_open.Text, txt_identity_number_open.Text, txt_address_open.Text, txt_phone_number_open.Text) == false)
 			{
-				MessageBox.Show(IMessage.MSG_NOT_CREAT, IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_FAILED_CREATE_CUSTOMER, IMessage.CPT_NOTICE);
 				return;
 			}
 
-			MessageBox.Show(IMessage.MSG_S_CREAT, IMessage.CPT_CREAT_CUSTOMER);
+			MessageBox.Show(IMessage.MSG_SUCCESS_CREATE_ACCOUNT, IMessage.CPT_CREATE_CUSTOMER);
 
 			_data = PassbookModel.SelectCustomerByIdentityNumber(txt_identity_number_open.Text);
 			object[] _customer = _data.Rows[0].ItemArray;
@@ -278,7 +278,7 @@ namespace PassbookManagement.src
 				txt_passbook_name_open.Text == "" ||
 				cbb_staff_open.Text == "")
 			{
-				MessageBox.Show(IMessage.MSG_REQUIRED,IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_REQUIRED_ALL,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -293,7 +293,7 @@ namespace PassbookManagement.src
 
 			if (_cash < Processor.ConvertToDouble(Params.PARAMS[Params.MIN_CASH].ToString()))
 			{
-				MessageBox.Show(IMessage.MSG_LESS_CASH,IMessage.CPT_NOTICE);
+				MessageBox.Show(IMessage.MSG_TOO_FEW_CASH,IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -304,11 +304,11 @@ namespace PassbookManagement.src
 
 			if (PassbookModel.InsertPassbook(txt_passbook_name_open.Text, _periodId, lbl_customer_id_open.Text, _staffId, txt_cash_open.Text, _dateTime.ToString(), _status) == false)
 			{
-                MessageBox.Show(IMessage.MSG_N_CREAT_PB, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_FAILED_CREATE_PASSBOOK, IMessage.CPT_NOTICE);
 				return;
 			}
 
-            MessageBox.Show(IMessage.MSG_S_PB, IMessage.CPT_CREAT_PB);
+            MessageBox.Show(IMessage.MSG_SUCCESS_CREATE_PASSBOOK, IMessage.CPT_CREATE_PASSBOOK);
 		}
 
 		private void btn_refresh_open_Click(object sender, EventArgs e)
@@ -408,13 +408,13 @@ namespace PassbookManagement.src
 			}
 			else
 			{
-                MessageBox.Show(IMessage.MSG_TYPE_ID, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_REQUIRE_ID, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_data.Rows.Count == 0)
 			{
-                MessageBox.Show(IMessage.MSG_NOT_ACC, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_ACCOUNT_NOT_FOUND, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -431,7 +431,7 @@ namespace PassbookManagement.src
 
 			if (_data1.Rows.Count == 0)
 			{
-                MessageBox.Show(IMessage.MSG_NO_PB, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_NO_PASSBOOK, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -484,7 +484,7 @@ namespace PassbookManagement.src
 				cbb_passbook_deposit.Text == "" ||
 				cbb_staff_deposit.Text == "")
 			{
-                MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_REQUIRED_ALL, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -498,7 +498,7 @@ namespace PassbookManagement.src
 
 			if (_income < Processor.ConvertToDouble(Params.PARAMS[Params.MIN_INCOME].ToString()))
 			{
-                MessageBox.Show(IMessage.MSG_LESS_CASH, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_TOO_FEW_CASH, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -532,7 +532,7 @@ namespace PassbookManagement.src
 			string _cash = Processor.Add(txt_cash_deposit.Text, _passbook[TblColumn.P_CASH].ToString());
 			PassbookModel.UpdateCashByPassbookId(_passbookId, _cash);
 
-            MessageBox.Show(IMessage.MSG_S_PS, IMessage.CPT_CREAT_PS);
+            MessageBox.Show(IMessage.MSG_SUCCESS_CREATE_DEPOSIT, IMessage.CPT_CREATE_DEPOSIT);
 		}
 
 		private void btn_refresh_deposit_Click(object sender, EventArgs e)
@@ -574,13 +574,13 @@ namespace PassbookManagement.src
 			}
 			else
 			{
-                MessageBox.Show(IMessage.MSG_TYPE_ID, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_REQUIRE_ID, IMessage.CPT_NOTICE);
 				return;
 			}
 
 			if (_data.Rows.Count == 0)
 			{
-                MessageBox.Show(IMessage.MSG_NOT_ACC, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_ACCOUNT_NOT_FOUND, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -597,7 +597,7 @@ namespace PassbookManagement.src
 
 			if (_data1.Rows.Count == 0)
 			{
-                MessageBox.Show(IMessage.MSG_NO_PB, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_NO_PASSBOOK, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -653,7 +653,7 @@ namespace PassbookManagement.src
 				cbb_passbook_withdrawal.Text == "" ||
 				cbb_staff_withdrawal.Text == "")
 			{
-                MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_REQUIRED_ALL, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -684,7 +684,7 @@ namespace PassbookManagement.src
 
 			if (Processor.Compare((_current - _opened).Days.ToString(), _period[TblColumn.T_PERIOD].ToString()) < 0)
 			{
-                MessageBox.Show(IMessage.MSG_NOTENOUGH_TIMES, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_NOT_REACH_PERIOD, IMessage.CPT_NOTICE);
 				return;
 			}
 
@@ -698,7 +698,7 @@ namespace PassbookManagement.src
 			{
 				if(txt_cash_withdrawal.Text == "")
 				{
-                    MessageBox.Show(IMessage.MSG_REQUIRED, IMessage.CPT_NOTICE);
+                    MessageBox.Show(IMessage.MSG_REQUIRED_ALL, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -713,7 +713,7 @@ namespace PassbookManagement.src
 
 				if(_outcome > Processor.ConvertToDouble(_cash))
 				{
-                    MessageBox.Show(IMessage.MSG_NOTENOUGH_MONEY, IMessage.CPT_NOTICE);
+                    MessageBox.Show(IMessage.MSG_NOT_ENOUGH_MONEY, IMessage.CPT_NOTICE);
 					return;
 				}
 
@@ -882,7 +882,7 @@ namespace PassbookManagement.src
 		{
 			if(cbb_period_monthly.Text == "")
 			{
-                MessageBox.Show(IMessage.MSG_CHOOSE_PS, IMessage.CPT_NOTICE);
+                MessageBox.Show(IMessage.MSG_REQUIRE_PERIOD, IMessage.CPT_NOTICE);
 				return;
 			}
 
