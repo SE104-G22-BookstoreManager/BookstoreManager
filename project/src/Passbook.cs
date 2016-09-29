@@ -107,13 +107,20 @@ namespace PassbookManagement.src
 		private void item_dashboard_Click(object sender, EventArgs e)
 		{
 			var _dashboard = new Dashboard();
+
+            Hide();
 			_dashboard.ShowDialog();
-		}
+            Show();
+        }
 
 		private void item_logout_Click(object sender, EventArgs e)
 		{
 			Params.CURRENT_SESSION.Clear();
-			OpenLoginForm();
+
+            Hide();
+            OpenLoginForm();
+            txt_welcome_main.Text = "Welcome back,\n" + Params.CURRENT_SESSION[Params.CURRENT_USERNAME];
+            Show();
 		}
 		////////////////////////////////////////////////////////////////////
 

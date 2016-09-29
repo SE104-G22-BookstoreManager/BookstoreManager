@@ -86,7 +86,6 @@
 			this.tab_selector_edit.Size = new System.Drawing.Size(1500, 45);
 			this.tab_selector_edit.TabIndex = 1;
 			this.tab_selector_edit.Text = "TabSelector";
-			this.tab_selector_edit.Click += new System.EventHandler(this.tab_selector_edit_Click);
 			// 
 			// tab_control_edit
 			// 

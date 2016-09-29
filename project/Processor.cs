@@ -16,6 +16,7 @@ namespace PassbookManagement
 
         public static readonly string MSG_REQUIRE_ID = "Please type identity number!!!";
 		public static readonly string MSG_REQUIRED_ALL = "All informations are required!!!";
+		public static readonly string MSG_PERMISSION_DENY = "Permission Deny!!! You don't have role to access this control.";
 
 		public static readonly string MSG_ACCOUNT_NOT_FOUND = "Account not found. Please type all information to add new account!!!";
         public static readonly string MSG_ACCOUNT_EXISTED = "Account is already exist!!!";

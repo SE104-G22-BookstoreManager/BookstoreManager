@@ -16,13 +16,20 @@ namespace PassbookManagement.src
 	public partial class Dashboard : MaterialForm
 	{
 		private ControlBtn m_control;
+		private int m_roles;
 
-		public Dashboard()
+        private static readonly double S_MIN_CASH = 1000000;
+        private static readonly double S_MIN_INCOME = 1000000;
+
+        public Dashboard()
 		{
 			InitializeComponent();
 
 			cbb_period_edit_period.Hide();
 			m_control = ControlBtn.CONTROL_ADD;
+
+			string _roles = Params.CURRENT_SESSION[Params.CURRENT_ROLES].ToString();
+			m_roles = Convert.ToInt32(_roles);
 
 			InitializeAccount();
 		}
@@ -34,6 +41,12 @@ namespace PassbookManagement.src
 		/// </summary>
 		private void btn_apply_edit_cast_Click(object sender, EventArgs e)
 		{
+			if ((m_roles & Roles.ROLE_MANAGER) != Roles.ROLE_MANAGER)
+			{
+				MessageBox.Show(IMessage.MSG_PERMISSION_DENY, IMessage.CPT_NOTICE);
+				return;
+			}
+
 			if (txt_min_cash.Text != "")
 			{
 				double _cash = Processor.ConvertToDouble(txt_min_cash.Text);
@@ -43,6 +56,12 @@ namespace PassbookManagement.src
 					MessageBox.Show(IMessage.MSG_WRONG_INPUT, IMessage.CPT_NOTICE);
 					return;
 				}
+
+                if(_cash < S_MIN_CASH)
+                {
+                    MessageBox.Show(IMessage.MSG_TOO_FEW_CASH, IMessage.CPT_NOTICE);
+                    return;
+                }
 
 				PassbookModel.UpdateMinCash(txt_min_cash.Text);
 				MessageBox.Show("Success update min cash to " + txt_min_cash.Text);
@@ -58,7 +77,13 @@ namespace PassbookManagement.src
 					return;
 				}
 
-				PassbookModel.UpdateMinIncome(txt_min_income.Text);
+                if (_income < S_MIN_INCOME)
+                {
+                    MessageBox.Show(IMessage.MSG_TOO_FEW_CASH, IMessage.CPT_NOTICE);
+                    return;
+                }
+
+                PassbookModel.UpdateMinIncome(txt_min_income.Text);
 				MessageBox.Show("Success update min income to " + txt_min_income.Text);
 			}
 		}
@@ -137,10 +162,24 @@ namespace PassbookManagement.src
 
 		private void btn_apply_edit_period_Click(object sender, EventArgs e)
 		{
-			switch(m_control)
+			if ((m_roles & Roles.ROLE_MANAGER) != Roles.ROLE_MANAGER)
+			{
+				MessageBox.Show(IMessage.MSG_PERMISSION_DENY, IMessage.CPT_NOTICE);
+				return;
+			}
+
+			switch (m_control)
 			{
 				case ControlBtn.CONTROL_ADD:
 					{
+						if(txt_name_edit_period.Text == "" ||
+							txt_rate_edit_period.Text == "" ||
+							txt_period_edit_period.Text == "")
+						{
+							MessageBox.Show(IMessage.MSG_REQUIRED_ALL, IMessage.CPT_NOTICE);
+							return;
+						}
+
 						DataTable _data = PassbookModel.SelectPeriodByName(txt_name_edit_period.Text);
 
 						if (_data.Rows.Count != 0)
@@ -159,6 +198,14 @@ namespace PassbookManagement.src
 					break;
 				case ControlBtn.CONTROL_EDIT:
 					{
+						if (txt_name_edit_period.Text == "" ||
+							txt_rate_edit_period.Text == "" ||
+							txt_period_edit_period.Text == "")
+						{
+							MessageBox.Show(IMessage.MSG_REQUIRED_ALL, IMessage.CPT_NOTICE);
+							return;
+						}
+
 						if (PassbookModel.UpdatePeriod(lbl_id_edit_period.Text, txt_name_edit_period.Text, txt_rate_edit_period.Text, txt_period_edit_period.Text) == false)
 						{
 							MessageBox.Show(IMessage.MSG_SOMETHING_WENT_WRONG, IMessage.CPT_NOTICE);
@@ -169,6 +216,12 @@ namespace PassbookManagement.src
 					break;
 				case ControlBtn.CONTROL_REMOVE:
 					{
+						if(cbb_period_edit_period.Text == "")
+						{
+							MessageBox.Show(IMessage.MSG_PERIOD_NOT_EXIST, IMessage.CPT_NOTICE);
+							return;
+						}
+
 						DataTable _data = PassbookModel.SelectPeriodByName(cbb_period_edit_period.Text);
 
 						if (_data.Rows.Count == 0)
@@ -343,9 +396,7 @@ namespace PassbookManagement.src
 			txt_identity_number_account.Enabled = false;
 			txt_phone_number_account.Enabled = true;
 
-			string _roles = _account[TblColumn.S_ROLES].ToString();
-
-			if((Convert.ToInt32(_roles) & Roles.ROLE_MANAGER) == Roles.ROLE_MANAGER)
+			if((m_roles & Roles.ROLE_MANAGER) == Roles.ROLE_MANAGER)
 			{
 				tab_cash_edit.Parent = tab_control_edit;
 				tab_period_edit.Parent = tab_control_edit;
@@ -357,11 +408,6 @@ namespace PassbookManagement.src
 			}
 
 		}
-
-        private void tab_selector_edit_Click(object sender, EventArgs e)
-        {
-
-        }
 
 		////////////////////////////////////////////////////////////////////
 		// Control for edit customer
