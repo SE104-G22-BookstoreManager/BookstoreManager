@@ -223,7 +223,7 @@ namespace PassbookManagement
 
 		public static void ReadParams(string path)
 		{
-			var _filestream = new System.IO.FileStream(path,
+			var _filestream = new System.IO.FileStream(path, 
 										  System.IO.FileMode.Open,
 										  System.IO.FileAccess.Read,
 										  System.IO.FileShare.ReadWrite);
